@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.FutLabIS.Data {
     public class ApplicationRole : IdentityRole<int> {
-        public const string RoleMember = "Member";
-        public const string RoleMaster = "Master";
-        public const string RoleAdministrator = "Administrator";
+        public const string Master = "Master";
+        public const string Administrator = "Administrator";
     }
 }
