@@ -12,6 +12,9 @@ namespace Altairis.FutLabIS.Data {
         public FutLabDbContext(DbContextOptions options) : base(options) {
         }
 
+        public DbSet<Resource> Resources { get; set; }
+
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) {
             base.OnModelCreating(builder);
