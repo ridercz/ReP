@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@this.ViewBag.Title | FutLab IS</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap" />
+    <link rel="stylesheet" href="~/Content/Styles/site.min.css" asp-append-version="true" />
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <header>
+        <img src="~/Content/Images/logo.png" alt="FutLab logo" height="75" />
+    </header>
+    <nav>
+        <input type="checkbox" id="mtoggler" hidden="hidden" />
+        <label for="mtoggler" class="open" hidden="hidden"><span>&#x2630;</span></label>
+        <label for="mtoggler" class="close" hidden="hidden"><span>&#x1F5D9;</span></label>
+        <ul>
+            <li><a href="#">Lorem</a></li>
+            <li><a href="#">Ipsum</a></li>
+            <li><a href="#">Dolor</a></li>
+            <li><a href="#">Sit</a></li>
+            <li><a href="#">Amet</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>@this.ViewBag.Title</h1>
+        @RenderBody()
+    </main>
+    <footer>
+        Copyright &copy; Michal A. Valášek - Altairis, 2020
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@import "_vars.scss";
+@import "_rnav.scss";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: $AccentColor;
+    color: $BgColor;
+    font-family: $FontFamily;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+
+    body {
+        max-width: $StopMax;
+        background-color: $BgColor;
+        color: $FgColor;
+        margin: $Padding auto;
+        padding: $Padding;
+
+        nav {
+            @include rnav($WideAlign: left, $HoverBackColor: $AccentColor, $HoverColor: $BgColor);
+        }
+
+        footer {
+            font-size: 80%;
+            color: $AccentColor;
+            text-align: right;
+            border-top: 2px solid $AccentColor;
+            margin-top: $Padding;
+            padding-top: ($Padding / 2);
+        }
+    }
+}

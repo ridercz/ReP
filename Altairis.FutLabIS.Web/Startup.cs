@@ -16,20 +16,23 @@ namespace Altairis.FutLabIS.Web {
             services.AddDbContext<FutLabDbContext>(options => {
                 options.UseSqlServer("SERVER=.\\SqlExpress;TRUSTED_CONNECTION=yes;DATABASE=FutLabIS");
             });
+            services.AddRazorPages();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FutLabDbContext dc) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints => {
-                endpoints.MapGet("/", async context => {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapRazorPages();
             });
+
+            // Migrate database
+            dc.Database.Migrate();
         }
     }
 }

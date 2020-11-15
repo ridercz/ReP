@@ -1,0 +1,96 @@
+﻿@mixin rnav($WidthStop: 40em, $Padding: .5em, $ItemSpacing: 2em, $Color: #fff, $BackColor: #000, $HoverColor: #fd0, $HoverBackColor: #333, $WideAlign: center, $NarrowAlign: left) {
+    input[type=checkbox] {
+        position: absolute;
+        left: -9999em;
+
+        ~ label {
+            display: none;
+        }
+    }
+
+    ul {
+        list-style: none;
+        text-align: $WideAlign;
+        margin: 0;
+        padding: $Padding;
+        background: $BackColor;
+
+        li {
+            display: inline;
+        }
+
+        a {
+            display: inline-block;
+            padding: $Padding $ItemSpacing / 2;
+            text-decoration: none;
+            color: $Color;
+
+            &:active, &:focus, &:hover {
+                color: $HoverColor;
+                background: $HoverBackColor;
+            }
+        }
+    }
+
+    @media (max-width:$WidthStop) {
+        ul {
+            display: none;
+            overflow: hidden;
+
+            li {
+                text-align: $NarrowAlign;
+            }
+
+            a {
+                display: block;
+            }
+        }
+
+        input[type=checkbox] {
+            ~ label {
+                padding: $Padding;
+                text-align: $NarrowAlign;
+                background: $BackColor;
+                color: $Color;
+
+                span {
+                    padding: $Padding;
+                    display: block;
+
+                    &:active, &:focus, &:hover {
+                        background: $HoverBackColor;
+                        color: $HoverColor;
+                    }
+                }
+
+                &.open {
+                    display: block;
+                }
+
+                &.close {
+                    display: none;
+                }
+            }
+
+
+
+            &:checked {
+                ~ label {
+                    margin: 0;
+
+                    &.open {
+                        display: none;
+                    }
+
+                    &.close {
+                        display: block;
+                    }
+                }
+
+                ~ ul {
+                    display: block;
+                }
+            }
+        }
+    }
+}
