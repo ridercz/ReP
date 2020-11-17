@@ -14,5 +14,16 @@ namespace Altairis.FutLabIS.Web {
             public int DefaultPasswordLength { get; set; } = 14;
             public int LoginCookieExpirationDays { get; set; } = 30;
         }
+
+        public MailingConfig Mailing { get; set; } = new MailingConfig();
+
+        public class MailingConfig {
+            public bool UseSendGrid { get; set; }
+            public string PickupFolder { get; set; } = @"C:\InetPub\MailRoot\pickup";
+            public string SendGridApiKey { get; set; }
+            public string SenderName { get; set; }
+            public string SenderAddress { get; set; }
+        }
+
     }
 }

@@ -117,55 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FirstRun_Text" xml:space="preserve">
-    <value>There are no users defined in application. Please create first user who will become an administrator.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BodyTextFormatString" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\pages\mailing\en\bodytextformatstring.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="FirstRun_Title" xml:space="preserve">
-    <value>Create admin user</value>
+  <data name="PasswordReset_Subject" xml:space="preserve">
+    <value>Reset your password</value>
   </data>
-  <data name="Layout_LoginStatus_SignIn" xml:space="preserve">
-    <value>Sign in</value>
+  <data name="PasswordReset_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\pages\mailing\en\passwordreset_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Layout_LoginStatus_SignOut" xml:space="preserve">
-    <value>Sign out</value>
-  </data>
-  <data name="Login_ForgotPassword_Text" xml:space="preserve">
-    <value>If this user does exist, we will send password reset instructions to it's e-mail address.</value>
-  </data>
-  <data name="Login_ForgotPassword_Title" xml:space="preserve">
-    <value>Reset forgotten password</value>
-  </data>
-  <data name="Login_ForgotPassword_UserNotFound" xml:space="preserve">
-    <value>Specified user was not found.</value>
-  </data>
-  <data name="Login_Index_LoginFailed" xml:space="preserve">
-    <value>Login failed.</value>
-  </data>
-  <data name="Login_Index_Title" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="Login_Logout_Text" xml:space="preserve">
-    <value>You were successfully signed out.</value>
-  </data>
-  <data name="Login_Logout_Title" xml:space="preserve">
-    <value>Logout</value>
-  </data>
-  <data name="Login_ResetPassword_Title" xml:space="preserve">
-    <value>Setup new password</value>
-  </data>
-  <data name="_Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="_No" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="_OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="_Submit" xml:space="preserve">
-    <value>Submit</value>
-  </data>
-  <data name="_Yes" xml:space="preserve">
-    <value>Yes</value>
+  <data name="SubjectFormatString" xml:space="preserve">
+    <value>[FutLab IS] {0}</value>
   </data>
 </root>

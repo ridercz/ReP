@@ -12,6 +12,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Altairis.Services.Mailing;
+using Altairis.Services.Mailing.Rfc2822;
+using Altairis.Services.Mailing.Templating;
+using Altairis.Services.Mailing.SendGrid;
+using Altairis.FutLabIS.Web.Resources;
 
 namespace Altairis.FutLabIS.Web {
     public class Startup {
@@ -58,6 +63,23 @@ namespace Altairis.FutLabIS.Web {
                 options.AccessDeniedPath = "/login/accessdenied";
                 options.SlidingExpiration = true;
                 options.ExpireTimeSpan = TimeSpan.FromDays(this.appSettings.Security.LoginCookieExpirationDays);
+            });
+
+
+            // Configure mailing
+            if (this.appSettings.Mailing.UseSendGrid && !string.IsNullOrEmpty(this.appSettings.Mailing.SendGridApiKey)) {
+                services.AddSendGridMailerService(new SendGridMailerServiceOptions {
+                    ApiKey = this.appSettings.Mailing.SendGridApiKey,
+                    DefaultFrom = new MailAddressDto(this.appSettings.Mailing.SenderAddress, this.appSettings.Mailing.SenderName)
+                });
+            } else {
+                services.AddPickupFolderMailerService(new PickupFolderMailerServiceOptions {
+                    PickupFolderName = this.appSettings.Mailing.PickupFolder,
+                    DefaultFrom = new MailAddressDto(this.appSettings.Mailing.SenderAddress, this.appSettings.Mailing.SenderName)
+                });
+            }
+            services.AddResourceTemplatedMailerService(new ResourceTemplatedMailerServiceOptions {
+                ResourceType = typeof(Mailing)
             });
         }
 

@@ -142,6 +142,33 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If this user does exist, we will send password reset instructions to it&apos;s e-mail address..
+        /// </summary>
+        public static string Login_ForgotPassword_Text {
+            get {
+                return ResourceManager.GetString("Login_ForgotPassword_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset forgotten password.
+        /// </summary>
+        public static string Login_ForgotPassword_Title {
+            get {
+                return ResourceManager.GetString("Login_ForgotPassword_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specified user was not found..
+        /// </summary>
+        public static string Login_ForgotPassword_UserNotFound {
+            get {
+                return ResourceManager.GetString("Login_ForgotPassword_UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login failed..
         /// </summary>
         public static string Login_Index_LoginFailed {
@@ -174,6 +201,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Login_Logout_Title {
             get {
                 return ResourceManager.GetString("Login_Logout_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setup new password.
+        /// </summary>
+        public static string Login_ResetPassword_Title {
+            get {
+                return ResourceManager.GetString("Login_ResetPassword_Title", resourceCulture);
             }
         }
     }
