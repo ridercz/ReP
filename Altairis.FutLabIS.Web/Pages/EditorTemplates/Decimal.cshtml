@@ -1,0 +1,11 @@
+﻿@{
+    this.Layout = "_Layout.cshtml";
+    object formattedValue;
+    if (ViewData.TemplateInfo.FormattedModelValue == Model) {
+        formattedValue = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:0.00}", Model);
+    }
+    else {
+        formattedValue = ViewData.TemplateInfo.FormattedModelValue;
+    }
+    @Html.TextBox("", formattedValue, new { @class = "textbox" })
+}
