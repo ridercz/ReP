@@ -1,0 +1,10 @@
+﻿@page
+@model Altairis.FutLabIS.Web.Pages.Login.IndexModel
+@{ this.ViewBag.Title = UI.Login_Index_Title; }
+<form method="post">
+    @Html.EditorFor(m => this.Model.Input)
+    <footer>
+        <div asp-validation-summary="All"></div>
+        <input type="submit" value="@UI._Submit" />
+    </footer>
+</form>

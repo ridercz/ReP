@@ -6,8 +6,8 @@
 }
 
 html {
-    background-color: $AccentColor;
-    color: $BgColor;
+    background-color: $Accent;
+    color: $White;
     font-family: $FontFamily;
     font-size: 14px;
     margin: 0;
@@ -15,22 +15,50 @@ html {
 
     body {
         max-width: $StopMax;
-        background-color: $BgColor;
-        color: $FgColor;
+        background-color: $White;
+        color: $Black;
         margin: $Padding auto;
         padding: $Padding;
 
-        nav {
-            @include rnav($WideAlign: left, $HoverBackColor: $AccentColor, $HoverColor: $BgColor);
+        @media (max-width: $StopMin) {
+            margin: 0 auto;
         }
 
-        footer {
+        > header {
+            .login {
+                float: right;
+                font-size: 90%;
+            }
+        }
+
+        > nav {
+            a {
+                &:link, &:visited {
+                    color: $White;
+                }
+            }
+
+            @include rnav($WideAlign: left, $HoverBackColor: $Accent, $HoverColor: $White, $WidthStop: $StopMin);
+        }
+
+        > footer {
             font-size: 80%;
-            color: $AccentColor;
+            color: $Accent;
             text-align: right;
-            border-top: 2px solid $AccentColor;
+            border-top: 2px solid $Accent;
             margin-top: $Padding;
             padding-top: ($Padding / 2);
         }
+    }
+}
+
+
+a {
+    &:link, &:visited {
+        color: $Accent;
+    }
+
+    &:hover, &:active {
+        color: $Black;
     }
 }

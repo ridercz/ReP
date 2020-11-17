@@ -71,6 +71,8 @@ namespace Altairis.FutLabIS.Web {
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();
@@ -101,19 +103,6 @@ namespace Altairis.FutLabIS.Web {
             }
             await EnsureRoleCreated(ApplicationRole.Master).ConfigureAwait(false);
             await EnsureRoleCreated(ApplicationRole.Administrator).ConfigureAwait(false);
-
-            // Create admin user
-            if (!userManager.Users.Any()) {
-                var user = new ApplicationUser {
-                    UserName = "Administrator",
-                    Email = "michal.valasek@altairis.cz",
-                    EmailConfirmed = true,
-                    Language = "cs",
-                    Enabled = true
-                };
-                EnsureIdentitySuccess(await userManager.CreateAsync(user, SecurityHelper.GenerateRandomPassword()).ConfigureAwait(false));
-                EnsureIdentitySuccess(await userManager.AddToRoleAsync(user, ApplicationRole.Administrator).ConfigureAwait(false));
-            }
         }
 
     }
