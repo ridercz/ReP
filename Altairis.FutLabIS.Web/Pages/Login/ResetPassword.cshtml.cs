@@ -48,7 +48,7 @@ namespace Altairis.FutLabIS.Web.Pages.Login {
                 await this.userManager.UpdateAsync(user);
 
                 // Redirect to confirmation page
-                return this.RedirectToPage("/Index");
+                return this.RedirectToPage("Index", null, "reset");
             }
 
             return this.Page();

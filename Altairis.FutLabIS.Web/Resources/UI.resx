@@ -141,14 +141,19 @@
   <data name="Login_Index_LoginFailed" xml:space="preserve">
     <value>Login failed.</value>
   </data>
-  <data name="Login_Index_Title" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="Login_Logout_Text" xml:space="preserve">
+  <data name="Login_Index_Msg_Logout" xml:space="preserve">
     <value>You were successfully signed out.</value>
   </data>
-  <data name="Login_Logout_Title" xml:space="preserve">
-    <value>Logout</value>
+  <data name="Login_Index_Msg_Reset" xml:space="preserve">
+    <value>Your password was reset successfully.
+You may now login with your new password.</value>
+  </data>
+  <data name="Login_Index_Msg_Sent" xml:space="preserve">
+    <value>Password reset instructions were sent to e-mail address registered for this account.
+Please follow the instructions in the message.</value>
+  </data>
+  <data name="Login_Index_Title" xml:space="preserve">
+    <value>Login</value>
   </data>
   <data name="Login_ResetPassword_Title" xml:space="preserve">
     <value>Setup new password</value>

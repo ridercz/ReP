@@ -197,3 +197,35 @@ a.button {
   a.button:hover {
     background-color: #000 !important;
     border: 1px solid #5e2f83 !important; }
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(94, 47, 131, 0.75); }
+  .modal:target {
+    visibility: visible;
+    opacity: 1; }
+  .modal article {
+    position: relative;
+    min-width: 30%;
+    max-width: 50%;
+    background-color: #fff;
+    text-align: center; }
+    .modal article header {
+      text-align: left;
+      padding: 5px;
+      background-color: #000;
+      color: #fff;
+      font-size: 150%; }
+    .modal article p {
+      margin: 20px; }
+    .modal article footer {
+      margin: 20px; }

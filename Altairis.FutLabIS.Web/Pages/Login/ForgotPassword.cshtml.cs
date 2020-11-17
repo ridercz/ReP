@@ -56,7 +56,7 @@ namespace Altairis.FutLabIS.Web.Pages.Login {
                 url = passwordResetUrl
             }).ConfigureAwait(false);
 
-            return this.RedirectToPage("/Index");
+            return this.RedirectToPage("Index", null, "sent");
         }
 
     }

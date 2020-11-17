@@ -1,6 +1,9 @@
 ﻿@page
 @model Altairis.FutLabIS.Web.Pages.Login.IndexModel
 @{ this.ViewBag.Title = UI.Login_Index_Title; }
+<ul>
+    <li><a asp-page="ForgotPassword">@UI.Login_ForgotPassword_Title</a></li>
+</ul>
 <form method="post">
     @Html.EditorFor(m => this.Model.Input)
     <footer>
@@ -8,3 +11,6 @@
         <input type="submit" value="@UI._Submit" />
     </footer>
 </form>
+<modal-box id="logout" message="@UI.Login_Index_Msg_Logout" />
+<modal-box id="reset" message="@UI.Login_Index_Msg_Reset" />
+<modal-box id="sent" message="@UI.Login_Index_Msg_Sent" />

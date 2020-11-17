@@ -15,12 +15,10 @@ namespace Altairis.FutLabIS.Web.Pages.Login {
             this.signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
         }
 
-        public async Task<IActionResult> OnGetAsync(string done = null) {
-            if (string.IsNullOrEmpty(done)) {
-                await this.signInManager.SignOutAsync();
-                return this.RedirectToPage(new { done = "done" });
-            }
-            return this.Page();
+        public async Task<IActionResult> OnGetAsync() {
+            await this.signInManager.SignOutAsync();
+            return this.RedirectToPage("Index", null, "logout");
         }
     }
 }
+

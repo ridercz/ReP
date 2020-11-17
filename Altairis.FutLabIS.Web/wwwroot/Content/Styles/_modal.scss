@@ -1,0 +1,44 @@
+﻿@import "_vars.scss";
+
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($Accent, .75);
+
+    &:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    article {
+        position: relative;
+        min-width: 30%;
+        max-width: 50%;
+        background-color: $White;
+        text-align: center;
+
+        header {
+            text-align: left;
+            padding: ($Padding / 4);
+            background-color: $Black;
+            color: $White;
+            font-size: 150%;
+        }
+
+        p {
+            margin: $Padding;
+        }
+
+        footer {
+            margin: $Padding;
+        }
+    }
+}

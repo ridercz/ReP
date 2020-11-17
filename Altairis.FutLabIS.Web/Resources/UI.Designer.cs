@@ -178,29 +178,40 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You were successfully signed out..
+        /// </summary>
+        public static string Login_Index_Msg_Logout {
+            get {
+                return ResourceManager.GetString("Login_Index_Msg_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password was reset successfully.
+        ///You may now login with your new password..
+        /// </summary>
+        public static string Login_Index_Msg_Reset {
+            get {
+                return ResourceManager.GetString("Login_Index_Msg_Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password reset instructions were sent to e-mail address registered for this account.
+        ///Please follow the instructions in the message..
+        /// </summary>
+        public static string Login_Index_Msg_Sent {
+            get {
+                return ResourceManager.GetString("Login_Index_Msg_Sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login_Index_Title {
             get {
                 return ResourceManager.GetString("Login_Index_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You were successfully signed out..
-        /// </summary>
-        public static string Login_Logout_Text {
-            get {
-                return ResourceManager.GetString("Login_Logout_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Logout.
-        /// </summary>
-        public static string Login_Logout_Title {
-            get {
-                return ResourceManager.GetString("Login_Logout_Title", resourceCulture);
             }
         }
         
