@@ -10,10 +10,10 @@
 </head>
 <body>
     <header>
-        <div class="login" include-roles="?">
+        <div class="login" include-roles="?" visible="!(this.ViewBag.HideLoginStatus ?? false)">
             <i class="fa fa-sign-in-alt"></i> <a asp-page="/Login/Index">@UI.Layout_LoginStatus_SignIn</a>
         </div>
-        <div class="login" include-roles="*">
+        <div class="login" include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)">
             <i class="fa fa-user"></i> @this.User.Identity.Name
             <i class="fa fa-sign-out-alt"></i> <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
         </div>

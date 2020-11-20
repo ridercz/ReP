@@ -1,6 +1,9 @@
 ﻿@page
 @model Altairis.FutLabIS.Web.Pages.Login.IndexModel
-@{ this.ViewBag.Title = UI.Login_Index_Title; }
+@{
+    this.ViewBag.Title = UI.Login_Index_Title;
+    this.ViewBag.HideLoginStatus = true;
+}
 <ul>
     <li><a asp-page="ForgotPassword">@UI.Login_ForgotPassword_Title</a></li>
 </ul>
