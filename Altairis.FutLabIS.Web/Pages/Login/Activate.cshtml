@@ -1,4 +1,11 @@
-﻿@page
+﻿@page "{userId:int:min(1)}"
 @model Altairis.FutLabIS.Web.Pages.Login.ActivateModel
-@{
-}
+@{ this.ViewBag.Title = UI.Login_Activate_Title; }
+<form method="post">
+    <header>@Html.Raw(string.Format(UI.Login_Activate_Html, this.Model.NewUserName))</header>
+    @Html.EditorFor(m => this.Model.Input)
+    <footer>
+        <div asp-validation-summary="All"></div>
+        <input type="submit" value="@UI._Submit" />
+    </footer>
+</form>

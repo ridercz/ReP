@@ -214,6 +214,25 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Welcome to the FutLab IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
+        ///&lt;p&gt;Please create a password to activate your account. The password should be long and unique. Consider using a &lt;i&gt;passphrase&lt;/i&gt;, entire sentence. It&apos;s easier to remember and more secure than typical password.&lt;/p&gt;.
+        /// </summary>
+        public static string Login_Activate_Html {
+            get {
+                return ResourceManager.GetString("Login_Activate_Html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate your new account.
+        /// </summary>
+        public static string Login_Activate_Title {
+            get {
+                return ResourceManager.GetString("Login_Activate_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If this user does exist, we will send password reset instructions to it&apos;s e-mail address..
         /// </summary>
         public static string Login_ForgotPassword_Text {
@@ -246,6 +265,27 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Login_Index_LoginFailed {
             get {
                 return ResourceManager.GetString("Login_Index_LoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your account was successfully activated.
+        ///You may now login with your new password..
+        /// </summary>
+        public static string Login_Index_Msg_ADone {
+            get {
+                return ResourceManager.GetString("Login_Index_Msg_ADone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User activation failed. 
+        ///Please check that the link you visited is correct and complete. 
+        ///The user may also have been activated before..
+        /// </summary>
+        public static string Login_Index_Msg_AFail {
+            get {
+                return ResourceManager.GetString("Login_Index_Msg_AFail", resourceCulture);
             }
         }
         
