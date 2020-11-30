@@ -26,6 +26,7 @@ namespace Altairis.FutLabIS.Web.Pages.Login {
             public string Password { get; set; }
 
         }
+
         public async Task<IActionResult> OnPostAsync(string userId, string token) {
             if (!this.ModelState.IsValid) return this.Page();
 
