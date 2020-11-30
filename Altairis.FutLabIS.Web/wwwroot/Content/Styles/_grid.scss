@@ -1,0 +1,35 @@
+﻿@import "_vars.scss";
+
+table.grid {
+    width: 100%;
+    border-collapse: collapse;
+
+    td, th {
+        padding: ($Padding / 2);
+        text-align: left;
+        border-bottom: solid 1px rgba($Accent, .25);
+    }
+
+    thead {
+        th {
+            border-bottom: double 3px $Accent;
+        }
+    }
+
+    tbody {
+        tr {
+            &.new {
+                font-weight: bold;
+                font-style: italic;
+            }
+
+            &:hover {
+                background-color: rgba($Accent, .15) !important;
+            }
+
+            &:nth-child(2n) {
+                background-color: rgba($Black, .05);
+            }
+        }
+    }
+}
