@@ -17,6 +17,7 @@ using Altairis.Services.Mailing.Rfc2822;
 using Altairis.Services.Mailing.Templating;
 using Altairis.Services.Mailing.SendGrid;
 using Altairis.FutLabIS.Web.Resources;
+using Altairis.ConventionalMetadataProviders;
 
 namespace Altairis.FutLabIS.Web {
     public class Startup {
@@ -35,10 +36,12 @@ namespace Altairis.FutLabIS.Web {
             services.AddDbContext<FutLabDbContext>(options => {
                 options.UseSqlServer(this.configuration.GetConnectionString("FutLabIS"));
             });
-            services.AddRazorPages(options=> {
+            services.AddRazorPages(options => {
                 options.Conventions.AuthorizeFolder("/", "IsLoggedIn");
                 options.Conventions.AuthorizeFolder("/Admin", "IsAdministrator");
                 options.Conventions.AllowAnonymousToFolder("/Login");
+            }).AddMvcOptions(options => {
+                options.SetConventionalMetadataProviders<Display>();
             });
 
             // Configure identity

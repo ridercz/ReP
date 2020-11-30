@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Altairis.FutLabIS.Data\Altairis.FutLabIS.Data.csproj" />
+    <PackageReference Include="Altairis.ConventionalMetadataProviders" Version="1.0.5" />
     <PackageReference Include="Altairis.Services.Mailing.Core" Version="1.0.5" />
     <PackageReference Include="Altairis.Services.Mailing.Rfc2822" Version="1.0.5" />
     <PackageReference Include="Altairis.Services.Mailing.SendGrid" Version="1.0.5" />
@@ -45,6 +46,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Mailing.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Display.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Display.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\UI.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -60,6 +66,10 @@
     <EmbeddedResource Update="Resources\Mailing.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Mailing.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Display.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Display.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\UI.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
