@@ -35,7 +35,11 @@ namespace Altairis.FutLabIS.Web {
             services.AddDbContext<FutLabDbContext>(options => {
                 options.UseSqlServer(this.configuration.GetConnectionString("FutLabIS"));
             });
-            services.AddRazorPages();
+            services.AddRazorPages(options=> {
+                options.Conventions.AuthorizeFolder("/", "IsLoggedIn");
+                options.Conventions.AuthorizeFolder("/Admin", "IsAdministrator");
+                options.Conventions.AllowAnonymousToFolder("/Login");
+            });
 
             // Configure identity
             services.AddAuthorization(options => {
