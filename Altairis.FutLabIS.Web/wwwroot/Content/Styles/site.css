@@ -144,6 +144,12 @@ form input[type=submit], form input[type=button] {
   form input[type=submit]:hover, form input[type=button]:hover {
     background-color: #000 !important;
     border: 1px solid #5e2f83 !important; }
+  form input[type=submit].secondary, form input[type=button].secondary {
+    background-color: rgba(94, 47, 131, 0.5); }
+  form input[type=submit].tertiary, form input[type=button].tertiary {
+    background-color: #fff;
+    color: #000;
+    float: right; }
 
 form input[type=checkbox] {
   width: 20px;
@@ -206,6 +212,12 @@ a.button {
   a.button:hover {
     background-color: #000 !important;
     border: 1px solid #5e2f83 !important; }
+  a.button.secondary {
+    background-color: rgba(94, 47, 131, 0.5); }
+  a.button.tertiary {
+    background-color: #fff;
+    color: #000;
+    float: right; }
 
 .modal {
   visibility: hidden;
