@@ -40,6 +40,8 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Users {
         }
 
         public async Task<IActionResult> OnPostAsync() {
+            if (!this.ModelState.IsValid) return this.Page();
+
             // Create new user
             var newUser = new ApplicationUser {
                 UserName = this.Input.UserName,
