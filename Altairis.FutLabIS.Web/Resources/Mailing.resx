@@ -119,13 +119,13 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BodyTextFormatString" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\pages\mailing\en\bodytextformatstring.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>mailing\en\bodytextformatstring.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="PasswordReset_Subject" xml:space="preserve">
     <value>Reset your password</value>
   </data>
   <data name="PasswordReset_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\pages\mailing\en\passwordreset_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>mailing\en\passwordreset_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SubjectFormatString" xml:space="preserve">
     <value>[FutLab IS] {0}</value>

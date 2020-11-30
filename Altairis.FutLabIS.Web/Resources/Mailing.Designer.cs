@@ -86,7 +86,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello,
         ///
-        ///someone (most likely you) requested password reset for the Altairis eLearning account {{userName}}.
+        ///someone (most likely you) requested password reset for the FutLab account {{userName}}.
         ///
         ///If you do not want to reset the password, you can safely ignore this message.
         ///
