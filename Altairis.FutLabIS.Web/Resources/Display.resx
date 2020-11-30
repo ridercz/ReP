@@ -123,6 +123,12 @@
   <data name="Enabled" xml:space="preserve">
     <value>Enabled</value>
   </data>
+  <data name="IsAdministrator" xml:space="preserve">
+    <value>This user is administrator</value>
+  </data>
+  <data name="IsMaster" xml:space="preserve">
+    <value>This user is master</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>

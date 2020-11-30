@@ -1,0 +1,6 @@
+﻿Hello,
+
+this e-mail is to inform you that a new account {{userName}} was created for you in the FutLab IS.
+
+To activate this account and set your password, please visit the following page:
+{{url}}

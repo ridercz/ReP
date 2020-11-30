@@ -1,0 +1,14 @@
+﻿@page
+@model Altairis.FutLabIS.Web.Pages.Admin.Users.CreateModel
+@{ this.ViewBag.Title = UI.Admin_Users_Create_Title; }
+<form method="post">
+    <header>
+        @UI.Admin_Users_Create_Text
+    </header>
+    @Html.EditorFor(m => this.Model.Input)
+    <footer>
+        <div asp-validation-summary="All"></div>
+        <input type="submit" value="@UI._Submit" />
+        <a asp-page="Index" class="button secondary">@UI._Cancel</a>
+    </footer>
+</form>

@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Admin_Users_Create_Text" xml:space="preserve">
+    <value>System will send welcome message to newly created user's e-mail address. To activate account and set password, the user has to follow link contained in the message.</value>
+  </data>
+  <data name="Admin_Users_Create_Title" xml:space="preserve">
+    <value>Create new user</value>
+  </data>
+  <data name="Admin_Users_Index_Disabled" xml:space="preserve">
+    <value>User is disabled</value>
+  </data>
+  <data name="Admin_Users_Index_Enabled" xml:space="preserve">
+    <value>User is enabled</value>
+  </data>
+  <data name="Admin_Users_Index_New" xml:space="preserve">
+    <value>Create new user...</value>
+  </data>
+  <data name="Admin_Users_Index_Title" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Admin_Users_Index_Waiting" xml:space="preserve">
+    <value>User is waiting to be activated</value>
+  </data>
+  <data name="Admin_User_Index_Msg_Created" xml:space="preserve">
+    <value>New user was created successfully.</value>
+  </data>
   <data name="FirstRun_Text" xml:space="preserve">
     <value>There are no users defined in application. Please create first user who will become an administrator.</value>
   </data>

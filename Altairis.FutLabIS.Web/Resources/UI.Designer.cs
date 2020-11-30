@@ -106,6 +106,78 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New user was created successfully..
+        /// </summary>
+        public static string Admin_User_Index_Msg_Created {
+            get {
+                return ResourceManager.GetString("Admin_User_Index_Msg_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System will send welcome message to newly created user&apos;s e-mail address. To activate account and set password, the user has to follow link contained in the message..
+        /// </summary>
+        public static string Admin_Users_Create_Text {
+            get {
+                return ResourceManager.GetString("Admin_Users_Create_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new user.
+        /// </summary>
+        public static string Admin_Users_Create_Title {
+            get {
+                return ResourceManager.GetString("Admin_Users_Create_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is disabled.
+        /// </summary>
+        public static string Admin_Users_Index_Disabled {
+            get {
+                return ResourceManager.GetString("Admin_Users_Index_Disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is enabled.
+        /// </summary>
+        public static string Admin_Users_Index_Enabled {
+            get {
+                return ResourceManager.GetString("Admin_Users_Index_Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new user....
+        /// </summary>
+        public static string Admin_Users_Index_New {
+            get {
+                return ResourceManager.GetString("Admin_Users_Index_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        public static string Admin_Users_Index_Title {
+            get {
+                return ResourceManager.GetString("Admin_Users_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is waiting to be activated.
+        /// </summary>
+        public static string Admin_Users_Index_Waiting {
+            get {
+                return ResourceManager.GetString("Admin_Users_Index_Waiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are no users defined in application. Please create first user who will become an administrator..
         /// </summary>
         public static string FirstRun_Text {

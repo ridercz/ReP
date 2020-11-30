@@ -79,6 +79,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user is administrator.
+        /// </summary>
+        public static string IsAdministrator {
+            get {
+                return ResourceManager.GetString("IsAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user is master.
+        /// </summary>
+        public static string IsMaster {
+            get {
+                return ResourceManager.GetString("IsMaster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {

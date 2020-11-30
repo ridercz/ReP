@@ -61,6 +61,32 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activate your new account.
+        /// </summary>
+        public static string Activation_Subject {
+            get {
+                return ResourceManager.GetString("Activation_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello,
+        ///
+        ///this e-mail is to inform you that a new account {{userName}} was created for you in the FutLab IS.
+        ///
+        ///To activate this account and set your password, please visit the following page:
+        ///
+        ///{{url}}
+        ///
+        ///.
+        /// </summary>
+        public static string Activation_Text {
+            get {
+                return ResourceManager.GetString("Activation_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}
         ///
         ///--
