@@ -269,3 +269,14 @@ table.grid {
     background-color: rgba(94, 47, 131, 0.15) !important; }
   table.grid tbody tr:nth-child(2n) {
     background-color: rgba(0, 0, 0, 0.05); }
+
+ul.tasklist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  ul.tasklist li {
+    margin: 0 0 20px 0;
+    text-align: left; }
+    ul.tasklist li .button {
+      min-width: 33%;
+      text-align: left; }

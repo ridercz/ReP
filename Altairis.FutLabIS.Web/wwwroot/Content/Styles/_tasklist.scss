@@ -1,0 +1,17 @@
+﻿@import "_vars.scss";
+
+ul.tasklist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        margin:0 0 $Padding 0;
+        text-align: left;
+
+        .button {
+            min-width: 33%;
+            text-align: left;
+        }
+    }
+}

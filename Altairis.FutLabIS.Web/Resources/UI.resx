@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Admin_Index_ManageResources" xml:space="preserve">
+    <value>Manage resources</value>
+  </data>
+  <data name="Admin_Index_ManageUsers" xml:space="preserve">
+    <value>Manage users</value>
+  </data>
+  <data name="Admin_Index_Title" xml:space="preserve">
+    <value>System administration</value>
+  </data>
   <data name="Admin_Users_Create_Text" xml:space="preserve">
     <value>System will send welcome message to newly created user's e-mail address. To activate account and set password, the user has to follow link contained in the message.</value>
   </data>

@@ -1,4 +1,8 @@
 ﻿@page
 @model Altairis.FutLabIS.Web.Pages.Admin.IndexModel
-@{
-}
+@{ this.ViewBag.Title = UI.Admin_Index_Title; }
+
+<ul class="tasklist">
+    <li><a class="button" asp-page="Users/Index"><i class="fas fa-fw fa-users"></i> @UI.Admin_Index_ManageUsers</a></li>
+    <li><a class="button" asp-page="Resources/Index"><i class="fas fa-fw fa-cubes"></i> @UI.Admin_Index_ManageResources</a></li>
+</ul>

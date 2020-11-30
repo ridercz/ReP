@@ -115,6 +115,33 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage resources.
+        /// </summary>
+        public static string Admin_Index_ManageResources {
+            get {
+                return ResourceManager.GetString("Admin_Index_ManageResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage users.
+        /// </summary>
+        public static string Admin_Index_ManageUsers {
+            get {
+                return ResourceManager.GetString("Admin_Index_ManageUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System administration.
+        /// </summary>
+        public static string Admin_Index_Title {
+            get {
+                return ResourceManager.GetString("Admin_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New user was created successfully..
         /// </summary>
         public static string Admin_User_Index_Msg_Created {
