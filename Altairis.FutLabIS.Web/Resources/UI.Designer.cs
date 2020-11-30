@@ -70,6 +70,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string _Delete {
+            get {
+                return ResourceManager.GetString("_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string _No {
@@ -115,6 +124,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User was deleted..
+        /// </summary>
+        public static string Admin_User_Index_Msg_Deleted {
+            get {
+                return ResourceManager.GetString("Admin_User_Index_Msg_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User changes were saved..
+        /// </summary>
+        public static string Admin_User_Index_Msg_Saved {
+            get {
+                return ResourceManager.GetString("Admin_User_Index_Msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System will send welcome message to newly created user&apos;s e-mail address. To activate account and set password, the user has to follow link contained in the message..
         /// </summary>
         public static string Admin_Users_Create_Text {
@@ -129,6 +156,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Admin_Users_Create_Title {
             get {
                 return ResourceManager.GetString("Admin_Users_Create_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this user and all its related data? This action cannot be undone..
+        /// </summary>
+        public static string Admin_Users_Edit_DeleteConfirm {
+            get {
+                return ResourceManager.GetString("Admin_Users_Edit_DeleteConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit user.
+        /// </summary>
+        public static string Admin_Users_Edit_Title {
+            get {
+                return ResourceManager.GetString("Admin_Users_Edit_Title", resourceCulture);
             }
         }
         
