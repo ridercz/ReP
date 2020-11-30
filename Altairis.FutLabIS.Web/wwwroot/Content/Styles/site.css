@@ -142,6 +142,7 @@ form input[type=submit], form input[type=button] {
   min-width: 20ex;
   box-sizing: border-box; }
   form input[type=submit]:hover, form input[type=button]:hover {
+    color: #fff !important;
     background-color: #000 !important;
     border: 1px solid #5e2f83 !important; }
   form input[type=submit].secondary, form input[type=button].secondary {
@@ -210,6 +211,7 @@ a.button {
   min-width: 20ex;
   box-sizing: border-box; }
   a.button:hover {
+    color: #fff !important;
     background-color: #000 !important;
     border: 1px solid #5e2f83 !important; }
   a.button.secondary {

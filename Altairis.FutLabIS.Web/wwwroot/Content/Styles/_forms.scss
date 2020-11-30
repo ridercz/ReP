@@ -17,6 +17,7 @@
     box-sizing: border-box;
 
     &:hover {
+        color: $White !important;
         background-color: $Black !important;
         border: 1px solid $Accent !important;
     }
