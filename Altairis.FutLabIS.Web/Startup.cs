@@ -37,9 +37,11 @@ namespace Altairis.FutLabIS.Web {
                 options.UseSqlServer(this.configuration.GetConnectionString("FutLabIS"));
             });
             services.AddRazorPages(options => {
-                options.Conventions.AuthorizeFolder("/", "IsLoggedIn");
+                options.Conventions.AuthorizeFolder("/My", "IsLoggedIn");
                 options.Conventions.AuthorizeFolder("/Admin", "IsAdministrator");
                 options.Conventions.AllowAnonymousToFolder("/Login");
+                options.Conventions.AllowAnonymousToFolder("/Errors");
+                options.Conventions.AllowAnonymousToPage("/FirstRun");
             }).AddMvcOptions(options => {
                 options.SetConventionalMetadataProviders<Display>();
             });
@@ -98,6 +100,7 @@ namespace Altairis.FutLabIS.Web {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePagesWithReExecute("/Errors/{0}");
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
