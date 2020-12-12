@@ -16,15 +16,20 @@
                 @Html.Editor(prop.PropertyName)
             }
             else if (prop.ModelType.Equals(typeof(System.Boolean))) {
-                <p title="@prop.Description">
+                <p>
                     @Html.Editor(prop.PropertyName)
                     @Html.Label(prop.PropertyName)
+                    @if(!string.IsNullOrWhiteSpace(prop.Description)) {
+                        <span class="description">@prop.Description</span>
+                    }
                 </p>
-            }
-            else {
-                <p title="@prop.Description">
+            } else {
+                <p>
                     @if (!string.IsNullOrEmpty(prop.GetDisplayName())) {
-                        @Html.Label(prop.PropertyName, prop.GetDisplayName())<br />
+                        @Html.Label(prop.PropertyName, prop.GetDisplayName() + ":")<br />
+                    }
+                    @if(!string.IsNullOrWhiteSpace(prop.Description)) {
+                        <span class="description">@prop.Description</span>
                     }
                     @Html.Editor(prop.PropertyName)
                 </p>

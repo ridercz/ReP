@@ -111,6 +111,9 @@ form input[type=text], form input[type=password], form input[type=email], form i
   form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input .textbox:focus {
     border: 1px solid #000; }
 
+form input[type=password] {
+  margin-bottom: 1em; }
+
 form input[type=tel], form input[type=number], form input[type=date], form input.short {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -152,11 +155,6 @@ form input[type=submit], form input[type=button] {
     color: #000;
     float: right; }
 
-form input[type=checkbox] {
-  width: 20px;
-  height: 20px;
-  vertical-align: text-bottom; }
-
 form textarea {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -194,6 +192,16 @@ form select {
 
 form label[for] {
   cursor: pointer; }
+
+form span.description {
+  display: block;
+  font-size: 80%;
+  color: #5e2f83;
+  margin-bottom: .5ex; }
+  form span.description::before {
+    content: '('; }
+  form span.description::after {
+    content: ')'; }
 
 a.button {
   display: inline-block;

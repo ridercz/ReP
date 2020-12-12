@@ -58,6 +58,10 @@ form {
             @include textbox;
         }
 
+        &[type=password] {
+            margin-bottom: 1em;
+        }
+
         &[type=tel], &[type=number], &[type=date], &.short {
             @include textbox;
             max-width: 10em;
@@ -65,12 +69,6 @@ form {
 
         &[type=submit], &[type=button] {
             @include button;
-        }
-
-        &[type=checkbox] {
-            width: 20px;
-            height: 20px;
-            vertical-align: text-bottom;
         }
     }
 
@@ -93,6 +91,21 @@ form {
 
     label[for] {
         cursor: pointer;
+    }
+
+    span.description {
+        display: block;
+        font-size: 80%;
+        color: $Accent;
+        margin-bottom: .5ex;
+
+        &::before {
+            content: '(';
+        }
+
+        &::after {
+            content: ')';
+        }
     }
 }
 
