@@ -127,6 +127,12 @@
   <data name="BodyTextFormatString" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>mailing\en\bodytextformatstring.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="EmailConfirm_Subject" xml:space="preserve">
+    <value>Confirm change of your e-mail address</value>
+  </data>
+  <data name="EmailConfirm_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\en\emailconfirm_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="PasswordReset_Subject" xml:space="preserve">
     <value>Reset your password</value>
   </data>

@@ -499,6 +499,48 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid password..
+        /// </summary>
+        public static string My_Settings_Email_InvalidPassword {
+            get {
+                return ResourceManager.GetString("My_Settings_Email_InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change my e-mail address.
+        /// </summary>
+        public static string My_Settings_Email_Title {
+            get {
+                return ResourceManager.GetString("My_Settings_Email_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Confirmation failed. The usual reasons are:&lt;/p&gt; 
+        ///&lt;ul&gt;
+        ///&lt;li&gt;The page address is incorrect or incomplete. It may have been splitted into multiple lines by your e-mail client.&lt;/li&gt;
+        ///&lt;li&gt;The desired e-mail address is already used by another account on this system.&lt;/li&gt;
+        ///&lt;li&gt;The change was already confirmed.&lt;/li&gt;
+        ///&lt;li&gt;The confirmation link is outdated. Please initiate the change again.&lt;/li&gt;
+        ///&lt;/ul&gt;.
+        /// </summary>
+        public static string My_Settings_EmailConfirm_FailedHtml {
+            get {
+                return ResourceManager.GetString("My_Settings_EmailConfirm_FailedHtml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Try again.
+        /// </summary>
+        public static string My_Settings_EmailConfirm_TryAgain {
+            get {
+                return ResourceManager.GetString("My_Settings_EmailConfirm_TryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change....
         /// </summary>
         public static string My_Settings_Index_Change {
@@ -531,6 +573,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string My_Settings_Index_Msg_ChangeEmail {
             get {
                 return ResourceManager.GetString("My_Settings_Index_Msg_ChangeEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your e-mail address was changed successfully..
+        /// </summary>
+        public static string My_Settings_Index_Msg_ChangeEmailDone {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Msg_ChangeEmailDone", resourceCulture);
             }
         }
         

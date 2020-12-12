@@ -1,0 +1,8 @@
+﻿Hello,
+
+someone (most likely you) requested e-mail address for the FutLab account {{userName}} to be changed to this one.
+
+If you do not want to change the e-mail, you can safely ignore this message.
+
+If you do want to confirm the change, go to the following page:
+{{url}}

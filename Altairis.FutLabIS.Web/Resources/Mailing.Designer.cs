@@ -75,9 +75,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         ///this e-mail is to inform you that a new account {{userName}} was created for you in the FutLab IS.
         ///
         ///To activate this account and set your password, please visit the following page:
-        ///
         ///{{url}}
-        ///
         ///.
         /// </summary>
         public static string Activation_Text {
@@ -97,6 +95,32 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string BodyTextFormatString {
             get {
                 return ResourceManager.GetString("BodyTextFormatString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm change of your e-mail address.
+        /// </summary>
+        public static string EmailConfirm_Subject {
+            get {
+                return ResourceManager.GetString("EmailConfirm_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello,
+        ///
+        ///someone (most likely you) requested e-mail address for the FutLab account {{userName}} to be changed to this one.
+        ///
+        ///If you do not want to change the e-mail, you can safely ignore this message.
+        ///
+        ///If you do want to confirm the change, go to the following page:
+        ///{{url}}
+        ///.
+        /// </summary>
+        public static string EmailConfirm_Text {
+            get {
+                return ResourceManager.GetString("EmailConfirm_Text", resourceCulture);
             }
         }
         
