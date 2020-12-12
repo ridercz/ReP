@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.FutLabIS.Data;
@@ -24,6 +25,9 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
 
             public string Language { get; set; }
 
+            [Phone]
+            public string PhoneNumber { get; set; }
+
         }
 
         public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
@@ -36,6 +40,7 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
         public async Task OnGetAsync() {
             this.Me = await this.userManager.GetUserAsync(this.User);
             this.Input.Language = this.Me.Language;
+            this.Input.PhoneNumber = this.Me.PhoneNumber;
         }
 
         public async Task<IActionResult> OnPostAsync() {
@@ -43,6 +48,7 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
             this.Me = await this.userManager.GetUserAsync(this.User);
 
             this.Me.Language = this.Input.Language;
+            this.Me.PhoneNumber = this.Input.PhoneNumber;
             await this.userManager.UpdateAsync(this.Me);
 
             return this.RedirectToPage("Index", null, "saved");
