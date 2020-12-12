@@ -1,0 +1,49 @@
+﻿@page
+@model Altairis.FutLabIS.Web.Pages.My.Settings.IndexModel
+@{ this.ViewBag.Title = UI.My_Settings_Index_Title; }
+<form method="post">
+    <table class="details">
+        <tbody>
+            <tr>
+                <th>@Display.UserName</th>
+                <td>
+                    <a href="#changeusername"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                    @Model.Me.UserName
+                </td>
+            </tr>
+            <tr>
+                <th>@Display.Email</th>
+                <td>
+                    <a asp-page="Email"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                    @Model.Me.Email
+                </td>
+            </tr>
+            <tr>
+                <th>@Display.Password</th>
+                <td>
+                    <a asp-page="Password"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                    ********
+                </td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Language"></label></th>
+                <td>
+                    <checkbox-list asp-for="Input.Language" asp-items="Model.AllLanguages" control-type="RadioButton" class="checkbox-list" />
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="@UI._Submit" />
+                    <a href="#delete" class="button tertiary">@UI._Delete</a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
+
+<modal-box id="changeusername" message="@UI.My_Settings_Index_Msg_ChangeUserName" />
+<modal-box id="delete" message="@UI.My_Settings_Index_Msg_Delete" />
+<modal-box id="saved" message="@UI.My_Settings_Index_Msg_Saved" />

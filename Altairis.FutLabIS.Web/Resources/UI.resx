@@ -249,6 +249,33 @@ Please follow the instructions in the message.</value>
   <data name="Login_ResetPassword_Title" xml:space="preserve">
     <value>Setup new password</value>
   </data>
+  <data name="My_Settings_Index_Change" xml:space="preserve">
+    <value>Change...</value>
+  </data>
+  <data name="My_Settings_Index_Language_CS" xml:space="preserve">
+    <value>Czech</value>
+  </data>
+  <data name="My_Settings_Index_Language_EN" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ChangeEmail" xml:space="preserve">
+    <value>We just sent an e-mail to a new address you entered. Please follow the link in the message to confirm the e-mail change.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ChangePassword" xml:space="preserve">
+    <value>Your password was changed successfully.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ChangeUserName" xml:space="preserve">
+    <value>To change your username, please contact system administrator.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_Delete" xml:space="preserve">
+    <value>To delete your account, please contact system administrator.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_Saved" xml:space="preserve">
+    <value>Your changes were saved successfully.</value>
+  </data>
+  <data name="My_Settings_Index_Title" xml:space="preserve">
+    <value>My settings</value>
+  </data>
   <data name="_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>

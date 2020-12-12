@@ -14,7 +14,7 @@
             <i class="fa fa-sign-in-alt"></i> <a asp-page="/Login/Index">@UI.Layout_LoginStatus_SignIn</a>
         </div>
         <div class="login" include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)">
-            <i class="fa fa-user"></i> @this.User.Identity.Name
+            <i class="fa fa-user"></i> <a asp-page="/My/Settings/Index">@this.User.Identity.Name</a>
             <i class="fa fa-sign-out-alt"></i> <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
         </div>
         <a asp-page="/Index"><img src="~/Content/Images/logo.png" alt="FutLab logo" height="75" /></a>

@@ -497,5 +497,86 @@ namespace Altairis.FutLabIS.Web.Resources {
                 return ResourceManager.GetString("Login_ResetPassword_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change....
+        /// </summary>
+        public static string My_Settings_Index_Change {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czech.
+        /// </summary>
+        public static string My_Settings_Index_Language_CS {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Language_CS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string My_Settings_Index_Language_EN {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Language_EN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We just sent an e-mail to a new address you entered. Please follow the link in the message to confirm the e-mail change..
+        /// </summary>
+        public static string My_Settings_Index_Msg_ChangeEmail {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Msg_ChangeEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password was changed successfully..
+        /// </summary>
+        public static string My_Settings_Index_Msg_ChangePassword {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Msg_ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To change your username, please contact system administrator..
+        /// </summary>
+        public static string My_Settings_Index_Msg_ChangeUserName {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Msg_ChangeUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To delete your account, please contact system administrator..
+        /// </summary>
+        public static string My_Settings_Index_Msg_Delete {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Msg_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your changes were saved successfully..
+        /// </summary>
+        public static string My_Settings_Index_Msg_Saved {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My settings.
+        /// </summary>
+        public static string My_Settings_Index_Title {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Title", resourceCulture);
+            }
+        }
     }
 }
