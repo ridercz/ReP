@@ -578,5 +578,14 @@ namespace Altairis.FutLabIS.Web.Resources {
                 return ResourceManager.GetString("My_Settings_Index_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change my password.
+        /// </summary>
+        public static string My_Settings_Password_Title {
+            get {
+                return ResourceManager.GetString("My_Settings_Password_Title", resourceCulture);
+            }
+        }
     }
 }
