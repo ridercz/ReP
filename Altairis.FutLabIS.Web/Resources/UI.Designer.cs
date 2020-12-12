@@ -376,6 +376,33 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Layout_Menu_Login {
+            get {
+                return ResourceManager.GetString("Layout_Menu_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset password.
+        /// </summary>
+        public static string Layout_Menu_ResetPassword {
+            get {
+                return ResourceManager.GetString("Layout_Menu_ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Layout_Menu_Settings {
+            get {
+                return ResourceManager.GetString("Layout_Menu_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;Welcome to the FutLab IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
         ///&lt;p&gt;Please create a password to activate your account. The password should be long and unique. Consider using a &lt;i&gt;passphrase&lt;/i&gt;, entire sentence. It&apos;s easier to remember and more secure than typical password.&lt;/p&gt;.
         /// </summary>

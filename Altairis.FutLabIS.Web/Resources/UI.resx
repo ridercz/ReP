@@ -204,6 +204,15 @@
   <data name="Layout_Menu_Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Layout_Menu_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Layout_Menu_ResetPassword" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Layout_Menu_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="Login_Activate_Html" xml:space="preserve">
     <value>&lt;p&gt;Welcome to the FutLab IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
 &lt;p&gt;Please create a password to activate your account. The password should be long and unique. Consider using a &lt;i&gt;passphrase&lt;/i&gt;, entire sentence. It's easier to remember and more secure than typical password.&lt;/p&gt;</value>

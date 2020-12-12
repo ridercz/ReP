@@ -17,14 +17,17 @@
             <i class="fa fa-user"></i> <a asp-page="/My/Settings/Index">@this.User.Identity.Name</a>
             <i class="fa fa-sign-out-alt"></i> <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
         </div>
-        <a asp-page="/Index"><img src="~/Content/Images/logo.png" alt="FutLab logo" height="75" /></a>
+        <a asp-page="/My/Index"><img src="~/Content/Images/logo.png" alt="FutLab logo" height="75" /></a>
     </header>
     <nav>
         <input type="checkbox" id="mtoggler" hidden="hidden" />
         <label for="mtoggler" class="open" hidden="hidden"><span>&#x2630;</span></label>
         <label for="mtoggler" class="close" hidden="hidden"><span>&#x1F5D9;</span></label>
         <ul>
-            <li include-roles="*"><a asp-page="/Index"><i class="fas fa-home"></i> @UI.Layout_Menu_Home</a></li>
+            <li include-roles="?"><a asp-page="/Login/Index"><i class="fas fa-key"></i> @UI.Layout_Menu_Login</a></li>
+            <li include-roles="?"><a asp-page="/Login/ForgotPassword"><i class="fas fa-redo"></i> @UI.Layout_Menu_ResetPassword</a></li>
+            <li include-roles="*"><a asp-page="/My/Index"><i class="fas fa-home"></i> @UI.Layout_Menu_Home</a></li>
+            <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-cog"></i> @UI.Layout_Menu_Settings</a></li>
             <li include-roles="@ApplicationRole.Administrator"><a asp-page="/Admin/Index"><i class="fas fa-cogs"></i> @UI.Layout_Menu_Administration</a></li>
         </ul>
     </nav>
