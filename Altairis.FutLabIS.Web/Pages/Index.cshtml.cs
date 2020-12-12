@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.FutLabIS.Web.Pages {
     public class IndexModel : PageModel {
-        public void OnGet() {
+        public IActionResult OnGet() {
+            return this.RedirectToPage("/My/Index");
         }
     }
 }
