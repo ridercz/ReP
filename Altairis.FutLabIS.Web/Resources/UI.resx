@@ -126,6 +126,30 @@
   <data name="Admin_Index_Title" xml:space="preserve">
     <value>System administration</value>
   </data>
+  <data name="Admin_Resources_Create_Title" xml:space="preserve">
+    <value>Create new resource</value>
+  </data>
+  <data name="Admin_Resources_Edit_DeleteConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete this resource and all its related data? This action cannot be undone.</value>
+  </data>
+  <data name="Admin_Resources_Edit_Title" xml:space="preserve">
+    <value>Edit resource</value>
+  </data>
+  <data name="Admin_Resources_Index_Msg_Created" xml:space="preserve">
+    <value>New resource was creaed successfully.</value>
+  </data>
+  <data name="Admin_Resources_Index_Msg_Deleted" xml:space="preserve">
+    <value>Resource was successfully deleted.</value>
+  </data>
+  <data name="Admin_Resources_Index_Msg_Saved" xml:space="preserve">
+    <value>Resource changes were saved successfully.</value>
+  </data>
+  <data name="Admin_Resources_Index_New" xml:space="preserve">
+    <value>Create new resource...</value>
+  </data>
+  <data name="Admin_Resources_Index_Title" xml:space="preserve">
+    <value>Resources</value>
+  </data>
   <data name="Admin_Users_Create_Text" xml:space="preserve">
     <value>System will send welcome message to newly created user's e-mail address. To activate account and set password, the user has to follow link contained in the message.</value>
   </data>
@@ -157,10 +181,10 @@
     <value>New user was created successfully.</value>
   </data>
   <data name="Admin_User_Index_Msg_Deleted" xml:space="preserve">
-    <value>User was deleted.</value>
+    <value>User was successfully deleted.</value>
   </data>
   <data name="Admin_User_Index_Msg_Saved" xml:space="preserve">
-    <value>User changes were saved.</value>
+    <value>User changes were saved successfully.</value>
   </data>
   <data name="FirstRun_Text" xml:space="preserve">
     <value>There are no users defined in application. Please create first user who will become an administrator.</value>

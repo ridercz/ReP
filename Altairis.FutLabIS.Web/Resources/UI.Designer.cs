@@ -142,6 +142,78 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new resource.
+        /// </summary>
+        public static string Admin_Resources_Create_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Create_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this resource and all its related data? This action cannot be undone..
+        /// </summary>
+        public static string Admin_Resources_Edit_DeleteConfirm {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Edit_DeleteConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit resource.
+        /// </summary>
+        public static string Admin_Resources_Edit_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New resource was creaed successfully..
+        /// </summary>
+        public static string Admin_Resources_Index_Msg_Created {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_Msg_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource was successfully deleted..
+        /// </summary>
+        public static string Admin_Resources_Index_Msg_Deleted {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_Msg_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource changes were saved successfully..
+        /// </summary>
+        public static string Admin_Resources_Index_Msg_Saved {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_Msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new resource....
+        /// </summary>
+        public static string Admin_Resources_Index_New {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources.
+        /// </summary>
+        public static string Admin_Resources_Index_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New user was created successfully..
         /// </summary>
         public static string Admin_User_Index_Msg_Created {
@@ -151,7 +223,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User was deleted..
+        ///   Looks up a localized string similar to User was successfully deleted..
         /// </summary>
         public static string Admin_User_Index_Msg_Deleted {
             get {
@@ -160,7 +232,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User changes were saved..
+        ///   Looks up a localized string similar to User changes were saved successfully..
         /// </summary>
         public static string Admin_User_Index_Msg_Saved {
             get {
