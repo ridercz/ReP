@@ -229,6 +229,20 @@ a.button {
     color: #000;
     float: right; }
 
+ul.checkbox-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: block; }
+  ul.checkbox-list li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block; }
+
+.validation-summary-valid {
+  display: none; }
+
 .modal {
   visibility: hidden;
   opacity: 0;
@@ -288,3 +302,13 @@ ul.tasklist {
     ul.tasklist li .button {
       min-width: 33%;
       text-align: left; }
+
+table.details {
+  width: 100%;
+  border-collapse: collapse; }
+  table.details td, table.details th {
+    padding: 10px;
+    text-align: left;
+    border-top: solid 1px rgba(94, 47, 131, 0.25); }
+  table.details tbody tr:hover {
+    background-color: rgba(94, 47, 131, 0.15) !important; }
