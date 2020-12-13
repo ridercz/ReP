@@ -1,17 +1,7 @@
 ﻿@page
-@model Altairis.FutLabIS.Web.Pages.My.IndexModel
-@{ this.ViewBag.Title = UI.My_Index_Title; }
-<h2>@UI.My_Index_Resources</h2>
-@foreach (var item in this.Model.Resources) {
-    <p>
-        <i class="fas fa-cube fa-2x fa-pull-left"></i>
-        <a asp-page="Reservations" asp-route-resourceId="@item.Id" class="strong">@item.Name</a><br />
-        @item.Description
-    </p>
-}
+@model Altairis.FutLabIS.Web.Pages.My.ArchiveModel
+@{ this.ViewBag.Title = UI.My_Index_Archive; }
 
-<h2>@UI.My_Index_Reservations</h2>
-<p visible="!Model.Reservations.Any()">@UI.My_Index_NoReservations</p>
 <table class="grid">
     <thead>
         <tr>
@@ -30,4 +20,3 @@
         }
     </tbody>
 </table>
-<p><a asp-page="Archive" class="button">@UI.My_Index_Archive</a></p>

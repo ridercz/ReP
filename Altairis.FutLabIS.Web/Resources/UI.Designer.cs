@@ -526,6 +526,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All reservations.
+        /// </summary>
+        public static string My_Index_Archive {
+            get {
+                return ResourceManager.GetString("My_Index_Archive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No current reservations..
         /// </summary>
         public static string My_Index_NoReservations {
@@ -535,7 +544,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My reservations.
+        ///   Looks up a localized string similar to My upcoming reservations.
         /// </summary>
         public static string My_Index_Reservations {
             get {
