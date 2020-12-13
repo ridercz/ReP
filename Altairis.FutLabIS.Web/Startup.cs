@@ -18,6 +18,7 @@ using Altairis.Services.Mailing.Templating;
 using Altairis.Services.Mailing.SendGrid;
 using Altairis.FutLabIS.Web.Resources;
 using Altairis.ConventionalMetadataProviders;
+using Altairis.Services.DateProvider;
 
 namespace Altairis.FutLabIS.Web {
     public class Startup {
@@ -33,9 +34,12 @@ namespace Altairis.FutLabIS.Web {
         }
 
         public void ConfigureServices(IServiceCollection services) {
+            // Configure database
             services.AddDbContext<FutLabDbContext>(options => {
                 options.UseSqlServer(this.configuration.GetConnectionString("FutLabIS"));
             });
+
+            // Configure base framework services
             services.AddRazorPages(options => {
                 options.Conventions.AuthorizeFolder("/My", "IsLoggedIn");
                 options.Conventions.AuthorizeFolder("/Admin", "IsAdministrator");
@@ -43,7 +47,7 @@ namespace Altairis.FutLabIS.Web {
                 options.Conventions.AllowAnonymousToFolder("/Errors");
                 options.Conventions.AllowAnonymousToPage("/FirstRun");
             }).AddMvcOptions(options => {
-                options.SetConventionalMetadataProviders<Display>();
+                options.SetConventionalMetadataProviders<Display, Validation>();
             });
 
             // Configure identity
@@ -74,7 +78,6 @@ namespace Altairis.FutLabIS.Web {
                 options.ExpireTimeSpan = TimeSpan.FromDays(this.appSettings.Security.LoginCookieExpirationDays);
             });
 
-
             // Configure mailing
             if (this.appSettings.Mailing.UseSendGrid && !string.IsNullOrEmpty(this.appSettings.Mailing.SendGridApiKey)) {
                 services.AddSendGridMailerService(new SendGridMailerServiceOptions {
@@ -90,6 +93,9 @@ namespace Altairis.FutLabIS.Web {
             services.AddResourceTemplatedMailerService(new ResourceTemplatedMailerServiceOptions {
                 ResourceType = typeof(Mailing)
             });
+
+            // Configure misc services
+            services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FutLabDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {

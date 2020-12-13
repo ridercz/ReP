@@ -67,6 +67,11 @@ form {
             max-width: 10em;
         }
 
+        &[type=datetime-local] {
+            @include textbox;
+            max-width: 15em;
+        }
+
         &[type=submit], &[type=button] {
             @include button;
         }

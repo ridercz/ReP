@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Altairis.FutLabIS.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -64,6 +66,8 @@ namespace Altairis.FutLabIS.Web {
             }
             return result.Succeeded;
         }
+
+        public static bool IsPrivilegedUser(this ClaimsPrincipal principal) => principal.IsInRole(ApplicationRole.Administrator) || principal.IsInRole(ApplicationRole.Master);
 
     }
 

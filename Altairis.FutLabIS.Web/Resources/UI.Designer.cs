@@ -526,6 +526,69 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No current reservations..
+        /// </summary>
+        public static string My_Index_NoReservations {
+            get {
+                return ResourceManager.GetString("My_Index_NoReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My reservations.
+        /// </summary>
+        public static string My_Index_Reservations {
+            get {
+                return ResourceManager.GetString("My_Index_Reservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available resources.
+        /// </summary>
+        public static string My_Index_Resources {
+            get {
+                return ResourceManager.GetString("My_Index_Resources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to FutLab!.
+        /// </summary>
+        public static string My_Index_Title {
+            get {
+                return ResourceManager.GetString("My_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum reservation time for this resource is {0} minutes..
+        /// </summary>
+        public static string My_Reservations_Err_Maxlength {
+            get {
+                return ResourceManager.GetString("My_Reservations_Err_Maxlength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your reservation was created successfully..
+        /// </summary>
+        public static string My_Reservations_Msg_Created {
+            get {
+                return ResourceManager.GetString("My_Reservations_Msg_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new reservation.
+        /// </summary>
+        public static string My_Reservations_New {
+            get {
+                return ResourceManager.GetString("My_Reservations_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid password..
         /// </summary>
         public static string My_Settings_Email_InvalidPassword {

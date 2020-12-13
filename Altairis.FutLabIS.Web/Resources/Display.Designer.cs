@@ -70,6 +70,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Begin date.
+        /// </summary>
+        public static string DateBegin {
+            get {
+                return ResourceManager.GetString("DateBegin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date.
+        /// </summary>
+        public static string DateEnd {
+            get {
+                return ResourceManager.GetString("DateEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description {
@@ -183,6 +201,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource.
+        /// </summary>
+        public static string ResourceId {
+            get {
+                return ResourceManager.GetString("ResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is system reservation.
+        /// </summary>
+        public static string System {
+            get {
+                return ResourceManager.GetString("System", resourceCulture);
             }
         }
         

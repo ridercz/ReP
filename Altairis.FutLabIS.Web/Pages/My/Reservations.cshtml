@@ -1,0 +1,15 @@
+﻿@page "{resourceId}"
+@model Altairis.FutLabIS.Web.Pages.My.ReservationsModel
+@{ this.ViewBag.Title = Model.Resource.Name; }
+<p>@Model.Resource.Description</p>
+<form method="post" visible="Model.Resource.Enabled">
+    <h2>@UI.My_Reservations_New</h2>
+    <div asp-validation-summary="All"></div>
+    <p>
+        <input asp-for="NormalReservation.DateBegin" />
+        <input asp-for="NormalReservation.DateEnd" />
+        <input type="submit" value="@UI._Submit" />
+    </p>
+</form>
+
+<modal-box id="created" message="@UI.My_Reservations_Msg_Created" />

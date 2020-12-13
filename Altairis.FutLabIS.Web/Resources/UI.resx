@@ -258,6 +258,27 @@ Please follow the instructions in the message.</value>
   <data name="Login_ResetPassword_Title" xml:space="preserve">
     <value>Setup new password</value>
   </data>
+  <data name="My_Index_NoReservations" xml:space="preserve">
+    <value>No current reservations.</value>
+  </data>
+  <data name="My_Index_Reservations" xml:space="preserve">
+    <value>My reservations</value>
+  </data>
+  <data name="My_Index_Resources" xml:space="preserve">
+    <value>Available resources</value>
+  </data>
+  <data name="My_Index_Title" xml:space="preserve">
+    <value>Welcome to FutLab!</value>
+  </data>
+  <data name="My_Reservations_Err_Maxlength" xml:space="preserve">
+    <value>Maximum reservation time for this resource is {0} minutes.</value>
+  </data>
+  <data name="My_Reservations_Msg_Created" xml:space="preserve">
+    <value>Your reservation was created successfully.</value>
+  </data>
+  <data name="My_Reservations_New" xml:space="preserve">
+    <value>Create a new reservation</value>
+  </data>
   <data name="My_Settings_EmailConfirm_FailedHtml" xml:space="preserve">
     <value>&lt;p&gt;Confirmation failed. The usual reasons are:&lt;/p&gt; 
 &lt;ul&gt;
