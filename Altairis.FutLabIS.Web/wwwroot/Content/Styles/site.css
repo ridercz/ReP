@@ -97,6 +97,12 @@ a:hover, a:active {
 .c {
   text-align: center !important; }
 
+strong, .strong {
+  font-weight: bold; }
+
+small, .small {
+  font-size: 80%; }
+
 form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input .textbox {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
