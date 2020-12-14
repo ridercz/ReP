@@ -421,6 +421,8 @@ table.details {
           background-color: rgba(94, 47, 131, 0.5); }
           .calendar section.week > article ul li.system {
             border: 2px solid #000; }
+          .calendar section.week > article ul li:target {
+            font-weight: bold; }
           .calendar section.week > article ul li time {
             font-size: 80%; }
             .calendar section.week > article ul li time.begin::after {

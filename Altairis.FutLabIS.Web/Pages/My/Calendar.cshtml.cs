@@ -64,6 +64,7 @@ namespace Altairis.FutLabIS.Web.Pages.My {
                     where r.DateEnd >= this.DateBegin.AddDays(-6) && r.DateBegin < this.DateEnd.AddDays(6)
                     orderby r.DateBegin
                     select new CalendarEvent {
+                        Id = "reservation_" + r.Id,
                         BackgroundColor = r.Resource.BackgroundColor,
                         CssClass = r.System ? "system" : string.Empty,
                         DateBegin = r.DateBegin,

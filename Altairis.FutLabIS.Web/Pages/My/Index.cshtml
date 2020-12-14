@@ -24,7 +24,7 @@
     <tbody>
         @foreach (var item in Model.Reservations) {
             <tr>
-                <th><i class="fas fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId">@item.ResourceName</a></th>
+                <th><i class="fas fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId" asp-fragment="reservation_@item.Id">@item.ResourceName</a></th>
                 <td><time value="item.DateBegin"></time></td>
                 <td><time value="item.DateEnd"></time></td>
                 <td class="buttons"><a visible="@item.CanBeDeleted" asp-page-handler="Delete" asp-route-reservationId="@item.Id" title="@UI._Delete" confirm-message="@UI.My_Reservations_DeleteConfirm"><i class="fas fa-trash-alt"></i></a></td>

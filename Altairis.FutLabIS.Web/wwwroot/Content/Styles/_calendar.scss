@@ -66,6 +66,10 @@ $Padding: 1ex;
                         border: 2px solid $Black;
                     }
 
+                    &:target {
+                        font-weight: bold;
+                    }
+
                     time {
                         font-size: 80%;
 

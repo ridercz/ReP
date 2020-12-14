@@ -67,6 +67,7 @@ namespace Altairis.FutLabIS.Web.Pages.My {
             var q = from r in this.dc.Reservations
                     where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
                     select new CalendarEvent {
+                        Id = "reservation_" + r.Id,
                         DateBegin = r.DateBegin,
                         DateEnd = r.DateEnd,
                         Description = r.Comment,
