@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BackgroundColor" xml:space="preserve">
+    <value>Background color</value>
+  </data>
   <data name="Comment" xml:space="preserve">
     <value>Comment</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Enabled</value>
+  </data>
+  <data name="ForegroundColor" xml:space="preserve">
+    <value>Foreground color</value>
   </data>
   <data name="IsAdministrator" xml:space="preserve">
     <value>This user is administrator</value>

@@ -61,6 +61,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background color.
+        /// </summary>
+        public static string BackgroundColor {
+            get {
+                return ResourceManager.GetString("BackgroundColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string Comment {
@@ -120,6 +129,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Enabled {
             get {
                 return ResourceManager.GetString("Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground color.
+        /// </summary>
+        public static string ForegroundColor {
+            get {
+                return ResourceManager.GetString("ForegroundColor", resourceCulture);
             }
         }
         

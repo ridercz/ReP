@@ -135,6 +135,24 @@ form input[type=tel], form input[type=number], form input[type=date], form input
   form input[type=tel]:focus, form input[type=number]:focus, form input[type=date]:focus, form input.short:focus {
     border: 1px solid #000; }
 
+form input[type=color] {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding: 5px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  padding: 0;
+  height: 2.5em;
+  max-width: 10em;
+  border: none; }
+  form input[type=color].input-validation-error {
+    background-color: #dbc6eb;
+    border: 1px solid #5e2f83; }
+  form input[type=color]:focus {
+    border: 1px solid #000; }
+
 form input[type=datetime-local] {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;

@@ -67,6 +67,14 @@ form {
             max-width: 10em;
         }
 
+        &[type=color] {
+            @include textbox;
+            padding: 0;
+            height: 2.5em;
+            max-width: 10em;
+            border: none;
+        }
+
         &[type=datetime-local] {
             @include textbox;
             max-width: 15em;

@@ -19,6 +19,8 @@ namespace Altairis.FutLabIS.Data {
         protected override void OnModelCreating(ModelBuilder builder) {
             base.OnModelCreating(builder);
             builder.Entity<ApplicationUser>().Property(x => x.Language).IsFixedLength();
+            builder.Entity<Resource>().Property(x => x.ForegroundColor).IsFixedLength();
+            builder.Entity<Resource>().Property(x => x.BackgroundColor).IsFixedLength();
         }
     }
 

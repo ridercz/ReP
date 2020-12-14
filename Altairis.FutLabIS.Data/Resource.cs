@@ -21,5 +21,11 @@ namespace Altairis.FutLabIS.Data {
 
         public bool Enabled { get; set; } = true;
 
+        [Required, MinLength(7), MaxLength(7), RegularExpression(@"^\#[0-9A-Fa-f]{6}$")]
+        public string ForegroundColor { get; set; } = "#000000";
+
+        [Required, MinLength(7), MaxLength(7), RegularExpression(@"^\#[0-9A-Fa-f]{6}$")]
+        public string BackgroundColor { get; set; } = "#ffffff";
+
     }
 }

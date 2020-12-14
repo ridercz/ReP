@@ -30,6 +30,12 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Resources {
 
             public bool Enabled { get; set; } = true;
 
+            [DataType("Color"), Required, MinLength(7), MaxLength(7), RegularExpression(@"^\#[0-9A-Fa-f]{6}$")]
+            public string ForegroundColor { get; set; } = "#000000";
+
+            [DataType("Color"), Required, MinLength(7), MaxLength(7), RegularExpression(@"^\#[0-9A-Fa-f]{6}$")]
+            public string BackgroundColor { get; set; } = "#ffffff";
+
         }
 
         public async Task<IActionResult> OnPostAsync() {
@@ -39,7 +45,9 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Resources {
                 Description = this.Input.Description,
                 Enabled = this.Input.Enabled,
                 MaximumReservationTime = this.Input.MaximumReservationTime,
-                Name = this.Input.Name
+                Name = this.Input.Name,
+                ForegroundColor = this.Input.ForegroundColor,
+                BackgroundColor = this.Input.BackgroundColor
             };
             this.dc.Resources.Add(newResource);
             await this.dc.SaveChangesAsync();
