@@ -88,6 +88,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Begin date.
         /// </summary>
         public static string DateBegin {
@@ -102,6 +111,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string DateEnd {
             get {
                 return ResourceManager.GetString("DateEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day of week.
+        /// </summary>
+        public static string DayOfWeek {
+            get {
+                return ResourceManager.GetString("DayOfWeek", resourceCulture);
             }
         }
         
@@ -201,6 +219,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string NewPassword {
             get {
                 return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening hours.
+        /// </summary>
+        public static string OpeningHours {
+            get {
+                return ResourceManager.GetString("OpeningHours", resourceCulture);
             }
         }
         

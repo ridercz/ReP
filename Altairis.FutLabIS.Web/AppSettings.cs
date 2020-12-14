@@ -25,5 +25,17 @@ namespace Altairis.FutLabIS.Web {
             public string SenderAddress { get; set; }
         }
 
+        public OpeningHoursConfig[] OpeningHours { get; set; }
+
+        public class OpeningHoursConfig {
+
+            public DayOfWeek DayOfWeek { get; set; }
+
+            public TimeSpan OpeningTime { get; set; }
+
+            public TimeSpan ClosingTime { get; set; }
+
+        }
+
     }
 }

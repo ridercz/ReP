@@ -580,7 +580,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reservation calendar for {0:MMMM} {0:yyyy}.
+        ///   Looks up a localized string similar to Reservation calendar for {0:y}.
         /// </summary>
         public static string My_Calendar_Title {
             get {
@@ -616,6 +616,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More opening hours....
+        /// </summary>
+        public static string My_Index_OpeningHours {
+            get {
+                return ResourceManager.GetString("My_Index_OpeningHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My upcoming reservations.
         /// </summary>
         public static string My_Index_Reservations {
@@ -639,6 +648,60 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string My_Index_Title {
             get {
                 return ResourceManager.GetString("My_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The lab is &lt;b&gt;closed&lt;/b&gt; today..
+        /// </summary>
+        public static string My_Index_TodayLab_Closed {
+            get {
+                return ResourceManager.GetString("My_Index_TodayLab_Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The lab is today &lt;b&gt;open {0}&lt;/b&gt;..
+        /// </summary>
+        public static string My_Index_TodayLab_Open {
+            get {
+                return ResourceManager.GetString("My_Index_TodayLab_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tomorrow is closed..
+        /// </summary>
+        public static string My_Index_TomorrowLab_Closed {
+            get {
+                return ResourceManager.GetString("My_Index_TomorrowLab_Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tomorrow is open {0}..
+        /// </summary>
+        public static string My_Index_TomorrowLab_Open {
+            get {
+                return ResourceManager.GetString("My_Index_TomorrowLab_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to closed.
+        /// </summary>
+        public static string My_OpeningHours_Closed {
+            get {
+                return ResourceManager.GetString("My_OpeningHours_Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening hours.
+        /// </summary>
+        public static string My_OpeningHours_Title {
+            get {
+                return ResourceManager.GetString("My_OpeningHours_Title", resourceCulture);
             }
         }
         

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.FutLabIS.Data;
+using Altairis.FutLabIS.Web.Services;
 using Altairis.Services.DateProvider;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,16 +15,22 @@ namespace Altairis.FutLabIS.Web.Pages.My {
         private readonly FutLabDbContext dc;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IDateProvider dateProvider;
+        private readonly OpeningHoursProvider hoursProvider;
 
-        public IndexModel(FutLabDbContext dc, UserManager<ApplicationUser> userManager, IDateProvider dateProvider) {
+        public IndexModel(FutLabDbContext dc, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, OpeningHoursProvider hoursProvider) {
             this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
             this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+            this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
         }
 
         public IEnumerable<Resource> Resources { get; set; }
 
         public IEnumerable<ReservationInfo> Reservations { get; set; }
+
+        public OpeningHoursInfo OpenToday{ get; set; }
+
+        public OpeningHoursInfo OpenTomorrow { get; set; }
 
         public class ReservationInfo {
 
@@ -42,6 +49,10 @@ namespace Altairis.FutLabIS.Web.Pages.My {
         }
 
         public async Task OnGetAsync() {
+            // Get operning hours
+            this.OpenToday = this.hoursProvider.GetOpeningHours(0);
+            this.OpenTomorrow = this.hoursProvider.GetOpeningHours(1);
+
             // Get resources accessible to user
             var resourcesQuery = this.dc.Resources.OrderBy(x => x.Name);
             if (!this.User.IsPrivilegedUser()) resourcesQuery = (IOrderedQueryable<Resource>)resourcesQuery.Where(x => x.Enabled);

@@ -1,0 +1,25 @@
+﻿@page
+@model Altairis.FutLabIS.Web.Pages.My.OpeningHoursModel
+@{ this.ViewBag.Title = UI.My_OpeningHours_Title; }
+
+<table class="grid">
+    <thead>
+        <tr>
+            <th>@Display.DayOfWeek</th>
+            <th>@Display.Date</th>
+            <th>@Display.OpeningHours</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OpeningHours) {
+            <tr>
+                <th>@item.Date.ToString("dddd")</th>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>
+                    @(item.IsOpen? item : UI.My_OpeningHours_Closed)
+                    <i visible="@item.IsException" class="fas fa-exclamation-triangle"></i>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -99,3 +99,13 @@ small, .small {
 .fr {
     float: right;
 }
+
+.infobox {
+    font-style: italic;
+    background-color: rgba($Accent, .1);
+    padding: $Padding;
+
+    i {
+        color: $Accent;
+    }
+}
