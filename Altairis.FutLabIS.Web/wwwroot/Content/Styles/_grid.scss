@@ -31,5 +31,10 @@ table.grid {
                 background-color: rgba($Black, .05);
             }
         }
+
+        td.buttons{
+            white-space: normal;
+            text-align: right;
+        }
     }
 }

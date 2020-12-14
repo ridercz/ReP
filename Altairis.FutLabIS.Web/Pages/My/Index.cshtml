@@ -18,16 +18,19 @@
             <th>@Display.ResourceId</th>
             <th>@Display.DateBegin</th>
             <th>@Display.DateEnd</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Reservations) {
             <tr>
-                <th><a asp-page="Reservations" asp-route-resourceId="@item.ResourceId">@item.ResourceName</a></th>
+                <th><i class="fas fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId">@item.ResourceName</a></th>
                 <td><time value="item.DateBegin"></time></td>
                 <td><time value="item.DateEnd"></time></td>
+                <td class="buttons"><a asp-page-handler="Delete" asp-route-reservationId="@item.Id" title="@UI._Delete" confirm-message="@UI.My_Reservations_DeleteConfirm"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
         }
     </tbody>
 </table>
 <p><a asp-page="Archive" class="button">@UI.My_Index_Archive</a></p>
+<modal-box id="reservationdeleted" message="@UI.My_Index_Msg_ReservationDeleted"/>

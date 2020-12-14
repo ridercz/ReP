@@ -64,5 +64,14 @@ namespace Altairis.FutLabIS.Web.Pages.My
             this.Reservations = await reservationsQuery.ToListAsync();
         }
 
+        public async Task<IActionResult> OnGetDeleteAsync(int reservationId) {
+            var userId = int.Parse(this.userManager.GetUserId(this.User));
+            var reservation = await this.dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > this.dateProvider.Now);
+            if (reservation == null) return this.NotFound();
+            this.dc.Reservations.Remove(reservation);
+            await this.dc.SaveChangesAsync();
+            return this.RedirectToPage("Index", null, "reservationdeleted");
+        }
+
     }
 }

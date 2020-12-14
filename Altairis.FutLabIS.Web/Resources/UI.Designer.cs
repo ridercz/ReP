@@ -535,6 +535,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your reservation was successfully deleted..
+        /// </summary>
+        public static string My_Index_Msg_ReservationDeleted {
+            get {
+                return ResourceManager.GetString("My_Index_Msg_ReservationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No current reservations..
         /// </summary>
         public static string My_Index_NoReservations {
@@ -567,6 +576,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string My_Index_Title {
             get {
                 return ResourceManager.GetString("My_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this reservation?.
+        /// </summary>
+        public static string My_Reservations_DeleteConfirm {
+            get {
+                return ResourceManager.GetString("My_Reservations_DeleteConfirm", resourceCulture);
             }
         }
         

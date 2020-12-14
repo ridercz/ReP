@@ -261,6 +261,9 @@ Please follow the instructions in the message.</value>
   <data name="My_Index_Archive" xml:space="preserve">
     <value>All reservations</value>
   </data>
+  <data name="My_Index_Msg_ReservationDeleted" xml:space="preserve">
+    <value>Your reservation was successfully deleted.</value>
+  </data>
   <data name="My_Index_NoReservations" xml:space="preserve">
     <value>No current reservations.</value>
   </data>
@@ -272,6 +275,9 @@ Please follow the instructions in the message.</value>
   </data>
   <data name="My_Index_Title" xml:space="preserve">
     <value>Welcome to FutLab!</value>
+  </data>
+  <data name="My_Reservations_DeleteConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete this reservation?</value>
   </data>
   <data name="My_Reservations_Err_Conflict" xml:space="preserve">
     <value>This reservation conflicts with {0}'s reservation from {1:d} {1:t}.</value>

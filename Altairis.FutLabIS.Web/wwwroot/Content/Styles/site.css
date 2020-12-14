@@ -326,6 +326,9 @@ table.grid {
     background-color: rgba(94, 47, 131, 0.15) !important; }
   table.grid tbody tr:nth-child(2n) {
     background-color: rgba(0, 0, 0, 0.05); }
+  table.grid tbody td.buttons {
+    white-space: normal;
+    text-align: right; }
 
 ul.tasklist {
   list-style-type: none;
