@@ -295,6 +295,20 @@ ul.checkbox-list {
       margin: 20px; }
     .modal article footer {
       margin: 20px; }
+  .modal form {
+    position: relative;
+    min-width: 30%;
+    max-width: 50%;
+    background-color: #fff; }
+    .modal form header {
+      padding: 5px 20px;
+      background-color: #000;
+      color: #fff;
+      font-size: 150%; }
+    .modal form p {
+      margin: 20px; }
+    .modal form footer {
+      margin: 20px; }
 
 table.grid {
   width: 100%;
@@ -333,3 +347,57 @@ table.details {
     border-top: solid 1px rgba(94, 47, 131, 0.25); }
   table.details tbody tr:hover {
     background-color: rgba(94, 47, 131, 0.15) !important; }
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid #000; }
+  .calendar > header {
+    display: flex;
+    flex-direction: row; }
+    .calendar > header > div {
+      flex: 1;
+      border: 1px solid #000;
+      text-align: center;
+      padding: 1ex;
+      font-weight: bold;
+      background-color: rgba(94, 47, 131, 0.75);
+      color: #fff; }
+  .calendar section.week {
+    display: flex;
+    flex-direction: row; }
+    .calendar section.week > article {
+      flex: 1;
+      border: 1px solid #000;
+      min-height: 10em; }
+      .calendar section.week > article header {
+        margin: 0.5ex;
+        padding: 1ex;
+        text-align: right; }
+      .calendar section.week > article.today header {
+        color: #5e2f83;
+        font-weight: bold; }
+      .calendar section.week > article.weekend {
+        background-color: rgba(94, 47, 131, 0.1); }
+      .calendar section.week > article ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none; }
+        .calendar section.week > article ul li {
+          display: block;
+          margin: 0.25ex;
+          padding: 0.5ex;
+          background-color: rgba(94, 47, 131, 0.5); }
+          .calendar section.week > article ul li.system {
+            border: 2px solid #5e2f83; }
+          .calendar section.week > article ul li time {
+            font-size: 80%; }
+            .calendar section.week > article ul li time.begin::after {
+              content: '\2026'; }
+            .calendar section.week > article ul li time.end::before {
+              content: '\2026'; }
+          .calendar section.week > article ul li span.middle::before {
+            content: '\2026\2026'; }
+          .calendar section.week > article ul li a, .calendar section.week > article ul li span {
+            display: block; }

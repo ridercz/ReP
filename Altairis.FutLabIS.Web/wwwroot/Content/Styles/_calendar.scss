@@ -1,0 +1,92 @@
+﻿@import "_vars.scss";
+
+$Border: 1px solid $Black;
+$Padding: 1ex;
+
+// Calendar styling
+.calendar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: $Border;
+    // Day names
+    > header {
+        display: flex;
+        flex-direction: row;
+
+        > div {
+            flex: 1;
+            border: $Border;
+            text-align: center;
+            padding: $Padding;
+            font-weight: bold;
+            background-color: rgba($Accent, .75);
+            color: $White;
+        }
+    }
+
+    section.week {
+        display: flex;
+        flex-direction: row;
+        // Single day
+        > article {
+            flex: 1;
+            border: $Border;
+            min-height: 10em;
+
+            header {
+                margin: $Padding / 2;
+                padding: $Padding;
+                text-align: right;
+            }
+
+            &.today {
+                header {
+                    color: $Accent;
+                    font-weight: bold;
+                }
+            }
+
+            &.weekend {
+                background-color: rgba($Accent, .1);
+            }
+            // List of events
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+
+                li {
+                    display: block;
+                    margin: $Padding / 4;
+                    padding: $Padding / 2;
+                    background-color: rgba($Accent, .5);
+
+                    &.system {
+                        border: 2px solid $Accent;
+                    }
+
+                    time {
+                        font-size: 80%;
+
+                        &.begin::after {
+                            content: '\2026';
+                        }
+
+                        &.end::before {
+                            content: '\2026'
+                        }
+                    }
+
+                    span.middle::before {
+                        content: '\2026\2026';
+                    }
+
+                    a, span {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

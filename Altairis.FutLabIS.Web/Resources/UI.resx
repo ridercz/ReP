@@ -273,6 +273,9 @@ Please follow the instructions in the message.</value>
   <data name="My_Index_Title" xml:space="preserve">
     <value>Welcome to FutLab!</value>
   </data>
+  <data name="My_Reservations_Err_Conflict" xml:space="preserve">
+    <value>This reservation conflicts with {0}'s reservation from {1:d} {1:t}.</value>
+  </data>
   <data name="My_Reservations_Err_Maxlength" xml:space="preserve">
     <value>Maximum reservation time for this resource is {0} minutes.</value>
   </data>
@@ -280,6 +283,12 @@ Please follow the instructions in the message.</value>
     <value>Your reservation was created successfully.</value>
   </data>
   <data name="My_Reservations_New" xml:space="preserve">
+    <value>New reservation</value>
+  </data>
+  <data name="My_Reservations_NewSystem" xml:space="preserve">
+    <value>New system reservation</value>
+  </data>
+  <data name="My_Reservations_NewTitle" xml:space="preserve">
     <value>Create a new reservation</value>
   </data>
   <data name="My_Settings_EmailConfirm_FailedHtml" xml:space="preserve">

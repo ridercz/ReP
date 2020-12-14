@@ -571,6 +571,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This reservation conflicts with {0}&apos;s reservation from {1:d} {1:t}..
+        /// </summary>
+        public static string My_Reservations_Err_Conflict {
+            get {
+                return ResourceManager.GetString("My_Reservations_Err_Conflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum reservation time for this resource is {0} minutes..
         /// </summary>
         public static string My_Reservations_Err_Maxlength {
@@ -589,11 +598,29 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new reservation.
+        ///   Looks up a localized string similar to New reservation.
         /// </summary>
         public static string My_Reservations_New {
             get {
                 return ResourceManager.GetString("My_Reservations_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New system reservation.
+        /// </summary>
+        public static string My_Reservations_NewSystem {
+            get {
+                return ResourceManager.GetString("My_Reservations_NewSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new reservation.
+        /// </summary>
+        public static string My_Reservations_NewTitle {
+            get {
+                return ResourceManager.GetString("My_Reservations_NewTitle", resourceCulture);
             }
         }
         

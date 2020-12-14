@@ -41,4 +41,26 @@
             margin: $Padding;
         }
     }
+
+    form {
+        position: relative;
+        min-width: 30%;
+        max-width: 50%;
+        background-color: $White;
+
+        header {
+            padding: ($Padding / 4) $Padding;
+            background-color: $Black;
+            color: $White;
+            font-size: 150%;
+        }
+
+        p {
+            margin: $Padding;
+        }
+
+        footer {
+            margin: $Padding;
+        }
+    }
 }

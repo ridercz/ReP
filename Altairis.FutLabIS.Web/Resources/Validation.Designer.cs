@@ -171,9 +171,9 @@ namespace Altairis.FutLabIS.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The {0} field must contain a date in the future..
         /// </summary>
-        public static string ReservationsModel_InputModel_DateBegin_DateOffset {
+        public static string ReservationsModel_Input_DateBegin_DateOffset {
             get {
-                return ResourceManager.GetString("ReservationsModel_InputModel_DateBegin_DateOffset", resourceCulture);
+                return ResourceManager.GetString("ReservationsModel_Input_DateBegin_DateOffset", resourceCulture);
             }
         }
         

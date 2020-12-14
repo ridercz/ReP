@@ -1,4 +1,5 @@
 ﻿@{
+    this.Layout = "_Layout.cshtml";
     var value = string.Empty;
     if (ViewData.Model != null) {
         var dtVal = (DateTime)ViewData.Model;
@@ -6,8 +7,10 @@
             value = dtVal.ToString("yyyy-MM-dd");
         }
     }
-    ViewData.TemplateInfo.FormattedModelValue = value;
-    ViewData["type"] = "text";
-    ViewData["additionalCssClass"] = "date";
+    var htmlAttributes = new {
+        type = "datetime-local",
+        @class = "textbox",
+        placeholder = ViewData.ModelMetadata.Placeholder,
+    };
 }
-<partial name="HtmlInput.cshtml" />
+@Html.TextBox("", value, htmlAttributes)
