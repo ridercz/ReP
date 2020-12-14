@@ -385,6 +385,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendar.
+        /// </summary>
+        public static string Layout_Menu_Calendar {
+            get {
+                return ResourceManager.GetString("Layout_Menu_Calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Layout_Menu_Home {
@@ -540,6 +549,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Login_ResetPassword_Title {
             get {
                 return ResourceManager.GetString("Login_ResetPassword_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage my reservations.
+        /// </summary>
+        public static string My_Calendar_Manage {
+            get {
+                return ResourceManager.GetString("My_Calendar_Manage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation calendar for {0:MMMM} {0:yyyy}.
+        /// </summary>
+        public static string My_Calendar_Title {
+            get {
+                return ResourceManager.GetString("My_Calendar_Title", resourceCulture);
             }
         }
         

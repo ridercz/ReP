@@ -207,6 +207,9 @@
   <data name="Layout_Menu_Administration" xml:space="preserve">
     <value>Administration</value>
   </data>
+  <data name="Layout_Menu_Calendar" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
   <data name="Layout_Menu_Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -263,6 +266,12 @@ Please follow the instructions in the message.</value>
   </data>
   <data name="Login_ResetPassword_Title" xml:space="preserve">
     <value>Setup new password</value>
+  </data>
+  <data name="My_Calendar_Manage" xml:space="preserve">
+    <value>Manage my reservations</value>
+  </data>
+  <data name="My_Calendar_Title" xml:space="preserve">
+    <value>Reservation calendar for {0:MMMM} {0:yyyy}</value>
   </data>
   <data name="My_Index_Archive" xml:space="preserve">
     <value>All reservations</value>
