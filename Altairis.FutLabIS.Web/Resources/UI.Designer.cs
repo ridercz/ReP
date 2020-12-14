@@ -115,6 +115,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage reservations.
+        /// </summary>
+        public static string Admin_Index_ManageReservations {
+            get {
+                return ResourceManager.GetString("Admin_Index_ManageReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage resources.
         /// </summary>
         public static string Admin_Index_ManageResources {
@@ -138,6 +147,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Admin_Index_Title {
             get {
                 return ResourceManager.GetString("Admin_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All reservations.
+        /// </summary>
+        public static string Admin_Reservations_Title {
+            get {
+                return ResourceManager.GetString("Admin_Reservations_Title", resourceCulture);
             }
         }
         
