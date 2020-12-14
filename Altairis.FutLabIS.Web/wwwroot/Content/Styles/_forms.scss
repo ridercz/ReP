@@ -58,10 +58,6 @@ form {
             @include textbox;
         }
 
-        &[type=password] {
-            margin-bottom: 1em;
-        }
-
         &[type=tel], &[type=number], &[type=date], &.short {
             @include textbox;
             max-width: 10em;

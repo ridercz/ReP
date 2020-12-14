@@ -127,9 +127,6 @@ form input[type=text], form input[type=password], form input[type=email], form i
   form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input .textbox:focus {
     border: 1px solid #000; }
 
-form input[type=password] {
-  margin-bottom: 1em; }
-
 form input[type=tel], form input[type=number], form input[type=date], form input.short {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
