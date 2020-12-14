@@ -59,8 +59,8 @@ namespace Altairis.FutLabIS.Web.Pages.My {
                 })
                 .ToListAsync();
 
-            // Get all reservation in this month
-            var q = from r in dc.Reservations
+            // Get all reservations in this month
+            var q = from r in this.dc.Reservations
                     where r.DateEnd >= this.DateBegin.AddDays(-6) && r.DateBegin < this.DateEnd.AddDays(6)
                     orderby r.DateBegin
                     select new CalendarEvent {
