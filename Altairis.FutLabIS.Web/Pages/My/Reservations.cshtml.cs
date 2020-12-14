@@ -72,7 +72,9 @@ namespace Altairis.FutLabIS.Web.Pages.My {
                         Description = r.Comment,
                         IsFullDay = false,
                         Name = r.User.UserName,
-                        CssClass = r.System ? "system" : string.Empty
+                        CssClass = r.System ? "system" : string.Empty,
+                        ForegroundColor = this.Resource.ForegroundColor,
+                        BackgroundColor = this.Resource.BackgroundColor
                     };
             var lastEventEnd = await q.MaxAsync(x => x.DateEnd);
             this.Reservations = await q.ToListAsync();

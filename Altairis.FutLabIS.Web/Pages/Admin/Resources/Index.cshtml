@@ -5,12 +5,14 @@
     <thead>
         <tr>
             <th>@Display.Name</th>
+            <th>&nbsp;</th>
             <th>@Display.Description</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
         <tr class="new">
-            <td colspan="2">
+            <td colspan="4">
                 <i class="fas fa-cube"></i> <a asp-page="Create">@UI.Admin_Resources_Index_New</a>
             </td>
         </tr>
@@ -19,7 +21,11 @@
                 <th>
                     <i class="fas fa-cube"></i> <a asp-page="Edit" asp-route-resourceId="@item.Id">@item.Name</a>
                 </th>
+                <td>
+                    <span class="tag" style="@item.GetStyle()">XXXXXX</span>
+                </td>
                 <td trim-length="50">@item.Description</td>
+                <td class="buttons"><a asp-page="/My/Reservations" asp-route-resourceId="@item.Id"><i class="fas fa-calendar-check"></i></a></td>
             </tr>
         }
     </tbody>

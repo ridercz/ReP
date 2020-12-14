@@ -103,6 +103,10 @@ strong, .strong {
 small, .small {
   font-size: 80%; }
 
+.tag {
+  padding: 0 .5ex;
+  border-radius: 3px; }
+
 form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input .textbox {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -411,7 +415,7 @@ table.details {
           padding: 0.5ex;
           background-color: rgba(94, 47, 131, 0.5); }
           .calendar section.week > article ul li.system {
-            border: 2px solid #5e2f83; }
+            border: 2px solid #000; }
           .calendar section.week > article ul li time {
             font-size: 80%; }
             .calendar section.week > article ul li time.begin::after {

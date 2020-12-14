@@ -21,6 +21,10 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Resources {
             public string Description { get; set; }
             public string Name { get; set; }
             public int Id { get; set; }
+            public string ForegroundColor { get; set; }
+            public string BackgroundColor { get; set; }
+
+            public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
         }
 
         public async Task OnGetAsync() {
@@ -29,7 +33,9 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Resources {
                     select new ResourceInfo {
                         Id = r.Id,
                         Name = r.Name,
-                        Description = r.Description
+                        Description = r.Description,
+                        ForegroundColor = r.ForegroundColor,
+                        BackgroundColor = r.BackgroundColor
                     };
             this.Resources = await q.ToListAsync();
         }
