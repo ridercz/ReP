@@ -9,8 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Altairis.FutLabIS.Web.Pages.My
-{
+namespace Altairis.FutLabIS.Web.Pages.My {
     public class IndexModel : PageModel {
         private readonly FutLabDbContext dc;
         private readonly UserManager<ApplicationUser> userManager;
@@ -38,7 +37,7 @@ namespace Altairis.FutLabIS.Web.Pages.My
 
             public DateTime DateEnd { get; set; }
 
-            public bool System { get; set; }
+            public bool CanBeDeleted { get; set; }
 
         }
 
@@ -50,17 +49,18 @@ namespace Altairis.FutLabIS.Web.Pages.My
 
             // Get reservations of this user
             var userId = int.Parse(this.userManager.GetUserId(this.User));
+            var now = this.dateProvider.Now;
             var reservationsQuery = from r in this.dc.Reservations
-                    where r.UserId == userId && r.DateEnd >= this.dateProvider.Today
-                    orderby r.DateBegin
-                    select new ReservationInfo {
-                        DateBegin = r.DateBegin,
-                        DateEnd = r.DateEnd,
-                        Id = r.Id,
-                        ResourceId = r.ResourceId,
-                        ResourceName = r.Resource.Name,
-                        System = r.System
-                    };
+                                    where r.UserId == userId && r.DateEnd >= this.dateProvider.Today
+                                    orderby r.DateBegin
+                                    select new ReservationInfo {
+                                        DateBegin = r.DateBegin,
+                                        DateEnd = r.DateEnd,
+                                        Id = r.Id,
+                                        ResourceId = r.ResourceId,
+                                        ResourceName = r.Resource.Name,
+                                        CanBeDeleted = r.DateEnd > this.dateProvider.Now
+                                    };
             this.Reservations = await reservationsQuery.ToListAsync();
         }
 
