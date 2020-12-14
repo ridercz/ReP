@@ -17,9 +17,11 @@ html {
     @media (max-width: 600px) {
       html body {
         margin: 0 auto; } }
-    html body > header .login {
+    html body > header ul.info {
       float: right;
-      font-size: 90%; }
+      margin: 0; }
+    html body > header a {
+      text-decoration: none; }
     html body > nav a:link, html body > nav a:visited {
       color: #fff; }
     html body > nav input[type=checkbox] {

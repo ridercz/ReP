@@ -15,8 +15,8 @@
           date-end="this.Model.DateEnd"
           day-name-style="Full"
           events="this.Model.Reservations"
-          general-date-format="d."
-          new-month-date-format="d. MMMM"></calendar>
+          general-date-format="@UI.Calendar_GeneralDateFormat"
+          new-month-date-format="@UI.Calendar_NewMonthDateFormat"></calendar>
 
 <p>
     @foreach (var item in Model.Resources) {
