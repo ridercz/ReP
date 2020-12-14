@@ -340,6 +340,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to d..
+        /// </summary>
+        public static string Calendar_GeneralDateFormat {
+            get {
+                return ResourceManager.GetString("Calendar_GeneralDateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMMM d..
+        /// </summary>
+        public static string Calendar_NewMonthDateFormat {
+            get {
+                return ResourceManager.GetString("Calendar_NewMonthDateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are no users defined in application. Please create first user who will become an administrator..
         /// </summary>
         public static string FirstRun_Text {

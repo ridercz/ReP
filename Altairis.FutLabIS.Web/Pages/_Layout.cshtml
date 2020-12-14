@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@{
+    var currentCulture = System.Globalization.CultureInfo.CurrentUICulture.Name;
+}
+<!DOCTYPE html>
+<html lang="@currentCulture">
 <head>
     <title>@this.ViewBag.Title | FutLab IS</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -10,13 +13,25 @@
 </head>
 <body>
     <header>
-        <div class="login" include-roles="?" visible="!(this.ViewBag.HideLoginStatus ?? false)">
-            <i class="fa fa-sign-in-alt"></i> <a asp-page="/Login/Index">@UI.Layout_LoginStatus_SignIn</a>
-        </div>
-        <div class="login" include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)">
-            <i class="fa fa-user"></i> <a asp-page="/My/Settings/Index">@this.User.Identity.Name</a>
-            <i class="fa fa-sign-out-alt"></i> <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
-        </div>
+        <ul class="info fa-ul">
+            <li include-roles="?" visible="!(this.ViewBag.HideLoginStatus ?? false)">
+                <span class="fa-li"><i class="fa fa-sign-in-alt"></i></span>
+                <a asp-page="/Login/Index">@UI.Layout_LoginStatus_SignIn</a>
+            </li>
+            <li include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)">
+                <span class="fa-li"><i class="fa fa-user"></i></span>
+                <a asp-page="/My/Settings/Index">@this.User.Identity.Name</a>
+            </li>
+            <li>
+                <span class="fa-li"><i class="fa fa-globe"></i></span>
+                <a visible="@currentCulture.Equals("en-US")" asp-page="/SetLanguage" asp-route-culture="cs" asp-route-returnUrl="@this.Context.Request.Path">@UI.My_Settings_Index_Language_CS</a>
+                <a visible="@currentCulture.Equals("cs-CZ")" asp-page="/SetLanguage" asp-route-culture="en" asp-route-returnUrl="@this.Context.Request.Path">@UI.My_Settings_Index_Language_EN</a>
+            </li>
+            <li include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)">
+                <span class="fa-li"><i class="fa fa-sign-out-alt"></i></span>
+                <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
+            </li>
+        </ul>
         <a asp-page="/My/Index"><img src="~/Content/Images/logo.png" alt="FutLab logo" height="75" /></a>
     </header>
     <nav>

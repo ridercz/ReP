@@ -1,0 +1,8 @@
+﻿Dobrý den,
+
+někdo (nejspíše vy) požádal o změnu e-mailové adresy přiřazené k účtu {{userName}} v informačním systému FutLabu na tuto.
+
+Pokud se změnou nesouhlasíte, můžete tuto zprávu ignorovat.
+
+Pokud změnu chcete potvrdit, přejděte na následující stránku:
+{{url}}

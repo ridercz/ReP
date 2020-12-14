@@ -118,273 +118,273 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Admin_Index_ManageReservations" xml:space="preserve">
-    <value>Manage reservations</value>
+    <value>Správa rezervací</value>
   </data>
   <data name="Admin_Index_ManageResources" xml:space="preserve">
-    <value>Manage resources</value>
+    <value>Správa prostředků</value>
   </data>
   <data name="Admin_Index_ManageUsers" xml:space="preserve">
-    <value>Manage users</value>
+    <value>Správa uživatelů</value>
   </data>
   <data name="Admin_Index_Title" xml:space="preserve">
-    <value>System administration</value>
+    <value>Správa systému</value>
   </data>
   <data name="Admin_Reservations_Title" xml:space="preserve">
-    <value>All reservations</value>
+    <value>Všechny rezervace</value>
   </data>
   <data name="Admin_Resources_Create_Title" xml:space="preserve">
-    <value>Create new resource</value>
+    <value>Vytvořit nový prostředek</value>
   </data>
   <data name="Admin_Resources_Edit_DeleteConfirm" xml:space="preserve">
-    <value>Are you sure you want to delete this resource and all its related data? This action cannot be undone.</value>
+    <value>Opravdu chcete odstranit tento prostředek a všechna související data? Tuto akci nelze vrátit zpět.</value>
   </data>
   <data name="Admin_Resources_Edit_Title" xml:space="preserve">
-    <value>Edit resource</value>
+    <value>Upravit prostředek</value>
   </data>
   <data name="Admin_Resources_Index_Msg_Created" xml:space="preserve">
-    <value>New resource was creaed successfully.</value>
+    <value>Nový prostředek byl úspěšně vytvořen.</value>
   </data>
   <data name="Admin_Resources_Index_Msg_Deleted" xml:space="preserve">
-    <value>Resource was successfully deleted.</value>
+    <value>Prostředek byl úspěšně odstraněn.</value>
   </data>
   <data name="Admin_Resources_Index_Msg_Saved" xml:space="preserve">
-    <value>Resource changes were saved successfully.</value>
+    <value>Změny prostředku byly úspěšně uloženy.</value>
   </data>
   <data name="Admin_Resources_Index_New" xml:space="preserve">
-    <value>Create new resource...</value>
+    <value>Vytvořit nový prostředek...</value>
   </data>
   <data name="Admin_Resources_Index_Title" xml:space="preserve">
-    <value>Resources</value>
+    <value>Prostředky</value>
   </data>
   <data name="Admin_Users_Create_Text" xml:space="preserve">
-    <value>System will send welcome message to newly created user's e-mail address. To activate account and set password, the user has to follow link contained in the message.</value>
+    <value>Systém odešle uvítací zprávu na zadanou adresu. Uživatel musí účet aktivovat a nastavit heslo na odkazu, který je obsažen ve zprávě.</value>
   </data>
   <data name="Admin_Users_Create_Title" xml:space="preserve">
-    <value>Create new user</value>
+    <value>Vytvořit nového uživatele</value>
   </data>
   <data name="Admin_Users_Edit_DeleteConfirm" xml:space="preserve">
-    <value>Are you sure you want to delete this user and all its related data? This action cannot be undone.</value>
+    <value>Opravdu chcete odstranit tohoto uživatele a všechna související data? Tuto akci nelze vrátit zpět.</value>
   </data>
   <data name="Admin_Users_Edit_Title" xml:space="preserve">
-    <value>Edit user</value>
+    <value>Editovat uživatele</value>
   </data>
   <data name="Admin_Users_Index_Disabled" xml:space="preserve">
-    <value>User is disabled</value>
+    <value>Uživatel je zakázán</value>
   </data>
   <data name="Admin_Users_Index_Enabled" xml:space="preserve">
-    <value>User is enabled</value>
+    <value>Uživatel je povolen</value>
   </data>
   <data name="Admin_Users_Index_New" xml:space="preserve">
-    <value>Create new user...</value>
+    <value>Vytvořit nového uživatele...</value>
   </data>
   <data name="Admin_Users_Index_Title" xml:space="preserve">
-    <value>Users</value>
+    <value>Uživatelé</value>
   </data>
   <data name="Admin_Users_Index_Waiting" xml:space="preserve">
-    <value>User is waiting to be activated</value>
+    <value>Uživatel čeká na aktivaci</value>
   </data>
   <data name="Admin_User_Index_Msg_Created" xml:space="preserve">
-    <value>New user was created successfully.</value>
+    <value>Nový uživatel byl úspěšně vytvořen.</value>
   </data>
   <data name="Admin_User_Index_Msg_Deleted" xml:space="preserve">
-    <value>User was successfully deleted.</value>
+    <value>Uživatel byl úspěšně odstraněn.</value>
   </data>
   <data name="Admin_User_Index_Msg_Saved" xml:space="preserve">
-    <value>User changes were saved successfully.</value>
+    <value>Změny uživatele byly úspěšně uloženy.</value>
   </data>
   <data name="Calendar_GeneralDateFormat" xml:space="preserve">
     <value>d.</value>
   </data>
   <data name="Calendar_NewMonthDateFormat" xml:space="preserve">
-    <value>MMMM d.</value>
+    <value>d. MMMM</value>
   </data>
   <data name="FirstRun_Text" xml:space="preserve">
-    <value>There are no users defined in application. Please create first user who will become an administrator.</value>
+    <value>V aplikaci nejsou definováni žádní uživatelé. Vytvořte prvního uživatele, který se stane správcem.</value>
   </data>
   <data name="FirstRun_Title" xml:space="preserve">
-    <value>Create admin user</value>
+    <value>Vytvoření administrátora</value>
   </data>
   <data name="Layout_LoginStatus_SignIn" xml:space="preserve">
-    <value>Sign in</value>
+    <value>Přihlásit se</value>
   </data>
   <data name="Layout_LoginStatus_SignOut" xml:space="preserve">
-    <value>Sign out</value>
+    <value>Odhlásit se</value>
   </data>
   <data name="Layout_Menu_Administration" xml:space="preserve">
-    <value>Administration</value>
+    <value>Administrace</value>
   </data>
   <data name="Layout_Menu_Calendar" xml:space="preserve">
-    <value>Calendar</value>
+    <value>Kalendář</value>
   </data>
   <data name="Layout_Menu_Home" xml:space="preserve">
-    <value>Home</value>
+    <value>Domů</value>
   </data>
   <data name="Layout_Menu_Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Přihlášení</value>
   </data>
   <data name="Layout_Menu_ResetPassword" xml:space="preserve">
-    <value>Reset password</value>
+    <value>Reset hesla</value>
   </data>
   <data name="Layout_Menu_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Nastavení</value>
   </data>
   <data name="Login_Activate_Html" xml:space="preserve">
-    <value>&lt;p&gt;Welcome to the FutLab IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
-&lt;p&gt;Please create a password to activate your account. The password should be long and unique. Consider using a &lt;i&gt;passphrase&lt;/i&gt;, entire sentence. It's easier to remember and more secure than typical password.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Vítejte na FutLab IS! Vaše uživatelské jméno je &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
+&lt;p&gt;Chcete-li aktivovat svůj účet, vytvořte heslo. Heslo by mělo být dlouhé a jedinečné. Zvažte použití &lt;i&gt;přístupového žiteje&lt;/i&gt;, celou větu. Je to snadněji zapamatovatelné a bezpečnější než typické heslo.&lt;/p&gt;</value>
   </data>
   <data name="Login_Activate_Title" xml:space="preserve">
-    <value>Activate your new account</value>
+    <value>Aktivace nového účtu</value>
   </data>
   <data name="Login_ForgotPassword_Text" xml:space="preserve">
-    <value>If this user does exist, we will send password reset instructions to it's e-mail address.</value>
+    <value>Pokud tento uživatel existuje, zašleme mu na jeho e-mailovou adresu pokyny k obnovení hesla.</value>
   </data>
   <data name="Login_ForgotPassword_Title" xml:space="preserve">
-    <value>Reset forgotten password</value>
+    <value>Resetovat zapomenuté heslo</value>
   </data>
   <data name="Login_ForgotPassword_UserNotFound" xml:space="preserve">
-    <value>Specified user was not found.</value>
+    <value>Zadaný uživatel nebyl nalezen.</value>
   </data>
   <data name="Login_Index_LoginFailed" xml:space="preserve">
-    <value>Login failed.</value>
+    <value>Přihlášení se nezdařilo.</value>
   </data>
   <data name="Login_Index_Msg_ADone" xml:space="preserve">
-    <value>Your account was successfully activated.
-You may now login with your new password.</value>
+    <value>Váš účet byl úspěšně aktivován.
+Nyní se můžete přihlásit pomocí nového hesla.</value>
   </data>
   <data name="Login_Index_Msg_AFail" xml:space="preserve">
-    <value>User activation failed. 
-Please check that the link you visited is correct and complete. 
-The user may also have been activated before.</value>
+    <value>Aktivace uživatele se nezdařila. 
+Zkontrolujte, zda je navštívený odkaz správný a úplný. 
+Uživatel mohl být také aktivován dříve.</value>
   </data>
   <data name="Login_Index_Msg_Logout" xml:space="preserve">
-    <value>You were successfully signed out.</value>
+    <value>Byli jste úspěšně odhlášeni.</value>
   </data>
   <data name="Login_Index_Msg_Reset" xml:space="preserve">
-    <value>Your password was reset successfully.
-You may now login with your new password.</value>
+    <value>Heslo bylo úspěšně resetováno.
+Nyní se můžete přihlásit pomocí nového hesla.</value>
   </data>
   <data name="Login_Index_Msg_Sent" xml:space="preserve">
-    <value>Password reset instructions were sent to e-mail address registered for this account.
-Please follow the instructions in the message.</value>
+    <value>Pokyny k obnovení hesla byly odeslány na e-mailovou adresu registrovanou pro tento účet.
+Postupujte podle pokynů ve zprávě.</value>
   </data>
   <data name="Login_Index_Title" xml:space="preserve">
-    <value>Login</value>
+    <value>Přihlášení</value>
   </data>
   <data name="Login_ResetPassword_Title" xml:space="preserve">
-    <value>Setup new password</value>
+    <value>Nastavení nového hesla</value>
   </data>
   <data name="My_Calendar_Manage" xml:space="preserve">
-    <value>Manage my reservations</value>
+    <value>Spravovat mé rezervace</value>
   </data>
   <data name="My_Calendar_Title" xml:space="preserve">
-    <value>Reservation calendar for {0:MMMM} {0:yyyy}</value>
+    <value>Kalendář rezervací pro {0:MMMM} {0:y}</value>
   </data>
   <data name="My_Index_Archive" xml:space="preserve">
-    <value>All reservations</value>
+    <value>Všechny rezervace</value>
   </data>
   <data name="My_Index_Msg_ReservationDeleted" xml:space="preserve">
-    <value>Your reservation was successfully deleted.</value>
+    <value>Rezervace byla úspěšně odstraněna.</value>
   </data>
   <data name="My_Index_NoReservations" xml:space="preserve">
-    <value>No current reservations.</value>
+    <value>Nemáte žádné aktuální rezervace.</value>
   </data>
   <data name="My_Index_Reservations" xml:space="preserve">
-    <value>My upcoming reservations</value>
+    <value>Plánované rezervace</value>
   </data>
   <data name="My_Index_Resources" xml:space="preserve">
-    <value>Available resources</value>
+    <value>Dostupné prostředky</value>
   </data>
   <data name="My_Index_Title" xml:space="preserve">
-    <value>Welcome to FutLab!</value>
+    <value>Vítejte ve FutLabu!</value>
   </data>
   <data name="My_Reservations_DeleteConfirm" xml:space="preserve">
-    <value>Are you sure you want to delete this reservation?</value>
+    <value>Opravdu chcete odstranit tuto rezervaci?</value>
   </data>
   <data name="My_Reservations_Err_Conflict" xml:space="preserve">
-    <value>This reservation conflicts with {0}'s reservation from {1:d} {1:t}.</value>
+    <value>Tato rezervace je v konfliktu s rezervací uživatele {0} od {1:d} {1:t}.</value>
   </data>
   <data name="My_Reservations_Err_Maxlength" xml:space="preserve">
-    <value>Maximum reservation time for this resource is {0} minutes.</value>
+    <value>Maximální doba rezervace pro tento prostředek je {0} minut.</value>
   </data>
   <data name="My_Reservations_Msg_Created" xml:space="preserve">
-    <value>Your reservation was created successfully.</value>
+    <value>Vaše rezervace byla úspěšně vytvořena.</value>
   </data>
   <data name="My_Reservations_New" xml:space="preserve">
-    <value>New reservation</value>
+    <value>Nová rezervace</value>
   </data>
   <data name="My_Reservations_NewSystem" xml:space="preserve">
-    <value>New system reservation</value>
+    <value>Nová systémová rezervace</value>
   </data>
   <data name="My_Reservations_NewTitle" xml:space="preserve">
-    <value>Create a new reservation</value>
+    <value>Vytvořit novou rezervaci</value>
   </data>
   <data name="My_Settings_EmailConfirm_FailedHtml" xml:space="preserve">
-    <value>&lt;p&gt;Confirmation failed. The usual reasons are:&lt;/p&gt; 
+    <value>&lt;p&gt;Potvrzení se nezdařilo. Obvyklé důvody jsou:&lt;/p&gt; 
 &lt;ul&gt;
-&lt;li&gt;The page address is incorrect or incomplete. It may have been splitted into multiple lines by your e-mail client.&lt;/li&gt;
-&lt;li&gt;The desired e-mail address is already used by another account on this system.&lt;/li&gt;
-&lt;li&gt;The change was already confirmed.&lt;/li&gt;
-&lt;li&gt;The confirmation link is outdated. Please initiate the change again.&lt;/li&gt;
+&lt;li&gt;Adresa stránky je nesprávná nebo neúplná. E-mailový klient ji pravděpodobně rozdělil na více řádků.&lt;/li&gt;
+&lt;li&gt;Požadovaná e-mailová adresa je již v tomto systému používána jiným účtem.&lt;/li&gt;
+&lt;li&gt;Změna již byla potvrzena.&lt;/li&gt;
+&lt;li&gt;Potvrzovací odkaz je zastaralý. Prosím, spusťte změnu znovu.&lt;/li&gt;
 &lt;/ul&gt;</value>
   </data>
   <data name="My_Settings_EmailConfirm_TryAgain" xml:space="preserve">
-    <value>Try again</value>
+    <value>Zkusit znovu</value>
   </data>
   <data name="My_Settings_Email_InvalidPassword" xml:space="preserve">
-    <value>Invalid password.</value>
+    <value>Neplatné heslo.</value>
   </data>
   <data name="My_Settings_Email_Title" xml:space="preserve">
-    <value>Change my e-mail address</value>
+    <value>Změnit e-mailovou adresu</value>
   </data>
   <data name="My_Settings_Index_Change" xml:space="preserve">
-    <value>Change...</value>
+    <value>Změnit...</value>
   </data>
   <data name="My_Settings_Index_Language_CS" xml:space="preserve">
-    <value>Czech</value>
+    <value>Čeština</value>
   </data>
   <data name="My_Settings_Index_Language_EN" xml:space="preserve">
-    <value>English</value>
+    <value>Angličtina</value>
   </data>
   <data name="My_Settings_Index_Msg_ChangeEmail" xml:space="preserve">
-    <value>We just sent an e-mail to a new address you entered. Please follow the link in the message to confirm the e-mail change.</value>
+    <value>Právě jsme poslali e-mail na novou adresu, kterou jste zadali. Prosím, klikněte na odkaz ve zprávě pro potvrzení změny.</value>
   </data>
   <data name="My_Settings_Index_Msg_ChangeEmailDone" xml:space="preserve">
-    <value>Your e-mail address was changed successfully.</value>
+    <value>Vaše e-mailová adresa byla úspěšně změněna.</value>
   </data>
   <data name="My_Settings_Index_Msg_ChangePassword" xml:space="preserve">
-    <value>Your password was changed successfully.</value>
+    <value>Heslo bylo úspěšně změněno.</value>
   </data>
   <data name="My_Settings_Index_Msg_ChangeUserName" xml:space="preserve">
-    <value>To change your username, please contact system administrator.</value>
+    <value>Chcete-li změnit své uživatelské jméno, obraťte se na správce systému.</value>
   </data>
   <data name="My_Settings_Index_Msg_Delete" xml:space="preserve">
-    <value>To delete your account, please contact system administrator.</value>
+    <value>Chcete-li účet odstranit, obraťte se na správce systému.</value>
   </data>
   <data name="My_Settings_Index_Msg_Saved" xml:space="preserve">
-    <value>Your changes were saved successfully.</value>
+    <value>Změny byly úspěšně uloženy.</value>
   </data>
   <data name="My_Settings_Index_Title" xml:space="preserve">
-    <value>My settings</value>
+    <value>Moje nastavení</value>
   </data>
   <data name="My_Settings_Password_Title" xml:space="preserve">
-    <value>Change my password</value>
+    <value>Změna hesla</value>
   </data>
   <data name="_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Storno</value>
   </data>
   <data name="_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Smazat</value>
   </data>
   <data name="_No" xml:space="preserve">
-    <value>No</value>
+    <value>Ne</value>
   </data>
   <data name="_OK" xml:space="preserve">
-    <value>OK</value>
+    <value>Ok</value>
   </data>
   <data name="_Submit" xml:space="preserve">
-    <value>Submit</value>
+    <value>Odeslat</value>
   </data>
   <data name="_Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ano</value>
   </data>
 </root>

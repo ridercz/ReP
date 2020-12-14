@@ -19,6 +19,7 @@ using Altairis.Services.Mailing.SendGrid;
 using Altairis.FutLabIS.Web.Resources;
 using Altairis.ConventionalMetadataProviders;
 using Altairis.Services.DateProvider;
+using Microsoft.AspNetCore.Localization;
 
 namespace Altairis.FutLabIS.Web {
     public class Startup {
@@ -106,6 +107,17 @@ namespace Altairis.FutLabIS.Web {
                 app.UseDeveloperExceptionPage();
             }
 
+            // Configure localization
+            var supportedCultures = new[] { "cs-CZ", "en-US" };
+            app.UseRequestLocalization(options => {
+                options.SetDefaultCulture(supportedCultures[0]);
+                options.AddSupportedCultures(supportedCultures);
+                options.AddSupportedUICultures(supportedCultures);
+                options.RequestCultureProviders.Clear();
+                options.RequestCultureProviders.Add(new CookieRequestCultureProvider());
+            });
+
+            // Configure middleware
             app.UseStatusCodePagesWithReExecute("/Errors/{0}");
             app.UseStaticFiles();
             app.UseRouting();

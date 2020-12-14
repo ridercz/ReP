@@ -1,0 +1,6 @@
+﻿Dobrý den,
+
+rádi bychom vás informovali, že vám byl v informačním systému FutLabu zřízen nový účet {{userName}}.
+
+Pro aktivaci a nastavení hesla prosím navštivte následující stránku:
+{{url}}

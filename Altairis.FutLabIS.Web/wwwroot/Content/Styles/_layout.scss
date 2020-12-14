@@ -25,9 +25,13 @@ html {
         }
 
         > header {
-            .login {
+            ul.info {
                 float: right;
-                font-size: 90%;
+                margin: 0;
+            }
+
+            a {
+                text-decoration: none;
             }
         }
 
