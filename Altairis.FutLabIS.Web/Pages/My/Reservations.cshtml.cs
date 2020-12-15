@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Altairis.FutLabIS.Data;
 using Altairis.FutLabIS.Web.Resources;
+using Altairis.FutLabIS.Web.Services;
 using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
@@ -20,11 +21,13 @@ namespace Altairis.FutLabIS.Web.Pages.My {
         private readonly FutLabDbContext dc;
         private readonly IDateProvider dateProvider;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly OpeningHoursProvider hoursProvider;
 
-        public ReservationsModel(FutLabDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager) {
+        public ReservationsModel(FutLabDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider) {
             this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
             this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
             this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
         }
 
         [BindProperty]
@@ -99,16 +102,27 @@ namespace Altairis.FutLabIS.Web.Pages.My {
             if (!(await this.Init(resourceId) && (this.Resource.Enabled || this.User.IsPrivilegedUser()))) return this.NotFound();
             if (!this.ModelState.IsValid) return this.Page();
 
-            // Check reservation time length for non-privileged users
             if (!this.User.IsPrivilegedUser()) {
+                // Check reservation time length
                 var resLength = this.Input.DateEnd.Subtract(this.Input.DateBegin).TotalMinutes;
-                if (resLength > this.Resource.MaximumReservationTime) {
+                if (this.Resource.MaximumReservationTime > 0 && resLength > this.Resource.MaximumReservationTime) {
                     this.ModelState.AddModelError(string.Empty, string.Format(UI.My_Reservations_Err_Maxlength, this.Resource.MaximumReservationTime));
                     return this.Page();
                 }
-            }
 
-            // TODO: Check against lab opening times
+                // Check if it begins and ends in the same day
+                if (this.Input.DateBegin.Date != this.Input.DateEnd.Date) {
+                    this.ModelState.AddModelError(string.Empty, UI.My_Reservations_Err_SingleDay);
+                    return this.Page();
+                }
+
+                // Check against lab opening times
+                var openTime = this.hoursProvider.GetOpeningHours(this.Input.DateBegin);
+                if (this.Input.DateBegin < openTime.AbsoluteOpeningTime || this.Input.DateEnd > openTime.AbsoluteClosingTime) {
+                    this.ModelState.AddModelError(string.Empty, UI.My_Reservations_Err_OpeningHours);
+                    return this.Page();
+                }
+            }
 
             // Check against other reservations
             var q = from r in this.dc.Reservations

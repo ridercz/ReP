@@ -20,12 +20,13 @@ namespace Altairis.FutLabIS.Web.Services {
         public IEnumerable<OpeningHoursInfo> GetOpeningHours(int dayOffsetFrom, int dayOffsetTo) => this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffsetFrom), this.dateProvider.Today.AddDays(dayOffsetTo));
 
         public OpeningHoursInfo GetOpeningHours(DateTime date) {
+            date = date.Date;
             return this.GetStandardOpeningHours(date);
         }
 
         public IEnumerable<OpeningHoursInfo> GetOpeningHours(DateTime dateFrom, DateTime dateTo) {
-            var date = dateFrom;
-            while (date <= dateTo) {
+            var date = dateFrom.Date;
+            while (date <= dateTo.Date) {
                 yield return this.GetStandardOpeningHours(date);
                 date = date.AddDays(1);
             }
@@ -34,8 +35,8 @@ namespace Altairis.FutLabIS.Web.Services {
         private OpeningHoursInfo GetStandardOpeningHours(DateTime date) {
             var value = this.optionsAccessor.Value.OpeningHours.FirstOrDefault(x => x.DayOfWeek == date.DayOfWeek);
             return value == null
-                ? new OpeningHoursInfo { Date = date }
-                : new OpeningHoursInfo { Date = date, OpeningTime = value.OpeningTime, ClosingTime = value.ClosingTime, IsException = false };
+                ? new OpeningHoursInfo { Date = date.Date }
+                : new OpeningHoursInfo { Date = date.Date, OpeningTime = value.OpeningTime, ClosingTime = value.ClosingTime, IsException = false };
         }
 
     }
@@ -44,13 +45,17 @@ namespace Altairis.FutLabIS.Web.Services {
 
         public DateTime Date { get; set; }
 
-        public bool IsOpen => this.ClosingTime.Subtract(this.OpeningTime) > TimeSpan.Zero;
-
         public bool IsException { get; set; }
 
         public TimeSpan OpeningTime { get; set; }
 
         public TimeSpan ClosingTime { get; set; }
+
+        public DateTime AbsoluteOpeningTime => this.Date.Add(this.OpeningTime);
+
+        public DateTime AbsoluteClosingTime => this.Date.Add(this.ClosingTime);
+
+        public bool IsOpen => this.ClosingTime.Subtract(this.OpeningTime) > TimeSpan.Zero;
 
         public override string ToString() => this.IsOpen ? $"{this.OpeningTime:hh\\:mm} - {this.ClosingTime:hh\\:mm}" : string.Empty;
 

@@ -327,6 +327,12 @@ Please follow the instructions in the message.</value>
   <data name="My_Reservations_Err_Maxlength" xml:space="preserve">
     <value>Maximum reservation time for this resource is {0} minutes.</value>
   </data>
+  <data name="My_Reservations_Err_OpeningHours" xml:space="preserve">
+    <value>Reservation is outside of opening hours.</value>
+  </data>
+  <data name="My_Reservations_Err_SingleDay" xml:space="preserve">
+    <value>Reservation cannot span multiple days.</value>
+  </data>
   <data name="My_Reservations_Msg_Created" xml:space="preserve">
     <value>Your reservation was created successfully.</value>
   </data>

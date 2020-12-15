@@ -733,6 +733,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reservation is outside of opening hours..
+        /// </summary>
+        public static string My_Reservations_Err_OpeningHours {
+            get {
+                return ResourceManager.GetString("My_Reservations_Err_OpeningHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation cannot span multiple days..
+        /// </summary>
+        public static string My_Reservations_Err_SingleDay {
+            get {
+                return ResourceManager.GetString("My_Reservations_Err_SingleDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your reservation was created successfully..
         /// </summary>
         public static string My_Reservations_Msg_Created {
