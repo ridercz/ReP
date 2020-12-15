@@ -156,9 +156,6 @@
   <data name="Admin_OpeningHours_Title" xml:space="preserve">
     <value>Opening hours</value>
   </data>
-  <data name="Admin_Reservations_Edit_ConfirmDelete" xml:space="preserve">
-    <value>Are you sure you want to delete this reservation?</value>
-  </data>
   <data name="Admin_Reservations_Edit_Msg_Saved" xml:space="preserve">
     <value>Changes of resource reservation were saved successfully.</value>
   </data>
@@ -178,16 +175,13 @@
     <value>Edit resource</value>
   </data>
   <data name="Admin_Resources_Index_Msg_Created" xml:space="preserve">
-    <value>New resource was creaed successfully.</value>
+    <value>New resource was created successfully.</value>
   </data>
   <data name="Admin_Resources_Index_Msg_Deleted" xml:space="preserve">
     <value>Resource was successfully deleted.</value>
   </data>
   <data name="Admin_Resources_Index_Msg_Saved" xml:space="preserve">
     <value>Resource changes were saved successfully.</value>
-  </data>
-  <data name="Admin_Resources_Index_New" xml:space="preserve">
-    <value>Create new resource...</value>
   </data>
   <data name="Admin_Resources_Index_Title" xml:space="preserve">
     <value>Resources</value>
@@ -209,9 +203,6 @@
   </data>
   <data name="Admin_Users_Index_Enabled" xml:space="preserve">
     <value>User is enabled</value>
-  </data>
-  <data name="Admin_Users_Index_New" xml:space="preserve">
-    <value>Create new user...</value>
   </data>
   <data name="Admin_Users_Index_Title" xml:space="preserve">
     <value>Users</value>
@@ -317,7 +308,7 @@ Please follow the instructions in the message.</value>
     <value>Reservation calendar for {0:y}</value>
   </data>
   <data name="My_Index_Archive" xml:space="preserve">
-    <value>All reservations</value>
+    <value>All my reservations</value>
   </data>
   <data name="My_Index_Msg_ReservationDeleted" xml:space="preserve">
     <value>Your reservation was successfully deleted.</value>
@@ -376,16 +367,13 @@ Please follow the instructions in the message.</value>
   <data name="My_Reservations_New" xml:space="preserve">
     <value>New reservation</value>
   </data>
-  <data name="My_Reservations_NewSystem" xml:space="preserve">
-    <value>New system reservation</value>
-  </data>
   <data name="My_Reservations_NewTitle" xml:space="preserve">
     <value>Create a new reservation</value>
   </data>
   <data name="My_Settings_EmailConfirm_FailedHtml" xml:space="preserve">
     <value>&lt;p&gt;Confirmation failed. The usual reasons are:&lt;/p&gt; 
 &lt;ul&gt;
-&lt;li&gt;The page address is incorrect or incomplete. It may have been splitted into multiple lines by your e-mail client.&lt;/li&gt;
+&lt;li&gt;The page address is incorrect or incomplete. It may have been wrapped into multiple lines by your e-mail client.&lt;/li&gt;
 &lt;li&gt;The desired e-mail address is already used by another account on this system.&lt;/li&gt;
 &lt;li&gt;The change was already confirmed.&lt;/li&gt;
 &lt;li&gt;The confirmation link is outdated. Please initiate the change again.&lt;/li&gt;
@@ -447,6 +435,9 @@ Please follow the instructions in the message.</value>
   </data>
   <data name="_Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="_Create" xml:space="preserve">
+    <value>Create...</value>
   </data>
   <data name="_Delete" xml:space="preserve">
     <value>Delete</value>

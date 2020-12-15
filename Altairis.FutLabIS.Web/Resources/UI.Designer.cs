@@ -70,6 +70,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create....
+        /// </summary>
+        public static string _Create {
+            get {
+                return ResourceManager.GetString("_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string _Delete {
@@ -232,15 +241,6 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete this reservation?.
-        /// </summary>
-        public static string Admin_Reservations_Edit_ConfirmDelete {
-            get {
-                return ResourceManager.GetString("Admin_Reservations_Edit_ConfirmDelete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Changes of resource reservation were saved successfully..
         /// </summary>
         public static string Admin_Reservations_Edit_Msg_Saved {
@@ -295,7 +295,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New resource was creaed successfully..
+        ///   Looks up a localized string similar to New resource was created successfully..
         /// </summary>
         public static string Admin_Resources_Index_Msg_Created {
             get {
@@ -318,15 +318,6 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Admin_Resources_Index_Msg_Saved {
             get {
                 return ResourceManager.GetString("Admin_Resources_Index_Msg_Saved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create new resource....
-        /// </summary>
-        public static string Admin_Resources_Index_New {
-            get {
-                return ResourceManager.GetString("Admin_Resources_Index_New", resourceCulture);
             }
         }
         
@@ -417,15 +408,6 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Admin_Users_Index_Enabled {
             get {
                 return ResourceManager.GetString("Admin_Users_Index_Enabled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create new user....
-        /// </summary>
-        public static string Admin_Users_Index_New {
-            get {
-                return ResourceManager.GetString("Admin_Users_Index_New", resourceCulture);
             }
         }
         
@@ -697,7 +679,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All reservations.
+        ///   Looks up a localized string similar to All my reservations.
         /// </summary>
         public static string My_Index_Archive {
             get {
@@ -877,15 +859,6 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New system reservation.
-        /// </summary>
-        public static string My_Reservations_NewSystem {
-            get {
-                return ResourceManager.GetString("My_Reservations_NewSystem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Create a new reservation.
         /// </summary>
         public static string My_Reservations_NewTitle {
@@ -915,7 +888,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;Confirmation failed. The usual reasons are:&lt;/p&gt; 
         ///&lt;ul&gt;
-        ///&lt;li&gt;The page address is incorrect or incomplete. It may have been splitted into multiple lines by your e-mail client.&lt;/li&gt;
+        ///&lt;li&gt;The page address is incorrect or incomplete. It may have been wrapped into multiple lines by your e-mail client.&lt;/li&gt;
         ///&lt;li&gt;The desired e-mail address is already used by another account on this system.&lt;/li&gt;
         ///&lt;li&gt;The change was already confirmed.&lt;/li&gt;
         ///&lt;li&gt;The confirmation link is outdated. Please initiate the change again.&lt;/li&gt;

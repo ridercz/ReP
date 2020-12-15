@@ -156,9 +156,6 @@
   <data name="Admin_OpeningHours_Title" xml:space="preserve">
     <value>Otevírací doba</value>
   </data>
-  <data name="Admin_Reservations_Edit_ConfirmDelete" xml:space="preserve">
-    <value>Opravdu chcete odstranit tuto rezervaci?</value>
-  </data>
   <data name="Admin_Reservations_Edit_Msg_Saved" xml:space="preserve">
     <value>Změny rezervace byly úspěšně uloženy.</value>
   </data>
@@ -186,9 +183,6 @@
   <data name="Admin_Resources_Index_Msg_Saved" xml:space="preserve">
     <value>Změny prostředku byly úspěšně uloženy.</value>
   </data>
-  <data name="Admin_Resources_Index_New" xml:space="preserve">
-    <value>Vytvořit nový prostředek...</value>
-  </data>
   <data name="Admin_Resources_Index_Title" xml:space="preserve">
     <value>Prostředky</value>
   </data>
@@ -209,9 +203,6 @@
   </data>
   <data name="Admin_Users_Index_Enabled" xml:space="preserve">
     <value>Uživatel je povolen</value>
-  </data>
-  <data name="Admin_Users_Index_New" xml:space="preserve">
-    <value>Vytvořit nového uživatele...</value>
   </data>
   <data name="Admin_Users_Index_Title" xml:space="preserve">
     <value>Uživatelé</value>
@@ -316,7 +307,7 @@ Postupujte podle pokynů ve zprávě.</value>
     <value>Kalendář rezervací pro {0:y}</value>
   </data>
   <data name="My_Index_Archive" xml:space="preserve">
-    <value>Všechny rezervace</value>
+    <value>Všechny moje rezervace</value>
   </data>
   <data name="My_Index_Msg_ReservationDeleted" xml:space="preserve">
     <value>Rezervace byla úspěšně odstraněna.</value>
@@ -374,9 +365,6 @@ Postupujte podle pokynů ve zprávě.</value>
   </data>
   <data name="My_Reservations_New" xml:space="preserve">
     <value>Nová rezervace</value>
-  </data>
-  <data name="My_Reservations_NewSystem" xml:space="preserve">
-    <value>Nová systémová rezervace</value>
   </data>
   <data name="My_Reservations_NewTitle" xml:space="preserve">
     <value>Vytvořit novou rezervaci</value>
@@ -446,6 +434,9 @@ Postupujte podle pokynů ve zprávě.</value>
   </data>
   <data name="_Cancel" xml:space="preserve">
     <value>Storno</value>
+  </data>
+  <data name="_Create" xml:space="preserve">
+    <value>Vytvořit...</value>
   </data>
   <data name="_Delete" xml:space="preserve">
     <value>Smazat</value>
