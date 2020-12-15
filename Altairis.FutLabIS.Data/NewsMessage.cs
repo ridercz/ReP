@@ -10,6 +10,8 @@ namespace Altairis.FutLabIS.Data {
         [Key]
         public int Id { get; set; }
 
+        public DateTime Date { get; set; }
+
         [Required, MaxLength(100)]
         public string Title { get; set; }
 
