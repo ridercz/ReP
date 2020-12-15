@@ -423,6 +423,15 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Settings_Password_Title" xml:space="preserve">
     <value>Změna hesla</value>
   </data>
+  <data name="TimeTagHelper_Today" xml:space="preserve">
+    <value>dnes, {0:t}</value>
+  </data>
+  <data name="TimeTagHelper_Tomorrow" xml:space="preserve">
+    <value>zítra, {0:t}</value>
+  </data>
+  <data name="TimeTagHelper_Yesterday" xml:space="preserve">
+    <value>včera, {0:t}</value>
+  </data>
   <data name="_Cancel" xml:space="preserve">
     <value>Storno</value>
   </data>

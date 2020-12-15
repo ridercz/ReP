@@ -21,6 +21,7 @@ using Altairis.ConventionalMetadataProviders;
 using Altairis.Services.DateProvider;
 using Microsoft.AspNetCore.Localization;
 using Altairis.FutLabIS.Web.Services;
+using Altairis.TagHelpers;
 
 namespace Altairis.FutLabIS.Web {
     public class Startup {
@@ -100,6 +101,11 @@ namespace Altairis.FutLabIS.Web {
             services.Configure<AppSettings>(this.configuration);
             services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
             services.AddScoped<OpeningHoursProvider>();
+            services.Configure<TimeTagHelperOptions>(options => {
+                options.YesterdayDateFormatter = dt => string.Format(UI.TimeTagHelper_Yesterday, dt);
+                options.TodayDateFormatter = dt => string.Format(UI.TimeTagHelper_Today, dt);
+                options.TomorrowDateFormatter = dt => string.Format(UI.TimeTagHelper_Tomorrow, dt);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FutLabDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {

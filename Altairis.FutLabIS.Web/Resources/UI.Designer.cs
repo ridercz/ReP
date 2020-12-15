@@ -1007,5 +1007,32 @@ namespace Altairis.FutLabIS.Web.Resources {
                 return ResourceManager.GetString("My_Settings_Password_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to today, {0:t}.
+        /// </summary>
+        public static string TimeTagHelper_Today {
+            get {
+                return ResourceManager.GetString("TimeTagHelper_Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tomorrow, {0:t}.
+        /// </summary>
+        public static string TimeTagHelper_Tomorrow {
+            get {
+                return ResourceManager.GetString("TimeTagHelper_Tomorrow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to yesterday, {0:t}.
+        /// </summary>
+        public static string TimeTagHelper_Yesterday {
+            get {
+                return ResourceManager.GetString("TimeTagHelper_Yesterday", resourceCulture);
+            }
+        }
     }
 }
