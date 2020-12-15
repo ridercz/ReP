@@ -156,6 +156,9 @@
   <data name="Admin_OpeningHours_Title" xml:space="preserve">
     <value>Opening hours</value>
   </data>
+  <data name="Admin_Reservations_Edit_ConfirmDelete" xml:space="preserve">
+    <value>Are you sure you want to delete this reservation?</value>
+  </data>
   <data name="Admin_Reservations_Edit_Msg_Saved" xml:space="preserve">
     <value>Changes of resource reservation were saved successfully.</value>
   </data>

@@ -151,6 +151,56 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your reservation was changed.
+        /// </summary>
+        public static string ReservationChanged_Subject {
+            get {
+                return ResourceManager.GetString("ReservationChanged_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello,
+        ///
+        ///this message is to inform you that your reservation of {{resourceName}} was changed by {{userName}}.
+        ///
+        ///Original reservation was from {{oldDateBegin}} to {{oldDateEnd}}.
+        ///
+        ///Current reservation is from {{dateBegin}} to {{dateEnd}}.
+        ///
+        ///.
+        /// </summary>
+        public static string ReservationChanged_Text {
+            get {
+                return ResourceManager.GetString("ReservationChanged_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your reservation was deleted.
+        /// </summary>
+        public static string ReservationDeleted_Subject {
+            get {
+                return ResourceManager.GetString("ReservationDeleted_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello,
+        ///
+        ///this message is to inform you that your reservation of {{resourceName}} was deleted by {{userName}}.
+        ///
+        ///Original reservation was from {{oldDateBegin}} to {{oldDateEnd}}.
+        ///
+        ///.
+        /// </summary>
+        public static string ReservationDeleted_Text {
+            get {
+                return ResourceManager.GetString("ReservationDeleted_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [FutLab IS] {0}.
         /// </summary>
         public static string SubjectFormatString {

@@ -139,6 +139,18 @@
   <data name="PasswordReset_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>mailing\cs\passwordreset_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="ReservationChanged_Subject" xml:space="preserve">
+    <value>Vaše rezervace byla změněna</value>
+  </data>
+  <data name="ReservationChanged_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\cs\reservationchanged_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ReservationDeleted_Subject" xml:space="preserve">
+    <value>Vaše rezervace byla smazána</value>
+  </data>
+  <data name="ReservationDeleted_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\cs\reservationdeleted_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="SubjectFormatString" xml:space="preserve">
     <value>[FutLab IS] {0}</value>
   </data>

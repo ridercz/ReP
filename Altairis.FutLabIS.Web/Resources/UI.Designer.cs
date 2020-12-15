@@ -232,6 +232,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this reservation?.
+        /// </summary>
+        public static string Admin_Reservations_Edit_ConfirmDelete {
+            get {
+                return ResourceManager.GetString("Admin_Reservations_Edit_ConfirmDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changes of resource reservation were saved successfully..
         /// </summary>
         public static string Admin_Reservations_Edit_Msg_Saved {

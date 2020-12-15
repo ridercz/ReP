@@ -1,0 +1,6 @@
+﻿Dobrý den,
+
+rádi bychom vás informovali, že vaše rezervace prostředku {{resourceName}} od {{oldDateBegin}} do {{oldDateEnd}} byla uživatelem {{userName}} změněna.
+
+Nový čas rezervace je od {{dateBegin}} do {{dateEnd}}.
+

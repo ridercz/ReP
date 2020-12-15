@@ -1,0 +1,3 @@
+﻿Dobrý den,
+
+rádi bychom vás informovali, že vaše rezervace prostředku {{resourceName}} od {{oldDateBegin}} do {{oldDateEnd}} byla zrušena uživatelem {{userName}}.

@@ -1,0 +1,8 @@
+﻿Hello,
+
+this message is to inform you that your reservation of {{resourceName}} was changed by {{userName}}.
+
+Original reservation was from {{oldDateBegin}} to {{oldDateEnd}}.
+
+Current reservation is from {{dateBegin}} to {{dateEnd}}.
+

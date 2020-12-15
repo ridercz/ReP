@@ -7,13 +7,18 @@ using Altairis.FutLabIS.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Altairis.Services.Mailing;
+using Altairis.Services.Mailing.Templating;
+using System.Globalization;
 
 namespace Altairis.FutLabIS.Web.Pages.Admin.Reservations {
     public class EditModel : PageModel {
         private readonly FutLabDbContext dc;
+        private readonly ITemplatedMailerService mailer;
 
-        public EditModel(FutLabDbContext dc) {
+        public EditModel(FutLabDbContext dc, ITemplatedMailerService mailer) {
             this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
+            this.mailer = mailer ?? throw new ArgumentNullException(nameof(mailer));
         }
 
         [BindProperty]
@@ -39,6 +44,9 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Reservations {
 
         public string UserName { get; set; }
 
+        public string NotificationEmail { get; set; }
+
+        public CultureInfo NotificationCulture { get; set; }
 
         public async Task<Reservation> Init(int reservationId) {
             var r = await this.dc.Reservations.Include(x => x.Resource).Include(x => x.User).SingleOrDefaultAsync(x => x.Id == reservationId);
@@ -47,6 +55,10 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Reservations {
                 this.ResourceName = r.Resource.Name;
                 this.UserId = r.UserId;
                 this.UserName = r.User.UserName;
+                if (r.User.SendNotifications && r.User.UserName != this.User.Identity.Name) {
+                    this.NotificationEmail = r.User.Email;
+                    this.NotificationCulture = new CultureInfo(r.User.Language);
+                }
             }
             return r;
         }
@@ -79,6 +91,19 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Reservations {
             }
             if (!this.ModelState.IsValid) return this.Page();
 
+            // Send notification if time changed
+            if ((r.DateBegin != this.Input.DateBegin || r.DateEnd != this.Input.DateEnd) && !string.IsNullOrEmpty(this.NotificationEmail)) {
+                var msg = new TemplatedMailMessageDto("ReservationChanged", this.NotificationEmail);
+                await mailer.SendMessageAsync(msg, new {
+                    resourceName = this.ResourceName,
+                    userName = this.User.Identity.Name,
+                    oldDateBegin = r.DateBegin,
+                    oldDateEnd = r.DateEnd,
+                    dateBegin = this.Input.DateBegin,
+                    dateEnd = this.Input.DateEnd
+                }, this.NotificationCulture, this.NotificationCulture);
+            }
+
             // Update reservation
             r.Comment = this.Input.Comment;
             r.DateBegin = this.Input.DateBegin;
@@ -90,9 +115,22 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Reservations {
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int reservationId) {
-            var reservation = await this.dc.Reservations.FindAsync(reservationId);
-            if (reservation == null) return this.NotFound();
-            this.dc.Reservations.Remove(reservation);
+            var r = await this.Init(reservationId);
+            if (r == null) return this.NotFound();
+
+            // Send notification
+            if (!string.IsNullOrEmpty(this.NotificationEmail)) {
+                var msg = new TemplatedMailMessageDto("ReservationDeleted", this.NotificationEmail);
+                await this.mailer.SendMessageAsync(msg, new {
+                    resourceName = this.ResourceName,
+                    userName = this.User.Identity.Name,
+                    oldDateBegin = r.DateBegin,
+                    oldDateEnd = r.DateEnd,
+                }, this.NotificationCulture, this.NotificationCulture);
+            }
+
+            // Delete reservation
+            this.dc.Reservations.Remove(r);
             await this.dc.SaveChangesAsync();
             return this.RedirectToPage("Index", null, "deleted");
         }
