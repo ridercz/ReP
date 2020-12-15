@@ -120,17 +120,26 @@
   <data name="BackgroundColor" xml:space="preserve">
     <value>Barva pozadí</value>
   </data>
+  <data name="ClosingTime" xml:space="preserve">
+    <value>Zavírací doba</value>
+  </data>
   <data name="Comment" xml:space="preserve">
     <value>Komentář</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Současné heslo</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
   <data name="DateBegin" xml:space="preserve">
     <value>Datum začátku</value>
   </data>
   <data name="DateEnd" xml:space="preserve">
     <value>Datum konce</value>
+  </data>
+  <data name="DayOfWeek" xml:space="preserve">
+    <value>Den v týdnu</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Popis</value>
@@ -164,6 +173,12 @@
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Nové heslo</value>
+  </data>
+  <data name="OpeningHours" xml:space="preserve">
+    <value>Otevírací doba</value>
+  </data>
+  <data name="OpeningTime" xml:space="preserve">
+    <value>Otevírací doba</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Heslo</value>

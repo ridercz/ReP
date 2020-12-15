@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Admin_Index_ManageOpeningHours" xml:space="preserve">
+    <value>Správa otevírací doby</value>
+  </data>
   <data name="Admin_Index_ManageReservations" xml:space="preserve">
     <value>Správa rezervací</value>
   </data>
@@ -128,6 +131,30 @@
   </data>
   <data name="Admin_Index_Title" xml:space="preserve">
     <value>Správa systému</value>
+  </data>
+  <data name="Admin_OpeningHours_Add" xml:space="preserve">
+    <value>Přidat výjimku</value>
+  </data>
+  <data name="Admin_OpeningHours_Add_Text" xml:space="preserve">
+    <value>Pokud je zavřeno po celý den, nastavte otevírací i zavírací dobu na půlnoc.</value>
+  </data>
+  <data name="Admin_OpeningHours_DeleteConfirm" xml:space="preserve">
+    <value>Opravdu chcete odstranit tuto výjimku otevírací doby?</value>
+  </data>
+  <data name="Admin_OpeningHours_Exceptions" xml:space="preserve">
+    <value>Výjimky</value>
+  </data>
+  <data name="Admin_OpeningHours_Msg_Created" xml:space="preserve">
+    <value>Výjimka otevírací doby byla úspěšně vytvořena.</value>
+  </data>
+  <data name="Admin_OpeningHours_Msg_Deleted" xml:space="preserve">
+    <value>Výjimka otevírací doby byla úspěšně odstraněna.</value>
+  </data>
+  <data name="Admin_OpeningHours_Standard" xml:space="preserve">
+    <value>Standardní</value>
+  </data>
+  <data name="Admin_OpeningHours_Title" xml:space="preserve">
+    <value>Otevírací doba</value>
   </data>
   <data name="Admin_Reservations_Title" xml:space="preserve">
     <value>Všechny rezervace</value>
@@ -288,6 +315,9 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Index_NoReservations" xml:space="preserve">
     <value>Nemáte žádné aktuální rezervace.</value>
   </data>
+  <data name="My_Index_OpeningHours" xml:space="preserve">
+    <value>Otevírací doba v dalších dnech...</value>
+  </data>
   <data name="My_Index_Reservations" xml:space="preserve">
     <value>Plánované rezervace</value>
   </data>
@@ -297,6 +327,24 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Index_Title" xml:space="preserve">
     <value>Vítejte ve FutLabu!</value>
   </data>
+  <data name="My_Index_TodayLab_Closed" xml:space="preserve">
+    <value>Lab je dnes &lt;b&gt;zavřený&lt;/b&gt;.</value>
+  </data>
+  <data name="My_Index_TodayLab_Open" xml:space="preserve">
+    <value>Lab je dnes &lt;b&gt;otevřen {0}&lt;/b&gt;.</value>
+  </data>
+  <data name="My_Index_TomorrowLab_Closed" xml:space="preserve">
+    <value>Zítra je zavřeno.</value>
+  </data>
+  <data name="My_Index_TomorrowLab_Open" xml:space="preserve">
+    <value>Zítra je otevřeno {0}.</value>
+  </data>
+  <data name="My_OpeningHours_Closed" xml:space="preserve">
+    <value>zavřeno</value>
+  </data>
+  <data name="My_OpeningHours_Title" xml:space="preserve">
+    <value>Otevírací doba</value>
+  </data>
   <data name="My_Reservations_DeleteConfirm" xml:space="preserve">
     <value>Opravdu chcete odstranit tuto rezervaci?</value>
   </data>
@@ -305,6 +353,12 @@ Postupujte podle pokynů ve zprávě.</value>
   </data>
   <data name="My_Reservations_Err_Maxlength" xml:space="preserve">
     <value>Maximální doba rezervace pro tento prostředek je {0} minut.</value>
+  </data>
+  <data name="My_Reservations_Err_OpeningHours" xml:space="preserve">
+    <value>Rezervace je mimo otevírací dobu.</value>
+  </data>
+  <data name="My_Reservations_Err_SingleDay" xml:space="preserve">
+    <value>Rezervace nemůže zahrnovat více dní.</value>
   </data>
   <data name="My_Reservations_Msg_Created" xml:space="preserve">
     <value>Vaše rezervace byla úspěšně vytvořena.</value>
