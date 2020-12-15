@@ -1,27 +1,25 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Altairis.ConventionalMetadataProviders;
 using Altairis.FutLabIS.Data;
+using Altairis.FutLabIS.Web.Resources;
+using Altairis.FutLabIS.Web.Services;
+using Altairis.Services.DateProvider;
+using Altairis.Services.Mailing;
+using Altairis.Services.Mailing.Rfc2822;
+using Altairis.Services.Mailing.SendGrid;
+using Altairis.Services.Mailing.Templating;
 using Altairis.Services.PwnedPasswordsValidator;
+using Altairis.TagHelpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Altairis.Services.Mailing;
-using Altairis.Services.Mailing.Rfc2822;
-using Altairis.Services.Mailing.Templating;
-using Altairis.Services.Mailing.SendGrid;
-using Altairis.FutLabIS.Web.Resources;
-using Altairis.ConventionalMetadataProviders;
-using Altairis.Services.DateProvider;
-using Microsoft.AspNetCore.Localization;
-using Altairis.FutLabIS.Web.Services;
-using Altairis.TagHelpers;
 
 namespace Altairis.FutLabIS.Web {
     public class Startup {

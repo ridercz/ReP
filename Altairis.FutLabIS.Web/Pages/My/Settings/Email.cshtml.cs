@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using Altairis.FutLabIS.Data;
 using Altairis.FutLabIS.Web.Resources;
-using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +47,7 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
             // Check password
             var passwordCorrect = await this.userManager.CheckPasswordAsync(me, this.Input.CurrentPassword);
             if (!passwordCorrect) {
-                this.ModelState.AddModelError(nameof(Input.CurrentPassword), UI.My_Settings_Email_InvalidPassword);
+                this.ModelState.AddModelError(nameof(this.Input.CurrentPassword), UI.My_Settings_Email_InvalidPassword);
                 return this.Page();
             }
 

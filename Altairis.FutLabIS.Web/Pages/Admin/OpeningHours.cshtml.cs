@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.FutLabIS.Data;
@@ -41,9 +40,7 @@ namespace Altairis.FutLabIS.Web.Pages.Admin {
 
         }
 
-        public async Task OnGetAsync() {
-            this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
-        }
+        public async Task OnGetAsync() => this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
 
         public async Task<IActionResult> OnPostAsync() {
             if (!this.ModelState.IsValid) return this.Page();

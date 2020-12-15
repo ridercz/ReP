@@ -4,12 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Altairis.FutLabIS.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Altairis.FutLabIS.Web.Pages.My
-{
+namespace Altairis.FutLabIS.Web.Pages.My {
     public class ArchiveModel : PageModel {
         private readonly FutLabDbContext dc;
         private readonly UserManager<ApplicationUser> userManager;

@@ -1,8 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Altairis.FutLabIS.Data.Migrations
-{
+namespace Altairis.FutLabIS.Data.Migrations {
     public partial class Add_Identity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
