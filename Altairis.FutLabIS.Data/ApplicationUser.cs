@@ -9,5 +9,9 @@ namespace Altairis.FutLabIS.Data {
         [Required, MinLength(2), MaxLength(2)]
         public string Language { get; set; }
 
+        public bool SendNotifications { get; set; }
+
+        public bool SendNews { get; set; }
+
     }
 }

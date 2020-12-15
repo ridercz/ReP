@@ -134,6 +134,10 @@ ul.checkbox-list {
         list-style-type: none;
         display: inline-block;
     }
+
+    &.vertical li {
+        display: block;
+    }
 }
 
 .validation-summary-valid {

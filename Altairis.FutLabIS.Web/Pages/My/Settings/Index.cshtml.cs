@@ -27,6 +27,10 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
             [Phone]
             public string PhoneNumber { get; set; }
 
+            public bool SendNotifications { get; set; }
+
+            public bool SendNews { get; set; }
+
         }
 
         public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
@@ -40,6 +44,8 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
             this.Me = await this.userManager.GetUserAsync(this.User);
             this.Input.Language = this.Me.Language;
             this.Input.PhoneNumber = this.Me.PhoneNumber;
+            this.Input.SendNotifications = this.Me.SendNotifications;
+            this.Input.SendNews = this.Me.SendNews;
         }
 
         public async Task<IActionResult> OnPostAsync() {
@@ -48,6 +54,8 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
 
             this.Me.Language = this.Input.Language;
             this.Me.PhoneNumber = this.Input.PhoneNumber;
+            this.Me.SendNews = this.Input.SendNews;
+            this.Me.SendNotifications = this.Input.SendNotifications;
             await this.userManager.UpdateAsync(this.Me);
 
             return this.RedirectToPage("Index", null, "saved");

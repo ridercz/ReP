@@ -192,6 +192,12 @@
   <data name="ResourceId" xml:space="preserve">
     <value>Resource</value>
   </data>
+  <data name="SendNews" xml:space="preserve">
+    <value>General news and updates</value>
+  </data>
+  <data name="SendNotifications" xml:space="preserve">
+    <value>Notifications (reservation changes etc.)</value>
+  </data>
   <data name="System" xml:space="preserve">
     <value>This is system reservation</value>
   </data>

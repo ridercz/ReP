@@ -427,6 +427,9 @@ Please follow the instructions in the message.</value>
   <data name="My_Settings_Index_Title" xml:space="preserve">
     <value>My settings</value>
   </data>
+  <data name="My_Settings_Mailing_System" xml:space="preserve">
+    <value>Account-related messages (always allowed)</value>
+  </data>
   <data name="My_Settings_Password_Title" xml:space="preserve">
     <value>Change my password</value>
   </data>

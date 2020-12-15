@@ -1018,6 +1018,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account-related messages (always allowed).
+        /// </summary>
+        public static string My_Settings_Mailing_System {
+            get {
+                return ResourceManager.GetString("My_Settings_Mailing_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change my password.
         /// </summary>
         public static string My_Settings_Password_Title {

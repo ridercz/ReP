@@ -426,6 +426,9 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Settings_Index_Title" xml:space="preserve">
     <value>Moje nastavení</value>
   </data>
+  <data name="My_Settings_Mailing_System" xml:space="preserve">
+    <value>Zprávy související s účtem (vždy povoleno)</value>
+  </data>
   <data name="My_Settings_Password_Title" xml:space="preserve">
     <value>Změna hesla</value>
   </data>

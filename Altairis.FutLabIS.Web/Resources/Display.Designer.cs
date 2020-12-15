@@ -286,6 +286,24 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General news and updates.
+        /// </summary>
+        public static string SendNews {
+            get {
+                return ResourceManager.GetString("SendNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications (reservation changes etc.).
+        /// </summary>
+        public static string SendNotifications {
+            get {
+                return ResourceManager.GetString("SendNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This is system reservation.
         /// </summary>
         public static string System {

@@ -192,6 +192,12 @@
   <data name="ResourceId" xml:space="preserve">
     <value>Prostředek</value>
   </data>
+  <data name="SendNews" xml:space="preserve">
+    <value>Obecné zprávy a aktualizace</value>
+  </data>
+  <data name="SendNotifications" xml:space="preserve">
+    <value>Oznámení (změny rezervace apod.)</value>
+  </data>
   <data name="System" xml:space="preserve">
     <value>Toto je systémová rezervace</value>
   </data>
