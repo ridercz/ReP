@@ -232,11 +232,29 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changes of resource reservation were saved successfully..
+        /// </summary>
+        public static string Admin_Reservations_Edit_Msg_Saved {
+            get {
+                return ResourceManager.GetString("Admin_Reservations_Edit_Msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit reservation of {0} by {1}.
+        /// </summary>
+        public static string Admin_Reservations_Edit_Title {
+            get {
+                return ResourceManager.GetString("Admin_Reservations_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All reservations.
         /// </summary>
-        public static string Admin_Reservations_Title {
+        public static string Admin_Reservations_Index_Title {
             get {
-                return ResourceManager.GetString("Admin_Reservations_Title", resourceCulture);
+                return ResourceManager.GetString("Admin_Reservations_Index_Title", resourceCulture);
             }
         }
         

@@ -156,7 +156,13 @@
   <data name="Admin_OpeningHours_Title" xml:space="preserve">
     <value>Opening hours</value>
   </data>
-  <data name="Admin_Reservations_Title" xml:space="preserve">
+  <data name="Admin_Reservations_Edit_Msg_Saved" xml:space="preserve">
+    <value>Changes of resource reservation were saved successfully.</value>
+  </data>
+  <data name="Admin_Reservations_Edit_Title" xml:space="preserve">
+    <value>Edit reservation of {0} by {1}</value>
+  </data>
+  <data name="Admin_Reservations_Index_Title" xml:space="preserve">
     <value>All reservations</value>
   </data>
   <data name="Admin_Resources_Create_Title" xml:space="preserve">
@@ -224,6 +230,7 @@
   </data>
   <data name="Calendar_NewMonthDateFormat" xml:space="preserve">
     <value>MMMM d.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="FirstRun_Text" xml:space="preserve">
     <value>There are no users defined in application. Please create first user who will become an administrator.</value>

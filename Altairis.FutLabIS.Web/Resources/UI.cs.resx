@@ -156,7 +156,13 @@
   <data name="Admin_OpeningHours_Title" xml:space="preserve">
     <value>Otevírací doba</value>
   </data>
-  <data name="Admin_Reservations_Title" xml:space="preserve">
+  <data name="Admin_Reservations_Edit_Msg_Saved" xml:space="preserve">
+    <value>Změny rezervace byly úspěšně uloženy.</value>
+  </data>
+  <data name="Admin_Reservations_Edit_Title" xml:space="preserve">
+    <value>Editovat rezervaci prostředku {0} pro uživatele {1}</value>
+  </data>
+  <data name="Admin_Reservations_Index_Title" xml:space="preserve">
     <value>Všechny rezervace</value>
   </data>
   <data name="Admin_Resources_Create_Title" xml:space="preserve">

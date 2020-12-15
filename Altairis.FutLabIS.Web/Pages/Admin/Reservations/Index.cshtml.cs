@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Altairis.FutLabIS.Web.Pages.Admin {
-    public class ReservationsModel : PageModel {
+namespace Altairis.FutLabIS.Web.Pages.Admin.Reservations {
+    public class IndexModel : PageModel {
         private readonly FutLabDbContext dc;
 
-        public ReservationsModel(FutLabDbContext dc) {
+        public IndexModel(FutLabDbContext dc) {
             this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
         }
 
@@ -50,12 +50,5 @@ namespace Altairis.FutLabIS.Web.Pages.Admin {
             this.Reservations = await q.ToListAsync();
         }
 
-        public async Task<IActionResult> OnGetDeleteAsync(int reservationId) {
-            var reservation = await this.dc.Reservations.FindAsync(reservationId);
-            if (reservation == null) return this.NotFound();
-            this.dc.Reservations.Remove(reservation);
-            await this.dc.SaveChangesAsync();
-            return this.RedirectToPage("", null, "reservationdeleted");
-        }
     }
 }
