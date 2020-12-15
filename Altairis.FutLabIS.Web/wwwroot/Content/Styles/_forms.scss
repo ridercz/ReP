@@ -58,7 +58,7 @@ form {
             @include textbox;
         }
 
-        &[type=tel], &[type=number], &[type=date], &.short {
+        &[type=tel], &[type=number], &[type=date], &[type=time], &.short {
             @include textbox;
             max-width: 10em;
         }

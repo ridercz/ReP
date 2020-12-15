@@ -115,6 +115,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage opening hours.
+        /// </summary>
+        public static string Admin_Index_ManageOpeningHours {
+            get {
+                return ResourceManager.GetString("Admin_Index_ManageOpeningHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage reservations.
         /// </summary>
         public static string Admin_Index_ManageReservations {
@@ -147,6 +156,78 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Admin_Index_Title {
             get {
                 return ResourceManager.GetString("Admin_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add exception.
+        /// </summary>
+        public static string Admin_OpeningHours_Add {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If it&apos;s closed all day, set both opening and closing time to midnight..
+        /// </summary>
+        public static string Admin_OpeningHours_Add_Text {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_Add_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this opening hours exception?.
+        /// </summary>
+        public static string Admin_OpeningHours_DeleteConfirm {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_DeleteConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exceptions.
+        /// </summary>
+        public static string Admin_OpeningHours_Exceptions {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_Exceptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening hours exception was created successfully..
+        /// </summary>
+        public static string Admin_OpeningHours_Msg_Created {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_Msg_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening hours exception was deleted successfully..
+        /// </summary>
+        public static string Admin_OpeningHours_Msg_Deleted {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_Msg_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard.
+        /// </summary>
+        public static string Admin_OpeningHours_Standard {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_Standard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening hours.
+        /// </summary>
+        public static string Admin_OpeningHours_Title {
+            get {
+                return ResourceManager.GetString("Admin_OpeningHours_Title", resourceCulture);
             }
         }
         

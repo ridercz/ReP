@@ -120,6 +120,9 @@
   <data name="BackgroundColor" xml:space="preserve">
     <value>Background color</value>
   </data>
+  <data name="ClosingTime" xml:space="preserve">
+    <value>Closing time</value>
+  </data>
   <data name="Comment" xml:space="preserve">
     <value>Comment</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="OpeningHours" xml:space="preserve">
     <value>Opening hours</value>
+  </data>
+  <data name="OpeningTime" xml:space="preserve">
+    <value>Opening time</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.Services.DateProvider;
@@ -29,6 +30,15 @@ namespace Altairis.FutLabIS.Web.Services {
             while (date <= dateTo.Date) {
                 yield return this.GetStandardOpeningHours(date);
                 date = date.AddDays(1);
+            }
+        }
+
+        public IEnumerable<OpeningHoursInfo> GetStandardOpeningHours() {
+            var dt = DateTime.Today;
+            while (dt.DayOfWeek != CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) dt = dt.AddDays(1);
+            for (var i = 0; i < 7; i++) {
+                yield return this.GetStandardOpeningHours(dt);
+                dt = dt.AddDays(1);
             }
         }
 

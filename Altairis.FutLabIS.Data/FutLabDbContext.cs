@@ -16,6 +16,8 @@ namespace Altairis.FutLabIS.Data {
 
         public DbSet<Reservation> Reservations { get; set; }
 
+        public DbSet<OpeningHoursChange> OpeningHoursChanges { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder) {
             base.OnModelCreating(builder);
             builder.Entity<ApplicationUser>().Property(x => x.Language).IsFixedLength();

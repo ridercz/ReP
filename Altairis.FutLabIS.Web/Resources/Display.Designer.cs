@@ -70,6 +70,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closing time.
+        /// </summary>
+        public static string ClosingTime {
+            get {
+                return ResourceManager.GetString("ClosingTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string Comment {
@@ -228,6 +237,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string OpeningHours {
             get {
                 return ResourceManager.GetString("OpeningHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening time.
+        /// </summary>
+        public static string OpeningTime {
+            get {
+                return ResourceManager.GetString("OpeningTime", resourceCulture);
             }
         }
         
