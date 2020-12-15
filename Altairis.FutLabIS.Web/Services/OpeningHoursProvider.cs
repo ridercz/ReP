@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Altairis.FutLabIS.Data;
 using Altairis.Services.DateProvider;
 using Microsoft.Extensions.Options;
 
@@ -10,10 +11,12 @@ namespace Altairis.FutLabIS.Web.Services {
     public class OpeningHoursProvider {
         private readonly IOptions<AppSettings> optionsAccessor;
         private readonly IDateProvider dateProvider;
+        private readonly FutLabDbContext dc;
 
-        public OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDateProvider dateProvider) {
+        public OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDateProvider dateProvider, FutLabDbContext dc) {
             this.optionsAccessor = optionsAccessor ?? throw new ArgumentNullException(nameof(optionsAccessor));
             this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+            this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
         }
 
         public OpeningHoursInfo GetOpeningHours(int dayOffset) => this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffset));
@@ -22,13 +25,31 @@ namespace Altairis.FutLabIS.Web.Services {
 
         public OpeningHoursInfo GetOpeningHours(DateTime date) {
             date = date.Date;
-            return this.GetStandardOpeningHours(date);
+
+            var ohch = this.dc.OpeningHoursChanges.SingleOrDefault(x => x.Date == date);
+            return ohch == null
+                ? this.GetStandardOpeningHours(date)
+                : new OpeningHoursInfo {
+                    Date = date,
+                    IsException = true,
+                    OpeningTime = ohch.OpeningTime,
+                    ClosingTime = ohch.ClosingTime
+                };
         }
 
         public IEnumerable<OpeningHoursInfo> GetOpeningHours(DateTime dateFrom, DateTime dateTo) {
             var date = dateFrom.Date;
+            var ohchs = this.dc.OpeningHoursChanges.Where(x => x.Date >= dateFrom && x.Date <= dateTo).ToList();
             while (date <= dateTo.Date) {
-                yield return this.GetStandardOpeningHours(date);
+                var ohch = ohchs.SingleOrDefault(x => x.Date == date);
+                yield return ohch == null
+                    ? this.GetStandardOpeningHours(date)
+                    : new OpeningHoursInfo {
+                        Date = date,
+                        IsException = true,
+                        OpeningTime = ohch.OpeningTime,
+                        ClosingTime = ohch.ClosingTime
+                    };
                 date = date.AddDays(1);
             }
         }

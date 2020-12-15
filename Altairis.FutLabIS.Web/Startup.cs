@@ -99,7 +99,7 @@ namespace Altairis.FutLabIS.Web {
             // Configure misc services
             services.Configure<AppSettings>(this.configuration);
             services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
-            services.AddSingleton<OpeningHoursProvider>();
+            services.AddScoped<OpeningHoursProvider>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FutLabDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {
