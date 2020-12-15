@@ -45,7 +45,7 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Users {
                 UserName = this.Input.UserName,
                 Email = this.Input.Email,
                 PhoneNumber = this.Input.PhoneNumber,
-                Language = "cs"
+                Language = "cs-CZ"
             };
             var result = await this.userManager.CreateAsync(newUser);
             if (!this.IsIdentitySuccess(result)) return this.Page();

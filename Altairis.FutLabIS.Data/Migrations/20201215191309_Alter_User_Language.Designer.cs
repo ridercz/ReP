@@ -4,14 +4,16 @@ using Altairis.FutLabIS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Altairis.FutLabIS.Data.Migrations
 {
     [DbContext(typeof(FutLabDbContext))]
-    partial class FutLabDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201215191309_Alter_User_Language")]
+    partial class Alter_User_Language
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

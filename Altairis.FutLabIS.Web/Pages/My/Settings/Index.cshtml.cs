@@ -34,8 +34,8 @@ namespace Altairis.FutLabIS.Web.Pages.My.Settings {
         }
 
         public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
-            new SelectListItem(UI.My_Settings_Index_Language_CS, "cs"),
-            new SelectListItem(UI.My_Settings_Index_Language_EN, "en")
+            new SelectListItem(UI.My_Settings_Index_Language_CS, "cs-CZ"),
+            new SelectListItem(UI.My_Settings_Index_Language_EN, "en-US")
         };
 
         public ApplicationUser Me { get; set; }

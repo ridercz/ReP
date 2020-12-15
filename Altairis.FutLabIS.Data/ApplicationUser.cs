@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.FutLabIS.Data {
@@ -6,8 +7,8 @@ namespace Altairis.FutLabIS.Data {
 
         public bool Enabled { get; set; } = true;
 
-        [Required, MinLength(2), MaxLength(2)]
-        public string Language { get; set; }
+        [Required, MinLength(5), MaxLength(5)]
+        public string Language { get; set; } = "cs-CZ";
 
         public bool SendNotifications { get; set; }
 
