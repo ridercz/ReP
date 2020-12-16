@@ -125,6 +125,28 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {{title}}.
+        /// </summary>
+        public static string News_Subject {
+            get {
+                return ResourceManager.GetString("News_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello,
+        ///
+        ///the following news was published in the FutLab IS:
+        ///
+        ///{{text}}.
+        /// </summary>
+        public static string News_Text {
+            get {
+                return ResourceManager.GetString("News_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset your password.
         /// </summary>
         public static string PasswordReset_Subject {

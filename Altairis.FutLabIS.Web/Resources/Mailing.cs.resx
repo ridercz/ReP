@@ -133,6 +133,16 @@
   <data name="EmailConfirm_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>mailing\cs\emailconfirm_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="News_Subject" xml:space="preserve">
+    <value>{{title}}</value>
+  </data>
+  <data name="News_Text" xml:space="preserve">
+    <value>Dobrý den
+
+v informačním systému FutLabu byla publikována novinka:
+
+{{text}}</value>
+  </data>
   <data name="PasswordReset_Subject" xml:space="preserve">
     <value>Resetujte si heslo</value>
   </data>
