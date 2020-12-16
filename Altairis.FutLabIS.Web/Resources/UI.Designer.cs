@@ -214,7 +214,7 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mesage was successfully deleted..
+        ///   Looks up a localized string similar to Message was successfully deleted..
         /// </summary>
         public static string Admin_NewsMessages_Index_Msg_Deleted {
             get {
@@ -592,6 +592,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to News.
+        /// </summary>
+        public static string Layout_Menu_News {
+            get {
+                return ResourceManager.GetString("Layout_Menu_News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset password.
         /// </summary>
         public static string Layout_Menu_ResetPassword {
@@ -846,6 +855,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string My_Index_TomorrowLab_Open {
             get {
                 return ResourceManager.GetString("My_Index_TomorrowLab_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News.
+        /// </summary>
+        public static string My_News_Title {
+            get {
+                return ResourceManager.GetString("My_News_Title", resourceCulture);
             }
         }
         

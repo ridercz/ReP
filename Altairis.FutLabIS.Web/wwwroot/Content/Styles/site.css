@@ -105,6 +105,9 @@ strong, .strong {
 small, .small {
   font-size: 80%; }
 
+em, .em {
+  font-style: italic; }
+
 .tag {
   padding: 0 .5ex;
   border-radius: 3px; }
@@ -375,7 +378,10 @@ ul.tasklist {
     text-align: left; }
     ul.tasklist li .button {
       min-width: 33%;
-      text-align: left; }
+      text-align: left;
+      padding: 20px; }
+      ul.tasklist li .button i {
+        margin-right: 10px; }
 
 table.details {
   width: 100%;

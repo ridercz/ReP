@@ -148,7 +148,7 @@
     <value>New message was created successfully.</value>
   </data>
   <data name="Admin_NewsMessages_Index_Msg_Deleted" xml:space="preserve">
-    <value>Mesage was successfully deleted.</value>
+    <value>Message was successfully deleted.</value>
   </data>
   <data name="Admin_NewsMessages_Index_Msg_Saved" xml:space="preserve">
     <value>Message was changed successfully.</value>
@@ -274,6 +274,9 @@
   <data name="Layout_Menu_Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="Layout_Menu_News" xml:space="preserve">
+    <value>News</value>
+  </data>
   <data name="Layout_Menu_ResetPassword" xml:space="preserve">
     <value>Reset password</value>
   </data>
@@ -363,6 +366,9 @@ Please follow the instructions in the message.</value>
   </data>
   <data name="My_Index_TomorrowLab_Open" xml:space="preserve">
     <value>Tomorrow is open {0}.</value>
+  </data>
+  <data name="My_News_Title" xml:space="preserve">
+    <value>News</value>
   </data>
   <data name="My_OpeningHours_Closed" xml:space="preserve">
     <value>closed</value>
