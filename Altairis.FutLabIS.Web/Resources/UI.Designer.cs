@@ -124,6 +124,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage news messages.
+        /// </summary>
+        public static string Admin_Index_ManageNews {
+            get {
+                return ResourceManager.GetString("Admin_Index_ManageNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage opening hours.
         /// </summary>
         public static string Admin_Index_ManageOpeningHours {
@@ -165,6 +174,69 @@ namespace Altairis.FutLabIS.Web.Resources {
         public static string Admin_Index_Title {
             get {
                 return ResourceManager.GetString("Admin_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new news message.
+        /// </summary>
+        public static string Admin_NewsMessages_Create_Title {
+            get {
+                return ResourceManager.GetString("Admin_NewsMessages_Create_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this message?.
+        /// </summary>
+        public static string Admin_NewsMessages_Edit_DeleteConfirm {
+            get {
+                return ResourceManager.GetString("Admin_NewsMessages_Edit_DeleteConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit news message.
+        /// </summary>
+        public static string Admin_NewsMessages_Edit_Title {
+            get {
+                return ResourceManager.GetString("Admin_NewsMessages_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New message was created successfully..
+        /// </summary>
+        public static string Admin_NewsMessages_Index_Msg_Created {
+            get {
+                return ResourceManager.GetString("Admin_NewsMessages_Index_Msg_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mesage was successfully deleted..
+        /// </summary>
+        public static string Admin_NewsMessages_Index_Msg_Deleted {
+            get {
+                return ResourceManager.GetString("Admin_NewsMessages_Index_Msg_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message was changed successfully..
+        /// </summary>
+        public static string Admin_NewsMessages_Index_Msg_Saved {
+            get {
+                return ResourceManager.GetString("Admin_NewsMessages_Index_Msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News messages.
+        /// </summary>
+        public static string Admin_NewsMessages_Index_Title {
+            get {
+                return ResourceManager.GetString("Admin_NewsMessages_Index_Title", resourceCulture);
             }
         }
         

@@ -32,6 +32,12 @@ namespace Altairis.FutLabIS.Web.Pages.My {
 
         public OpeningHoursInfo OpenTomorrow { get; set; }
 
+        public DateTime LastNewsDate { get; set; }
+
+        public string LastNewsTitle { get; set; }
+
+        public string LastNewsText { get; set; }
+
         public class ReservationInfo {
 
             public int Id { get; set; }
@@ -52,6 +58,14 @@ namespace Altairis.FutLabIS.Web.Pages.My {
             // Get operning hours
             this.OpenToday = this.hoursProvider.GetOpeningHours(0);
             this.OpenTomorrow = this.hoursProvider.GetOpeningHours(1);
+
+            // Get latest news message
+            var latestNews = await this.dc.NewsMessages.OrderByDescending(x => x.Date).FirstOrDefaultAsync();
+            if(latestNews != null) {
+                this.LastNewsDate = latestNews.Date;
+                this.LastNewsTitle = latestNews.Title;
+                this.LastNewsText = latestNews.Text;
+            }
 
             // Get resources accessible to user
             var resourcesQuery = this.dc.Resources.OrderBy(x => x.Name);

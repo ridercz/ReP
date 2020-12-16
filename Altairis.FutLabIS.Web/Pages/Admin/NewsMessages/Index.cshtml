@@ -1,0 +1,33 @@
+﻿@page
+@model Altairis.FutLabIS.Web.Pages.Admin.NewsMessages.IndexModel
+@{ this.ViewBag.Title = UI.Admin_NewsMessages_Index_Title; }
+
+<table class="grid">
+    <thead>
+        <tr>
+            <th>@Display.Title</th>
+            <th>@Display.Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="new">
+            <td colspan="2">
+                <i class="fas fa-newspaper"></i>
+                <a asp-page="Create">@UI._Create</a>
+            </td>
+        </tr>
+        @foreach (var item in this.Model.NewsMessages) {
+            <tr>
+                <th>
+                    <i class="fas fa-newspaper"></i>
+                    <a asp-page="Edit" asp-route-newsMessageId="@item.Id">@item.Title</a>
+                </th>
+                <td><time value="@item.Date"></time></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<modal-box id="created" message="@UI.Admin_NewsMessages_Index_Msg_Created" />
+<modal-box id="saved" message="@UI.Admin_NewsMessages_Index_Msg_Saved" />
+<modal-box id="deleted" message="@UI.Admin_NewsMessages_Index_Msg_Deleted" />
