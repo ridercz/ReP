@@ -37,7 +37,7 @@ namespace Altairis.FutLabIS.Web {
         public void ConfigureServices(IServiceCollection services) {
             // Configure database
             services.AddDbContext<FutLabDbContext>(options => {
-                options.UseSqlServer(this.configuration.GetConnectionString("FutLabIS"));
+                options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection"));
             });
 
             // Configure base framework services
