@@ -277,6 +277,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This resource is enabled and visible to regular users.
+        /// </summary>
+        public static string ResourceEnabled {
+            get {
+                return ResourceManager.GetString("ResourceEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource.
         /// </summary>
         public static string ResourceId {

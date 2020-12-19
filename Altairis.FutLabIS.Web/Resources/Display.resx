@@ -189,6 +189,9 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me on this device</value>
   </data>
+  <data name="ResourceEnabled" xml:space="preserve">
+    <value>This resource is enabled and visible to regular users</value>
+  </data>
   <data name="ResourceId" xml:space="preserve">
     <value>Resource</value>
   </data>

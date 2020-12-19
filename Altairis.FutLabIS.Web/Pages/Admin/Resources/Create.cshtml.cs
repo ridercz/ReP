@@ -27,13 +27,13 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Resources {
             [Required, Range(0, 1440)]
             public int MaximumReservationTime { get; set; }
 
-            public bool Enabled { get; set; } = true;
-
             [Required, Color]
             public string ForegroundColor { get; set; } = "#000000";
 
             [Required, Color]
             public string BackgroundColor { get; set; } = "#ffffff";
+
+            public bool ResourceEnabled { get; set; } = true;
 
         }
 
@@ -42,7 +42,7 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Resources {
 
             var newResource = new Resource {
                 Description = this.Input.Description,
-                Enabled = this.Input.Enabled,
+                Enabled = this.Input.ResourceEnabled,
                 MaximumReservationTime = this.Input.MaximumReservationTime,
                 Name = this.Input.Name,
                 ForegroundColor = this.Input.ForegroundColor,
