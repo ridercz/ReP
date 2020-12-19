@@ -189,6 +189,9 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Zapamatovat si mě na tomto zařízení</value>
   </data>
+  <data name="ResourceEnabled" xml:space="preserve">
+    <value>Tento prostředek je povolen a viditelný pro běžné uživatele.</value>
+  </data>
   <data name="ResourceId" xml:space="preserve">
     <value>Prostředek</value>
   </data>
@@ -206,6 +209,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Nadpis</value>
+  </data>
+  <data name="UserEnabled" xml:space="preserve">
+    <value>Tento uživatel je povolen a může se přihlásit</value>
   </data>
   <data name="UserName" xml:space="preserve">
     <value>Uživatelské jméno</value>
