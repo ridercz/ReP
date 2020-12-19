@@ -1,0 +1,13 @@
+[
+  {
+    "inputFiles": [
+      "node_modules/aspnet-validation/dist/aspnet-validation.js",
+      "Scripts/init.js"
+    ],
+    "outputFileName": "wwwroot/Content/Scripts/sitebundle.js",
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  }
+]
