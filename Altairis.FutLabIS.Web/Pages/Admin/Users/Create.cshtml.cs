@@ -1,11 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Threading.Tasks;
 using Altairis.FutLabIS.Data;
+using Altairis.FutLabIS.Web.Resources;
 using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.FutLabIS.Web.Pages.Admin.Users {
     public class CreateModel : PageModel {
@@ -35,7 +39,14 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Users {
 
             public bool IsAdministrator { get; set; }
 
+            public string Language { get; set; } = "cs-CZ";
+
         }
+
+        public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
+            new SelectListItem(UI.My_Settings_Index_Language_CS, "cs-CZ"),
+            new SelectListItem(UI.My_Settings_Index_Language_EN, "en-US")
+        };
 
         public async Task<IActionResult> OnPostAsync() {
             if (!this.ModelState.IsValid) return this.Page();
@@ -45,7 +56,7 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Users {
                 UserName = this.Input.UserName,
                 Email = this.Input.Email,
                 PhoneNumber = this.Input.PhoneNumber,
-                Language = "cs-CZ"
+                Language = this.Input.Language
             };
             var result = await this.userManager.CreateAsync(newUser);
             if (!this.IsIdentitySuccess(result)) return this.Page();
@@ -59,11 +70,12 @@ namespace Altairis.FutLabIS.Web.Pages.Admin.Users {
             var activationUrl = this.Url.Page("/Login/Activate", pageHandler: null, values: new { UserId = newUser.Id, Token = token }, protocol: this.Request.Scheme);
 
             // Send welcome mail
+            var culture = new CultureInfo(this.Input.Language);
             var msg = new TemplatedMailMessageDto("Activation", newUser.Email);
             await this.mailerService.SendMessageAsync(msg, new {
                 userName = newUser.UserName,
                 url = activationUrl
-            });
+            }, culture, culture);
 
             return this.RedirectToPage("Index", null, "created");
         }

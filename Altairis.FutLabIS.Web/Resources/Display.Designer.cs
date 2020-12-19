@@ -331,6 +331,15 @@ namespace Altairis.FutLabIS.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user is enabled and can sign in.
+        /// </summary>
+        public static string UserEnabled {
+            get {
+                return ResourceManager.GetString("UserEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User name.
         /// </summary>
         public static string UserName {
