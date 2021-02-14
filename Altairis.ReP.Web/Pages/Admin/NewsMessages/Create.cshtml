@@ -1,0 +1,11 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.Admin.NewsMessages.CreateModel
+@{ this.ViewBag.Title = UI.Admin_NewsMessages_Create_Title; }
+<form method="post">
+    @Html.EditorFor(m => this.Model.Input)
+    <footer>
+        <div asp-validation-summary="All"></div>
+        <input type="submit" value="@UI._Submit" />
+        <a asp-page="Index" class="button secondary">@UI._Cancel</a>
+    </footer>
+</form>

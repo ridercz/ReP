@@ -1,0 +1,11 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.FirstRunModel
+@{ this.ViewBag.Title = UI.FirstRun_Title; }
+<p>@UI.FirstRun_Text</p>
+<form method="post">
+    @Html.EditorFor(m => this.Model.Input)
+    <footer>
+        <div asp-validation-summary="All"></div>
+        <input type="submit" value="@UI._Submit" />
+    </footer>
+</form>

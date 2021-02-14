@@ -1,0 +1,42 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.Admin.Users.IndexModel
+@{ this.ViewBag.Title = UI.Admin_Users_Index_Title; }
+<table class="grid">
+    <thead>
+        <tr>
+            <th>@Display.UserName</th>
+            <th>@Display.Email</th>
+            <th>@Display.PhoneNumber</th>
+            <th>@Display.Language</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="new">
+            <td colspan="4">
+                <i class="fas fa-fw fa-user-plus"></i>
+                <a asp-page="Create">@UI._Create</a>
+            </td>
+        </tr>
+        @foreach (var item in this.Model.Users) {
+            <tr>
+                <th>
+                    @if (!item.Enabled) {
+                        <i class="fas fa-fw fa-user-times" title="@UI.Admin_Users_Index_Disabled"></i>
+                    } else if (item.EmailConfirmed) {
+                        <i class="fas fa-fw fa-user-check" title="@UI.Admin_Users_Index_Enabled"></i>
+                    } else {
+                        <i class="fas fa-fw fa-user-clock" title="@UI.Admin_Users_Index_Waiting"></i>
+                    }
+                    <a asp-page="Edit" asp-route-userId="@item.Id">@item.UserName</a>
+                </th>
+                <td><a href="mailto:@item.Email">@item.Email</a></td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Language[0..2]</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<modal-box id="created" message="@UI.Admin_User_Index_Msg_Created" />
+<modal-box id="saved" message="@UI.Admin_User_Index_Msg_Saved" />
+<modal-box id="deleted" message="@UI.Admin_User_Index_Msg_Deleted" />

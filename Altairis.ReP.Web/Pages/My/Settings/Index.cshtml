@@ -1,0 +1,77 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.My.Settings.IndexModel
+@{ this.ViewBag.Title = UI.My_Settings_Index_Title; }
+<form method="post">
+    <table class="details">
+        <tbody>
+            <tr>
+                <th>@Display.UserName</th>
+                <td>
+                    <a href="#changeusername"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                    @Model.Me.UserName
+                </td>
+            </tr>
+            <tr>
+                <th>@Display.Password</th>
+                <td>
+                    <a asp-page="Password"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                    ********
+                </td>
+            </tr>
+            <tr>
+                <th>@Display.Email</th>
+                <td>
+                    <div style="margin-bottom:1ex;">
+                        <a asp-page="Email"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                        @Model.Me.Email
+                    </div>
+                    @*</td>
+                        </tr>
+                        <tr>
+                            <th>@Display.Mailing</th>
+                            <td>*@
+                    <ul class="checkbox-list vertical">
+                        <li>
+                            <input type="checkbox" checked="checked" disabled="disabled" />
+                            <label>@UI.My_Settings_Mailing_System</label>
+                        </li>
+                        <li>
+                            <input asp-for="Input.SendNotifications" />
+                            <label asp-for="Input.SendNotifications"></label>
+                        </li>
+                        <li>
+                            <input asp-for="Input.SendNews" />
+                            <label asp-for="Input.SendNews"></label>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Language"></label></th>
+                <td>
+                    <checkbox-list asp-for="Input.Language" asp-items="Model.AllLanguages" control-type="RadioButton" class="checkbox-list" />
+                </td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.PhoneNumber"></label></th>
+                <td><input asp-for="Input.PhoneNumber" /></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="@UI._Submit" />
+                    <a href="#delete" class="button tertiary">@UI._Delete</a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
+
+<modal-box id="changeusername" message="@UI.My_Settings_Index_Msg_ChangeUserName" />
+<modal-box id="changepassword" message="@UI.My_Settings_Index_Msg_ChangePassword" />
+<modal-box id="changeemail" message="@UI.My_Settings_Index_Msg_ChangeEmail" />
+<modal-box id="changeemaildone" message="@UI.My_Settings_Index_Msg_ChangeEmailDone" />
+<modal-box id="delete" message="@UI.My_Settings_Index_Msg_Delete" />
+<modal-box id="saved" message="@UI.My_Settings_Index_Msg_Saved" />

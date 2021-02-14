@@ -1,9 +1,0 @@
-﻿@page
-@model Altairis.FutLabIS.Web.Pages.My.NewsModel
-@{ this.ViewBag.Title = UI.My_News_Title; }
-
-@foreach (var item in this.Model.Messages) {
-    <h2>@item.Title</h2>
-    <div class="r em"><time value="@item.Date"></time></div>
-    <plaintext text="@item.Text"></plaintext>
-}

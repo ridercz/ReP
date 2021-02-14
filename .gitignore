@@ -127,5 +127,5 @@ ServiceFabricBackup/
 node_modules
 
 # Production and deployment settings
-/Altairis.FutLabIS.Web/Properties/ServiceDependencies*
-/Altairis.FutLabIS.Web/appsettings.Production.json
+/Altairis.ReP.Web/Properties/ServiceDependencies*
+/Altairis.ReP.Web/appsettings.Production.json

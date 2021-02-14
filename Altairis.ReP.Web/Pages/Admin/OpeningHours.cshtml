@@ -1,0 +1,76 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.Admin.OpeningHoursModel
+@{ this.ViewBag.Title = UI.Admin_OpeningHours_Title; }
+
+<h2>@UI.Admin_OpeningHours_Standard</h2>
+<table class="grid">
+    <thead>
+        <tr>
+            <th style="max-width:15ex">@Display.DayOfWeek</th>
+            <th>@Display.OpeningHours</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StandardOpeningHours) {
+            <tr>
+                <th>@item.Date.ToString("dddd")</th>
+                <td>@(item.IsOpen? item : UI.My_OpeningHours_Closed)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>@UI.Admin_OpeningHours_Exceptions</h2>
+<div id="new" class="modal">
+    <form method="post">
+        <header>@UI.Admin_OpeningHours_Add</header>
+        <p>@UI.Admin_OpeningHours_Add_Text</p>
+        <p>
+            <label asp-for="Input.Date"></label>:<br />
+            <input asp-for="Input.Date" />
+        </p>
+        <p>
+            <label asp-for="Input.OpeningTime"></label>:<br />
+            <input asp-for="Input.OpeningTime" />
+            <input asp-for="Input.ClosingTime" />
+        </p>
+        <div asp-validation-summary="All"></div>
+        <footer>
+            <input type="submit" value="@UI._Submit" />
+            <a href="#" class="button secondary">@UI._Cancel</a>
+        </footer>
+    </form>
+</div>
+
+<table class="grid">
+    <thead>
+        <tr>
+            <th style="max-width:15ex">@Display.Date</th>
+            <th>@Display.OpeningHours</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="new">
+            <td colspan="3">
+                <i class="fas fa-clock"></i>
+                <a href="#new">@UI._Create</a>
+            </td>
+        </tr>
+        @foreach (var item in Model.OpeningHoursChanges) {
+            <tr>
+                <th>
+                    <i class="fas fa-clock"></i>
+                    @item.Date.ToShortDateString()
+                </th>
+                <td>@(item.ClosingTime.Subtract(item.OpeningTime) > TimeSpan.Zero ? item.OpeningTime.ToString("hh\\:mm") +" - "+ item.ClosingTime.ToString("hh\\:mm") :UI.My_OpeningHours_Closed)</td>
+                <td class="buttons">
+                    <a asp-page-handler="Delete" asp-route-ohchId="@item.Id" confirm-message="@UI.Admin_OpeningHours_DeleteConfirm"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<modal-box id="created" message="@UI.Admin_OpeningHours_Msg_Created" />
+<modal-box id="deleted" message="@UI.Admin_OpeningHours_Msg_Deleted" />

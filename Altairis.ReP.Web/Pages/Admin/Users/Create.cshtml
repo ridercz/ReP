@@ -1,0 +1,28 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.Admin.Users.CreateModel
+@{ this.ViewBag.Title = UI.Admin_Users_Create_Title; }
+<form method="post">
+    <header>
+        @UI.Admin_Users_Create_Text
+    </header>
+    <p>
+        <label asp-for="Input.UserName"></label>:<br />
+        <input asp-for="Input.UserName" />
+    </p>
+    <p>
+        <label asp-for="Input.Email"></label>:<br />
+        <input asp-for="Input.Email" /><br />
+        <checkbox-list asp-for="Input.Language" asp-items="Model.AllLanguages" control-type="RadioButton" class="checkbox-list" />
+    </p>
+    <p>
+        <label asp-for="Input.PhoneNumber"></label>:<br />
+        <input asp-for="Input.PhoneNumber" />
+    </p>
+    <p><input asp-for="Input.IsMaster" /> <label asp-for="Input.IsMaster"></label></p>
+    <p><input asp-for="Input.IsAdministrator" /> <label asp-for="Input.IsAdministrator"></label></p>
+    <footer>
+        <div asp-validation-summary="All"></div>
+        <input type="submit" value="@UI._Submit" />
+        <a asp-page="Index" class="button secondary">@UI._Cancel</a>
+    </footer>
+</form>

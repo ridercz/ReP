@@ -1,0 +1,48 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.My.IndexModel
+@{ this.ViewBag.Title = UI.My_Index_Title; }
+
+<p class="infobox">
+    <i class="fas fa-clock fa-2x fa-pull-left"></i>
+    @Html.Raw(this.Model.OpenToday.IsOpen ? string.Format(UI.My_Index_TodayLab_Open, this.Model.OpenToday) : UI.My_Index_TodayLab_Closed)
+    @Html.Raw(this.Model.OpenTomorrow.IsOpen ? string.Format(UI.My_Index_TomorrowLab_Open, this.Model.OpenTomorrow) : UI.My_Index_TomorrowLab_Closed)<br />
+    <a asp-page="OpeningHours">@UI.My_Index_OpeningHours</a>
+</p>
+
+<h2>@Model.LastNewsTitle</h2>
+<div class="r em"><time value="@Model.LastNewsDate"></time></div>
+<plaintext text="@Model.LastNewsText"></plaintext>
+
+<h2>@UI.My_Index_Resources</h2>
+@foreach (var item in this.Model.Resources) {
+    <p>
+        <i class="fas fa-cube fa-2x fa-pull-left"></i>
+        <a asp-page="Reservations" asp-route-resourceId="@item.Id" class="strong">@item.Name</a><br />
+        @item.Description
+    </p>
+}
+
+<h2 id="upcoming">@UI.My_Index_Reservations</h2>
+<p visible="!Model.Reservations.Any()">@UI.My_Index_NoReservations</p>
+<table class="grid" visible="Model.Reservations.Any()">
+    <thead>
+        <tr>
+            <th>@Display.ResourceId</th>
+            <th>@Display.DateBegin</th>
+            <th>@Display.DateEnd</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Reservations) {
+            <tr>
+                <th><i class="fas fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId" asp-fragment="reservation_@item.Id">@item.ResourceName</a></th>
+                <td><time value="item.DateBegin"></time></td>
+                <td><time value="item.DateEnd"></time></td>
+                <td class="buttons"><a visible="@item.CanBeDeleted" asp-page-handler="Delete" asp-route-reservationId="@item.Id" title="@UI._Delete" confirm-message="@UI.My_Reservations_DeleteConfirm"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p><a asp-page="Archive" class="button">@UI.My_Index_Archive</a></p>
+<modal-box id="reservationdeleted" message="@UI.My_Index_Msg_ReservationDeleted" />

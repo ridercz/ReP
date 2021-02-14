@@ -1,0 +1,6 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.My.Settings.EmailConfirmModel
+@{ this.ViewBag.Title = UI.My_Settings_Email_Title; }
+@Html.Raw(UI.My_Settings_EmailConfirm_FailedHtml)
+<a asp-page="Email" class="button">@UI.My_Settings_EmailConfirm_TryAgain</a>
+<a asp-page="Index" class="button secondary">@UI._Cancel</a>

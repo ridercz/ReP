@@ -1,0 +1,12 @@
+﻿@page "{resourceId:int:min(1)}"
+@model Altairis.ReP.Web.Pages.Admin.Resources.EditModel
+@{ this.ViewBag.Title = UI.Admin_Resources_Edit_Title; }
+<form method="post">
+    @Html.EditorFor(m => this.Model.Input)
+    <footer>
+        <div asp-validation-summary="All"></div>
+        <input type="submit" value="@UI._Submit" />
+        <a asp-page="Index" class="button secondary">@UI._Cancel</a>
+        <input type="submit" class="tertiary" value="@UI._Delete" asp-page-handler="delete" confirm-message="@UI.Admin_Resources_Edit_DeleteConfirm" />
+    </footer>
+</form>
