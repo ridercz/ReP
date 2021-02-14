@@ -1,1 +1,8 @@
-{"name":"myproject","version":"1.0.0","devDependencies":{"aspnet-validation":"^0.0.11","es6-promise":"^4.2.8"}}
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "aspnet-validation": "^0.0.11",
+    "es6-promise": "^4.2.8"
+  }
+}
