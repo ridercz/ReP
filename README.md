@@ -1,4 +1,4 @@
-# ReP - Rezervace Prostøedkù (Resource Reservation)
+ï»¿# ReP - Rezervace ProstÅ™edkÅ¯ (Resource Reservation)
 
 This project started as a specific resource reservation system for the [FutLab](https://www.futlab.cc) makerspace in Prague, with the following [design document](https://1drv.ms/w/s!Apo4M7bgM3zBz69X-y8zIZAgBQDN5w) (Czech only).
 
