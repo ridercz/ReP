@@ -8,6 +8,10 @@
     <title>@this.ViewBag.Title | @this.OptionsAccessor.Value.ApplicationName</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="~/Content/Styles/site.min.css" asp-append-version="true" />
+    <link rel="icon" href="/favicon.ico" asp-append-version="true" />
+    <link rel="icon" href="/Content/Images/rep-icon.svg" type="image/svg+xml" asp-append-version="true" />
+    <link rel="apple-touch-icon" href="/Content/Images/rep-icon-180.png" asp-append-version="true" />
+    <link rel="manifest" href="/manifest.webmanifest" asp-append-version="true" />
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -31,7 +35,7 @@
                 <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
             </li>
         </ul>
-        <img src="~/Content/Images/rep-logo.svg" height="75" alt="@this.OptionsAccessor.Value.ApplicationName" />
+        <img src="~/Content/Images/rep-logo.svg" height="75" alt="@this.OptionsAccessor.Value.ApplicationName" asp-append-version="true" />
     </header>
     <nav>
         <input type="checkbox" id="mtoggler" hidden="hidden" />
@@ -52,7 +56,7 @@
         @RenderBody()
     </main>
     <footer>
-        <a href="https://www.altairis.cz/"><img src="~/Content/Images/altairis.svg" alt="Logo Altairis" height="30" class="fl" /></a>
+        <a href="https://www.altairis.cz/"><img src="~/Content/Images/altairis.svg" alt="Logo Altairis" height="30" class="fl" asp-append-version="true" /></a>
         Copyright &copy; <a href="https://www.rider.cz/">Michal A. Valášek</a> - <a href="https://www.altairis.cz/">Altairis</a>, 2020-2021<br />
         Build <assembly-version display="BuildTime" /> | powered by <a href="https://dot.net/">.NET</a>
     </footer>
