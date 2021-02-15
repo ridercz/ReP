@@ -59,6 +59,10 @@ html {
             border-top: 2px solid $Accent;
             margin-top: $Padding;
             padding-top: ($Padding / 2);
+
+            img {
+                margin-right: $Padding;
+            }
         }
     }
 }

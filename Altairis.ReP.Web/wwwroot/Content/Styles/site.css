@@ -88,6 +88,8 @@ html {
       border-top: 2px solid #ff6a00;
       margin-top: 20px;
       padding-top: 10px; }
+      html body > footer img {
+        margin-right: 20px; }
 
 a:link, a:visited {
   color: #ff6a00; }
