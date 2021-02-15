@@ -1,12 +1,11 @@
-﻿@{
+﻿@inject Microsoft.Extensions.Options.IOptions<AppSettings> OptionsAccessor
+@{
     var currentCulture = System.Globalization.CultureInfo.CurrentUICulture.Name;
 }
 <!DOCTYPE html>
 <html lang="@currentCulture">
 <head>
-    <title>@this.ViewBag.Title | FutLab IS</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap" />
+    <title>@this.ViewBag.Title | @this.OptionsAccessor.Value.ApplicationName</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="~/Content/Styles/site.min.css" asp-append-version="true" />
     @RenderSection("head", required: false)
@@ -32,7 +31,7 @@
                 <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
             </li>
         </ul>
-        <a asp-page="/My/Index"><img src="~/Content/Images/logo.png" alt="FutLab logo" height="75" /></a>
+        <h1>@this.OptionsAccessor.Value.ApplicationName</h1>
     </header>
     <nav>
         <input type="checkbox" id="mtoggler" hidden="hidden" />
@@ -54,7 +53,7 @@
     </main>
     <footer>
         <a href="https://www.altairis.cz/"><img src="~/Content/Images/altairis.svg" alt="Logo Altairis" height="30" class="fl" /></a>
-        Copyright &copy; <a href="https://www.rider.cz/">Michal A. Valášek</a> - <a href="https://www.altairis.cz/">Altairis</a>, 2020<br />
+        Copyright &copy; <a href="https://www.rider.cz/">Michal A. Valášek</a> - <a href="https://www.altairis.cz/">Altairis</a>, 2020-2021<br />
         Build <assembly-version display="BuildTime" /> | powered by <a href="https://dot.net/">.NET</a>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.min.js" integrity="sha512-JMK7ImCd/9VxQM7FWvAT3njqo5iGKkWcOax6Bwzuq48xxFd7/jekKcgN+59ZRwBoEpZvv6Jkwh3fDGrBVWX5vA==" crossorigin="anonymous"></script>

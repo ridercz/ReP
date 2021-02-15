@@ -139,7 +139,7 @@
   <data name="News_Text" xml:space="preserve">
     <value>Hello,
 
-the following news was published in the FutLab IS:
+the following news was published in the ReP system:
 
 {{text}}</value>
   </data>
@@ -162,6 +162,6 @@ the following news was published in the FutLab IS:
     <value>mailing\en\reservationdeleted_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SubjectFormatString" xml:space="preserve">
-    <value>[FutLab IS] {0}</value>
+    <value>[ReP] {0}</value>
   </data>
 </root>

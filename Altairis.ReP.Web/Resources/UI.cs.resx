@@ -352,13 +352,13 @@ Postupujte podle pokynů ve zprávě.</value>
     <value>Dostupné prostředky</value>
   </data>
   <data name="My_Index_Title" xml:space="preserve">
-    <value>Vítejte ve FutLabu!</value>
+    <value>Vítejte v systému ReP - rezervace prostředků!</value>
   </data>
   <data name="My_Index_TodayLab_Closed" xml:space="preserve">
-    <value>Lab je dnes &lt;b&gt;zavřený&lt;/b&gt;.</value>
+    <value>Dnes je &lt;b&gt;zavřeno&lt;/b&gt;.</value>
   </data>
   <data name="My_Index_TodayLab_Open" xml:space="preserve">
-    <value>Lab je dnes &lt;b&gt;otevřen {0}&lt;/b&gt;.</value>
+    <value>Dnes je &lt;b&gt;otevřeno {0}&lt;/b&gt;.</value>
   </data>
   <data name="My_Index_TomorrowLab_Closed" xml:space="preserve">
     <value>Zítra je zavřeno.</value>
@@ -475,7 +475,7 @@ Postupujte podle pokynů ve zprávě.</value>
     <value>Ne</value>
   </data>
   <data name="_OK" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="_Submit" xml:space="preserve">
     <value>Odeslat</value>

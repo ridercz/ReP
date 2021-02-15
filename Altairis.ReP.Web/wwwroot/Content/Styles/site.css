@@ -2,9 +2,9 @@
   box-sizing: border-box; }
 
 html {
-  background-color: #5e2f83;
+  background-color: #ff6a00;
   color: #fff;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   margin: 0;
   padding: 0; }
@@ -22,6 +22,11 @@ html {
       margin: 0; }
     html body > header a {
       text-decoration: none; }
+    html body > header h1 {
+      margin: 0;
+      padding: .5ex 0;
+      font-weight: normal;
+      font-size: 300%; }
     html body > nav a:link, html body > nav a:visited {
       color: #fff; }
     html body > nav input[type=checkbox] {
@@ -44,7 +49,7 @@ html {
         color: #fff; }
         html body > nav ul a:active, html body > nav ul a:focus, html body > nav ul a:hover {
           color: #fff;
-          background: #5e2f83; }
+          background: #ff6a00; }
     @media (max-width: 600px) {
       html body > nav ul {
         display: none;
@@ -62,7 +67,7 @@ html {
           padding: 0.5em;
           display: block; }
           html body > nav input[type=checkbox] ~ label span:active, html body > nav input[type=checkbox] ~ label span:focus, html body > nav input[type=checkbox] ~ label span:hover {
-            background: #5e2f83;
+            background: #ff6a00;
             color: #fff; }
         html body > nav input[type=checkbox] ~ label.open {
           display: block; }
@@ -78,14 +83,14 @@ html {
         display: block; } }
     html body > footer {
       font-size: 80%;
-      color: #5e2f83;
+      color: #ff6a00;
       text-align: right;
-      border-top: 2px solid #5e2f83;
+      border-top: 2px solid #ff6a00;
       margin-top: 20px;
       padding-top: 10px; }
 
 a:link, a:visited {
-  color: #5e2f83; }
+  color: #ff6a00; }
 
 a:hover, a:active {
   color: #000; }
@@ -120,13 +125,13 @@ em, .em {
 
 .infobox {
   font-style: italic;
-  background-color: rgba(94, 47, 131, 0.1);
+  background-color: rgba(255, 106, 0, 0.1);
   padding: 20px; }
   .infobox i {
-    color: #5e2f83; }
+    color: #ff6a00; }
 
 form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input .textbox {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding: 5px;
   width: 100%;
@@ -134,13 +139,13 @@ form input[type=text], form input[type=password], form input[type=email], form i
   border: 1px solid gray;
   box-sizing: border-box; }
   form input[type=text].input-validation-error, form input[type=password].input-validation-error, form input[type=email].input-validation-error, form input[type=url].input-validation-error, form input .textbox.input-validation-error {
-    background-color: #dbc6eb;
-    border: 1px solid #5e2f83; }
+    background-color: white;
+    border: 1px solid #ff6a00; }
   form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input .textbox:focus {
     border: 1px solid #000; }
 
 form input[type=tel], form input[type=number], form input[type=date], form input[type=time], form input.short {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding: 5px;
   width: 100%;
@@ -149,13 +154,13 @@ form input[type=tel], form input[type=number], form input[type=date], form input
   box-sizing: border-box;
   max-width: 10em; }
   form input[type=tel].input-validation-error, form input[type=number].input-validation-error, form input[type=date].input-validation-error, form input[type=time].input-validation-error, form input.short.input-validation-error {
-    background-color: #dbc6eb;
-    border: 1px solid #5e2f83; }
+    background-color: white;
+    border: 1px solid #ff6a00; }
   form input[type=tel]:focus, form input[type=number]:focus, form input[type=date]:focus, form input[type=time]:focus, form input.short:focus {
     border: 1px solid #000; }
 
 form input[type=color] {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding: 5px;
   width: 100%;
@@ -167,13 +172,13 @@ form input[type=color] {
   max-width: 10em;
   border: none; }
   form input[type=color].input-validation-error {
-    background-color: #dbc6eb;
-    border: 1px solid #5e2f83; }
+    background-color: white;
+    border: 1px solid #ff6a00; }
   form input[type=color]:focus {
     border: 1px solid #000; }
 
 form input[type=datetime-local] {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding: 5px;
   width: 100%;
@@ -182,19 +187,19 @@ form input[type=datetime-local] {
   box-sizing: border-box;
   max-width: 15em; }
   form input[type=datetime-local].input-validation-error {
-    background-color: #dbc6eb;
-    border: 1px solid #5e2f83; }
+    background-color: white;
+    border: 1px solid #ff6a00; }
   form input[type=datetime-local]:focus {
     border: 1px solid #000; }
 
 form input[type=submit], form input[type=button] {
   display: inline-block;
   text-align: center;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: bold;
   border: 1px solid #000;
-  background-color: #5e2f83;
+  background-color: #ff6a00;
   color: #fff;
   padding: 10px 3ex;
   text-decoration: none;
@@ -205,16 +210,16 @@ form input[type=submit], form input[type=button] {
   form input[type=submit]:hover, form input[type=button]:hover {
     color: #fff !important;
     background-color: #000 !important;
-    border: 1px solid #5e2f83 !important; }
+    border: 1px solid #ff6a00 !important; }
   form input[type=submit].secondary, form input[type=button].secondary {
-    background-color: rgba(94, 47, 131, 0.5); }
+    background-color: rgba(255, 106, 0, 0.5); }
   form input[type=submit].tertiary, form input[type=button].tertiary {
     background-color: #fff;
     color: #000;
     float: right; }
 
 form textarea {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding: 5px;
   width: 100%;
@@ -227,15 +232,15 @@ form textarea {
   overflow-y: scroll;
   resize: vertical; }
   form textarea.input-validation-error {
-    background-color: #dbc6eb;
-    border: 1px solid #5e2f83; }
+    background-color: white;
+    border: 1px solid #ff6a00; }
   form textarea:focus {
     border: 1px solid #000; }
   form textarea.tall {
     height: 40em; }
 
 form select {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding: 5px;
   width: 100%;
@@ -243,8 +248,8 @@ form select {
   border: 1px solid gray;
   box-sizing: border-box; }
   form select.input-validation-error {
-    background-color: #dbc6eb;
-    border: 1px solid #5e2f83; }
+    background-color: white;
+    border: 1px solid #ff6a00; }
   form select:focus {
     border: 1px solid #000; }
 
@@ -254,7 +259,7 @@ form label[for] {
 form span.description {
   display: block;
   font-size: 80%;
-  color: #5e2f83;
+  color: #ff6a00;
   margin-bottom: .5ex; }
   form span.description::before {
     content: '('; }
@@ -264,11 +269,11 @@ form span.description {
 a.button {
   display: inline-block;
   text-align: center;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: bold;
   border: 1px solid #000;
-  background-color: #5e2f83;
+  background-color: #ff6a00;
   color: #fff;
   padding: 10px 3ex;
   text-decoration: none;
@@ -279,9 +284,9 @@ a.button {
   a.button:hover {
     color: #fff !important;
     background-color: #000 !important;
-    border: 1px solid #5e2f83 !important; }
+    border: 1px solid #ff6a00 !important; }
   a.button.secondary {
-    background-color: rgba(94, 47, 131, 0.5); }
+    background-color: rgba(255, 106, 0, 0.5); }
   a.button.tertiary {
     background-color: #fff;
     color: #000;
@@ -314,7 +319,7 @@ ul.checkbox-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(94, 47, 131, 0.75); }
+  background: rgba(255, 106, 0, 0.75); }
   .modal:target {
     visibility: visible;
     opacity: 1; }
@@ -355,14 +360,14 @@ table.grid {
   table.grid td, table.grid th {
     padding: 10px;
     text-align: left;
-    border-bottom: solid 1px rgba(94, 47, 131, 0.25); }
+    border-bottom: solid 1px rgba(255, 106, 0, 0.25); }
   table.grid thead th {
-    border-bottom: double 3px #5e2f83; }
+    border-bottom: double 3px #ff6a00; }
   table.grid tbody tr.new {
     font-weight: bold;
     font-style: italic; }
   table.grid tbody tr:hover {
-    background-color: rgba(94, 47, 131, 0.15) !important; }
+    background-color: rgba(255, 106, 0, 0.15) !important; }
   table.grid tbody tr:nth-child(2n) {
     background-color: rgba(0, 0, 0, 0.05); }
   table.grid tbody td.buttons {
@@ -390,9 +395,9 @@ table.details {
     padding: 10px;
     text-align: left;
     vertical-align: top;
-    border-top: solid 1px rgba(94, 47, 131, 0.25); }
+    border-top: solid 1px rgba(255, 106, 0, 0.25); }
   table.details tbody tr:hover {
-    background-color: rgba(94, 47, 131, 0.15) !important; }
+    background-color: rgba(255, 106, 0, 0.15) !important; }
 
 .calendar {
   display: flex;
@@ -408,7 +413,7 @@ table.details {
       text-align: center;
       padding: 1ex;
       font-weight: bold;
-      background-color: rgba(94, 47, 131, 0.75);
+      background-color: rgba(255, 106, 0, 0.75);
       color: #fff; }
   .calendar section.week {
     display: flex;
@@ -422,10 +427,10 @@ table.details {
         padding: 1ex;
         text-align: right; }
       .calendar section.week > article.today header {
-        color: #5e2f83;
+        color: #ff6a00;
         font-weight: bold; }
       .calendar section.week > article.weekend {
-        background-color: rgba(94, 47, 131, 0.1); }
+        background-color: rgba(255, 106, 0, 0.1); }
       .calendar section.week > article ul {
         margin: 0;
         padding: 0;
@@ -434,7 +439,7 @@ table.details {
           display: block;
           margin: 0.25ex;
           padding: 0.5ex;
-          background-color: rgba(94, 47, 131, 0.5); }
+          background-color: rgba(255, 106, 0, 0.5); }
           .calendar section.week > article ul li.system {
             border: 2px solid #000; }
           .calendar section.week > article ul li:target {

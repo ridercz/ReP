@@ -33,6 +33,13 @@ html {
             a {
                 text-decoration: none;
             }
+
+            h1 {
+                margin: 0;
+                padding: .5ex 0;
+                font-weight: normal;
+                font-size: 300%;
+            }
         }
 
         > nav {

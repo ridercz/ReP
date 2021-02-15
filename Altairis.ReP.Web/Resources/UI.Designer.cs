@@ -814,7 +814,7 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to FutLab!.
+        ///   Looks up a localized string similar to Welcome to ReP - the resource reservation system!.
         /// </summary>
         public static string My_Index_Title {
             get {
@@ -823,7 +823,7 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The lab is &lt;b&gt;closed&lt;/b&gt; today..
+        ///   Looks up a localized string similar to Today is &lt;b&gt;closed&lt;/b&gt;..
         /// </summary>
         public static string My_Index_TodayLab_Closed {
             get {
@@ -832,7 +832,7 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The lab is today &lt;b&gt;open {0}&lt;/b&gt;..
+        ///   Looks up a localized string similar to Today is &lt;b&gt;open {0}&lt;/b&gt;..
         /// </summary>
         public static string My_Index_TodayLab_Open {
             get {

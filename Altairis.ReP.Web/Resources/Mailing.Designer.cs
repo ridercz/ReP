@@ -136,7 +136,7 @@ namespace Altairis.ReP.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello,
         ///
-        ///the following news was published in the FutLab IS:
+        ///the following news was published in the ReP system:
         ///
         ///{{text}}.
         /// </summary>
@@ -223,7 +223,7 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [FutLab IS] {0}.
+        ///   Looks up a localized string similar to [ReP] {0}.
         /// </summary>
         public static string SubjectFormatString {
             get {

@@ -1,5 +1,1 @@
 ﻿{0}
-
---
-Tuto zprávu dostáváte, protože jste členem FutLabu.
-Možnosti zasílání zpráv můžete nastavit ve svém profilu na https://is.futlab.cc/

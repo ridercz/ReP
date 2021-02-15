@@ -353,13 +353,13 @@ Please follow the instructions in the message.</value>
     <value>Available resources</value>
   </data>
   <data name="My_Index_Title" xml:space="preserve">
-    <value>Welcome to FutLab!</value>
+    <value>Welcome to ReP - the resource reservation system!</value>
   </data>
   <data name="My_Index_TodayLab_Closed" xml:space="preserve">
-    <value>The lab is &lt;b&gt;closed&lt;/b&gt; today.</value>
+    <value>Today is &lt;b&gt;closed&lt;/b&gt;.</value>
   </data>
   <data name="My_Index_TodayLab_Open" xml:space="preserve">
-    <value>The lab is today &lt;b&gt;open {0}&lt;/b&gt;.</value>
+    <value>Today is &lt;b&gt;open {0}&lt;/b&gt;.</value>
   </data>
   <data name="My_Index_TomorrowLab_Closed" xml:space="preserve">
     <value>Tomorrow is closed.</value>

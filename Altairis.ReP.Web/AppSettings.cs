@@ -3,6 +3,8 @@
 namespace Altairis.ReP.Web {
     public class AppSettings {
 
+        public string ApplicationName { get; set; }
+
         public SecurityConfig Security { get; set; } = new SecurityConfig();
 
         public class SecurityConfig {
