@@ -72,6 +72,7 @@ namespace Altairis.ReP.Web {
                 .AddSignInManager<Services.ApplicationSignInManager>()
                 .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
             services.ConfigureApplicationCookie(options => {
+                options.Cookie.Name = "ReP-Auth";
                 options.LoginPath = "/login";
                 options.LogoutPath = "/login/logout";
                 options.AccessDeniedPath = "/login/accessdenied";
