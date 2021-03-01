@@ -340,6 +340,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no reservations in the system..
+        /// </summary>
+        public static string Admin_Reservations_NoReservations {
+            get {
+                return ResourceManager.GetString("Admin_Reservations_NoReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create new resource.
         /// </summary>
         public static string Admin_Resources_Create_Title {
@@ -742,6 +751,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have no reservations..
+        /// </summary>
+        public static string My_Archive_NoReservations {
+            get {
+                return ResourceManager.GetString("My_Archive_NoReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage my reservations.
         /// </summary>
         public static string My_Calendar_Manage {
@@ -855,6 +873,15 @@ namespace Altairis.ReP.Web.Resources {
         public static string My_Index_TomorrowLab_Open {
             get {
                 return ResourceManager.GetString("My_Index_TomorrowLab_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no news published..
+        /// </summary>
+        public static string My_News_NoNews {
+            get {
+                return ResourceManager.GetString("My_News_NoNews", resourceCulture);
             }
         }
         

@@ -15,7 +15,7 @@
     <plaintext text="@Model.LastNewsText"></plaintext>
 </div>
 
-<h2>@UI.My_Index_Resources</h2>
+<h2 visible="this.Model.Resources.Any()">@UI.My_Index_Resources</h2>
 @foreach (var item in this.Model.Resources) {
     <p>
         <i class="fas fa-cube fa-2x fa-pull-left"></i>

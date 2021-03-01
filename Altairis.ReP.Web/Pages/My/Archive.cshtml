@@ -2,7 +2,9 @@
 @model Altairis.ReP.Web.Pages.My.ArchiveModel
 @{ this.ViewBag.Title = UI.My_Index_Archive; }
 
-<table class="grid">
+<p visible="!Model.Reservations.Any()">@UI.My_Archive_NoReservations</p>
+
+<table class="grid" visible="Model.Reservations.Any()">
     <thead>
         <tr>
             <th>@Display.ResourceId</th>

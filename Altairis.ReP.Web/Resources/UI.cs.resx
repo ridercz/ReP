@@ -189,6 +189,9 @@
   <data name="Admin_Reservations_Index_Title" xml:space="preserve">
     <value>Všechny rezervace</value>
   </data>
+  <data name="Admin_Reservations_NoReservations" xml:space="preserve">
+    <value>V systému nejsou žádné rezervace.</value>
+  </data>
   <data name="Admin_Resources_Create_Title" xml:space="preserve">
     <value>Vytvořit nový prostředek</value>
   </data>
@@ -327,6 +330,9 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="Login_ResetPassword_Title" xml:space="preserve">
     <value>Nastavení nového hesla</value>
   </data>
+  <data name="My_Archive_NoReservations" xml:space="preserve">
+    <value>Nemáte žádné rezervace.</value>
+  </data>
   <data name="My_Calendar_Manage" xml:space="preserve">
     <value>Spravovat mé rezervace</value>
   </data>
@@ -365,6 +371,9 @@ Postupujte podle pokynů ve zprávě.</value>
   </data>
   <data name="My_Index_TomorrowLab_Open" xml:space="preserve">
     <value>Zítra je otevřeno {0}.</value>
+  </data>
+  <data name="My_News_NoNews" xml:space="preserve">
+    <value>Nejsou zveřejněny žádné zprávy.</value>
   </data>
   <data name="My_News_Title" xml:space="preserve">
     <value>Novinky</value>

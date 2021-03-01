@@ -189,6 +189,9 @@
   <data name="Admin_Reservations_Index_Title" xml:space="preserve">
     <value>All reservations</value>
   </data>
+  <data name="Admin_Reservations_NoReservations" xml:space="preserve">
+    <value>There are no reservations in the system.</value>
+  </data>
   <data name="Admin_Resources_Create_Title" xml:space="preserve">
     <value>Create new resource</value>
   </data>
@@ -328,6 +331,9 @@ Please follow the instructions in the message.</value>
   <data name="Login_ResetPassword_Title" xml:space="preserve">
     <value>Setup new password</value>
   </data>
+  <data name="My_Archive_NoReservations" xml:space="preserve">
+    <value>You have no reservations.</value>
+  </data>
   <data name="My_Calendar_Manage" xml:space="preserve">
     <value>Manage my reservations</value>
   </data>
@@ -366,6 +372,9 @@ Please follow the instructions in the message.</value>
   </data>
   <data name="My_Index_TomorrowLab_Open" xml:space="preserve">
     <value>Tomorrow is open {0}.</value>
+  </data>
+  <data name="My_News_NoNews" xml:space="preserve">
+    <value>There are no news published.</value>
   </data>
   <data name="My_News_Title" xml:space="preserve">
     <value>News</value>

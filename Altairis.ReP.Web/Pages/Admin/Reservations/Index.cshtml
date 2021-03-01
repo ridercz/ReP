@@ -2,7 +2,9 @@
 @model Altairis.ReP.Web.Pages.Admin.Reservations.IndexModel
 @{ this.ViewBag.Title = UI.Admin_Reservations_Index_Title; }
 
-<table class="grid">
+<p visible="!Model.Reservations.Any()">@UI.Admin_Reservations_NoReservations</p>
+
+<table class="grid" visible="Model.Reservations.Any()">
     <thead>
         <tr>
             <th>@Display.UserName</th>
@@ -14,16 +16,16 @@
     </thead>
     <tbody>
         @foreach (var item in Model.Reservations) {
-        <tr>
-            <th><i class="fas fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@item.ReservationId">@item.UserName</a></th>
-            <th><i class="fas fa-cube"></i> @item.ResourceName</th>
-            <td><time value="@item.DateBegin"></time></td>
-            <td><time value="@item.DateEnd"></time></td>
-            <td>
-                <i class="fas fa-wrench" visible="@item.System" title="@Display.Comment"></i>
-                @item.Comment
-            </td>
-        </tr>
+            <tr>
+                <th><i class="fas fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@item.ReservationId">@item.UserName</a></th>
+                <th><i class="fas fa-cube"></i> @item.ResourceName</th>
+                <td><time value="@item.DateBegin"></time></td>
+                <td><time value="@item.DateEnd"></time></td>
+                <td>
+                    <i class="fas fa-wrench" visible="@item.System" title="@Display.Comment"></i>
+                    @item.Comment
+                </td>
+            </tr>
         }
     </tbody>
 </table>
