@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.ReP.Data;
@@ -24,7 +25,7 @@ namespace Altairis.ReP.Web.Pages {
             public string UserName { get; set; }
 
             [Required, MaxLength(50), EmailAddress]
-            public string EmailAddress { get; set; }
+            public string Email { get; set; }
 
             [Required, DataType(DataType.Password)]
             public string Password { get; set; }
@@ -44,9 +45,9 @@ namespace Altairis.ReP.Web.Pages {
             // Create user
             var user = new ApplicationUser {
                 UserName = this.Input.UserName,
-                Email = this.Input.EmailAddress,
+                Email = this.Input.Email,
                 EmailConfirmed = true,
-                Language = "cs",
+                Language = CultureInfo.CurrentUICulture.Name,
                 Enabled = true
             };
             if (!this.IsIdentitySuccess(await this.userManager.CreateAsync(user, this.Input.Password))) return this.Page();
