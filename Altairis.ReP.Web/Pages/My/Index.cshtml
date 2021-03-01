@@ -9,9 +9,11 @@
     <a asp-page="OpeningHours">@UI.My_Index_OpeningHours</a>
 </p>
 
-<h2>@Model.LastNewsTitle</h2>
-<div class="r em"><time value="@Model.LastNewsDate"></time></div>
-<plaintext text="@Model.LastNewsText"></plaintext>
+<div visible="!string.IsNullOrEmpty(Model.LastNewsTitle)">
+    <h2>@Model.LastNewsTitle</h2>
+    <div class="r em"><time value="@Model.LastNewsDate"></time></div>
+    <plaintext text="@Model.LastNewsText"></plaintext>
+</div>
 
 <h2>@UI.My_Index_Resources</h2>
 @foreach (var item in this.Model.Resources) {
