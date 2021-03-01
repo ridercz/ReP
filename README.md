@@ -12,6 +12,8 @@ So I renamed the application, removed all the traces of FutLab from it and you m
 
 ReP is a generic shared resource reservation system. 
 
+**See this [introduction video](https://youtu.be/Y0NzSa7QJDE) (in Czech)**
+
 * _Resource_ can be almost anything, like a specific machine, specific room or area, anything that is supposed to be used by a single person at single time and you need to coordinate the users somehow.
 * _Users_ are the people who are using the shared resources. There are three types of users (three roles):
   * _Regular users_ can make, edit and delete their reservations, based on the options set by adminstrators (ie. the maximum length of reservation can be set for each resource).
