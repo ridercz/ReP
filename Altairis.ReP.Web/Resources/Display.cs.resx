@@ -144,6 +144,9 @@
   <data name="Description" xml:space="preserve">
     <value>Popis</value>
   </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Zobrazované jméno</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>E‑mail</value>
   </data>
@@ -200,6 +203,9 @@
   </data>
   <data name="SendNotifications" xml:space="preserve">
     <value>Oznámení (změny rezervace apod.)</value>
+  </data>
+  <data name="ShowInMemberDirectory" xml:space="preserve">
+    <value>Zobrazit v adresáři</value>
   </data>
   <data name="System" xml:space="preserve">
     <value>Toto je systémová rezervace</value>

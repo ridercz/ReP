@@ -1,5 +1,7 @@
-﻿* {
-  box-sizing: border-box; }
+﻿@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
 
 html {
   background-color: #ff6a00;
@@ -7,130 +9,171 @@ html {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
+html body {
+  max-width: 1000px;
+  background-color: #fff;
+  color: #000;
+  margin: 20px auto;
+  padding: 20px;
+}
+@media (max-width: 800px) {
   html body {
-    max-width: 1000px;
-    background-color: #fff;
-    color: #000;
-    margin: 20px auto;
-    padding: 20px; }
-    @media (max-width: 600px) {
-      html body {
-        margin: 0 auto; } }
-    html body > header ul.info {
-      float: right;
-      margin: 0; }
-    html body > header a {
-      text-decoration: none; }
-    html body > header h1 {
-      margin: 0;
-      padding: .5ex 0;
-      font-weight: normal;
-      font-size: 300%; }
-    html body > nav a:link, html body > nav a:visited {
-      color: #fff; }
-    html body > nav input[type=checkbox] {
-      position: absolute;
-      left: -9999em; }
-      html body > nav input[type=checkbox] ~ label {
-        display: none; }
-    html body > nav ul {
-      list-style: none;
-      text-align: left;
-      margin: 0;
-      padding: 0.5em;
-      background: #000; }
-      html body > nav ul li {
-        display: inline; }
-      html body > nav ul a {
-        display: inline-block;
-        padding: 0.5em 1em;
-        text-decoration: none;
-        color: #fff; }
-        html body > nav ul a:active, html body > nav ul a:focus, html body > nav ul a:hover {
-          color: #fff;
-          background: #ff6a00; }
-    @media (max-width: 600px) {
-      html body > nav ul {
-        display: none;
-        overflow: hidden; }
-        html body > nav ul li {
-          text-align: left; }
-        html body > nav ul a {
-          display: block; }
-      html body > nav input[type=checkbox] ~ label {
-        padding: 0.5em;
-        text-align: left;
-        background: #000;
-        color: #fff; }
-        html body > nav input[type=checkbox] ~ label span {
-          padding: 0.5em;
-          display: block; }
-          html body > nav input[type=checkbox] ~ label span:active, html body > nav input[type=checkbox] ~ label span:focus, html body > nav input[type=checkbox] ~ label span:hover {
-            background: #ff6a00;
-            color: #fff; }
-        html body > nav input[type=checkbox] ~ label.open {
-          display: block; }
-        html body > nav input[type=checkbox] ~ label.close {
-          display: none; }
-      html body > nav input[type=checkbox]:checked ~ label {
-        margin: 0; }
-        html body > nav input[type=checkbox]:checked ~ label.open {
-          display: none; }
-        html body > nav input[type=checkbox]:checked ~ label.close {
-          display: block; }
-      html body > nav input[type=checkbox]:checked ~ ul {
-        display: block; } }
-    html body > footer {
-      font-size: 80%;
-      color: #ff6a00;
-      text-align: right;
-      border-top: 2px solid #ff6a00;
-      margin-top: 20px;
-      padding-top: 10px; }
-      html body > footer img {
-        margin-right: 20px; }
+    margin: 0 auto;
+  }
+}
+html body > header ul.info {
+  float: right;
+  margin: 0;
+}
+html body > header a {
+  text-decoration: none;
+}
+html body > header h1 {
+  margin: 0;
+  padding: 0.5ex 0;
+  font-weight: normal;
+  font-size: 300%;
+}
+html body > nav a:link, html body > nav a:visited {
+  color: #fff;
+}
+html body > nav input[type=checkbox] {
+  position: absolute;
+  left: -9999em;
+}
+html body > nav input[type=checkbox] ~ label {
+  display: none;
+}
+html body > nav ul {
+  list-style: none;
+  text-align: left;
+  margin: 0;
+  padding: 0.5em;
+  background: #000;
+}
+html body > nav ul li {
+  display: inline;
+}
+html body > nav ul a {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #fff;
+}
+html body > nav ul a:active, html body > nav ul a:focus, html body > nav ul a:hover {
+  color: #fff;
+  background: #ff6a00;
+}
+@media (max-width: 800px) {
+  html body > nav ul {
+    display: none;
+    overflow: hidden;
+  }
+  html body > nav ul li {
+    text-align: left;
+  }
+  html body > nav ul a {
+    display: block;
+  }
+  html body > nav input[type=checkbox] ~ label {
+    padding: 0.5em;
+    text-align: left;
+    background: #000;
+    color: #fff;
+  }
+  html body > nav input[type=checkbox] ~ label span {
+    padding: 0.5em;
+    display: block;
+  }
+  html body > nav input[type=checkbox] ~ label span:active, html body > nav input[type=checkbox] ~ label span:focus, html body > nav input[type=checkbox] ~ label span:hover {
+    background: #ff6a00;
+    color: #fff;
+  }
+  html body > nav input[type=checkbox] ~ label.open {
+    display: block;
+  }
+  html body > nav input[type=checkbox] ~ label.close {
+    display: none;
+  }
+  html body > nav input[type=checkbox]:checked ~ label {
+    margin: 0;
+  }
+  html body > nav input[type=checkbox]:checked ~ label.open {
+    display: none;
+  }
+  html body > nav input[type=checkbox]:checked ~ label.close {
+    display: block;
+  }
+  html body > nav input[type=checkbox]:checked ~ ul {
+    display: block;
+  }
+}
+html body > footer {
+  font-size: 80%;
+  color: #ff6a00;
+  text-align: right;
+  border-top: 2px solid #ff6a00;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+html body > footer img {
+  margin-right: 20px;
+}
 
 a:link, a:visited {
-  color: #ff6a00; }
-
+  color: #ff6a00;
+}
 a:hover, a:active {
-  color: #000; }
+  color: #000;
+}
 
 .l {
-  text-align: left !important; }
+  text-align: left !important;
+}
 
 .r {
-  text-align: right !important; }
+  text-align: right !important;
+}
 
 .c {
-  text-align: center !important; }
+  text-align: center !important;
+}
 
 strong, .strong {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 small, .small {
-  font-size: 80%; }
+  font-size: 80%;
+}
 
 em, .em {
-  font-style: italic; }
+  font-style: italic;
+}
 
 .tag {
-  padding: 0 .5ex;
-  border-radius: 3px; }
+  padding: 0 0.5ex;
+  border-radius: 3px;
+}
 
 .fl {
-  float: left; }
+  float: left;
+}
 
 .fr {
-  float: right; }
+  float: right;
+}
 
 .infobox {
   font-style: italic;
   background-color: rgba(255, 106, 0, 0.1);
-  padding: 20px; }
-  .infobox i {
-    color: #ff6a00; }
+  padding: 20px;
+}
+.infobox i {
+  color: #ff6a00;
+}
 
 form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input .textbox {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
@@ -139,13 +182,15 @@ form input[type=text], form input[type=password], form input[type=email], form i
   width: 100%;
   background-color: #fff;
   border: 1px solid gray;
-  box-sizing: border-box; }
-  form input[type=text].input-validation-error, form input[type=password].input-validation-error, form input[type=email].input-validation-error, form input[type=url].input-validation-error, form input .textbox.input-validation-error {
-    background-color: white;
-    border: 1px solid #ff6a00; }
-  form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input .textbox:focus {
-    border: 1px solid #000; }
-
+  box-sizing: border-box;
+}
+form input[type=text].input-validation-error, form input[type=password].input-validation-error, form input[type=email].input-validation-error, form input[type=url].input-validation-error, form input .textbox.input-validation-error {
+  background-color: white;
+  border: 1px solid #ff6a00;
+}
+form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input .textbox:focus {
+  border: 1px solid #000;
+}
 form input[type=tel], form input[type=number], form input[type=date], form input[type=time], form input.short {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -154,13 +199,15 @@ form input[type=tel], form input[type=number], form input[type=date], form input
   background-color: #fff;
   border: 1px solid gray;
   box-sizing: border-box;
-  max-width: 10em; }
-  form input[type=tel].input-validation-error, form input[type=number].input-validation-error, form input[type=date].input-validation-error, form input[type=time].input-validation-error, form input.short.input-validation-error {
-    background-color: white;
-    border: 1px solid #ff6a00; }
-  form input[type=tel]:focus, form input[type=number]:focus, form input[type=date]:focus, form input[type=time]:focus, form input.short:focus {
-    border: 1px solid #000; }
-
+  max-width: 10em;
+}
+form input[type=tel].input-validation-error, form input[type=number].input-validation-error, form input[type=date].input-validation-error, form input[type=time].input-validation-error, form input.short.input-validation-error {
+  background-color: white;
+  border: 1px solid #ff6a00;
+}
+form input[type=tel]:focus, form input[type=number]:focus, form input[type=date]:focus, form input[type=time]:focus, form input.short:focus {
+  border: 1px solid #000;
+}
 form input[type=color] {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -172,13 +219,15 @@ form input[type=color] {
   padding: 0;
   height: 2.5em;
   max-width: 10em;
-  border: none; }
-  form input[type=color].input-validation-error {
-    background-color: white;
-    border: 1px solid #ff6a00; }
-  form input[type=color]:focus {
-    border: 1px solid #000; }
-
+  border: none;
+}
+form input[type=color].input-validation-error {
+  background-color: white;
+  border: 1px solid #ff6a00;
+}
+form input[type=color]:focus {
+  border: 1px solid #000;
+}
 form input[type=datetime-local] {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -187,13 +236,15 @@ form input[type=datetime-local] {
   background-color: #fff;
   border: 1px solid gray;
   box-sizing: border-box;
-  max-width: 15em; }
-  form input[type=datetime-local].input-validation-error {
-    background-color: white;
-    border: 1px solid #ff6a00; }
-  form input[type=datetime-local]:focus {
-    border: 1px solid #000; }
-
+  max-width: 15em;
+}
+form input[type=datetime-local].input-validation-error {
+  background-color: white;
+  border: 1px solid #ff6a00;
+}
+form input[type=datetime-local]:focus {
+  border: 1px solid #000;
+}
 form input[type=submit], form input[type=button] {
   display: inline-block;
   text-align: center;
@@ -208,18 +259,21 @@ form input[type=submit], form input[type=button] {
   cursor: pointer;
   line-height: 100%;
   min-width: 20ex;
-  box-sizing: border-box; }
-  form input[type=submit]:hover, form input[type=button]:hover {
-    color: #fff !important;
-    background-color: #000 !important;
-    border: 1px solid #ff6a00 !important; }
-  form input[type=submit].secondary, form input[type=button].secondary {
-    background-color: rgba(255, 106, 0, 0.5); }
-  form input[type=submit].tertiary, form input[type=button].tertiary {
-    background-color: #fff;
-    color: #000;
-    float: right; }
-
+  box-sizing: border-box;
+}
+form input[type=submit]:hover, form input[type=button]:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+  border: 1px solid #ff6a00 !important;
+}
+form input[type=submit].secondary, form input[type=button].secondary {
+  background-color: rgba(255, 106, 0, 0.5);
+}
+form input[type=submit].tertiary, form input[type=button].tertiary {
+  background-color: #fff;
+  color: #000;
+  float: right;
+}
 form textarea {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -232,15 +286,18 @@ form textarea {
   min-height: 5em;
   overflow-x: auto;
   overflow-y: scroll;
-  resize: vertical; }
-  form textarea.input-validation-error {
-    background-color: white;
-    border: 1px solid #ff6a00; }
-  form textarea:focus {
-    border: 1px solid #000; }
-  form textarea.tall {
-    height: 40em; }
-
+  resize: vertical;
+}
+form textarea.input-validation-error {
+  background-color: white;
+  border: 1px solid #ff6a00;
+}
+form textarea:focus {
+  border: 1px solid #000;
+}
+form textarea.tall {
+  height: 40em;
+}
 form select {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -248,25 +305,30 @@ form select {
   width: 100%;
   background-color: #fff;
   border: 1px solid gray;
-  box-sizing: border-box; }
-  form select.input-validation-error {
-    background-color: white;
-    border: 1px solid #ff6a00; }
-  form select:focus {
-    border: 1px solid #000; }
-
+  box-sizing: border-box;
+}
+form select.input-validation-error {
+  background-color: white;
+  border: 1px solid #ff6a00;
+}
+form select:focus {
+  border: 1px solid #000;
+}
 form label[for] {
-  cursor: pointer; }
-
+  cursor: pointer;
+}
 form span.description {
   display: block;
   font-size: 80%;
   color: #ff6a00;
-  margin-bottom: .5ex; }
-  form span.description::before {
-    content: '('; }
-  form span.description::after {
-    content: ')'; }
+  margin-bottom: 0.5ex;
+}
+form span.description::before {
+  content: "(";
+}
+form span.description::after {
+  content: ")";
+}
 
 a.button {
   display: inline-block;
@@ -282,33 +344,41 @@ a.button {
   cursor: pointer;
   line-height: 100%;
   min-width: 20ex;
-  box-sizing: border-box; }
-  a.button:hover {
-    color: #fff !important;
-    background-color: #000 !important;
-    border: 1px solid #ff6a00 !important; }
-  a.button.secondary {
-    background-color: rgba(255, 106, 0, 0.5); }
-  a.button.tertiary {
-    background-color: #fff;
-    color: #000;
-    float: right; }
+  box-sizing: border-box;
+}
+a.button:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+  border: 1px solid #ff6a00 !important;
+}
+a.button.secondary {
+  background-color: rgba(255, 106, 0, 0.5);
+}
+a.button.tertiary {
+  background-color: #fff;
+  color: #000;
+  float: right;
+}
 
 ul.checkbox-list {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  display: block; }
-  ul.checkbox-list li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: inline-block; }
-  ul.checkbox-list.vertical li {
-    display: block; }
+  display: block;
+}
+ul.checkbox-list li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: inline-block;
+}
+ul.checkbox-list.vertical li {
+  display: block;
+}
 
 .validation-summary-valid {
-  display: none; }
+  display: none;
+}
 
 .modal {
   visibility: hidden;
@@ -321,138 +391,179 @@ ul.checkbox-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 106, 0, 0.75); }
-  .modal:target {
-    visibility: visible;
-    opacity: 1; }
-  .modal article {
-    position: relative;
-    min-width: 30%;
-    max-width: 50%;
-    background-color: #fff;
-    text-align: center; }
-    .modal article header {
-      text-align: left;
-      padding: 5px;
-      background-color: #000;
-      color: #fff;
-      font-size: 150%; }
-    .modal article p {
-      margin: 20px; }
-    .modal article footer {
-      margin: 20px; }
-  .modal form {
-    position: relative;
-    min-width: 30%;
-    max-width: 50%;
-    background-color: #fff; }
-    .modal form header {
-      padding: 5px 20px;
-      background-color: #000;
-      color: #fff;
-      font-size: 150%; }
-    .modal form p {
-      margin: 20px; }
-    .modal form footer {
-      margin: 20px; }
+  background: rgba(255, 106, 0, 0.75);
+}
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+.modal article {
+  position: relative;
+  min-width: 30%;
+  max-width: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+.modal article header {
+  text-align: left;
+  padding: 5px;
+  background-color: #000;
+  color: #fff;
+  font-size: 150%;
+}
+.modal article p {
+  margin: 20px;
+}
+.modal article footer {
+  margin: 20px;
+}
+.modal form {
+  position: relative;
+  min-width: 30%;
+  max-width: 50%;
+  background-color: #fff;
+}
+.modal form header {
+  padding: 5px 20px;
+  background-color: #000;
+  color: #fff;
+  font-size: 150%;
+}
+.modal form p {
+  margin: 20px;
+}
+.modal form footer {
+  margin: 20px;
+}
 
 table.grid {
   width: 100%;
-  border-collapse: collapse; }
-  table.grid td, table.grid th {
-    padding: 10px;
-    text-align: left;
-    border-bottom: solid 1px rgba(255, 106, 0, 0.25); }
-  table.grid thead th {
-    border-bottom: double 3px #ff6a00; }
-  table.grid tbody tr.new {
-    font-weight: bold;
-    font-style: italic; }
-  table.grid tbody tr:hover {
-    background-color: rgba(255, 106, 0, 0.15) !important; }
-  table.grid tbody tr:nth-child(2n) {
-    background-color: rgba(0, 0, 0, 0.05); }
-  table.grid tbody td.buttons {
-    white-space: normal;
-    text-align: right; }
+  border-collapse: collapse;
+}
+table.grid td, table.grid th {
+  padding: 10px;
+  text-align: left;
+  border-bottom: solid 1px rgba(255, 106, 0, 0.25);
+}
+table.grid thead th {
+  border-bottom: double 3px #ff6a00;
+}
+table.grid tbody tr.new {
+  font-weight: bold;
+  font-style: italic;
+}
+table.grid tbody tr:hover {
+  background-color: rgba(255, 106, 0, 0.15) !important;
+}
+table.grid tbody tr:nth-child(2n) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+table.grid tbody td.buttons {
+  white-space: normal;
+  text-align: right;
+}
 
 ul.tasklist {
   list-style-type: none;
   margin: 0;
-  padding: 0; }
-  ul.tasklist li {
-    margin: 0 0 20px 0;
-    text-align: left; }
-    ul.tasklist li .button {
-      min-width: 33%;
-      text-align: left;
-      padding: 20px; }
-      ul.tasklist li .button i {
-        margin-right: 10px; }
+  padding: 0;
+}
+ul.tasklist li {
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+ul.tasklist li .button {
+  min-width: 33%;
+  text-align: left;
+  padding: 20px;
+}
+ul.tasklist li .button i {
+  margin-right: 10px;
+}
 
 table.details {
   width: 100%;
-  border-collapse: collapse; }
-  table.details td, table.details th {
-    padding: 10px;
-    text-align: left;
-    vertical-align: top;
-    border-top: solid 1px rgba(255, 106, 0, 0.25); }
-  table.details tbody tr:hover {
-    background-color: rgba(255, 106, 0, 0.15) !important; }
+  border-collapse: collapse;
+}
+table.details td, table.details th {
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+  border-top: solid 1px rgba(255, 106, 0, 0.25);
+}
+table.details tbody tr:hover {
+  background-color: rgba(255, 106, 0, 0.15) !important;
+}
 
 .calendar {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 1px solid #000; }
-  .calendar > header {
-    display: flex;
-    flex-direction: row; }
-    .calendar > header > div {
-      flex: 1;
-      border: 1px solid #000;
-      text-align: center;
-      padding: 1ex;
-      font-weight: bold;
-      background-color: rgba(255, 106, 0, 0.75);
-      color: #fff; }
-  .calendar section.week {
-    display: flex;
-    flex-direction: row; }
-    .calendar section.week > article {
-      flex: 1;
-      border: 1px solid #000;
-      min-height: 10em; }
-      .calendar section.week > article header {
-        margin: 0.5ex;
-        padding: 1ex;
-        text-align: right; }
-      .calendar section.week > article.today header {
-        color: #ff6a00;
-        font-weight: bold; }
-      .calendar section.week > article.weekend {
-        background-color: rgba(255, 106, 0, 0.1); }
-      .calendar section.week > article ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none; }
-        .calendar section.week > article ul li {
-          display: block;
-          margin: 0.25ex;
-          padding: 0.5ex;
-          background-color: rgba(255, 106, 0, 0.5); }
-          .calendar section.week > article ul li.system {
-            border: 2px solid #000; }
-          .calendar section.week > article ul li:target {
-            font-weight: bold; }
-          .calendar section.week > article ul li time {
-            font-size: 80%; }
-            .calendar section.week > article ul li time.begin::after {
-              content: '\2026'; }
-            .calendar section.week > article ul li time.end::before {
-              content: '\2026'; }
-          .calendar section.week > article ul li span.middle::before {
-            content: '\2026\2026'; }
-          .calendar section.week > article ul li a, .calendar section.week > article ul li span {
-            display: block; }
+  border: 1px solid #000;
+}
+.calendar > header {
+  display: flex;
+  flex-direction: row;
+}
+.calendar > header > div {
+  flex: 1;
+  border: 1px solid #000;
+  text-align: center;
+  padding: 1ex;
+  font-weight: bold;
+  background-color: rgba(255, 106, 0, 0.75);
+  color: #fff;
+}
+.calendar section.week {
+  display: flex;
+  flex-direction: row;
+}
+.calendar section.week > article {
+  flex: 1;
+  border: 1px solid #000;
+  min-height: 10em;
+}
+.calendar section.week > article header {
+  margin: 0.5ex;
+  padding: 1ex;
+  text-align: right;
+}
+.calendar section.week > article.today header {
+  color: #ff6a00;
+  font-weight: bold;
+}
+.calendar section.week > article.weekend {
+  background-color: rgba(255, 106, 0, 0.1);
+}
+.calendar section.week > article ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.calendar section.week > article ul li {
+  display: block;
+  margin: 0.25ex;
+  padding: 0.5ex;
+  background-color: rgba(255, 106, 0, 0.5);
+}
+.calendar section.week > article ul li.system {
+  border: 2px solid #000;
+}
+.calendar section.week > article ul li:target {
+  font-weight: bold;
+}
+.calendar section.week > article ul li time {
+  font-size: 80%;
+}
+.calendar section.week > article ul li time.begin::after {
+  content: "…";
+}
+.calendar section.week > article ul li time.end::before {
+  content: "…";
+}
+.calendar section.week > article ul li span.middle::before {
+  content: "……";
+}
+.calendar section.week > article ul li a, .calendar section.week > article ul li span {
+  display: block;
+}

@@ -7,6 +7,7 @@ public class AppSettings {
     public class FeaturesConfig {
         public bool UseOpeningHours { get; set; } = true;
         public bool UseNews { get; set; } = true;
+        public bool UseMemberDirectory { get; set; } = true;
 
     }
 

@@ -9,6 +9,7 @@ public class IndexModel : PageModel {
     public class UserInfo {
         public int Id { get; set; }
         public string UserName { get; set; }
+        public string DisplayName { get; set; }
         public string Email { get; set; }
         public string Language { get; set; }
         public string PhoneNumber { get; set; }
@@ -26,6 +27,7 @@ public class IndexModel : PageModel {
                 select new UserInfo {
                     Id = u.Id,
                     UserName = u.UserName,
+                    DisplayName = u.DisplayName,
                     Email = u.Email,
                     Language = u.Language,
                     PhoneNumber = u.PhoneNumber,

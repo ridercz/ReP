@@ -1,0 +1,28 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.My.DirectoryModel
+@{
+    this.ViewBag.Title = UI.My_Directory_Title;
+}
+<table class="grid">
+    <thead>
+        <tr>
+            <th>@Display.DisplayName</th>
+            <th>@Display.UserName</th>
+            <th>@Display.Email</th>
+            <th>@Display.PhoneNumber</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items) {
+            <tr>
+                <th>
+                    <i class="fas fa-user"></i>
+                    @item.DisplayName
+                </th>
+                <td>@item.UserName</td>
+                <td><a href="mailto:@item.Email">@item.Email</a></td>
+                <td><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

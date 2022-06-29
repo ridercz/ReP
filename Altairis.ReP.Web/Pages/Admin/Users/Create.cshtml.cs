@@ -2,15 +2,18 @@ using System.Globalization;
 using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Options;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
 public class CreateModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
     private readonly ITemplatedMailerService mailerService;
+    private readonly AppSettings options;
 
-    public CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService) {
+    public CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService, IOptions<AppSettings> optionsAccessor) {
         this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         this.mailerService = mailerService ?? throw new ArgumentNullException(nameof(mailerService));
+        this.options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
     }
 
     [BindProperty]
@@ -20,6 +23,11 @@ public class CreateModel : PageModel {
 
         [Required, MaxLength(50)]
         public string UserName { get; set; }
+
+        [Required, MaxLength(100)]
+        public string DisplayName { get; set; }
+
+        public bool ShowInMemberDirectory { get; set; }
 
         [Required, MaxLength(50), EmailAddress]
         public string Email { get; set; }
@@ -40,6 +48,10 @@ public class CreateModel : PageModel {
         new SelectListItem(UI.My_Settings_Index_Language_EN, "en-US")
     };
 
+    public void OnGet() {
+        this.Input.ShowInMemberDirectory = this.options.Features.UseMemberDirectory;
+    }
+
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
 
@@ -48,7 +60,9 @@ public class CreateModel : PageModel {
             UserName = this.Input.UserName,
             Email = this.Input.Email,
             PhoneNumber = this.Input.PhoneNumber,
-            Language = this.Input.Language
+            Language = this.Input.Language,
+            DisplayName = this.Input.DisplayName,
+            ShowInMemberDirectory = this.options.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory
         };
         var result = await this.userManager.CreateAsync(newUser);
         if (!this.IsIdentitySuccess(result)) return this.Page();
@@ -71,7 +85,5 @@ public class CreateModel : PageModel {
 
         return this.RedirectToPage("Index", null, "created");
     }
-
-
 
 }

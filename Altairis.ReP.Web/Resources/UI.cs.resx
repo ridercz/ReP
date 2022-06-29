@@ -462,6 +462,9 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Settings_Password_Title" xml:space="preserve">
     <value>Změna hesla</value>
   </data>
+  <data name="My_Settings_Privacy" xml:space="preserve">
+    <value>Soukromí</value>
+  </data>
   <data name="TimeTagHelper_Today" xml:space="preserve">
     <value>dnes, {0:t}</value>
   </data>
@@ -491,5 +494,11 @@ Postupujte podle pokynů ve zprávě.</value>
   </data>
   <data name="_Yes" xml:space="preserve">
     <value>Ano</value>
+  </data>
+  <data name="Layout_Menu_Directory" xml:space="preserve">
+    <value>Adresář</value>
+  </data>
+  <data name="My_Directory_Title" xml:space="preserve">
+    <value>Adresář</value>
   </data>
 </root>

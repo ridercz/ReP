@@ -23,6 +23,11 @@ public class IndexModel : PageModel {
 
         public bool SendNews { get; set; }
 
+        [Required, MaxLength(100)]
+        public string DisplayName { get; set; }
+
+        public bool ShowInMemberDirectory { get; set; }
+
     }
 
     public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
@@ -38,6 +43,8 @@ public class IndexModel : PageModel {
         this.Input.PhoneNumber = this.Me.PhoneNumber;
         this.Input.SendNotifications = this.Me.SendNotifications;
         this.Input.SendNews = this.Me.SendNews;
+        this.Input.DisplayName = this.Me.DisplayName;
+        this.Input.ShowInMemberDirectory = this.Me.ShowInMemberDirectory;
     }
 
     public async Task<IActionResult> OnPostAsync() {
@@ -48,6 +55,8 @@ public class IndexModel : PageModel {
         this.Me.PhoneNumber = this.Input.PhoneNumber;
         this.Me.SendNews = this.Input.SendNews;
         this.Me.SendNotifications = this.Input.SendNotifications;
+        this.Me.DisplayName= this.Input.DisplayName;
+        this.Me.ShowInMemberDirectory = this.Input.ShowInMemberDirectory;
         await this.userManager.UpdateAsync(this.Me);
 
         return this.RedirectToPage("Index", null, "saved");

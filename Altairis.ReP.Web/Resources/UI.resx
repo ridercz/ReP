@@ -463,6 +463,9 @@ Please follow the instructions in the message.</value>
   <data name="My_Settings_Password_Title" xml:space="preserve">
     <value>Change my password</value>
   </data>
+  <data name="My_Settings_Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
   <data name="TimeTagHelper_Today" xml:space="preserve">
     <value>today, {0:t}</value>
   </data>
@@ -492,5 +495,11 @@ Please follow the instructions in the message.</value>
   </data>
   <data name="_Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="My_Directory_Title" xml:space="preserve">
+    <value>Directory</value>
+  </data>
+  <data name="Layout_Menu_Directory" xml:space="preserve">
+    <value>Directory</value>
   </data>
 </root>

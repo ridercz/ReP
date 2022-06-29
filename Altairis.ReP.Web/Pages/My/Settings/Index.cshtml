@@ -1,6 +1,8 @@
 ﻿@page
 @model Altairis.ReP.Web.Pages.My.Settings.IndexModel
-@{ this.ViewBag.Title = UI.My_Settings_Index_Title; }
+@{
+    this.ViewBag.Title = UI.My_Settings_Index_Title;
+}
 <form method="post">
     <table class="details">
         <tbody>
@@ -25,11 +27,6 @@
                         <a asp-page="Email"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
                         @Model.Me.Email
                     </div>
-                    @*</td>
-                        </tr>
-                        <tr>
-                            <th>@Display.Mailing</th>
-                            <td>*@
                     <ul class="checkbox-list vertical">
                         <li>
                             <input type="checkbox" checked="checked" disabled="disabled" />
@@ -55,6 +52,17 @@
             <tr>
                 <th><label asp-for="Input.PhoneNumber"></label></th>
                 <td><input asp-for="Input.PhoneNumber" /></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.DisplayName"></label></th>
+                <td><input asp-for="Input.DisplayName" /></td>
+            </tr>
+            <tr visible="@OptionsAccessor.Value.Features.UseMemberDirectory">
+                <th>@UI.My_Settings_Privacy</th>
+                <td>
+                    <input asp-for="Input.ShowInMemberDirectory" />
+                    <label asp-for="Input.ShowInMemberDirectory"></label>
+                </td>
             </tr>
         </tbody>
         <tfoot>

@@ -19,7 +19,7 @@ namespace Altairis.ReP.Web.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class UI {
@@ -583,6 +583,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory.
+        /// </summary>
+        public static string Layout_Menu_Directory {
+            get {
+                return ResourceManager.GetString("Layout_Menu_Directory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Layout_Menu_Home {
@@ -774,6 +783,15 @@ namespace Altairis.ReP.Web.Resources {
         public static string My_Calendar_Title {
             get {
                 return ResourceManager.GetString("My_Calendar_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directory.
+        /// </summary>
+        public static string My_Directory_Title {
+            get {
+                return ResourceManager.GetString("My_Directory_Title", resourceCulture);
             }
         }
         
@@ -1131,6 +1149,15 @@ namespace Altairis.ReP.Web.Resources {
         public static string My_Settings_Password_Title {
             get {
                 return ResourceManager.GetString("My_Settings_Password_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy.
+        /// </summary>
+        public static string My_Settings_Privacy {
+            get {
+                return ResourceManager.GetString("My_Settings_Privacy", resourceCulture);
             }
         }
         

@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Options;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
 public class EditModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
+    private readonly AppSettings options;
 
-    public EditModel(UserManager<ApplicationUser> userManager) {
+    public EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSettings> optionsAccessor) {
         this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+        this.options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
     }
 
     [BindProperty]
@@ -31,6 +34,11 @@ public class EditModel : PageModel {
 
         public bool UserEnabled { get; set; }
 
+        [Required, MaxLength(100)]
+        public string DisplayName { get; set; }
+
+        public bool ShowInMemberDirectory { get; set; }
+
     }
 
     public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
@@ -49,7 +57,9 @@ public class EditModel : PageModel {
             PhoneNumber = user.PhoneNumber,
             UserName = user.UserName,
             IsAdministrator = await this.userManager.IsInRoleAsync(user, ApplicationRole.Administrator),
-            IsMaster = await this.userManager.IsInRoleAsync(user, ApplicationRole.Master)
+            IsMaster = await this.userManager.IsInRoleAsync(user, ApplicationRole.Master),
+            DisplayName = user.DisplayName,
+            ShowInMemberDirectory = user.ShowInMemberDirectory
         };
 
         return this.Page();
@@ -66,20 +76,18 @@ public class EditModel : PageModel {
         user.PhoneNumber = this.Input.PhoneNumber;
         user.UserName = this.Input.UserName;
         user.Language = this.Input.Language;
+        user.DisplayName = this.Input.DisplayName;
+        user.ShowInMemberDirectory = this.options.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory;
 
         var result = await this.userManager.UpdateAsync(user);
         if (!this.IsIdentitySuccess(result)) return this.Page();
 
-        Task<IdentityResult> SetUserMembership(ApplicationUser user, string role, bool status) {
-            if (status) return this.userManager.AddToRoleAsync(user, role);
-            else return this.userManager.RemoveFromRoleAsync(user, role);
-        }
+        Task<IdentityResult> SetUserMembership(ApplicationUser user, string role, bool status) => status ? this.userManager.AddToRoleAsync(user, role) : this.userManager.RemoveFromRoleAsync(user, role);
 
         await SetUserMembership(user, ApplicationRole.Administrator, this.Input.IsAdministrator);
         await SetUserMembership(user, ApplicationRole.Master, this.Input.IsMaster);
 
         return this.RedirectToPage("Index", null, "saved");
-
     }
 
     public async Task<IActionResult> OnPostDeleteAsync(int userId) {

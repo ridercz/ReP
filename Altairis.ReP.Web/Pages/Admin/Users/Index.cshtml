@@ -5,6 +5,7 @@
     <thead>
         <tr>
             <th>@Display.UserName</th>
+            <th>@Display.DisplayName</th>
             <th>@Display.Email</th>
             <th>@Display.PhoneNumber</th>
             <th>@Display.Language</th>
@@ -29,6 +30,7 @@
                     }
                     <a asp-page="Edit" asp-route-userId="@item.Id">@item.UserName</a>
                 </th>
+                <td>@item.DisplayName</td>
                 <td><a href="mailto:@item.Email">@item.Email</a></td>
                 <td>@item.PhoneNumber</td>
                 <td>@item.Language[0..2]</td>

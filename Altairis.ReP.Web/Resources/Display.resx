@@ -144,6 +144,9 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display name</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
   </data>
@@ -200,6 +203,9 @@
   </data>
   <data name="SendNotifications" xml:space="preserve">
     <value>Notifications (reservation changes etc.)</value>
+  </data>
+  <data name="ShowInMemberDirectory" xml:space="preserve">
+    <value>Show in directory</value>
   </data>
   <data name="System" xml:space="preserve">
     <value>This is system reservation</value>

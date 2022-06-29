@@ -6,6 +6,10 @@
         <label asp-for="Input.UserName"></label>:<br />
         <input asp-for="Input.UserName" />
     </p>
+        <p>
+        <label asp-for="Input.DisplayName"></label>:<br />
+        <input asp-for="Input.DisplayName" />
+    </p>
     <p>
         <label asp-for="Input.Email"></label>:<br />
         <input asp-for="Input.Email" /><br />
@@ -15,6 +19,7 @@
         <label asp-for="Input.PhoneNumber"></label>:<br />
         <input asp-for="Input.PhoneNumber" />
     </p>
+    <p visible="@this.OptionsAccessor.Value.Features.UseMemberDirectory"><input asp-for="Input.ShowInMemberDirectory" /> <label asp-for="Input.ShowInMemberDirectory"></label></p>
     <p><input asp-for="Input.IsMaster" /> <label asp-for="Input.IsMaster"></label></p>
     <p><input asp-for="Input.IsAdministrator" /> <label asp-for="Input.IsAdministrator"></label></p>
     <p><input asp-for="Input.UserEnabled" /> <label asp-for="Input.UserEnabled"></label></p>
