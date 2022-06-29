@@ -25,33 +25,28 @@ var appSettings = new AppSettings();
 builder.Configuration.Bind(appSettings);
 
 // Configure database
-builder.Services.AddDbContext<RepDbContext>(options =>
-{
+builder.Services.AddDbContext<RepDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 // Configure base framework services
-builder.Services.AddRazorPages(options =>
-{
+builder.Services.AddRazorPages(options => {
     options.Conventions.AuthorizeFolder("/My", "IsLoggedIn");
     options.Conventions.AuthorizeFolder("/Admin", "IsAdministrator");
     options.Conventions.AllowAnonymousToFolder("/Login");
     options.Conventions.AllowAnonymousToFolder("/Errors");
     options.Conventions.AllowAnonymousToPage("/FirstRun");
-}).AddMvcOptions(options =>
-{
+}).AddMvcOptions(options => {
     options.SetConventionalMetadataProviders<Display, Validation>();
 });
 
 // Configure identity
-builder.Services.AddAuthorization(options =>
-{
+builder.Services.AddAuthorization(options => {
     options.AddPolicy("IsLoggedIn", policy => policy.RequireAuthenticatedUser());
     options.AddPolicy("IsMaster", policy => policy.RequireRole(ApplicationRole.Master));
     options.AddPolicy("IsAdministrator", policy => policy.RequireRole(ApplicationRole.Administrator));
 });
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
-{
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
     options.Password.RequiredLength = appSettings.Security.MinimumPasswordLength;
     options.Password.RequiredUniqueChars = 4;
     options.Password.RequireDigit = false;
@@ -65,8 +60,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     .AddDefaultTokenProviders()
     .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
     .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
-builder.Services.ConfigureApplicationCookie(options =>
-{
+builder.Services.ConfigureApplicationCookie(options => {
     options.Cookie.Name = "ReP-Auth";
     options.LoginPath = "/login";
     options.LogoutPath = "/login/logout";
@@ -94,8 +88,7 @@ builder.Services.AddResourceTemplatedMailerService(new ResourceTemplatedMailerSe
 // Configure misc services
 builder.Services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
 builder.Services.AddScoped<OpeningHoursProvider>();
-builder.Services.Configure<TimeTagHelperOptions>(options =>
-{
+builder.Services.Configure<TimeTagHelperOptions>(options => {
     options.YesterdayDateFormatter = dt => string.Format(UI.TimeTagHelper_Yesterday, dt);
     options.TodayDateFormatter = dt => string.Format(UI.TimeTagHelper_Today, dt);
     options.TomorrowDateFormatter = dt => string.Format(UI.TimeTagHelper_Tomorrow, dt);

@@ -1,8 +1,7 @@
-namespace Altairis.ReP.Web.Pages.Admin {
-    public class IndexModel : PageModel
+namespace Altairis.ReP.Web.Pages.Admin; 
+public class IndexModel : PageModel
+{
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }

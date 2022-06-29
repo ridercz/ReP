@@ -1,36 +1,36 @@
-﻿namespace Altairis.ReP.Web {
-    public class AppSettings {
+﻿namespace Altairis.ReP.Web; 
 
-        public string ApplicationName { get; set; }
+public class AppSettings {
 
-        public SecurityConfig Security { get; set; } = new SecurityConfig();
+    public string ApplicationName { get; set; }
 
-        public class SecurityConfig {
-            public int MinimumPasswordLength { get; set; } = 12;
-            public int DefaultPasswordLength { get; set; } = 14;
-            public int LoginCookieExpirationDays { get; set; } = 30;
-        }
+    public SecurityConfig Security { get; set; } = new SecurityConfig();
 
-        public MailingConfig Mailing { get; set; } = new MailingConfig();
+    public class SecurityConfig {
+        public int MinimumPasswordLength { get; set; } = 12;
+        public int DefaultPasswordLength { get; set; } = 14;
+        public int LoginCookieExpirationDays { get; set; } = 30;
+    }
 
-        public class MailingConfig {
-            public string PickupFolder { get; set; } = @"C:\InetPub\MailRoot\pickup";
-            public string SendGridApiKey { get; set; }
-            public string SenderName { get; set; }
-            public string SenderAddress { get; set; }
-        }
+    public MailingConfig Mailing { get; set; } = new MailingConfig();
 
-        public OpeningHoursConfig[] OpeningHours { get; set; }
+    public class MailingConfig {
+        public string PickupFolder { get; set; } = @"C:\InetPub\MailRoot\pickup";
+        public string SendGridApiKey { get; set; }
+        public string SenderName { get; set; }
+        public string SenderAddress { get; set; }
+    }
 
-        public class OpeningHoursConfig {
+    public OpeningHoursConfig[] OpeningHours { get; set; }
 
-            public DayOfWeek DayOfWeek { get; set; }
+    public class OpeningHoursConfig {
 
-            public TimeSpan OpeningTime { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
 
-            public TimeSpan ClosingTime { get; set; }
+        public TimeSpan OpeningTime { get; set; }
 
-        }
+        public TimeSpan ClosingTime { get; set; }
 
     }
+
 }
