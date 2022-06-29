@@ -2,7 +2,14 @@
 
 public class AppSettings {
 
-    public string ApplicationName { get; set; }
+    public DesignConfig Design { get; set; } = new DesignConfig();
+
+    public class DesignConfig {
+        public string ApplicationName { get; set; } = "ReP";
+        public string HeaderImageUrl { get; set; } = "~/Content/Images/rep-logo.svg";
+        public string StylesheetUrl { get; set; } = "~/Content/Styles/site.min.css";
+
+    }
 
     public SecurityConfig Security { get; set; } = new SecurityConfig();
 

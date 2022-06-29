@@ -1,14 +1,14 @@
-﻿@inject Microsoft.Extensions.Options.IOptions<AppSettings> OptionsAccessor
+﻿<!DOCTYPE html>
+@inject Microsoft.Extensions.Options.IOptions<AppSettings> OptionsAccessor
 @{
     var currentCulture = System.Globalization.CultureInfo.CurrentUICulture.Name;
 }
-<!DOCTYPE html>
 <html lang="@currentCulture">
 <head>
-    <title>@this.ViewBag.Title | @this.OptionsAccessor.Value.ApplicationName</title>
+    <title>@this.ViewBag.Title | @this.OptionsAccessor.Value.Design.ApplicationName</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="~/Content/Styles/site.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="@this.OptionsAccessor.Value.Design.StylesheetUrl" asp-append-version="true" />
     <link rel="icon" href="/favicon.ico" asp-append-version="true" />
     <link rel="icon" href="/Content/Images/rep-icon.svg" type="image/svg+xml" asp-append-version="true" />
     <link rel="apple-touch-icon" href="/Content/Images/rep-icon-180.png" asp-append-version="true" />
@@ -36,7 +36,7 @@
                 <a asp-page="/SetLanguage" asp-route-culture="en" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_EN"><span class="flag-icon flag-icon-gb"></span></a>
             </li>
         </ul>
-        <img src="~/Content/Images/rep-logo.svg" height="75" alt="@this.OptionsAccessor.Value.ApplicationName" asp-append-version="true" />
+        <img src="@this.OptionsAccessor.Value.Design.HeaderImageUrl" height="75" alt="@this.OptionsAccessor.Value.Design.ApplicationName" asp-append-version="true" />
     </header>
     <nav>
         <input type="checkbox" id="mtoggler" hidden="hidden" />

@@ -73,12 +73,12 @@ builder.Services.ConfigureApplicationCookie(options => {
 if (!string.IsNullOrEmpty(appSettings.Mailing.SendGridApiKey)) {
     builder.Services.AddSendGridMailerService(new SendGridMailerServiceOptions {
         ApiKey = appSettings.Mailing.SendGridApiKey,
-        DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName)
+        DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName ?? appSettings.Design.ApplicationName)
     });
 } else {
     builder.Services.AddPickupFolderMailerService(new PickupFolderMailerServiceOptions {
         PickupFolderName = appSettings.Mailing.PickupFolder,
-        DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName)
+        DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName ?? appSettings.Design.ApplicationName)
     });
 }
 builder.Services.AddResourceTemplatedMailerService(new ResourceTemplatedMailerServiceOptions {
