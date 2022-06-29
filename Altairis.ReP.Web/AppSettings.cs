@@ -2,6 +2,14 @@
 
 public class AppSettings {
 
+    public FeaturesConfig Features { get; set; } = new FeaturesConfig();
+
+    public class FeaturesConfig {
+        public bool UseOpeningHours { get; set; } = true;
+        public bool UseNews { get; set; } = true;
+
+    }
+
     public DesignConfig Design { get; set; } = new DesignConfig();
 
     public class DesignConfig {

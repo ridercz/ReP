@@ -2,14 +2,14 @@
 @model Altairis.ReP.Web.Pages.My.IndexModel
 @{ this.ViewBag.Title = UI.My_Index_Title; }
 
-<p class="infobox">
+<p class="infobox" visible="@this.OptionsAccessor.Value.Features.UseOpeningHours">
     <i class="fas fa-clock fa-2x fa-pull-left"></i>
     @Html.Raw(this.Model.OpenToday.IsOpen ? string.Format(UI.My_Index_TodayLab_Open, this.Model.OpenToday) : UI.My_Index_TodayLab_Closed)
     @Html.Raw(this.Model.OpenTomorrow.IsOpen ? string.Format(UI.My_Index_TomorrowLab_Open, this.Model.OpenTomorrow) : UI.My_Index_TomorrowLab_Closed)<br />
     <a asp-page="OpeningHours">@UI.My_Index_OpeningHours</a>
 </p>
 
-<div visible="!string.IsNullOrEmpty(Model.LastNewsTitle)">
+<div visible="@this.OptionsAccessor.Value.Features.UseNews && !string.IsNullOrEmpty(Model.LastNewsTitle)">
     <h2>@Model.LastNewsTitle</h2>
     <div class="r em"><time value="@Model.LastNewsDate"></time></div>
     <plaintext text="@Model.LastNewsText"></plaintext>

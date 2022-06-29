@@ -6,6 +6,6 @@
     <li><a class="button" asp-page="Users/Index"><i class="fas fa-fw fa-users"></i> @UI.Admin_Index_ManageUsers</a></li>
     <li><a class="button" asp-page="Resources/Index"><i class="fas fa-fw fa-cubes"></i> @UI.Admin_Index_ManageResources</a></li>
     <li><a class="button" asp-page="Reservations/Index"><i class="fas fa-fw fa-calendar-check"></i> @UI.Admin_Index_ManageReservations</a></li>
-    <li><a class="button" asp-page="OpeningHours"><i class="fas fa-fw fa-clock"></i> @UI.Admin_Index_ManageOpeningHours</a></li>
-    <li><a class="button" asp-page="NewsMessages/Index"><i class="fas fa-fw fa-newspaper"></i> @UI.Admin_Index_ManageNews</a></li>
+    <li visible="@this.OptionsAccessor.Value.Features.UseOpeningHours"><a class="button" asp-page="OpeningHours"><i class="fas fa-fw fa-clock"></i> @UI.Admin_Index_ManageOpeningHours</a></li>
+    <li visible="@this.OptionsAccessor.Value.Features.UseNews"><a class="button" asp-page="NewsMessages/Index"><i class="fas fa-fw fa-newspaper"></i> @UI.Admin_Index_ManageNews</a></li>
 </ul>

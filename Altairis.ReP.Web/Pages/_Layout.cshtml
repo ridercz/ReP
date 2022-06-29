@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-@inject Microsoft.Extensions.Options.IOptions<AppSettings> OptionsAccessor
 @{
     var currentCulture = System.Globalization.CultureInfo.CurrentUICulture.Name;
 }
@@ -46,11 +45,11 @@
             <li include-roles="?"><a asp-page="/Login/Index"><i class="fas fa-key"></i> @UI.Layout_Menu_Login</a></li>
             <li include-roles="?"><a asp-page="/Login/ForgotPassword"><i class="fas fa-redo"></i> @UI.Layout_Menu_ResetPassword</a></li>
             <li include-roles="*"><a asp-page="/My/Index"><i class="fas fa-home"></i> @UI.Layout_Menu_Home</a></li>
-            <li include-roles="*"><a asp-page="/My/News"><i class="fas fa-newspaper"></i> @UI.Layout_Menu_News</a></li>
+            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseNews"><a asp-page="/My/News"><i class="fas fa-newspaper"></i> @UI.Layout_Menu_News</a></li>
             <li include-roles="*"><a asp-page="/My/Calendar" asp-route-year="" asp-route-month=""><i class="fas fa-calendar"></i> @UI.Layout_Menu_Calendar</a></li>
             <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-cog"></i> @UI.Layout_Menu_Settings</a></li>
             <li include-roles="@ApplicationRole.Administrator"><a asp-page="/Admin/Index"><i class="fas fa-cogs"></i> @UI.Layout_Menu_Administration</a></li>
-            >
+        </ul>
     </nav>
     <main>
         <h1>@this.ViewBag.Title</h1>
