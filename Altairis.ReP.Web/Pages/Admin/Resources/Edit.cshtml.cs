@@ -1,6 +1,6 @@
 using Altairis.ValidationToolkit;
 
-namespace Altairis.ReP.Web.Pages.Admin.Resources; 
+namespace Altairis.ReP.Web.Pages.Admin.Resources;
 public class EditModel : PageModel {
     private readonly RepDbContext dc;
 

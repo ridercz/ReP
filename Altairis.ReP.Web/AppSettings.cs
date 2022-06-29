@@ -1,4 +1,4 @@
-﻿namespace Altairis.ReP.Web; 
+﻿namespace Altairis.ReP.Web;
 
 public class AppSettings {
 

@@ -1,4 +1,4 @@
-namespace Altairis.ReP.Web.Pages.Admin.Reservations; 
+namespace Altairis.ReP.Web.Pages.Admin.Reservations;
 public class IndexModel : PageModel {
     private readonly RepDbContext dc;
 

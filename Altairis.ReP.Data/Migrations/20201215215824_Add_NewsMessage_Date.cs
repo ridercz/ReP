@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Altairis.ReP.Data.Migrations; 
+namespace Altairis.ReP.Data.Migrations;
 public partial class Add_NewsMessage_Date : Migration {
     protected override void Up(MigrationBuilder migrationBuilder) {
         migrationBuilder.AddColumn<DateTime>(

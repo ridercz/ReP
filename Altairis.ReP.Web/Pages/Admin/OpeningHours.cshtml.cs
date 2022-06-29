@@ -1,6 +1,6 @@
 using Altairis.ValidationToolkit;
 
-namespace Altairis.ReP.Web.Pages.Admin; 
+namespace Altairis.ReP.Web.Pages.Admin;
 public class OpeningHoursModel : PageModel {
     private readonly RepDbContext dc;
     private readonly OpeningHoursProvider hoursProvider;

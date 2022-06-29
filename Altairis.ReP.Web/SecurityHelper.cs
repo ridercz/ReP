@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web; 
+namespace Altairis.ReP.Web;
 public static class SecurityHelper {
     private const string URI_FORMAT = "otpauth://{0}/{1}?secret={2}&issuer={3}&digits={4}&period={5}";
 

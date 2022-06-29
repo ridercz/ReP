@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages.Login; 
+namespace Altairis.ReP.Web.Pages.Login;
 public class ActivateModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
 
@@ -37,7 +37,7 @@ public class ActivateModel : PageModel {
 
         // Get user
         var user = await this.userManager.FindByIdAsync(userId.ToString());
-        if (user == null ) return this.NotFound();
+        if (user == null) return this.NotFound();
         this.NewUserName = user.UserName;
 
 

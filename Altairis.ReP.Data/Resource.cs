@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Altairis.ReP.Data; 
+namespace Altairis.ReP.Data;
 public class Resource {
 
     [Key]

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Altairis.ReP.Web.TagHelpers; 
+namespace Altairis.ReP.Web.TagHelpers;
 [HtmlTargetElement("modal-box", Attributes = "id,message")]
 public class ModalBoxTagHelper : TagHelper {
 

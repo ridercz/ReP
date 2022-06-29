@@ -1,19 +1,19 @@
+global using System.ComponentModel.DataAnnotations;
 global using Altairis.ReP.Data;
+global using Altairis.ReP.Web;
 global using Altairis.ReP.Web.Resources;
 global using Altairis.ReP.Web.Services;
-global using Microsoft.EntityFrameworkCore;
-global using Altairis.ReP.Web;
-global using System.ComponentModel.DataAnnotations;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.RazorPages;
+global using Microsoft.EntityFrameworkCore;
+using Altairis.ConventionalMetadataProviders;
 using Altairis.Services.DateProvider;
+using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Rfc2822;
 using Altairis.Services.Mailing.SendGrid;
 using Altairis.Services.Mailing.Templating;
-using Altairis.Services.Mailing;
 using Altairis.Services.PwnedPasswordsValidator;
 using Altairis.TagHelpers;
-using Altairis.ConventionalMetadataProviders;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 

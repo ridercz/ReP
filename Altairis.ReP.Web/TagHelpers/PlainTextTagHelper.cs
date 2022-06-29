@@ -3,7 +3,7 @@ using System.Text.Encodings.Web;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Altairis.ReP.Web.TagHelpers; 
+namespace Altairis.ReP.Web.TagHelpers;
 public class PlaintextTagHelper : TagHelper {
     private const string LINK_PATTERN = @"((https?)+\:\/\/)[^\s]+";
     private const int MAX_PATH_LENGTH = 20;
@@ -38,7 +38,6 @@ public class PlaintextTagHelper : TagHelper {
         return s;
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Emulating TryParse")]
     private static string CreateLink(Match m) {
         var href = m.Value.TrimEnd(',', '.', ')', ']', ';', ':');
         var endsWithPunctation = href != m.Value;

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Altairis.ReP.Web.Pages.Admin.Users; 
+namespace Altairis.ReP.Web.Pages.Admin.Users;
 public class EditModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
 

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Altairis.ReP.Data; 
+namespace Altairis.ReP.Data;
 public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
     public RepDbContext(DbContextOptions options) : base(options) {
     }

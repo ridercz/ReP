@@ -1,7 +1,7 @@
 using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages.Login; 
+namespace Altairis.ReP.Web.Pages.Login;
 public class ForgotPasswordModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
     private readonly ITemplatedMailerService mailerService;

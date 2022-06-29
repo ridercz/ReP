@@ -4,7 +4,7 @@ using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages.My; 
+namespace Altairis.ReP.Web.Pages.My;
 public class ReservationsModel : PageModel {
     private readonly RepDbContext dc;
     private readonly IDateProvider dateProvider;

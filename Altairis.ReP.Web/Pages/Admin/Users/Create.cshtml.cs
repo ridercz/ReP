@@ -3,7 +3,7 @@ using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Altairis.ReP.Web.Pages.Admin.Users; 
+namespace Altairis.ReP.Web.Pages.Admin.Users;
 public class CreateModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
     private readonly ITemplatedMailerService mailerService;

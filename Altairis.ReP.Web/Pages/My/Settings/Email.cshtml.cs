@@ -1,7 +1,7 @@
 using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages.My.Settings; 
+namespace Altairis.ReP.Web.Pages.My.Settings;
 public class EmailModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
     private readonly ITemplatedMailerService mailerService;

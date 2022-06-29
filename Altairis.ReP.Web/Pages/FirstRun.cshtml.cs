@@ -1,7 +1,7 @@
 using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages; 
+namespace Altairis.ReP.Web.Pages;
 public class FirstRunModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
 

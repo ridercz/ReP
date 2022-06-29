@@ -1,7 +1,7 @@
 using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
 
-namespace Altairis.ReP.Web.Pages.My; 
+namespace Altairis.ReP.Web.Pages.My;
 public class CalendarModel : PageModel {
     private readonly RepDbContext dc;
     private readonly IDateProvider dateProvider;

@@ -1,4 +1,4 @@
-namespace Altairis.ReP.Web.Pages.Admin.Users; 
+namespace Altairis.ReP.Web.Pages.Admin.Users;
 public class IndexModel : PageModel {
     private readonly RepDbContext dc;
 

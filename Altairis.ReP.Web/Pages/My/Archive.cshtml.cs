@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages.My; 
+namespace Altairis.ReP.Web.Pages.My;
 public class ArchiveModel : PageModel {
     private readonly RepDbContext dc;
     private readonly UserManager<ApplicationUser> userManager;

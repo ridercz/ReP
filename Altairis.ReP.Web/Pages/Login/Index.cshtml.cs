@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages.Login; 
+namespace Altairis.ReP.Web.Pages.Login;
 public class IndexModel : PageModel {
     private readonly SignInManager<ApplicationUser> signInManager;
     private readonly UserManager<ApplicationUser> userManager;

@@ -1,7 +1,7 @@
 using Altairis.Services.DateProvider;
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.ReP.Web.Pages.My; 
+namespace Altairis.ReP.Web.Pages.My;
 public class IndexModel : PageModel {
     private readonly RepDbContext dc;
     private readonly UserManager<ApplicationUser> userManager;
@@ -19,7 +19,7 @@ public class IndexModel : PageModel {
 
     public IEnumerable<ReservationInfo> Reservations { get; set; }
 
-    public OpeningHoursInfo OpenToday{ get; set; }
+    public OpeningHoursInfo OpenToday { get; set; }
 
     public OpeningHoursInfo OpenTomorrow { get; set; }
 
@@ -52,7 +52,7 @@ public class IndexModel : PageModel {
 
         // Get latest news message
         var latestNews = await this.dc.NewsMessages.OrderByDescending(x => x.Date).FirstOrDefaultAsync();
-        if(latestNews != null) {
+        if (latestNews != null) {
             this.LastNewsDate = latestNews.Date;
             this.LastNewsTitle = latestNews.Title;
             this.LastNewsText = latestNews.Text;

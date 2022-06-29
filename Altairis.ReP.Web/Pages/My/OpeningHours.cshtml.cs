@@ -1,4 +1,4 @@
-namespace Altairis.ReP.Web.Pages.My; 
+namespace Altairis.ReP.Web.Pages.My;
 public class OpeningHoursModel : PageModel {
     private readonly OpeningHoursProvider hoursProvider;
 

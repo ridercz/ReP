@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Altairis.ReP.Web.Pages.My.Settings; 
+namespace Altairis.ReP.Web.Pages.My.Settings;
 public class IndexModel : PageModel {
     private readonly UserManager<ApplicationUser> userManager;
 

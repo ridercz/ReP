@@ -3,7 +3,7 @@ using Altairis.Services.DateProvider;
 using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Templating;
 
-namespace Altairis.ReP.Web.Pages.Admin.NewsMessages; 
+namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
 public class CreateModel : PageModel {
     private readonly RepDbContext dc;
     private readonly IDateProvider dateProvider;

@@ -1,4 +1,4 @@
-namespace Altairis.ReP.Web.Pages.Admin.NewsMessages; 
+namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
 public class EditModel : PageModel {
     private readonly RepDbContext dc;
 

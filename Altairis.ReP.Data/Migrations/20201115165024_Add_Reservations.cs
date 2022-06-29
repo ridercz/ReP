@@ -1,15 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Altairis.ReP.Data.Migrations; 
-public partial class Add_Reservations : Migration
-{
-    protected override void Up(MigrationBuilder migrationBuilder)
-    {
+namespace Altairis.ReP.Data.Migrations;
+public partial class Add_Reservations : Migration {
+    protected override void Up(MigrationBuilder migrationBuilder) {
         migrationBuilder.CreateTable(
             name: "Resources",
-            columns: table => new
-            {
+            columns: table => new {
                 Id = table.Column<int>(type: "int", nullable: false)
                     .Annotation("SqlServer:Identity", "1, 1"),
                 Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -17,15 +14,13 @@ public partial class Add_Reservations : Migration
                 MaximumReservationTime = table.Column<int>(type: "int", nullable: false),
                 Enabled = table.Column<bool>(type: "bit", nullable: false)
             },
-            constraints: table =>
-            {
+            constraints: table => {
                 table.PrimaryKey("PK_Resources", x => x.Id);
             });
 
         migrationBuilder.CreateTable(
             name: "Reservations",
-            columns: table => new
-            {
+            columns: table => new {
                 Id = table.Column<int>(type: "int", nullable: false)
                     .Annotation("SqlServer:Identity", "1, 1"),
                 ResourceId = table.Column<int>(type: "int", nullable: false),
@@ -35,8 +30,7 @@ public partial class Add_Reservations : Migration
                 System = table.Column<bool>(type: "bit", nullable: false),
                 Comment = table.Column<string>(type: "nvarchar(max)", nullable: true)
             },
-            constraints: table =>
-            {
+            constraints: table => {
                 table.PrimaryKey("PK_Reservations", x => x.Id);
                 table.ForeignKey(
                     name: "FK_Reservations_AspNetUsers_UserId",
@@ -63,8 +57,7 @@ public partial class Add_Reservations : Migration
             column: "UserId");
     }
 
-    protected override void Down(MigrationBuilder migrationBuilder)
-    {
+    protected override void Down(MigrationBuilder migrationBuilder) {
         migrationBuilder.DropTable(
             name: "Reservations");
 

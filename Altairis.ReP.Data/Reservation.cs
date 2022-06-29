@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Altairis.ValidationToolkit;
 
-namespace Altairis.ReP.Data; 
+namespace Altairis.ReP.Data;
 public class Reservation {
 
     [Key]

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace Altairis.ReP.Data; 
+namespace Altairis.ReP.Data;
 [Index(nameof(Date), IsUnique = true)]
 public class OpeningHoursChange {
     [Key]

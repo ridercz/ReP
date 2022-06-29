@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Localization;
 
-namespace Altairis.ReP.Web.Pages; 
+namespace Altairis.ReP.Web.Pages;
 public class SetLanguageModel : PageModel {
     public IActionResult OnGet(string culture, string returnUrl = "/") {
         var cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture.Equals("cs") ? "cs-CZ" : "en-US"));
