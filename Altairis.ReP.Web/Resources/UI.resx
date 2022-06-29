@@ -502,4 +502,7 @@ Please follow the instructions in the message.</value>
   <data name="Layout_Menu_Directory" xml:space="preserve">
     <value>Directory</value>
   </data>
+  <data name="My_Directory_IsEmpty" xml:space="preserve">
+    <value>Directory is empty.</value>
+  </data>
 </root>

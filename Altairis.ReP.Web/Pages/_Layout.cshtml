@@ -47,7 +47,7 @@
             <li include-roles="*"><a asp-page="/My/Index"><i class="fas fa-fw fa-home"></i> @UI.Layout_Menu_Home</a></li>
             <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseNews"><a asp-page="/My/News"><i class="fas fa-fw fa-newspaper"></i> @UI.Layout_Menu_News</a></li>
             <li include-roles="*"><a asp-page="/My/Calendar" asp-route-year="" asp-route-month=""><i class="fas fa-fw fa-calendar"></i> @UI.Layout_Menu_Calendar</a></li>
-            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseMemberDirectory"><a asp-page="/My/Directory"><i class="fas fa-fw fa-users"></i> @UI.Layout_Menu_Directory</a></li>
+            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseMemberDirectory"><a asp-page="/My/Directory"><i class="fas fa-fw fa-address-card"></i> @UI.Layout_Menu_Directory</a></li>
             <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-fw fa-cog"></i> @UI.Layout_Menu_Settings</a></li>
             <li include-roles="@ApplicationRole.Administrator"><a asp-page="/Admin/Index"><i class="fas fa-fw fa-cogs"></i> @UI.Layout_Menu_Administration</a></li>
         </ul>

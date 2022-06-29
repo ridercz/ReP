@@ -501,4 +501,7 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Directory_Title" xml:space="preserve">
     <value>Adresář</value>
   </data>
+  <data name="My_Directory_IsEmpty" xml:space="preserve">
+    <value>Adresář je prázdný.</value>
+  </data>
 </root>

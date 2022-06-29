@@ -787,6 +787,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory is empty..
+        /// </summary>
+        public static string My_Directory_IsEmpty {
+            get {
+                return ResourceManager.GetString("My_Directory_IsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directory.
         /// </summary>
         public static string My_Directory_Title {
