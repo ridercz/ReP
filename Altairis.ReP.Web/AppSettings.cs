@@ -16,7 +16,6 @@ namespace Altairis.ReP.Web {
         public MailingConfig Mailing { get; set; } = new MailingConfig();
 
         public class MailingConfig {
-            public bool UseSendGrid { get; set; }
             public string PickupFolder { get; set; } = @"C:\InetPub\MailRoot\pickup";
             public string SendGridApiKey { get; set; }
             public string SenderName { get; set; }
