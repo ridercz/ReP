@@ -1,10 +1,7 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Security.Claims;
 using System.Text;
-using Altairis.ReP.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.ReP.Web {
     public static class SecurityHelper {

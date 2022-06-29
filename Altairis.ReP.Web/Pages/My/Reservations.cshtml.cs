@@ -1,19 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
-using Altairis.ReP.Web.Resources;
-using Altairis.ReP.Web.Services;
 using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Altairis.ReP.Web.Pages.My {
     public class ReservationsModel : PageModel {

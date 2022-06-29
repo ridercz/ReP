@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using Altairis.ReP.Web.Services;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace Altairis.ReP.Web.Pages.My {
     public class OpeningHoursModel : PageModel {
         private readonly OpeningHoursProvider hoursProvider;

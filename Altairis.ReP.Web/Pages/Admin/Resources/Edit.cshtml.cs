@@ -1,10 +1,4 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
 using Altairis.ValidationToolkit;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources {
     public class EditModel : PageModel {

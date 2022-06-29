@@ -1,13 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
 using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Altairis.ReP.Web.Pages.My {
     public class CalendarModel : PageModel {

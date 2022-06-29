@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Data {

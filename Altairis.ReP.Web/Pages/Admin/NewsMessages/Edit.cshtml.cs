@@ -1,12 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages {
     public class EditModel : PageModel {
         private readonly RepDbContext dc;

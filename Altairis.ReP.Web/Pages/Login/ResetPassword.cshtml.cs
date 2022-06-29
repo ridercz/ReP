@@ -1,11 +1,4 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
-using Altairis.ReP.Web.Resources;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.ReP.Web.Pages.Login {
     public class ResetPasswordModel : PageModel {

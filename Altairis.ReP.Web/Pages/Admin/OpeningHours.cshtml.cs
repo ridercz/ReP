@@ -1,14 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
-using Altairis.ReP.Web.Services;
 using Altairis.ValidationToolkit;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Altairis.ReP.Web.Pages.Admin {
     public class OpeningHoursModel : PageModel {

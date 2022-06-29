@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.Encodings.Web;
-using Altairis.ReP.Web.Resources;
+﻿using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;

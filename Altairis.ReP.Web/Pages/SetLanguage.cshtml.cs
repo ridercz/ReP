@@ -1,8 +1,4 @@
-using System;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.ReP.Web.Pages {
     public class SetLanguageModel : PageModel {

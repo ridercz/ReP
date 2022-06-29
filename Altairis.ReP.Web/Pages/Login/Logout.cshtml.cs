@@ -1,9 +1,4 @@
-using System;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.ReP.Web.Pages.Login {
     public class LogoutModel : PageModel {

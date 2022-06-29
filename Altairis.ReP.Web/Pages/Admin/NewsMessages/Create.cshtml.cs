@@ -1,16 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using Altairis.ReP.Data;
 using Altairis.Services.DateProvider;
 using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Templating;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages {
     public class CreateModel : PageModel {
