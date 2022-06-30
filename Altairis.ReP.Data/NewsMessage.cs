@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿namespace Altairis.ReP.Data;
 
-namespace Altairis.ReP.Data;
 public class NewsMessage {
     [Key]
     public int Id { get; set; }

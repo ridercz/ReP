@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+﻿global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Design;
 
 namespace Altairis.ReP.Data;
+
 public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
     public RepDbContext(DbContextOptions options) : base(options) {
     }

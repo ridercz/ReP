@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
+﻿namespace Altairis.ReP.Data;
 
-namespace Altairis.ReP.Data;
 public class ApplicationUser : IdentityUser<int> {
 
     [Required, MaxLength(100)]
