@@ -10,13 +10,15 @@ public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
     public RepDbContext(DbContextOptions options) : base(options) {
     }
 
-    public DbSet<Resource> Resources { get; set; }
+    public DbSet<Resource> Resources => this.Set<Resource>();
 
-    public DbSet<Reservation> Reservations { get; set; }
+    public DbSet<Reservation> Reservations => this.Set<Reservation>();
 
-    public DbSet<OpeningHoursChange> OpeningHoursChanges { get; set; }
+    public DbSet<OpeningHoursChange> OpeningHoursChanges => this.Set<OpeningHoursChange>();
 
-    public DbSet<NewsMessage> NewsMessages { get; set; }
+    public DbSet<NewsMessage> NewsMessages => this.Set<NewsMessage>();
+
+    public DbSet<DirectoryEntry> DirectoryEntries => this.Set<DirectoryEntry>();
 
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);

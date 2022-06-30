@@ -505,4 +505,22 @@ Please follow the instructions in the message.</value>
   <data name="My_Directory_IsEmpty" xml:space="preserve">
     <value>Directory is empty.</value>
   </data>
+  <data name="Admin_DirectoryEntries_Title" xml:space="preserve">
+    <value>Directory entries</value>
+  </data>
+  <data name="Admin_Index_ManageDirectory" xml:space="preserve">
+    <value>Manage directory entries</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Created" xml:space="preserve">
+    <value>New directory entry was created successfully.</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Deleted" xml:space="preserve">
+    <value>Directory entry was deleted.</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Saved" xml:space="preserve">
+    <value>Directory entry was saved.</value>
+  </data>
+  <data name="Admin_DirectoryEntry_Edit_Title" xml:space="preserve">
+    <value>Edit directory entry</value>
+  </data>
 </root>

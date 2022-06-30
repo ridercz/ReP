@@ -61,6 +61,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create directory entry.
+        /// </summary>
+        public static string Admin_DirectoryEntries_Create_Title {
+            get {
+                return ResourceManager.GetString("Admin_DirectoryEntries_Create_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Background color.
         /// </summary>
         public static string BackgroundColor {

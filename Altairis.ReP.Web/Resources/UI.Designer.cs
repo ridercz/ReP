@@ -124,6 +124,60 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New directory entry was created successfully..
+        /// </summary>
+        public static string Admin_DirectoryEntries_Index_Msg_Created {
+            get {
+                return ResourceManager.GetString("Admin_DirectoryEntries_Index_Msg_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directory entry was deleted..
+        /// </summary>
+        public static string Admin_DirectoryEntries_Index_Msg_Deleted {
+            get {
+                return ResourceManager.GetString("Admin_DirectoryEntries_Index_Msg_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directory entry was saved..
+        /// </summary>
+        public static string Admin_DirectoryEntries_Index_Msg_Saved {
+            get {
+                return ResourceManager.GetString("Admin_DirectoryEntries_Index_Msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directory entries.
+        /// </summary>
+        public static string Admin_DirectoryEntries_Title {
+            get {
+                return ResourceManager.GetString("Admin_DirectoryEntries_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit directory entry.
+        /// </summary>
+        public static string Admin_DirectoryEntry_Edit_Title {
+            get {
+                return ResourceManager.GetString("Admin_DirectoryEntry_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage directory entries.
+        /// </summary>
+        public static string Admin_Index_ManageDirectory {
+            get {
+                return ResourceManager.GetString("Admin_Index_ManageDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage news messages.
         /// </summary>
         public static string Admin_Index_ManageNews {

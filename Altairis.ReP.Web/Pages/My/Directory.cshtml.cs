@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace Altairis.ReP.Web.Pages.My;
 
 public class DirectoryModel : PageModel {
@@ -10,9 +7,35 @@ public class DirectoryModel : PageModel {
         this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
     }
 
-    public IEnumerable<ApplicationUser> Items { get; set; }
+    public class DirectoryEntryInfo {
+        public string IconClass { get; set; }
+        public string DisplayName { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+    }
+
+    public IEnumerable<DirectoryEntryInfo> Items { get; set; }
 
     public async Task OnGetAsync() {
-        this.Items = await this.dc.Users.Where(x => x.ShowInMemberDirectory).OrderBy(x => x.DisplayName).ToListAsync();
+        var userInfoQuery = from u in this.dc.Users
+                            where u.ShowInMemberDirectory
+                            select new DirectoryEntryInfo {
+                                IconClass = "fas fa-fw fa-user",
+                                DisplayName = u.DisplayName,
+                                UserName = u.UserName,
+                                Email = u.Email,
+                                PhoneNumber = u.PhoneNumber
+                            };
+        var extraInfoQuery = from de in this.dc.DirectoryEntries
+                             select new DirectoryEntryInfo {
+                                 IconClass = "fas fa-fw fa-address-card",
+                                 DisplayName = de.DisplayName,
+                                 Email = de.Email,
+                                 PhoneNumber = de.PhoneNumber
+                             };
+        var userInfos = await userInfoQuery.ToListAsync();
+        var extraInfos = await extraInfoQuery.ToListAsync();
+        this.Items = userInfos.Concat(extraInfos).OrderBy(x => x.DisplayName);
     }
 }

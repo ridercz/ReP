@@ -222,4 +222,7 @@
   <data name="UserName" xml:space="preserve">
     <value>User name</value>
   </data>
+  <data name="Admin_DirectoryEntries_Create_Title" xml:space="preserve">
+    <value>Create directory entry</value>
+  </data>
 </root>

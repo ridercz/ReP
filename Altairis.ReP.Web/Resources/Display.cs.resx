@@ -222,4 +222,7 @@
   <data name="UserName" xml:space="preserve">
     <value>Uživatelské jméno</value>
   </data>
+  <data name="Admin_DirectoryEntries_Create_Title" xml:space="preserve">
+    <value>Vytvoření položky adresáře</value>
+  </data>
 </root>

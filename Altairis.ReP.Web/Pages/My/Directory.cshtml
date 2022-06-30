@@ -21,7 +21,7 @@
         @foreach (var item in Model.Items) {
             <tr>
                 <th>
-                    <i class="fas fa-user"></i>
+                    <i class="@item.IconClass"></i>
                     @item.DisplayName
                 </th>
                 <td>@item.UserName</td>

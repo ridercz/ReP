@@ -504,4 +504,22 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Directory_IsEmpty" xml:space="preserve">
     <value>Adresář je prázdný.</value>
   </data>
+  <data name="Admin_DirectoryEntries_Title" xml:space="preserve">
+    <value>Záznamy v adresáři</value>
+  </data>
+  <data name="Admin_Index_ManageDirectory" xml:space="preserve">
+    <value>Správa položek adresáře</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Created" xml:space="preserve">
+    <value>Nová položka adresáře byla úspěšně vytvořena.</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Deleted" xml:space="preserve">
+    <value>Záznam v adresáři byl odstraněn.</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Saved" xml:space="preserve">
+    <value>Záznam v adresáři byl uložen.</value>
+  </data>
+  <data name="Admin_DirectoryEntry_Edit_Title" xml:space="preserve">
+    <value>Úprava položky adresáře</value>
+  </data>
 </root>
