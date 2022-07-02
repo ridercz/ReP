@@ -17,6 +17,9 @@ public class FirstRunModel : PageModel {
         [Required, MaxLength(50)]
         public string UserName { get; set; }
 
+        [Required, MaxLength(100)]
+        public string DisplayName { get; set; }
+
         [Required, MaxLength(50), EmailAddress]
         public string Email { get; set; }
 
@@ -38,6 +41,7 @@ public class FirstRunModel : PageModel {
         // Create user
         var user = new ApplicationUser {
             UserName = this.Input.UserName,
+            DisplayName = this.Input.DisplayName,
             Email = this.Input.Email,
             EmailConfirmed = true,
             Language = CultureInfo.CurrentUICulture.Name,
