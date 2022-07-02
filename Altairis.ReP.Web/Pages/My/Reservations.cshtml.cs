@@ -3,6 +3,7 @@ using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 namespace Altairis.ReP.Web.Pages.My;
 public class ReservationsModel : PageModel {
@@ -10,12 +11,14 @@ public class ReservationsModel : PageModel {
     private readonly IDateProvider dateProvider;
     private readonly UserManager<ApplicationUser> userManager;
     private readonly OpeningHoursProvider hoursProvider;
+    private readonly AppSettings options;
 
-    public ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider) {
+    public ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor) {
         this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
         this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
         this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
+        this.options = optionsAccessor?.Value ?? throw new ArgumentException(nameof(optionsAccessor));
     }
 
     [BindProperty]
@@ -99,16 +102,18 @@ public class ReservationsModel : PageModel {
             }
 
             // Check if it begins and ends in the same day
-            if (this.Input.DateBegin.Date != this.Input.DateEnd.Date) {
+            if (this.options.Features.UseOpeningHours && this.Input.DateBegin.Date != this.Input.DateEnd.Date) {
                 this.ModelState.AddModelError(string.Empty, UI.My_Reservations_Err_SingleDay);
                 return this.Page();
             }
 
-            // Check against lab opening times
-            var openTime = this.hoursProvider.GetOpeningHours(this.Input.DateBegin);
-            if (this.Input.DateBegin < openTime.AbsoluteOpeningTime || this.Input.DateEnd > openTime.AbsoluteClosingTime) {
-                this.ModelState.AddModelError(string.Empty, UI.My_Reservations_Err_OpeningHours);
-                return this.Page();
+            // Check against opening times
+            if (this.options.Features.UseOpeningHours) {
+                var openTime = this.hoursProvider.GetOpeningHours(this.Input.DateBegin);
+                if (this.Input.DateBegin < openTime.AbsoluteOpeningTime || this.Input.DateEnd > openTime.AbsoluteClosingTime) {
+                    this.ModelState.AddModelError(string.Empty, UI.My_Reservations_Err_OpeningHours);
+                    return this.Page();
+                }
             }
         }
 
