@@ -26,7 +26,7 @@ builder.Configuration.Bind(appSettings);
 
 // Configure database
 builder.Services.AddDbContext<RepDbContext>(options => {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MicrosoftSqlServer"));
 });
 
 // Configure base framework services
