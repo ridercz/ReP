@@ -25,9 +25,17 @@ var appSettings = new AppSettings();
 builder.Configuration.Bind(appSettings);
 
 // Configure database
-builder.Services.AddDbContext<RepDbContext>(options => {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MicrosoftSqlServer"));
-});
+if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)) {
+    builder.Services.AddDbContext<RepDbContext>(options => {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
+    });
+} else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCase)) {
+    builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options => {
+        options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
+    });
+} else {
+    throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
+}
 
 // Configure base framework services
 builder.Services.AddRazorPages(options => {

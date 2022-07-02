@@ -2,6 +2,8 @@
 
 public class AppSettings {
 
+    public string Database { get; set; } = "Sqlite";
+
     public FeaturesConfig Features { get; set; } = new FeaturesConfig();
 
     public class FeaturesConfig {

@@ -7,8 +7,7 @@ global using Microsoft.EntityFrameworkCore.Design;
 namespace Altairis.ReP.Data;
 
 public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
-    public RepDbContext(DbContextOptions options) : base(options) {
-    }
+    public RepDbContext(DbContextOptions options) : base(options) { }
 
     public DbSet<Resource> Resources => this.Set<Resource>();
 
@@ -28,7 +27,7 @@ public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
     }
 }
 
-public class FutLabDbContextDesignTimeFactory : IDesignTimeDbContextFactory<RepDbContext> {
+public class RepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<RepDbContext> {
     public RepDbContext CreateDbContext(string[] args) {
         var builder = new DbContextOptionsBuilder<RepDbContext>();
         builder.UseSqlServer("SERVER=.\\SqlExpress;TRUSTED_CONNECTION=yes;DATABASE=ReP_design");

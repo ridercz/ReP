@@ -129,3 +129,8 @@ node_modules
 # Production and deployment settings
 /Altairis.ReP.Web/Properties/ServiceDependencies*
 /Altairis.ReP.Web/appsettings.Production.json
+
+# Sqlite files
+*.db
+*.db-shm
+*.db-wal
