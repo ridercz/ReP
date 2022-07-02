@@ -114,7 +114,7 @@ public class ReservationsModel : PageModel {
 
         // Check against other reservations
         var q = from r in this.dc.Reservations
-                where r.DateBegin < this.Input.DateEnd && r.DateEnd > this.Input.DateBegin
+                where r.ResourceId == resourceId && r.DateBegin < this.Input.DateEnd && r.DateEnd > this.Input.DateBegin
                 select new { r.DateBegin, r.User.UserName };
         foreach (var item in await q.ToListAsync()) {
             this.ModelState.AddModelError(string.Empty, string.Format(UI.My_Reservations_Err_Conflict, item.UserName, item.DateBegin));
