@@ -145,7 +145,7 @@
     <value>Popis</value>
   </data>
   <data name="DisplayName" xml:space="preserve">
-    <value>Zobrazované jméno</value>
+    <value>Jméno</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E‑mail</value>
@@ -224,5 +224,8 @@
   </data>
   <data name="Admin_DirectoryEntries_Create_Title" xml:space="preserve">
     <value>Vytvoření položky adresáře</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Uživatel</value>
   </data>
 </root>

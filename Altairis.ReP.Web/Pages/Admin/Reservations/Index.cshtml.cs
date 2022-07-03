@@ -10,7 +10,7 @@ public class IndexModel : PageModel {
 
         public int ReservationId { get; set; }
 
-        public string UserName { get; set; }
+        public string UserDisplayName { get; set; }
 
         public string ResourceName { get; set; }
 
@@ -36,7 +36,7 @@ public class IndexModel : PageModel {
                     ReservationId = r.Id,
                     ResourceName = r.Resource.Name,
                     System = r.System,
-                    UserName = r.User.UserName
+                    UserDisplayName = r.User.DisplayName
                 };
         this.Reservations = await q.ToListAsync();
     }

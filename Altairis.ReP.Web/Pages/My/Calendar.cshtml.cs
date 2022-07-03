@@ -64,7 +64,7 @@ public class CalendarModel : PageModel {
                     Description = r.Comment,
                     ForegroundColor = r.Resource.ForegroundColor,
                     IsFullDay = false,
-                    Name = r.User.UserName
+                    Name = r.User.DisplayName
                 };
         this.Reservations = await q.ToListAsync();
 

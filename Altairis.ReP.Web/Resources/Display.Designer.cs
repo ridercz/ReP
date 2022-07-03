@@ -151,7 +151,7 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display name.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string DisplayName {
             get {
@@ -363,6 +363,15 @@ namespace Altairis.ReP.Web.Resources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
             }
         }
         

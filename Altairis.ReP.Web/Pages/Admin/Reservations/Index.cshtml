@@ -7,7 +7,7 @@
 <table class="grid" visible="Model.Reservations.Any()">
     <thead>
         <tr>
-            <th>@Display.UserName</th>
+            <th>@Display.User</th>
             <th>@Display.ResourceId</th>
             <th>@Display.DateBegin</th>
             <th>@Display.DateEnd</th>
@@ -17,7 +17,7 @@
     <tbody>
         @foreach (var item in Model.Reservations) {
             <tr>
-                <th><i class="fas fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@item.ReservationId">@item.UserName</a></th>
+                <th><i class="fas fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@item.ReservationId">@item.UserDisplayName</a></th>
                 <th><i class="fas fa-cube"></i> @item.ResourceName</th>
                 <td><time value="@item.DateBegin"></time></td>
                 <td><time value="@item.DateEnd"></time></td>
