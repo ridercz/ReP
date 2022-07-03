@@ -20,31 +20,39 @@ ReP is a generic shared resource reservation system.
   * _Masters_ can in addition edit or delete reservations of others and also can make their own reservations. They can also do so-called "system" reservations, which are not limited to the above constraints. System reservations are intended for example for maintenance etc.
   * _Administrators_ can in addition create, edit and delete shared resources, create, edit and delete users and manage opening hours.
 
-In addition to its core task of managing shared resource usage, the system also has two specific features that may come handy:
+In addition to its core task of managing shared resource usage, the system also has several features that may come handy:
 
 * _News_ for members, that can be published on the web site and (optionally) distributed to members via e-mail.
 * _Opening hours_ management. Default opening hours can be configured (for each day of week) and then exceptions can be made for specific dates.
+* _Directory_, which can contain contact details of members and also other important records.
 
 ## Deploying the system
 
-ReP can be deployed on premises or in the cloud. It's fairly standard ASP.NET web application
+ReP can be deployed on premises or in the cloud. It's fairly standard ASP.NET Core web application.
 
 ### Technical requirements
 
-* Web server supporting ASP.NET 5.0.
-* Microsoft SQL Server (any supported version and edition) or Azure SQL Database. The application can be easily changed to use SQLite or any other database, but by default uses SQL Server.
+* Web server supporting ASP.NET Core 6.0.
+* Microsoft SQL Server (any supported version and edition), Azure SQL Database or Sqlite.
 
 ### Configuration
 
 The configuration is stored in `appsettings.json`. You can set the following configuration options:
-
-* `ApplicationName` - application name (title) used trough the application UI.
-* `ConnectionStrings` - connection string:
-  * `DefaultConnection` - database connection string.
+* `Database` - either `Sqlite` or `SqlServer`.
+* `ConnectionStrings` - connection strings:
+  * `SqlServer` - connection string for Microsoft SQL Server or Azure SQL Database.
+  * `Sqlite` - connection string for Sqlite.
+* `Features` - turn application features on or off:
+  * `UseOpeningHours` - `true` or `false`.
+  * `UseNews` - `true` or `false`.
+  * `UseMemberDirectory` - `true` or `false`.
+* `Design` - design configuration:
+  * `ApplicationName` - application name (title) used trough the application UI.
+  * `HeaderImageUrl` - URL of image used in header instead of default one.
+  * `StylesheetUrl` - URL of stylesheet used instead of default one.
 * `Mailing` - outgoing e-mail configuration:
-  * `UseSendGrid` - use SendGrid service for sending mail. Otherwise mail pickup is used.
   * `PickupFolder` - path where `.eml` files for sent messages are generated.
-  * `SendGridApiKey` - API key for SendGrid.
+  * `SendGridApiKey` - API key for SendGrid. If not specified, mail pickup is used.
   * `SenderName` - sender display name.
   * `SenderAddress` - sender e-mail address.
 * `OpeningHours` - array of opening hour specifications:
@@ -59,6 +67,7 @@ You might want to customize the following files to suit your needs:
 * Styles:
   * `wwwroot/Content/Styles/_vars.scss` - font family and accent color.
   * `wwwroot/Content/Styles/*.scss` - other styles.
+  * Or use the `Design:StylesheetUrl` and `Design:HeaderImageUrl` configuration options.
 * HTML:
   * `Pages/_Layout.cshtml` - general page layout.
 * E-mail:
