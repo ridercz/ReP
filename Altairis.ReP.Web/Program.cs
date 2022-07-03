@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Localization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Load configuration
+var externalConfigPath = Path.Combine(builder.Environment.ContentRootPath, "..", "ReP.json");
+builder.Configuration.AddJsonFile(externalConfigPath , optional: true);
 builder.Services.Configure<AppSettings>(builder.Configuration);
 var appSettings = new AppSettings();
 builder.Configuration.Bind(appSettings);
