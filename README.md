@@ -73,3 +73,9 @@ You might want to customize the following files to suit your needs:
 * E-mail:
   * `Resources/Mailing/*/BodyTextFormatString.txt` - general message format, add common footer here.
   * `Resources/Mailing/*/*.txt` - text of e-mail messages.
+
+## Contributor Code of Conduct
+
+This project adheres to No Code of Conduct. We are all adults. We accept anyone's contributions. Nothing else matters.
+
+For more information please visit the [No Code of Conduct](https://github.com/domgetter/NCoC) homepage.
