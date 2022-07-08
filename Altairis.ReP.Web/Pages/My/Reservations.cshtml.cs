@@ -66,7 +66,7 @@ public class ReservationsModel : PageModel {
                     DateEnd = r.DateEnd,
                     Description = r.Comment,
                     IsFullDay = false,
-                    Name = r.User.UserName,
+                    Name = r.User.DisplayName,
                     CssClass = r.System ? "system" : string.Empty,
                     ForegroundColor = this.Resource.ForegroundColor,
                     BackgroundColor = this.Resource.BackgroundColor
