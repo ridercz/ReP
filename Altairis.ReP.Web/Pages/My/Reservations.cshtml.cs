@@ -62,14 +62,14 @@ public class ReservationsModel : PageModel {
                 where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
                 select new CalendarEvent {
                     Id = "reservation_" + r.Id,
+                    BackgroundColor = r.System ? r.Resource.ForegroundColor : r.Resource.BackgroundColor,
+                    ForegroundColor = r.System ? r.Resource.BackgroundColor : r.Resource.ForegroundColor,
+                    CssClass = r.System ? "system" : string.Empty,
                     DateBegin = r.DateBegin,
                     DateEnd = r.DateEnd,
-                    Description = r.Comment,
+                    Name = r.System ? r.Comment : r.User.DisplayName,
+                    Description = r.System ? r.User.DisplayName : r.Comment,
                     IsFullDay = false,
-                    Name = r.User.DisplayName,
-                    CssClass = r.System ? "system" : string.Empty,
-                    ForegroundColor = this.Resource.ForegroundColor,
-                    BackgroundColor = this.Resource.BackgroundColor
                 };
         var lastEventEnd = await q.MaxAsync(x => x.DateEnd);
         this.Reservations = await q.ToListAsync();
