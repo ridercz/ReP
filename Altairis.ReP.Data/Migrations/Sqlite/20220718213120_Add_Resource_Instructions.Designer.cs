@@ -3,6 +3,7 @@ using System;
 using Altairis.ReP.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Altairis.ReP.Data.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteRepDbContext))]
-    partial class SqliteRepDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220718213120_Add_Resource_Instructions")]
+    partial class Add_Resource_Instructions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.6");

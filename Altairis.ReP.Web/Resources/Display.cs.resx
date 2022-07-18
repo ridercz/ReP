@@ -228,4 +228,10 @@
   <data name="User" xml:space="preserve">
     <value>Uživatel</value>
   </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Instrukce</value>
+  </data>
+  <data name="Instructions_Description" xml:space="preserve">
+    <value>návod k použití nebo podobné informace</value>
+  </data>
 </root>

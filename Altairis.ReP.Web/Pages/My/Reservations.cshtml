@@ -1,6 +1,8 @@
 ﻿@page "{resourceId}"
 @model Altairis.ReP.Web.Pages.My.ReservationsModel
-@{ this.ViewBag.Title = Model.Resource.Name; }
+@{
+    this.ViewBag.Title = Model.Resource.Name;
+}
 <p>@Model.Resource.Description</p>
 
 <p>
@@ -37,5 +39,7 @@
           events="this.Model.Reservations"
           general-date-format="d."
           new-month-date-format="d. MMMM"></calendar>
+
+<plaintext text="@Model.Resource.Instructions"></plaintext>
 
 <modal-box id="created" message="@UI.My_Reservations_Msg_Created" />

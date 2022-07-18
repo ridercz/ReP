@@ -187,6 +187,24 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Instructions.
+        /// </summary>
+        public static string Instructions {
+            get {
+                return ResourceManager.GetString("Instructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to instructions for use or similar information.
+        /// </summary>
+        public static string Instructions_Description {
+            get {
+                return ResourceManager.GetString("Instructions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This user is administrator.
         /// </summary>
         public static string IsAdministrator {

@@ -228,4 +228,10 @@
   <data name="User" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="Instructions_Description" xml:space="preserve">
+    <value>instructions for use or similar information</value>
+  </data>
 </root>

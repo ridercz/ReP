@@ -10,6 +10,9 @@ public class Resource {
 
     public string Description { get; set; }
 
+    [DataType(DataType.MultilineText)]
+    public string Instructions { get; set; }
+
     [Required, Range(0, 1440)]
     public int MaximumReservationTime { get; set; }
 

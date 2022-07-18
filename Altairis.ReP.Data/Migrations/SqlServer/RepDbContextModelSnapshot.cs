@@ -280,6 +280,9 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
                         .HasColumnType("nchar(7)")
                         .IsFixedLength();
 
+                    b.Property<string>("Instructions")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("MaximumReservationTime")
                         .HasColumnType("int");
 

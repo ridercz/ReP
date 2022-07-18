@@ -18,6 +18,9 @@ public class CreateModel : PageModel {
 
         public string Description { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        public string Instructions { get; set; }
+
         [Required, Range(0, 1440)]
         public int MaximumReservationTime { get; set; }
 
@@ -37,6 +40,7 @@ public class CreateModel : PageModel {
         var newResource = new Resource {
             Description = this.Input.Description,
             Enabled = this.Input.ResourceEnabled,
+            Instructions = this.Input.Instructions,
             MaximumReservationTime = this.Input.MaximumReservationTime,
             Name = this.Input.Name,
             ForegroundColor = this.Input.ForegroundColor,

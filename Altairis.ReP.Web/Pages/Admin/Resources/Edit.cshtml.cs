@@ -18,6 +18,9 @@ public class EditModel : PageModel {
 
         public string Description { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        public string Instructions { get; set; }
+
         [Required, Range(0, 1440)]
         public int MaximumReservationTime { get; set; }
 
@@ -41,7 +44,8 @@ public class EditModel : PageModel {
             MaximumReservationTime = resource.MaximumReservationTime,
             Name = resource.Name,
             ForegroundColor = resource.ForegroundColor,
-            BackgroundColor = resource.BackgroundColor
+            BackgroundColor = resource.BackgroundColor,
+            Instructions = resource.Instructions
         };
         return this.Page();
     }
@@ -58,6 +62,7 @@ public class EditModel : PageModel {
         resource.Name = this.Input.Name;
         resource.ForegroundColor = this.Input.ForegroundColor;
         resource.BackgroundColor = this.Input.BackgroundColor;
+        resource.Instructions= this.Input.Instructions;
 
         await this.dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "saved");
