@@ -116,6 +116,15 @@ form {
             content: ')';
         }
     }
+
+    span.control-icons {
+        display: block;
+        color: $Accent;
+        text-align: right;
+        margin-top: -20px;
+        font-size: 20px;
+        line-height: 20px;
+    }
 }
 
 a.button {
@@ -139,6 +148,8 @@ ul.checkbox-list {
         display: block;
     }
 }
+
+
 
 .validation-summary-valid {
     display: none;

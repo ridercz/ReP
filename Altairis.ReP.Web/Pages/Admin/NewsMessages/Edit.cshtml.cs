@@ -14,7 +14,7 @@ public class EditModel : PageModel {
         [Required, MaxLength(100)]
         public string Title { get; set; }
 
-        [Required, DataType(DataType.MultilineText)]
+        [Required, DataType("Markdown")]
         public string Text { get; set; }
 
     }

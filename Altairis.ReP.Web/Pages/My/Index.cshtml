@@ -12,7 +12,7 @@
 <div visible="@this.OptionsAccessor.Value.Features.UseNews && !string.IsNullOrEmpty(Model.LastNewsTitle)">
     <h2>@Model.LastNewsTitle</h2>
     <div class="r em"><time value="@Model.LastNewsDate"></time></div>
-    <plaintext text="@Model.LastNewsText"></plaintext>
+    <markdown text="@Model.LastNewsText"></markdown>
 </div>
 
 <h2 visible="this.Model.Resources.Any()">@UI.My_Index_Resources</h2>

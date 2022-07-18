@@ -10,7 +10,7 @@ public class Resource {
 
     public string Description { get; set; }
 
-    [DataType(DataType.MultilineText)]
+    [DataType("Markdown")]
     public string Instructions { get; set; }
 
     [Required, Range(0, 1440)]

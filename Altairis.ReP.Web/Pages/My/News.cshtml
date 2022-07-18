@@ -12,5 +12,5 @@
 @foreach (var item in this.Model.Messages) {
     <h2>@item.Title</h2>
     <div class="r em"><time value="@item.Date"></time></div>
-    <plaintext text="@item.Text"></plaintext>
+    <markdown text="@item.Text"></markdown>
 }
