@@ -23,18 +23,8 @@ html body {
     margin: 0 auto;
   }
 }
-html body > header ul.info {
+html body > header .lang {
   float: right;
-  margin: 0;
-}
-html body > header a {
-  text-decoration: none;
-}
-html body > header h1 {
-  margin: 0;
-  padding: 0.5ex 0;
-  font-weight: normal;
-  font-size: 300%;
 }
 html body > nav a:link, html body > nav a:visited {
   color: #fff;
@@ -120,6 +110,19 @@ html body > footer {
 }
 html body > footer img {
   margin-right: 20px;
+}
+@media (max-width: 800px) {
+  html body > footer {
+    text-align: center;
+  }
+  html body > footer img.fl {
+    float: none;
+    margin: 0 10px;
+  }
+  html body > footer #copyright {
+    clear: both;
+    margin-top: 10px;
+  }
 }
 
 a:link, a:visited {

@@ -9,7 +9,7 @@
     border: 1px solid $Black;
     background-color: $Accent;
     color: $White;
-    padding: ($Padding / 2) 3ex;
+    padding: calc($Padding / 2) 3ex;
     text-decoration: none;
     cursor: pointer;
     line-height: 100%;
@@ -36,7 +36,7 @@
 @mixin textbox {
     font-family: $FontFamily;
     font-size: 14px;
-    padding: ($Padding / 4);
+    padding: calc($Padding / 4);
     width: 100%;
     background-color: $White;
     border: 1px solid lighten($Black, 50);

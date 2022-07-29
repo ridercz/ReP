@@ -5,6 +5,7 @@
 <html lang="@currentCulture">
 <head>
     <title>@this.ViewBag.Title | @this.OptionsAccessor.Value.Design.ApplicationName</title>
+    <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.2/css/flag-icons.min.css" integrity="sha512-uvXdJud8WaOlQFjlz9B15Yy2Au/bMAvz79F7Xa6OakCl2jvQPdHD0hb3dEqZRdSwG4/sknePXlE7GiarwA/9Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="@this.OptionsAccessor.Value.Design.StylesheetUrl" asp-append-version="true" />
@@ -16,26 +17,11 @@
 </head>
 <body>
     <header>
-        <ul class="info fa-ul">
-            <li include-roles="?" visible="!(this.ViewBag.HideLoginStatus ?? false)">
-                <span class="fa-li"><i class="fa fa-sign-in-alt"></i></span>
-                <a asp-page="/Login/Index">@UI.Layout_LoginStatus_SignIn</a>
-            </li>
-            <li include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)">
-                <span class="fa-li"><i class="fa fa-user"></i></span>
-                <a asp-page="/My/Settings/Index">@this.User.Identity.Name</a>
-            </li>
-            <li include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)">
-                <span class="fa-li"><i class="fa fa-sign-out-alt"></i></span>
-                <a asp-page="/Login/Logout">@UI.Layout_LoginStatus_SignOut</a>
-            </li>
-            <li>
-                <span class="fa-li"><i class="fa fa-globe"></i></span>
-                <a asp-page="/SetLanguage" asp-route-culture="cs" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_CS"><span class="fi fi-cz"></span></a>
-                <a asp-page="/SetLanguage" asp-route-culture="en" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_EN"><span class="fi fi-gb"></span></a>
-            </li>
-        </ul>
-        <img src="@this.OptionsAccessor.Value.Design.HeaderImageUrl" height="75" alt="@this.OptionsAccessor.Value.Design.ApplicationName" asp-append-version="true" />
+        <div class="lang">
+            <a visible="@(!currentCulture.StartsWith("cs"))" asp-page="/SetLanguage" asp-route-culture="cs" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_CS"><span class="fi fi-cz"></span></a>
+            <a visible="@(!currentCulture.StartsWith("en"))" asp-page="/SetLanguage" asp-route-culture="en" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_EN"><span class="fi fi-gb"></span></a>
+        </div>
+        <img src="@this.OptionsAccessor.Value.Design.HeaderImageUrl" alt="@this.OptionsAccessor.Value.Design.ApplicationName" asp-append-version="true" />
     </header>
     <nav>
         <input type="checkbox" id="mtoggler" hidden="hidden" />
@@ -48,8 +34,9 @@
             <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseNews"><a asp-page="/My/News"><i class="fas fa-fw fa-newspaper"></i> @UI.Layout_Menu_News</a></li>
             <li include-roles="*"><a asp-page="/My/Calendar" asp-route-year="" asp-route-month=""><i class="fas fa-fw fa-calendar"></i> @UI.Layout_Menu_Calendar</a></li>
             <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseMemberDirectory"><a asp-page="/My/Directory"><i class="fas fa-fw fa-address-card"></i> @UI.Layout_Menu_Directory</a></li>
-            <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-fw fa-cog"></i> @UI.Layout_Menu_Settings</a></li>
             <li include-roles="@ApplicationRole.Administrator"><a asp-page="/Admin/Index"><i class="fas fa-fw fa-cogs"></i> @UI.Layout_Menu_Administration</a></li>
+            <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-fw fa-user"></i> @this.User.Identity.Name</a></li>
+            <li include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)"><a asp-page="/Login/Logout"><i class="fa fa-fw fa-sign-out-alt"></i> @UI.Layout_LoginStatus_SignOut</a></li>
         </ul>
     </nav>
     <main>
@@ -59,8 +46,10 @@
     <footer>
         <a href="https://www.altairis.cz/"><img src="~/Content/Images/altairis.svg" alt="Logo Altairis" height="30" class="fl" asp-append-version="true" /></a>
         <a href="https://www.altair.blog/"><img src="~/Content/Images/altairblog.svg" alt="Logo altair.blog" height="30" class="fl" asp-append-version="true" /></a>
-        Copyright &copy; <a href="https://www.rider.cz/">Michal A. Valášek</a> - <a href="https://www.altairis.cz/">Altairis</a>, 2020-2022<br />
-        <a href="https://github.com/ridercz/ReP/">ReP</a> build <assembly-version display="BuildTime" /> | powered by <a href="https://dot.net/">.NET</a>
+        <div id="copyright">
+            Copyright &copy; <a href="https://www.rider.cz/">Michal A. Valášek</a> - <a href="https://www.altairis.cz/">Altairis</a>, 2020-2022<br />
+            <a href="https://github.com/ridercz/ReP/">ReP</a> build <assembly-version display="BuildTime" /> | powered by <a href="https://dot.net/">.NET</a>
+        </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.min.js" integrity="sha512-JMK7ImCd/9VxQM7FWvAT3njqo5iGKkWcOax6Bwzuq48xxFd7/jekKcgN+59ZRwBoEpZvv6Jkwh3fDGrBVWX5vA==" crossorigin="anonymous"></script>
     <script src="~/Content/Scripts/sitebundle.min.js" asp-append-version="true"></script>

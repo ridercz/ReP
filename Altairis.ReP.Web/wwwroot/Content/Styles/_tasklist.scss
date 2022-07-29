@@ -15,7 +15,7 @@ ul.tasklist {
             padding: $Padding;
 
             i {
-                margin-right: ($Padding / 2);
+                margin-right: calc($Padding / 2);
             }
         }
     }

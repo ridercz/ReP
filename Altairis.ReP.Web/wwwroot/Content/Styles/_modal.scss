@@ -27,7 +27,7 @@
 
         header {
             text-align: left;
-            padding: ($Padding / 4);
+            padding: calc($Padding / 4);
             background-color: $Black;
             color: $White;
             font-size: 150%;
@@ -49,7 +49,7 @@
         background-color: $White;
 
         header {
-            padding: ($Padding / 4) $Padding;
+            padding: calc($Padding / 4) $Padding;
             background-color: $Black;
             color: $White;
             font-size: 150%;

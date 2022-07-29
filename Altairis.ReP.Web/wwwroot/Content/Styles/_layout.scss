@@ -25,20 +25,8 @@ html {
         }
 
         > header {
-            ul.info {
+            .lang {
                 float: right;
-                margin: 0;
-            }
-
-            a {
-                text-decoration: none;
-            }
-
-            h1 {
-                margin: 0;
-                padding: .5ex 0;
-                font-weight: normal;
-                font-size: 300%;
             }
         }
 
@@ -58,15 +46,28 @@ html {
             text-align: right;
             border-top: 2px solid $Accent;
             margin-top: $Padding;
-            padding-top: ($Padding / 2);
+            padding-top: calc($Padding / 2);
 
             img {
                 margin-right: $Padding;
             }
+
+            @media(max-width: $StopMin) {
+                text-align: center;
+
+                img.fl {
+                    float: none;
+                    margin: 0 calc($Padding / 2);
+                }
+
+                #copyright {
+                    clear: both;
+                    margin-top: calc($Padding / 2);
+                }
+            }
         }
     }
 }
-
 
 a {
     &:link, &:visited {
