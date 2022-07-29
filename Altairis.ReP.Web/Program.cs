@@ -21,7 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Load configuration
 var externalConfigPath = Path.Combine(builder.Environment.ContentRootPath, "..", "ReP.json");
-builder.Configuration.AddJsonFile(externalConfigPath , optional: true);
+builder.Configuration.AddJsonFile(externalConfigPath, optional: true);
 builder.Services.Configure<AppSettings>(builder.Configuration);
 var appSettings = new AppSettings();
 builder.Configuration.Bind(appSettings);
@@ -142,7 +142,13 @@ app.UseRequestLocalization(options => {
 
 // Configure middleware
 app.UseStatusCodePagesWithReExecute("/Errors/{0}");
-app.UseStaticFiles();
+if (app.Environment.IsDevelopment()) {
+    app.UseStaticFiles();
+} else {
+    app.UseStaticFiles(new StaticFileOptions {
+        OnPrepareResponse = c => c.Context.Response.Headers.Add("Cache-Control", "public,max-age=31536000")
+    });
+}
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
