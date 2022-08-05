@@ -578,3 +578,11 @@ table.details tbody tr:hover {
 .calendar section.week > article ul li a, .calendar section.week > article ul li span {
   display: block;
 }
+.calendar section.week > article ul li a:link, .calendar section.week > article ul li a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+.calendar section.week > article ul li a:hover, .calendar section.week > article ul li a:active {
+  color: inherit;
+  text-decoration: underline;
+}

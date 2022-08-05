@@ -10,7 +10,7 @@ public class AppSettings {
         public bool UseOpeningHours { get; set; } = true;
         public bool UseNews { get; set; } = true;
         public bool UseMemberDirectory { get; set; } = true;
-
+        public bool UseCalendarEntries { get; set; } = true;
     }
 
     public DesignConfig Design { get; set; } = new DesignConfig();
@@ -19,7 +19,8 @@ public class AppSettings {
         public string ApplicationName { get; set; } = "ReP";
         public string HeaderImageUrl { get; set; } = "~/Content/Images/rep-logo.svg";
         public string StylesheetUrl { get; set; } = "~/Content/Styles/site.min.css";
-
+        public string CalendarEntryFgColor { get; set; } = "#fff";
+        public string CalendarEntryBgColor { get; set; } = "#090";
     }
 
     public SecurityConfig Security { get; set; } = new SecurityConfig();
@@ -42,13 +43,9 @@ public class AppSettings {
     public OpeningHoursConfig[] OpeningHours { get; set; }
 
     public class OpeningHoursConfig {
-
         public DayOfWeek DayOfWeek { get; set; }
-
         public TimeSpan OpeningTime { get; set; }
-
         public TimeSpan ClosingTime { get; set; }
-
     }
 
 }

@@ -523,4 +523,7 @@ Please follow the instructions in the message.</value>
   <data name="Admin_DirectoryEntry_Edit_Title" xml:space="preserve">
     <value>Edit directory entry</value>
   </data>
+  <data name="My_Calendar_AddEntry" xml:space="preserve">
+    <value>Add entry</value>
+  </data>
 </root>

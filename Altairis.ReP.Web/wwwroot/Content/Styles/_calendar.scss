@@ -89,6 +89,19 @@ $Padding: 1ex;
                     a, span {
                         display: block;
                     }
+
+                    a {
+
+                        &:link, &:visited {
+                            color: inherit;
+                            text-decoration: none;
+                        }
+
+                        &:hover, &:active {
+                            color: inherit;
+                            text-decoration: underline;
+                        }
+                    }
                 }
             }
         }

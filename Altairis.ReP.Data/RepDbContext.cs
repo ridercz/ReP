@@ -19,6 +19,8 @@ public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
 
     public DbSet<DirectoryEntry> DirectoryEntries => this.Set<DirectoryEntry>();
 
+    public DbSet<CalendarEntry> CalendarEntries => this.Set<CalendarEntry>();
+
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);
         builder.Entity<ApplicationUser>().Property(x => x.Language).IsFixedLength();

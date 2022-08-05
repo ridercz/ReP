@@ -823,6 +823,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add entry.
+        /// </summary>
+        public static string My_Calendar_AddEntry {
+            get {
+                return ResourceManager.GetString("My_Calendar_AddEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage my reservations.
         /// </summary>
         public static string My_Calendar_Manage {

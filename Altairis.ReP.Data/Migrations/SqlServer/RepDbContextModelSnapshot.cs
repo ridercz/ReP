@@ -143,6 +143,30 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Altairis.ReP.Data.CalendarEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CalendarEntries");
+                });
+
             modelBuilder.Entity("Altairis.ReP.Data.DirectoryEntry", b =>
                 {
                     b.Property<int>("Id")

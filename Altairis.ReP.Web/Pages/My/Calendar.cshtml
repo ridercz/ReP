@@ -1,14 +1,41 @@
 ﻿@page "{year:int:range(2020,2100)?}/{month:int:range(1,12)?}"
 @model Altairis.ReP.Web.Pages.My.CalendarModel
-@{ this.ViewBag.Title = string.Format(UI.My_Calendar_Title, Model.DateBegin); }
+@{
+    this.ViewBag.Title = string.Format(UI.My_Calendar_Title, Model.DateBegin);
+}
 
 <p>
     <a asp-page="Index" asp-fragment="upcoming" class="button">@UI.My_Calendar_Manage</a>
+    <a asp-fragment="addevent" class="button" visible="this.Model.CanManageEntries">@UI.My_Calendar_AddEntry</a>
     <span class="fr">
         <a asp-route-year="@Model.DatePrev.Year" asp-route-month="@Model.DatePrev.Month" class="button secondary" style="min-width:3ex" title="@Model.DatePrev.ToString("MMMM")"><i class="fas fa-caret-left"></i></a>
         <a asp-route-year="@Model.DateNext.Year" asp-route-month="@Model.DateNext.Month" class="button secondary" style="min-width:3ex" title="@Model.DateNext.ToString("MMMM")"><i class="fas fa-caret-right"></i></a>
     </span>
 </p>
+
+<div id="addevent" class="modal" visible="this.Model.CanManageEntries">
+    <form method="post" style="width: 75%">
+        <header>@UI.My_Calendar_AddEntry</header>
+        <p>
+            <label asp-for="Input.Date"></label><br />
+            <input asp-for="Input.Date" />
+        </p>
+        <p>
+            <label asp-for="Input.Title"></label><br />
+            <input asp-for="Input.Title" />
+        </p>
+        <p>
+            <label asp-for="Input.Comment"></label><br />
+            <span class="control-icons"><i class="fa-brands fa-markdown" title="Markdown"></i></span>
+            <textarea asp-for="Input.Comment"></textarea>
+        </p>
+        <div asp-validation-summary="All"></div>
+        <footer>
+            <input type="submit" value="@UI._Submit" />
+            <a href="#" class="button secondary">@UI._Cancel</a>
+        </footer>
+    </form>
+</div>
 
 <calendar class="calendar"
           date-begin="this.Model.DateBegin"
@@ -23,3 +50,17 @@
         <span class="tag" style="@item.GetStyle()">@item.Name</span>
     }
 </p>
+
+@foreach (var item in this.Model.CalendarEntries) {
+    <div id="event_detail_@item.Id" class="modal">
+        <article class="l">
+            <header>@item.Date.ToLongDateString()</header>
+            <p class="strong">@item.Title</p>
+            <markdown text="@item.Comment"></markdown>
+            <footer>
+                <a href="#" class="button">@UI._OK</a>
+                <a asp-page-handler="delete" asp-route-entryId="@item.Id" class="button tertiary" visible="this.Model.CanManageEntries">@UI._Delete</a>
+            </footer>
+        </article>
+    </div>
+}
