@@ -134,3 +134,6 @@ node_modules
 *.db
 *.db-shm
 *.db-wal
+
+# Local blob storage
+/Altairis.ReP.Web/App_Data/Blobs/
