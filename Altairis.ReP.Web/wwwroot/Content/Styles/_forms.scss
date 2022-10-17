@@ -54,7 +54,7 @@
 
 form {
     input {
-        &[type=text], &[type=password], &[type=email], &[type=url], .textbox {
+        &[type=text], &[type=password], &[type=email], &[type=url], &[type=file], .textbox {
             @include textbox;
         }
 

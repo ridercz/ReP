@@ -178,7 +178,7 @@ em, .em {
   color: #ff6a00;
 }
 
-form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input .textbox {
+form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input[type=file], form input .textbox {
   font-family: Segoe UI, Arial, Helvetica, sans-serif;
   font-size: 14px;
   padding: 5px;
@@ -187,11 +187,11 @@ form input[type=text], form input[type=password], form input[type=email], form i
   border: 1px solid gray;
   box-sizing: border-box;
 }
-form input[type=text].input-validation-error, form input[type=password].input-validation-error, form input[type=email].input-validation-error, form input[type=url].input-validation-error, form input .textbox.input-validation-error {
+form input[type=text].input-validation-error, form input[type=password].input-validation-error, form input[type=email].input-validation-error, form input[type=url].input-validation-error, form input[type=file].input-validation-error, form input .textbox.input-validation-error {
   background-color: white;
   border: 1px solid #ff6a00;
 }
-form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input .textbox:focus {
+form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input[type=file]:focus, form input .textbox:focus {
   border: 1px solid #000;
 }
 form input[type=tel], form input[type=number], form input[type=date], form input[type=time], form input.short {
