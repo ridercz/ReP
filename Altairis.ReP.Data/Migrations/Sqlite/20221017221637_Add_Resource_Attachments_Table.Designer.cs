@@ -3,6 +3,7 @@ using System;
 using Altairis.ReP.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Altairis.ReP.Data.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteRepDbContext))]
-    partial class SqliteRepDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221017221637_Add_Resource_Attachments_Table")]
+    partial class Add_Resource_Attachments_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -311,7 +313,7 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("FileSize")
+                    b.Property<int>("FileSize")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ResourceId")

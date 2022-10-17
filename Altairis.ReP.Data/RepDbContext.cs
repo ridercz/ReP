@@ -21,6 +21,8 @@ public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
 
     public DbSet<CalendarEntry> CalendarEntries => this.Set<CalendarEntry>();
 
+    public DbSet<ResourceAttachment> ResourceAttachments => this.Set<ResourceAttachment>();
+
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);
         builder.Entity<ApplicationUser>().Property(x => x.Language).IsFixedLength();
