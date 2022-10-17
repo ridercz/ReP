@@ -27,6 +27,8 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Storage.Net" Version="9.3.0" />
+		<PackageReference Include="Storage.Net.Microsoft.Azure.Storage.Blobs" Version="9.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -81,9 +83,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="App_Data\_marker.txt">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+		<None Update="App_Data\.gitkeep">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>

@@ -16,6 +16,7 @@ using Altairis.Services.PwnedPasswordsValidator;
 using Altairis.TagHelpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
+using Storage.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,9 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
 } else {
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
 }
+
+// Configure blob storage
+builder.Services.AddTransient(s => StorageFactory.Blobs.FromConnectionString(builder.Configuration.GetConnectionString("AttachmentStorage")));
 
 // Configure base framework services
 builder.Services.AddRazorPages(options => {
@@ -98,6 +102,7 @@ builder.Services.AddResourceTemplatedMailerService(new ResourceTemplatedMailerSe
 // Configure misc services
 builder.Services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
 builder.Services.AddScoped<OpeningHoursProvider>();
+builder.Services.AddScoped<AttachmentProcessor>();
 builder.Services.Configure<TimeTagHelperOptions>(options => {
     options.YesterdayDateFormatter = dt => string.Format(UI.TimeTagHelper_Yesterday, dt);
     options.TodayDateFormatter = dt => string.Format(UI.TimeTagHelper_Today, dt);

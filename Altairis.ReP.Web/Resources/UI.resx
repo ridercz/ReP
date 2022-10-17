@@ -526,4 +526,16 @@ Please follow the instructions in the message.</value>
   <data name="My_Calendar_AddEntry" xml:space="preserve">
     <value>Add entry</value>
   </data>
+  <data name="Admin_Resources_Attachments_Title" xml:space="preserve">
+    <value>Attachments for {0}</value>
+  </data>
+  <data name="Admin_Resources_Attachments_AddAttachment" xml:space="preserve">
+    <value>Add new attachment</value>
+  </data>
+  <data name="Admin_Resources_Attachments_Current" xml:space="preserve">
+    <value>Current attachments</value>
+  </data>
+  <data name="Admin_Resources_Attachments_ConfirmDelete" xml:space="preserve">
+    <value>Are you sure you want to delete this attachment?</value>
+  </data>
 </root>

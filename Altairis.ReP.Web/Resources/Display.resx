@@ -234,4 +234,13 @@
   <data name="Instructions_Description" xml:space="preserve">
     <value>instructions for use or similar information</value>
   </data>
+  <data name="DateCreated" xml:space="preserve">
+    <value>Date created</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
 </root>

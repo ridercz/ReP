@@ -1,6 +1,8 @@
 ﻿@page
 @model Altairis.ReP.Web.Pages.Admin.Resources.IndexModel
-@{ this.ViewBag.Title = UI.Admin_Resources_Index_Title; }
+@{
+    this.ViewBag.Title = UI.Admin_Resources_Index_Title;
+}
 <table class="grid">
     <thead>
         <tr>
@@ -25,7 +27,10 @@
                     <span class="tag" style="@item.GetStyle()">XXXXXX</span>
                 </td>
                 <td trim-length="50">@item.Description</td>
-                <td class="buttons"><a asp-page="/My/Reservations" asp-route-resourceId="@item.Id"><i class="fas fa-calendar-check"></i></a></td>
+                <td class="buttons">
+                    <a asp-page="/My/Reservations" asp-route-resourceId="@item.Id"><i class="fas fa-calendar-check"></i></a>
+                    <a asp-page="Attachments" asp-route-resourceId="@item.Id"><i class="fas fa-paperclip"></i></a>
+                </td>
             </tr>
         }
     </tbody>

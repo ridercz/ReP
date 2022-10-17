@@ -403,6 +403,42 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new attachment.
+        /// </summary>
+        public static string Admin_Resources_Attachments_AddAttachment {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Attachments_AddAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this attachment?.
+        /// </summary>
+        public static string Admin_Resources_Attachments_ConfirmDelete {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Attachments_ConfirmDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current attachments.
+        /// </summary>
+        public static string Admin_Resources_Attachments_Current {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Attachments_Current", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments for {0}.
+        /// </summary>
+        public static string Admin_Resources_Attachments_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Attachments_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create new resource.
         /// </summary>
         public static string Admin_Resources_Create_Title {
