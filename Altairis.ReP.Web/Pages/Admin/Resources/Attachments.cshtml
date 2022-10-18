@@ -3,6 +3,33 @@
 @{
     this.ViewBag.Title = string.Format(UI.Admin_Resources_Attachments_Title, this.Model.ResourceName);
 }
+
+@if (this.Model.Items.Any()) {
+    <h2>@UI.Admin_Resources_Attachments_Current</h2>
+    <table class="grid">
+        <thead>
+            <tr>
+                <th>@Display.FileName</th>
+                <th>@Display.DateCreated</th>
+                <th class="r">@Display.FileSize</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in this.Model.Items) {
+                <tr>
+                    <th><i class="fas fa-paperclip"></i> <a asp-page="/My/Reservations" asp-page-handler="download" asp-route-resourceId="@this.RouteData.Values["resourceId"]" asp-route-attachmentId="@item.Id">@item.FileName</a></th>
+                    <td><time value="@item.DateCreated"></time></td>
+                    <td class="r"><file-size value="@item.FileSize"></file-size></td>
+                    <td class="buttons">
+                        <a asp-page-handler="deleteAttachment" asp-route-attachmentId="@item.Id" confirm-message="@UI.Admin_Resources_Attachments_ConfirmDelete" title="@UI._Delete"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 <h2>@UI.Admin_Resources_Attachments_AddAttachment</h2>
 <form method="post" enctype="multipart/form-data">
     <p><input asp-for="Input.File" /></p>
@@ -11,27 +38,3 @@
         <input type="submit" value="@UI._Submit" />
     </footer>
 </form>
-
-<h2>@UI.Admin_Resources_Attachments_Current</h2>
-<table class="grid">
-    <thead>
-        <tr>
-            <th>@Display.FileName</th>
-            <th>@Display.DateCreated</th>
-            <th class="r">@Display.FileSize</th>
-            <th>&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in this.Model.Items) {
-            <tr>
-                <th><i class="fas fa-paperclip"></i> <a asp-page="/My/Reservations" asp-page-handler="download" asp-route-resourceId="@this.RouteData.Values["resourceId"]" asp-route-attachmentId="@item.Id">@item.FileName</a></th>
-                <td><time value="@item.DateCreated"></time></td>
-                <td class="r"><file-size value="@item.FileSize"></file-size></td>
-                <td class="buttons">
-                    <a asp-page-handler="deleteAttachment" asp-route-attachmentId="@item.Id" confirm-message="@UI.Admin_Resources_Attachments_ConfirmDelete" title="@UI._Delete"><i class="fas fa-trash-alt"></i></a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
