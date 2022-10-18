@@ -44,6 +44,11 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
 StorageFactory.Modules.UseAzureBlobStorage();
 builder.Services.AddTransient(s => StorageFactory.Blobs.FromConnectionString(builder.Configuration.GetConnectionString("Blob")));
 
+// Configure maximum file size
+builder.WebHost.ConfigureKestrel(options => {
+    options.Limits.MaxRequestBodySize = appSettings.Attachments.MaximumFileSize;
+});
+
 // Configure base framework services
 builder.Services.AddRazorPages(options => {
     options.Conventions.AuthorizeFolder("/My", "IsLoggedIn");
