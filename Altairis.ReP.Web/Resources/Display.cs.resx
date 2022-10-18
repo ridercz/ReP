@@ -234,4 +234,13 @@
   <data name="Instructions_Description" xml:space="preserve">
     <value>návod k použití nebo podobné informace</value>
   </data>
+  <data name="DateCreated" xml:space="preserve">
+    <value>Datum vytvoření</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Název souboru</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Velikost</value>
+  </data>
 </root>

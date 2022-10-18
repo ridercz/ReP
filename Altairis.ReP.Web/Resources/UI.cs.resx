@@ -525,4 +525,19 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Calendar_AddEntry" xml:space="preserve">
     <value>Přidat událost</value>
   </data>
+  <data name="Admin_Resources_Attachments_Title" xml:space="preserve">
+    <value>Přílohy pro {0}</value>
+  </data>
+  <data name="Admin_Resources_Attachments_AddAttachment" xml:space="preserve">
+    <value>Přidání nové přílohy</value>
+  </data>
+  <data name="Admin_Resources_Attachments_Current" xml:space="preserve">
+    <value>Aktuální přílohy</value>
+  </data>
+  <data name="Admin_Resources_Attachments_ConfirmDelete" xml:space="preserve">
+    <value>Opravdu chcete tuto přílohu odstranit?</value>
+  </data>
+  <data name="My_Reservations_Attachments" xml:space="preserve">
+    <value>Přílohy</value>
+  </data>
 </root>
