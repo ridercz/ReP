@@ -1039,6 +1039,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachments.
+        /// </summary>
+        public static string My_Reservations_Attachments {
+            get {
+                return ResourceManager.GetString("My_Reservations_Attachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this reservation?.
         /// </summary>
         public static string My_Reservations_DeleteConfirm {

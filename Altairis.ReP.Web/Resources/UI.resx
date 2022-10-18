@@ -538,4 +538,7 @@ Please follow the instructions in the message.</value>
   <data name="Admin_Resources_Attachments_ConfirmDelete" xml:space="preserve">
     <value>Are you sure you want to delete this attachment?</value>
   </data>
+  <data name="My_Reservations_Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
 </root>

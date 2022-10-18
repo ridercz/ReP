@@ -11,13 +11,15 @@ public class ReservationsModel : PageModel {
     private readonly IDateProvider dateProvider;
     private readonly UserManager<ApplicationUser> userManager;
     private readonly OpeningHoursProvider hoursProvider;
+    private readonly AttachmentProcessor attachmentProcessor;
     private readonly AppSettings options;
 
-    public ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor) {
+    public ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor, AttachmentProcessor attachmentProcessor) {
         this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
         this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
         this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
+        this.attachmentProcessor = attachmentProcessor;
         this.options = optionsAccessor?.Value ?? throw new ArgumentException(nameof(optionsAccessor));
     }
 
@@ -44,6 +46,8 @@ public class ReservationsModel : PageModel {
     public DateTime CalendarDateBegin { get; set; }
 
     public DateTime CalendarDateEnd { get; set; }
+
+    public IEnumerable<ResourceAttachment> Attachments { get; set; }
 
     public bool CanDoReservation { get; set; } = false;
 
@@ -76,6 +80,9 @@ public class ReservationsModel : PageModel {
         this.CalendarDateEnd = this.CalendarDateBegin.AddMonths(1);
         if (lastEventEnd.HasValue && lastEventEnd > this.CalendarDateEnd) this.CalendarDateEnd = lastEventEnd.Value;
 
+        // Get attachments
+        this.Attachments = await this.dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
+
         return true;
     }
 
@@ -87,6 +94,15 @@ public class ReservationsModel : PageModel {
         this.Input.DateEnd = this.Input.DateBegin.AddHours(1);
 
         return this.Page();
+    }
+
+    public async Task<IActionResult> OnGetDownload(int attachmentId) {
+        try {
+            var result = await this.attachmentProcessor.GetAttachment(attachmentId);
+            return this.File(result.Item1, "application/octet-stream", result.Item2);
+        } catch (FileNotFoundException) {
+            return this.NotFound();
+        }
     }
 
     public async Task<IActionResult> OnPostAsync(int resourceId) {

@@ -42,4 +42,16 @@
 
 <markdown text="@Model.Resource.Instructions"></markdown>
 
+@if (this.Model.Attachments.Any()) {
+    <h2>@UI.My_Reservations_Attachments</h2>
+    <ul class="fa-ul">
+        @foreach (var item in this.Model.Attachments) {
+            <li>
+                <span class="fa-li"><i class="fas fa-paperclip"></i></span>
+                <a class="strong" asp-page-handler="download" asp-route-attachmentId="@item.Id">@item.FileName</a>
+                (<time value="@item.DateCreated"></time>; <file-size value="@item.FileSize"></file-size>)
+            </li>
+        }
+    </ul>
+}
 <modal-box id="created" message="@UI.My_Reservations_Msg_Created" />

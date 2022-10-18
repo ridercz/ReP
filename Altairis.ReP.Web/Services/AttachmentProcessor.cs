@@ -1,4 +1,5 @@
-﻿using Altairis.Services.DateProvider;
+﻿using Altairis.ReP.Data;
+using Altairis.Services.DateProvider;
 using Storage.Net.Blobs;
 
 namespace Altairis.ReP.Web.Services;
@@ -44,7 +45,7 @@ public class AttachmentProcessor {
     }
 
     public async Task DeleteAttachment(int resourceAttachmentId) {
-        // Get attachment
+        // Get attachment info
         var a = await this.dc.ResourceAttachments.FindAsync(resourceAttachmentId);
         if (a == null) return; // Already deleted
 
@@ -54,6 +55,18 @@ public class AttachmentProcessor {
         // Delete attachment from database
         this.dc.ResourceAttachments.Remove(a);
         await this.dc.SaveChangesAsync();
+    }
+
+    public async Task<(byte[], string)> GetAttachment(int resourceAttachmentId) {
+        // Get attachment info
+        var a = await this.dc.ResourceAttachments.FindAsync(resourceAttachmentId);
+        if (a == null) throw new FileNotFoundException();
+
+        // Get data from storage
+        var data = await this.blobStorage.ReadBytesAsync(a.StoragePath);
+
+        // Send data
+        return new(data, a.FileName);
     }
 
 }
