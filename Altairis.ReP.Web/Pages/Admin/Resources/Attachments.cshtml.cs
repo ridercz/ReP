@@ -1,16 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Storage.Net.Blobs;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources {
     public class AttachmentsModel : PageModel {
         private readonly RepDbContext dc;
         private readonly AttachmentProcessor attachmentProcessor;
+        private readonly IOptions<AppSettings> options;
 
-        public AttachmentsModel(RepDbContext dc, AttachmentProcessor attachmentProcessor) {
+        public AttachmentsModel(RepDbContext dc, AttachmentProcessor attachmentProcessor, IOptions<AppSettings> options) {
             this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
             this.attachmentProcessor = attachmentProcessor;
+            this.options = options;
         }
 
         public string ResourceName { get; set; }
@@ -38,11 +41,13 @@ namespace Altairis.ReP.Web.Pages.Admin.Resources {
         }
 
         public async Task<IActionResult> OnGetDeleteAttachment(int attachmentId) {
+            if (!this.options.Value.Features.UseAttachments) return this.NotFound();
             await this.attachmentProcessor.DeleteAttachment(attachmentId);
             return this.RedirectToPage();
         }
 
         private async Task<bool> Init(int resourceId) {
+            if (!this.options.Value.Features.UseAttachments) return false;
             var res = await this.dc.Resources.FindAsync(resourceId);
             if (res == null) return false;
 

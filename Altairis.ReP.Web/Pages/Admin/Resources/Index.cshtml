@@ -29,7 +29,7 @@
                 <td trim-length="50">@item.Description</td>
                 <td class="buttons">
                     <a asp-page="/My/Reservations" asp-route-resourceId="@item.Id"><i class="fas fa-calendar-check"></i></a>
-                    <a asp-page="Attachments" asp-route-resourceId="@item.Id"><i class="fas fa-paperclip"></i></a>
+                    <a asp-page="Attachments" asp-route-resourceId="@item.Id" visible="@this.OptionsAccessor.Value.Features.UseAttachments"><i class="fas fa-paperclip"></i></a>
                 </td>
             </tr>
         }

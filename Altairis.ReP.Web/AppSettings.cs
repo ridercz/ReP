@@ -11,6 +11,7 @@ public class AppSettings {
         public bool UseNews { get; set; } = true;
         public bool UseMemberDirectory { get; set; } = true;
         public bool UseCalendarEntries { get; set; } = true;
+        public bool UseAttachments { get; set; } = true;
     }
 
     public DesignConfig Design { get; set; } = new DesignConfig();

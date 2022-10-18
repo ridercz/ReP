@@ -47,7 +47,7 @@ public class ReservationsModel : PageModel {
 
     public DateTime CalendarDateEnd { get; set; }
 
-    public IEnumerable<ResourceAttachment> Attachments { get; set; }
+    public IEnumerable<ResourceAttachment> Attachments { get; set; } = Enumerable.Empty<ResourceAttachment>();
 
     public bool CanDoReservation { get; set; } = false;
 
@@ -81,7 +81,7 @@ public class ReservationsModel : PageModel {
         if (lastEventEnd.HasValue && lastEventEnd > this.CalendarDateEnd) this.CalendarDateEnd = lastEventEnd.Value;
 
         // Get attachments
-        this.Attachments = await this.dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
+        if (this.options.Features.UseAttachments) this.Attachments = await this.dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
 
         return true;
     }
@@ -97,6 +97,7 @@ public class ReservationsModel : PageModel {
     }
 
     public async Task<IActionResult> OnGetDownload(int attachmentId) {
+        if (!this.options.Features.UseAttachments) return this.NotFound();
         try {
             var result = await this.attachmentProcessor.GetAttachment(attachmentId);
             return this.File(result.Item1, "application/octet-stream", result.Item2);
