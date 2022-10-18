@@ -41,7 +41,7 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
 }
 
 // Configure blob storage
-builder.Services.AddTransient(s => StorageFactory.Blobs.FromConnectionString(builder.Configuration.GetConnectionString("AttachmentStorage")));
+builder.Services.AddTransient(s => StorageFactory.Blobs.FromConnectionString(builder.Configuration.GetConnectionString("Blob")));
 
 // Configure base framework services
 builder.Services.AddRazorPages(options => {
