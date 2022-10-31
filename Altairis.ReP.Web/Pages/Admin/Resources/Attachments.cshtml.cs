@@ -1,17 +1,19 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using Altairis.ReP.Data.Entities;
 using Microsoft.Extensions.Options;
-using Storage.Net.Blobs;
 
-namespace Altairis.ReP.Web.Pages.Admin.Resources {
-    public class AttachmentsModel : PageModel {
-        private readonly RepDbContext dc;
+namespace Altairis.ReP.Web.Pages.Admin.Resources
+{
+    public class AttachmentsModel : PageModel
+    {
+        private readonly IResourceAttachmentService _attachmentService;
+        private readonly IResourceService _resourceService;
         private readonly AttachmentProcessor attachmentProcessor;
         private readonly IOptions<AppSettings> options;
 
-        public AttachmentsModel(RepDbContext dc, AttachmentProcessor attachmentProcessor, IOptions<AppSettings> options) {
-            this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
+        public AttachmentsModel(IResourceAttachmentService attachmetService, IResourceService resourceService, AttachmentProcessor attachmentProcessor, IOptions<AppSettings> options)
+        {
+            _attachmentService = attachmetService ?? throw new ArgumentNullException(nameof(attachmetService));
+            _resourceService = resourceService ?? throw new ArgumentNullException(nameof(resourceService));
             this.attachmentProcessor = attachmentProcessor;
             this.options = options;
         }
@@ -23,39 +25,40 @@ namespace Altairis.ReP.Web.Pages.Admin.Resources {
         [BindProperty]
         public InputModel Input { get; set; } = new InputModel();
 
-        public class InputModel {
-
+        public class InputModel
+        {
             public IFormFile File { get; set; }
-
         }
 
-        public async Task<IActionResult> OnGetAsync(int resourceId) {
-            if (!await this.Init(resourceId)) return this.NotFound();
+        public async Task<IActionResult> OnGetAsync(int resourceId, CancellationToken token)
+        {
+            if (!await this.Init(resourceId, token)) return this.NotFound();
             return this.Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int resourceId) {
-            if (!await this.Init(resourceId)) return this.NotFound();
+        public async Task<IActionResult> OnPostAsync(int resourceId, CancellationToken token)
+        {
+            if (!await this.Init(resourceId, token)) return this.NotFound();
             if ((this.Input?.File?.Length ?? 0) > 0) await attachmentProcessor.CreateAttachment(this.Input.File, resourceId);
             return this.RedirectToPage();
         }
 
-        public async Task<IActionResult> OnGetDeleteAttachment(int attachmentId) {
+        public async Task<IActionResult> OnGetDeleteAttachment(int attachmentId)
+        {
             if (!this.options.Value.Features.UseAttachments) return this.NotFound();
             await this.attachmentProcessor.DeleteAttachment(attachmentId);
             return this.RedirectToPage();
         }
 
-        private async Task<bool> Init(int resourceId) {
+        private async Task<bool> Init(int resourceId, CancellationToken token)
+        {
             if (!this.options.Value.Features.UseAttachments) return false;
-            var res = await this.dc.Resources.FindAsync(resourceId);
+            var res = await _resourceService.GetResourceByIdOrNullAsync(resourceId, token);
             if (res == null) return false;
 
             this.ResourceName = res.Name;
-            this.Items = await this.dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
+            this.Items = await _attachmentService.GetResourceAttachmentsByAsync(resourceId, token);
             return true;
         }
-
     }
-
 }

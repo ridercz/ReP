@@ -1,16 +1,17 @@
 namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 
-public class EditModel : PageModel {
-    private readonly RepDbContext dc;
+public class EditModel : PageModel
+{
+    private readonly IDirectoryEntryService _service;
 
-    public EditModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+    public EditModel(IDirectoryEntryService service) 
+        => _service = service ?? throw new ArgumentNullException(nameof(service));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
-    public class InputModel {
+    public class InputModel
+    {
 
         [Required, MaxLength(100)]
         public string DisplayName { get; set; }
@@ -23,41 +24,36 @@ public class EditModel : PageModel {
 
     }
 
-    public async Task<IActionResult> OnGetAsync(int directoryEntryId) {
-        var de = await this.dc.DirectoryEntries.FindAsync(directoryEntryId);
-        if (de == null) return this.NotFound();
+    public async Task<IActionResult> OnGetAsync(int directoryEntryId, CancellationToken token)
+    {
+        var de = await _service.GetDirectoryEntryOrNull(directoryEntryId, token);
+        
+        if (de is null) return this.NotFound();
 
-        this.Input = new InputModel {
+        this.Input = new InputModel
+        {
             DisplayName = de.DisplayName,
             Email = de.Email,
             PhoneNumber = de.PhoneNumber
-
         };
+
         return this.Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(int directoryEntryId) {
-        var de = await this.dc.DirectoryEntries.FindAsync(directoryEntryId);
-        if (de == null) return this.NotFound();
-
+    public async Task<IActionResult> OnPostAsync(int directoryEntryId, CancellationToken token)
+    {
         if (!this.ModelState.IsValid) return this.Page();
 
-        de.DisplayName = this.Input.DisplayName;
-        de.PhoneNumber = this.Input.PhoneNumber;
-        de.Email = this.Input.Email;
-
-        await this.dc.SaveChangesAsync();
-        return this.RedirectToPage("Index", null, "saved");
+        return await _service.SaveAsync(directoryEntryId, this.Input.DisplayName, this.Input.Email, this.Input.PhoneNumber, token) == CommandStatus.NotFound
+            ? this.NotFound()
+            : this.RedirectToPage("Index", null, "saved");
     }
 
-    public async Task<IActionResult> OnPostDeleteAsync(int directoryEntryId) {
-        var de = await this.dc.DirectoryEntries.FindAsync(directoryEntryId);
-        if (de == null) return this.NotFound();
-
-        this.dc.DirectoryEntries.Remove(de);
-
-        await this.dc.SaveChangesAsync();
-        return this.RedirectToPage("Index", null, "deleted");
+    public async Task<IActionResult> OnPostDeleteAsync(int directoryEntryId, CancellationToken token)
+    {
+        return await _service.DeleteAsync(directoryEntryId, token) == CommandStatus.NotFound
+            ? this.NotFound()
+            : this.RedirectToPage("Index", null, "deleted");
     }
 
 }

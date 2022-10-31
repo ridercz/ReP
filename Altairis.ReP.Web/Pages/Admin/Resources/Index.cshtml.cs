@@ -1,34 +1,15 @@
+using Altairis.ReP.Data.Dtos;
+
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
-public class IndexModel : PageModel {
-    private readonly RepDbContext dc;
+public class IndexModel : PageModel 
+{
+    private readonly IResourceService _service;
 
-    public IndexModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+    public IndexModel(IResourceService service) 
+        => _service = service ?? throw new ArgumentNullException(nameof(service));
 
-    public IEnumerable<ResourceInfo> Resources { get; set; }
+    public IEnumerable<ResourceInfoDto> Resources { get; set; }
 
-    public class ResourceInfo {
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public int Id { get; set; }
-        public string ForegroundColor { get; set; }
-        public string BackgroundColor { get; set; }
-
-        public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
-    }
-
-    public async Task OnGetAsync() {
-        var q = from r in this.dc.Resources
-                orderby r.Name
-                select new ResourceInfo {
-                    Id = r.Id,
-                    Name = r.Name,
-                    Description = r.Description,
-                    ForegroundColor = r.ForegroundColor,
-                    BackgroundColor = r.BackgroundColor
-                };
-        this.Resources = await q.ToListAsync();
-    }
-
+    public async Task OnGetAsync(CancellationToken token)
+        => this.Resources = await _service.GetResourceInfosAsync(token);
 }

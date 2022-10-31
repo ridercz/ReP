@@ -1,40 +1,15 @@
+using Altairis.ReP.Data.Dtos;
+
 namespace Altairis.ReP.Web.Pages.Admin.Users;
 public class IndexModel : PageModel {
-    private readonly RepDbContext dc;
+    private readonly IUserService _service;
 
-    public IndexModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+    public IndexModel(IUserService service) 
+        => _service = service ?? throw new ArgumentNullException(nameof(service));
 
-    public class UserInfo {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string DisplayName { get; set; }
-        public string Email { get; set; }
-        public string Language { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool Enabled { get; set; }
+    public IEnumerable<UserInfoDto> Users { get; set; }
 
-        public bool EmailConfirmed { get; set; }
-    }
-
-
-    public IEnumerable<UserInfo> Users { get; set; }
-
-    public async Task OnGetAsync() {
-        var q = from u in this.dc.Users
-                orderby u.UserName
-                select new UserInfo {
-                    Id = u.Id,
-                    UserName = u.UserName,
-                    DisplayName = u.DisplayName,
-                    Email = u.Email,
-                    Language = u.Language,
-                    PhoneNumber = u.PhoneNumber,
-                    Enabled = u.Enabled,
-                    EmailConfirmed = u.EmailConfirmed
-                };
-        this.Users = await q.ToListAsync();
-    }
+    public async Task OnGetAsync(CancellationToken token)
+        => this.Users = await _service.GetUserInfos(token);
 
 }

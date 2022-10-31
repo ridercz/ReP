@@ -1,65 +1,63 @@
-﻿using Altairis.ReP.Data;
+﻿using Altairis.ReP.Data.Entities;
 using Altairis.Services.DateProvider;
 using Storage.Net.Blobs;
 
 namespace Altairis.ReP.Web.Services;
-public class AttachmentProcessor {
+public class AttachmentProcessor
+{
     private const string AttachmentPath = "attachments/{0:0000}/{1:yyyyMMddHHmmss}-{2:n}{3}";
 
     private readonly IBlobStorage blobStorage;
     private readonly IDateProvider dateProvider;
-    private readonly RepDbContext dc;
+    private readonly IResourceAttachmentService _service;
 
-    public AttachmentProcessor(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) {
+    public AttachmentProcessor(IBlobStorage blobStorage, IDateProvider dateProvider, IResourceAttachmentService service)
+    {
         this.blobStorage = blobStorage ?? throw new ArgumentNullException(nameof(blobStorage));
         this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-        this.dc = dc;
+        _service = service ?? throw new ArgumentNullException(nameof(service));
     }
 
-    public async Task<ResourceAttachment> CreateAttachment(IFormFile formFile, int resourceId) {
-        // Create attachment
-        var newAttachment = new ResourceAttachment {
-            DateCreated = this.dateProvider.Now,
-            FileName = Path.GetFileName(formFile.FileName),
-            FileSize = formFile.Length,
-            ResourceId = resourceId
-        };
+    public async Task<ResourceAttachment> CreateAttachment(IFormFile formFile, int resourceId)
+    {
 
-        // Create attachment storage path
-        newAttachment.StoragePath = string.Format(AttachmentPath, 
-            newAttachment.ResourceId,               // 0
-            newAttachment.DateCreated,              // 1
-            Guid.NewGuid(),                         // 2
-            Path.GetExtension(formFile.FileName));  // 3
+        var created = this.dateProvider.Now;
+        var storagePath = string.Format(AttachmentPath,
+             resourceId,                            // 0
+             created,                               // 1
+             Guid.NewGuid(),                        // 2
+             Path.GetExtension(formFile.FileName)); //3
 
         // Upload file to storage
         using var stream = formFile.OpenReadStream();
-        await this.blobStorage.WriteAsync(newAttachment.StoragePath, stream);
+        await this.blobStorage.WriteAsync(storagePath, stream);
 
-        // Save to database
-        await this.dc.ResourceAttachments.AddAsync(newAttachment);
-        await this.dc.SaveChangesAsync();
-
-        // Return data entity
-        return newAttachment;
+        // Create attachment
+        return await _service.SaveResourceAttachmentAsync(created,
+                                                   resourceId,
+                                                   Path.GetFileName(formFile.FileName),
+                                                   formFile.Length,
+                                                   storagePath
+                                                   );
     }
 
-    public async Task DeleteAttachment(int resourceAttachmentId) {
+    public async Task DeleteAttachment(int resourceAttachmentId)
+    {
         // Get attachment info
-        var a = await this.dc.ResourceAttachments.FindAsync(resourceAttachmentId);
+        var a = await _service.GetAttachmentOrNullByAsync(resourceAttachmentId);
         if (a == null) return; // Already deleted
 
         // Delete attachment from storage
         await this.blobStorage.DeleteAsync(a.StoragePath);
 
         // Delete attachment from database
-        this.dc.ResourceAttachments.Remove(a);
-        await this.dc.SaveChangesAsync();
+        await _service.DeleteResourceAttachmentAsync(resourceAttachmentId);
     }
 
-    public async Task<(byte[], string)> GetAttachment(int resourceAttachmentId) {
+    public async Task<(byte[], string)> GetAttachment(int resourceAttachmentId)
+    {
         // Get attachment info
-        var a = await this.dc.ResourceAttachments.FindAsync(resourceAttachmentId);
+        var a = await _service.GetAttachmentOrNullByAsync(resourceAttachmentId);
         if (a == null) throw new FileNotFoundException();
 
         // Get data from storage
@@ -68,5 +66,4 @@ public class AttachmentProcessor {
         // Send data
         return new(data, a.FileName);
     }
-
 }

@@ -1,3 +1,4 @@
+using Altairis.ReP.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;

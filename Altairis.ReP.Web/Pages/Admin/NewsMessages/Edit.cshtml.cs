@@ -1,55 +1,36 @@
-namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
-public class EditModel : PageModel {
-    private readonly RepDbContext dc;
+using Altairis.ReP.Data.Dtos.NewsMessageDtos;
+using Olbrasoft.Data.Cqrs;
 
-    public EditModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
+public class EditModel : PageModel
+{
+    private readonly INewsMessageService _service;
+
+    public EditModel(INewsMessageService service) 
+        => _service = service ?? throw new ArgumentNullException(nameof(service));
 
     [BindProperty]
-    public InputModel Input { get; set; } = new InputModel();
+    public NewsMessageDto Input { get; set; } = new NewsMessageDto();
 
-    public class InputModel {
+    public async Task<IActionResult> OnGetAsync(int newsMessageId)
+    {
+        var newsMessageDto = await _service.GetNewsMessageOrNullByAsync(newsMessageId);
+        if (newsMessageDto == null) return this.NotFound();
 
-        [Required, MaxLength(100)]
-        public string Title { get; set; }
+        this.Input = newsMessageDto;
 
-        [Required, DataType("Markdown")]
-        public string Text { get; set; }
-
-    }
-
-    public async Task<IActionResult> OnGetAsync(int newsMessageId) {
-        var m = await this.dc.NewsMessages.FindAsync(newsMessageId);
-        if (m == null) return this.NotFound();
-
-        this.Input = new InputModel {
-            Title = m.Title,
-            Text = m.Text
-        };
         return this.Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(int newsMessageId) {
-        var m = await this.dc.NewsMessages.FindAsync(newsMessageId);
-        if (m == null) return this.NotFound();
+    public async Task<IActionResult> OnPostAsync(int newsMessageId, CancellationToken token) 
+        =>  ModelState.IsValid
+            ? await _service.SaveAsync(newsMessageId, this.Input.Title, this.Input.Text, token) == CommandStatus.NotFound
+            ? this.NotFound()
+            : this.RedirectToPage("Index", null, "saved")
+            : this.Page();
 
-        if (!this.ModelState.IsValid) return this.Page();
-
-        m.Title = this.Input.Title;
-        m.Text = this.Input.Text;
-
-        await this.dc.SaveChangesAsync();
-        return this.RedirectToPage("Index", null, "saved");
-    }
-
-    public async Task<IActionResult> OnPostDeleteAsync(int newsMessageId) {
-        var m = await this.dc.NewsMessages.FindAsync(newsMessageId);
-        if (m == null) return this.NotFound();
-
-        this.dc.NewsMessages.Remove(m);
-
-        await this.dc.SaveChangesAsync();
-        return this.RedirectToPage("Index", null, "deleted");
-    }
+    public async Task<IActionResult> OnPostDeleteAsync(int newsMessageId, CancellationToken token) 
+        => await _service.DeleteAsync(newsMessageId, token) == CommandStatus.NotFound
+            ? this.NotFound()
+            : this.RedirectToPage("Index", null, "deleted");
 }

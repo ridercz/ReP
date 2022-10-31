@@ -1,17 +1,18 @@
 using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
-public class CreateModel : PageModel {
-    private readonly RepDbContext dc;
+public class CreateModel : PageModel
+{
+    private readonly IResourceService _service;
 
-    public CreateModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+    public CreateModel(IResourceService service)
+        => _service = service ?? throw new ArgumentNullException(nameof(service));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
-    public class InputModel {
+    public class InputModel
+    {
 
         [Required, MaxLength(50)]
         public string Name { get; set; }
@@ -31,25 +32,21 @@ public class CreateModel : PageModel {
         public string BackgroundColor { get; set; } = "#ffffff";
 
         public bool ResourceEnabled { get; set; } = true;
-
     }
 
-    public async Task<IActionResult> OnPostAsync() {
+    public async Task<IActionResult> OnPostAsync(CancellationToken token)
+    {
         if (!this.ModelState.IsValid) return this.Page();
 
-        var newResource = new Resource {
-            Description = this.Input.Description,
-            Enabled = this.Input.ResourceEnabled,
-            Instructions = this.Input.Instructions,
-            MaximumReservationTime = this.Input.MaximumReservationTime,
-            Name = this.Input.Name,
-            ForegroundColor = this.Input.ForegroundColor,
-            BackgroundColor = this.Input.BackgroundColor
-        };
-        this.dc.Resources.Add(newResource);
-        await this.dc.SaveChangesAsync();
+        await _service.SaveAsync(Input.Name,
+                                 Input.Description,
+                                 Input.Instructions,
+                                 Input.MaximumReservationTime,
+                                 Input.ResourceEnabled,
+                                 Input.ForegroundColor,
+                                 Input.BackgroundColor,
+                                 token);
 
         return this.RedirectToPage("Index", null, "created");
     }
-
 }

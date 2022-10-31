@@ -1,3 +1,5 @@
+using Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore;
+
 namespace Altairis.ReP.Web.Pages.My;
 
 public class DirectoryModel : PageModel {

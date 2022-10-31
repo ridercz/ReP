@@ -15,15 +15,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Reservations) {
+        @foreach (var reservation in Model.Reservations) {
             <tr>
-                <th><i class="fas fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@item.ReservationId">@item.UserDisplayName</a></th>
-                <th><i class="fas fa-cube"></i> @item.ResourceName</th>
-                <td><time value="@item.DateBegin"></time></td>
-                <td><time value="@item.DateEnd"></time></td>
+                <th><i class="fas fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@reservation.Id">@reservation.UserDisplayName</a></th>
+                <th><i class="fas fa-cube"></i> @reservation.ResourceName</th>
+                <td><time value="@reservation.DateBegin"></time></td>
+                <td><time value="@reservation.DateEnd"></time></td>
                 <td>
-                    <i class="fas fa-wrench" visible="@item.System" title="@Display.Comment"></i>
-                    @item.Comment
+                    <i class="fas fa-wrench" visible="@reservation.System" title="@Display.Comment"></i>
+                    @reservation.Comment
                 </td>
             </tr>
         }

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="FreeSql.Provider.SqlServer" Version="3.2.682" />
+	  <PackageReference Include="IGeekFan.AspNetCore.Identity.FreeSql" Version="0.0.519" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Altairis.ReP.Data\Altairis.ReP.Data.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="Altairis.ReP.Data.Entities" />
+		<Using Include="Altairis.ReP.Data.Queries.ResourceQueries" />
+		<Using Include="Altairis.ReP.Data.Queries.ReservationQueries" />
+		<Using Include="FreeSql" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="QueryHandlers\NewMessageQueryHandlers\" />
+	</ItemGroup>
+</Project>

@@ -6,6 +6,11 @@ public class OpeningHoursModel : PageModel {
         this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
     }
 
-    public IEnumerable<OpeningHoursInfo> OpeningHours => this.hoursProvider.GetOpeningHours(0, 14);
-
+    public IEnumerable<OpeningHoursInfo> OpeningHours
+    {
+        get
+        {
+            return this.hoursProvider.GetOpeningHours(0, 14);
+        }
+    }
 }

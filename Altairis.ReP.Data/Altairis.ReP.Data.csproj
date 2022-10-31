@@ -3,18 +3,22 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Altairis.ValidationToolkit" Version="2.9.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="Mapster" Version="7.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.10" />
+		<PackageReference Include="Olbrasoft.Data.Cqrs" Version="1.6.8" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Using Include="Olbrasoft.Data.Cqrs" />
+		<Using Include="Olbrasoft.Dispatching" />
+		<Using Include="Microsoft.AspNetCore.Identity" />
+		<Using Include="System.ComponentModel.DataAnnotations.Schema" />
+		<Using Include="Altairis.ReP.Data.Dtos.ReservationDtos" />
+		<Using Include="System.ComponentModel.DataAnnotations" />
+	</ItemGroup>
 </Project>

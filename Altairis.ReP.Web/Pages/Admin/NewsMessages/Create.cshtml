@@ -1,11 +1,35 @@
 ﻿@page
 @model Altairis.ReP.Web.Pages.Admin.NewsMessages.CreateModel
-@{ this.ViewBag.Title = UI.Admin_NewsMessages_Create_Title; }
+@{
+    this.ViewBag.Title = UI.Admin_NewsMessages_Create_Title;
+}
 <form method="post">
-    @Html.EditorFor(m => this.Model.Input)
+    <p>
+        <label>@Display.Title:</label><br />
+        <input autofocus="autofocus" id="news-massage-title" asp-for="@Model.Input.Title" class="form-control ">
+    </p>
+    <p>
+        <label>@Display.Text:</label><br />
+        <textarea rows="50" class="form-control" asp-for="@Model.Input.Text" id="news-massage-text"></textarea>
+    </p>
+
     <footer>
         <div asp-validation-summary="All"></div>
         <input type="submit" value="@UI._Submit" />
         <a asp-page="Index" class="button secondary">@UI._Cancel</a>
     </footer>
 </form>
+
+@section head   {
+    <link rel="stylesheet" href="~/Content/Styles/mditor.min.css" />
+}
+
+    @section scripts {
+    <script src="~/Content/Scripts/mditor.min.js" asp-append-version="true"></script>
+
+    <script>
+        var textarea = document.getElementById('news-massage-text');
+        var mditor = Mditor.fromTextarea(textarea);
+
+    </script>
+ }

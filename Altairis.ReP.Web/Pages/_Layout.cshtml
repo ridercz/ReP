@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Altairis.ReP.Data.Entities
+<!DOCTYPE html>
 @{
     var currentCulture = System.Globalization.CultureInfo.CurrentUICulture.Name;
 }
 <html lang="@currentCulture">
 <head>
+    <meta charset="UTF-8">
     <title>@this.ViewBag.Title | @this.OptionsAccessor.Value.Design.ApplicationName</title>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,7 +23,7 @@
             <a visible="@(!currentCulture.StartsWith("cs"))" asp-page="/SetLanguage" asp-route-culture="cs" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_CS"><span class="fi fi-cz"></span></a>
             <a visible="@(!currentCulture.StartsWith("en"))" asp-page="/SetLanguage" asp-route-culture="en" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_EN"><span class="fi fi-gb"></span></a>
         </div>
-        <img src="@this.OptionsAccessor.Value.Design.HeaderImageUrl" alt="@this.OptionsAccessor.Value.Design.ApplicationName" asp-append-version="true" />
+            <img src="@this.OptionsAccessor.Value.Design.HeaderImageUrl" alt="@this.OptionsAccessor.Value.Design.ApplicationName" asp-append-version="true" />
     </header>
     <nav>
         <input type="checkbox" id="mtoggler" hidden="hidden" />

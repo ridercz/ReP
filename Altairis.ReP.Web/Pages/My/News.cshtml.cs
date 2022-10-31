@@ -1,15 +1,20 @@
-namespace Altairis.ReP.Web.Pages.My;
-public class NewsModel : PageModel {
-    private readonly RepDbContext dc;
+using Altairis.ReP.Data.Entities;
 
-    public NewsModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
+namespace Altairis.ReP.Web.Pages.My;
+public class NewsModel : PageModel
+{
+    private readonly INewsMessageService _service;
+
+    public NewsModel(INewsMessageService service)
+    {
+        _service = service ?? throw new ArgumentNullException(nameof(service));
     }
 
     public IEnumerable<NewsMessage> Messages { get; set; }
 
-    public async Task OnGetAsync() {
-        this.Messages = await this.dc.NewsMessages.OrderByDescending(x => x.Date).ToListAsync();
+    public async Task OnGetAsync(CancellationToken token)
+    {
+        this.Messages = await _service.GetNewsMessagesAsync(token);
     }
 
 }

@@ -7,38 +7,43 @@ namespace Altairis.ReP.Web.Services;
 public class OpeningHoursProvider {
     private readonly IOptions<AppSettings> optionsAccessor;
     private readonly IDateProvider dateProvider;
-    private readonly RepDbContext dc;
+    private readonly IOpeningHoursChangeService _service;
 
-    public OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDateProvider dateProvider, RepDbContext dc) {
+    public OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDateProvider dateProvider, IOpeningHoursChangeService service) {
         this.optionsAccessor = optionsAccessor ?? throw new ArgumentNullException(nameof(optionsAccessor));
         this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
+        _service = service ?? throw new ArgumentNullException(nameof(service));
+        
     }
 
-    public OpeningHoursInfo GetOpeningHours(int dayOffset) => this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffset));
+    public async Task<OpeningHoursInfo> GetOpeningHours(int dayOffset) => await this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffset));
 
-    public IEnumerable<OpeningHoursInfo> GetOpeningHours(int dayOffsetFrom, int dayOffsetTo) => this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffsetFrom), this.dateProvider.Today.AddDays(dayOffsetTo));
+    public IEnumerable<OpeningHoursInfo> GetOpeningHours(int dayOffsetFrom, int dayOffsetTo) =>  this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffsetFrom), this.dateProvider.Today.AddDays(dayOffsetTo));
 
-    public OpeningHoursInfo GetOpeningHours(DateTime date) {
+    public async Task<OpeningHoursInfo> GetOpeningHours(DateTime date) {
         date = date.Date;
 
-        var ohch = this.dc.OpeningHoursChanges.SingleOrDefault(x => x.Date == date);
+        var ohch = await _service.GetOpeningHoursChangeOrNullByAsync(date);
         return ohch == null
             ? this.GetStandardOpeningHours(date)
             : new OpeningHoursInfo {
                 Date = date,
+
                 IsException = true,
                 OpeningTime = ohch.OpeningTime,
                 ClosingTime = ohch.ClosingTime
             };
     }
 
-    public IEnumerable<OpeningHoursInfo> GetOpeningHours(DateTime dateFrom, DateTime dateTo) {
+    public IEnumerable<OpeningHoursInfo> GetOpeningHours(DateTime dateFrom, DateTime dateTo) 
+    {
         var date = dateFrom.Date;
-        var ohchs = this.dc.OpeningHoursChanges.Where(x => x.Date >= dateFrom && x.Date <= dateTo).ToList();
+
+        var ohchs = _service.GetOpeningHoursChangesBetween(dateFrom, dateTo).GetAwaiter().GetResult();
+        
         while (date <= dateTo.Date) {
             var ohch = ohchs.SingleOrDefault(x => x.Date == date);
-            yield return ohch == null
+             yield return ohch == null
                 ? this.GetStandardOpeningHours(date)
                 : new OpeningHoursInfo {
                     Date = date,

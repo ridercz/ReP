@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Security.Claims;
 using System.Text;
+using Altairis.ReP.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web;

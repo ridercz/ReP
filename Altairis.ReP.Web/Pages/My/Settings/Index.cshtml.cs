@@ -1,3 +1,4 @@
+using Altairis.ReP.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

@@ -1,11 +1,11 @@
 namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 
 public class CreateModel : PageModel {
-    private readonly RepDbContext dc;
+    private readonly IDirectoryEntryService _service;
 
-    public CreateModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+
+    public CreateModel(IDirectoryEntryService service) 
+        => _service = service ?? throw new ArgumentNullException(nameof(service));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -20,18 +20,13 @@ public class CreateModel : PageModel {
 
         [MaxLength(50), Phone]
         public string PhoneNumber { get; set; }
-
     }
 
-    public async Task<IActionResult> OnPostAsync() {
-        if (!this.ModelState.IsValid) return this.Page();
-
-        this.dc.DirectoryEntries.Add(new DirectoryEntry {
-            DisplayName = this.Input.DisplayName,
-            Email = this.Input.Email,
-            PhoneNumber = this.Input.PhoneNumber,
-        });
-        await this.dc.SaveChangesAsync();
+    public async Task<IActionResult> OnPostAsync(CancellationToken token)
+    {
+        if (!ModelState.IsValid) return this.Page();
+               
+        await _service.SaveAsync(this.Input.DisplayName, this.Input.Email, this.Input.PhoneNumber, token);
 
         return this.RedirectToPage("Index", null, "created");
     }
