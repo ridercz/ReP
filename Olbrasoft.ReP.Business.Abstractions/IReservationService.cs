@@ -9,9 +9,9 @@ public interface IReservationService
     Task<IEnumerable<UserReservationDto>> GetUserReservationsAsync(int userId, CancellationToken token = default);
 
 
-    Task<IEnumerable<ReservationWithDesignInfoDto>> GetReservationsBetweenAsync(DateTime dateBegin, DateTime dateEnd, CancellationToken token = default);
+    Task<IEnumerable<ReservationWithDesignInfoDto>> GetBetweenDatesAsync(DateTime dateBegin, DateTime dateEnd, CancellationToken token = default);
 
-    Task<IEnumerable<ReservationWithDesignInfoDto>> GetReservationsByAsync(int resourceId, DateTime dateBegin, CancellationToken token = default);
+    Task<IEnumerable<ReservationWithDesignInfoDto>> GetByResourceIdAsync(int resourceId, DateTime dateBegin, CancellationToken token = default);
 
     Task<CommandStatus> DeleteReservationAsync(int reservationId, int userId, CancellationToken token = default);
     Task<CommandStatus> DeleteReservationAsync(int reservationId, CancellationToken token = default);
@@ -26,6 +26,7 @@ public interface IReservationService
                                   CancellationToken token = default);
 
     Task<SaveReservationCommandResult> SaveAsync(int id,
+                                                 int resourceId,
                                                  DateTime dateBegin,
                                                  DateTime dateEnd,
                                                  bool system,

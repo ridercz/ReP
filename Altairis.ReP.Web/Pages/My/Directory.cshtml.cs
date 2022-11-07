@@ -1,43 +1,25 @@
-using Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore;
+using Altairis.ReP.Data.Dtos;
+using NetBox.Extensions;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class DirectoryModel : PageModel {
-    private readonly RepDbContext dc;
+public class DirectoryModel : PageModel
+{
+    private readonly IDirectoryEntryService _service;
 
-    public DirectoryModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+    public DirectoryModel(IDirectoryEntryService service) => _service = service ?? throw new ArgumentNullException(nameof(service));
 
-    public class DirectoryEntryInfo {
-        public string IconClass { get; set; }
-        public string DisplayName { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-    }
+    public IEnumerable<DirectoryEntryInfoDto> Items { get; set; }
 
-    public IEnumerable<DirectoryEntryInfo> Items { get; set; }
+    public async Task OnGetAsync(CancellationToken token)
+    {
+        var userInfos = SetIconClass(await _service.GetDirectoryInfosAsync(true, token), "fas fa-fw fa-user");
 
-    public async Task OnGetAsync() {
-        var userInfoQuery = from u in this.dc.Users
-                            where u.ShowInMemberDirectory
-                            select new DirectoryEntryInfo {
-                                IconClass = "fas fa-fw fa-user",
-                                DisplayName = u.DisplayName,
-                                UserName = u.UserName,
-                                Email = u.Email,
-                                PhoneNumber = u.PhoneNumber
-                            };
-        var extraInfoQuery = from de in this.dc.DirectoryEntries
-                             select new DirectoryEntryInfo {
-                                 IconClass = "fas fa-fw fa-address-card",
-                                 DisplayName = de.DisplayName,
-                                 Email = de.Email,
-                                 PhoneNumber = de.PhoneNumber
-                             };
-        var userInfos = await userInfoQuery.ToListAsync();
-        var extraInfos = await extraInfoQuery.ToListAsync();
+        var extraInfos = SetIconClass(await _service.GetDirectoryInfosAsync(token: token), "fas fa-fw fa-address-card");
+
         this.Items = userInfos.Concat(extraInfos).OrderBy(x => x.DisplayName);
     }
+
+    private static IEnumerable<DirectoryEntryInfoDto> SetIconClass(IEnumerable<DirectoryEntryInfoDto> directoryEntryInfos, string iconClass)
+        => directoryEntryInfos.ForEach(deid => deid.IconClass = iconClass);
 }

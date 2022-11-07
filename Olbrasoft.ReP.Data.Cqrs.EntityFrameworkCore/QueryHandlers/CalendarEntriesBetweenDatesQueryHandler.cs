@@ -1,5 +1,4 @@
-﻿using Altairis.ReP.Data.Entities;
-using Altairis.ReP.Data.Queries;
+﻿using Altairis.ReP.Data.Queries;
 
 namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
 public class CalendarEntriesBetweenDatesQueryHandler : BaseQueryHandler<CalendarEntry, CalendarEntriesBetweenDatesQuery, IEnumerable<CalendarEntry>>

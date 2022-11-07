@@ -1,16 +1,13 @@
-﻿using Olbrasoft.Data.Cqrs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers;
 
 public abstract class RepDbQueryHandler<TEntity, TQuery, TResult> : DbQueryHandler<TEntity, TQuery, TResult> 
     where TQuery : BaseQuery<TResult> where TEntity : class
 {
     protected RepDbQueryHandler(IDataSelector selector) : base(selector)
+    {
+    }
+
+    protected RepDbQueryHandler(IConfigure<TEntity> projectionConfigurator, IDataSelector selector) : base(projectionConfigurator, selector)
     {
     }
 
@@ -21,5 +18,4 @@ public abstract class RepDbQueryHandler<TEntity, TQuery, TResult> : DbQueryHandl
     }
 
     protected abstract Task<TResult> GetResultToHandleAsync(TQuery query, CancellationToken token);
-
 }

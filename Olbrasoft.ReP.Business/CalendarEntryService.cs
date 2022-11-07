@@ -8,7 +8,7 @@ public class CalendarEntryService : BaseService, ICalendarEntryService
     {
     }
 
-    public async Task<CommandStatus> CreateCalendarEntryAsync(DateTime date, string title, string? comment, CancellationToken token = default)
+    public async Task<CommandStatus> SaveAsync(DateTime date, string title, string? comment, CancellationToken token = default)
     {
         var status = await new SaveCalendarEntryCommand(Dispatcher) { Date = date, Title = title, Comment = comment }.ToResultAsync(token);
 
@@ -26,7 +26,7 @@ public class CalendarEntryService : BaseService, ICalendarEntryService
         return status;
     }
 
-    public async Task<IEnumerable<CalendarEntry>> GetCalendarEntriesBetweenAsync(DateTime dateBegin,
+    public async Task<IEnumerable<CalendarEntry>> GetBetweenDatesAsync(DateTime dateBegin,
                                                                                  DateTime dateEnd,
                                                                                  CancellationToken token = default)
         => await new CalendarEntriesBetweenDatesQuery(Dispatcher)

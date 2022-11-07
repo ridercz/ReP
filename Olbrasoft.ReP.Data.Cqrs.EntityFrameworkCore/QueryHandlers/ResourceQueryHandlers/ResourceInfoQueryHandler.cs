@@ -1,5 +1,4 @@
 ﻿using Altairis.ReP.Data.Dtos;
-using Altairis.ReP.Data.Entities;
 
 namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers.ResourceQueryHandlers;
 public class ResourceInfoQueryHandler : BaseQueryHandlerWithProjector<Resource, ResourceInfosQuery, IEnumerable<ResourceInfoDto>>

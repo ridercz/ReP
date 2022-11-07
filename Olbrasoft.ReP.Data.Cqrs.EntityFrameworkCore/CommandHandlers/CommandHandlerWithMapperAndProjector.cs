@@ -20,6 +20,4 @@ public abstract class CommandHandlerWithMapperAndProjector<TEntity, TCommand, TR
     {
         return _projector.ProjectTo<TDestination>(source);
     }
-
-
 }

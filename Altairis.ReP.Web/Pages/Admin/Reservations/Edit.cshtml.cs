@@ -81,10 +81,10 @@ public class EditModel : PageModel
     {
         var r = await this.Init(reservationId, token);
         if (r == null) return this.NotFound();
-
+       
         if (!this.ModelState.IsValid) return this.Page();
 
-        var result = await _service.SaveAsync(reservationId, this.Input.DateBegin, this.Input.DateEnd, this.Input.System, this.Input.Comment, token);
+        var result = await _service.SaveAsync(reservationId, r.ResourceId , this.Input.DateBegin, this.Input.DateEnd, this.Input.System, this.Input.Comment, token);
 
         foreach (var item in result.Conflicts)
         {

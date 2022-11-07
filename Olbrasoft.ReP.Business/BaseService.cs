@@ -11,6 +11,6 @@ public abstract class BaseService
 
 	protected static void ThrowExceptionIfStatusIsError(CommandStatus status)
 	{
-		if (status == CommandStatus.Error) throw new InvalidOperationException("More than one entity has been saved!");
+		if (status == CommandStatus.Error) throw new InvalidOperationException("Command status is Error!");
 	}
 }

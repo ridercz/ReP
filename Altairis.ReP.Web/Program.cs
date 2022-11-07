@@ -78,6 +78,8 @@ else
 builder.Services.AddTransient<IDbSetProvider>(p => p.GetRequiredService<RepDbContextFreeSql>());
 builder.Services.AddTransient<IDbContextProxy>(p => p.GetRequiredService<RepDbContextFreeSql>());
 builder.Services.AddTransient<IDataSelector, DbSelector>();
+builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
+
 
 
 //Cqrs urèuje které handlery respektivnì jestli EF nebo FreeSql ještì je potøeba pøepnout
@@ -184,7 +186,7 @@ builder.Services.Configure<TimeTagHelperOptions>(options =>
 
 
 //Mapper
-builder.Services.AddMapping(typeof(ReservationToReservationConflictDtoRegister).Assembly);
+builder.Services.AddMapping(typeof(ReservationTo_ConflictDtoRegister).Assembly);
 
 
 //business

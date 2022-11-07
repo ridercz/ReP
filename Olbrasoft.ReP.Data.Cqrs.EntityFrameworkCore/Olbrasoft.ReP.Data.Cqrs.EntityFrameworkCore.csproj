@@ -24,9 +24,12 @@
 	<ItemGroup>
 		<Using Include="Microsoft.EntityFrameworkCore" />
 		<Using Include="Altairis.ReP.Data" />
+		<Using Include="Altairis.ReP.Data.Entities" />
+		<Using Include="Altairis.ReP.Data.Queries.UserQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ResourceQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ReservationQueries" />
-		<Using Include="Microsoft.EntityFrameworkCore.Design"/>
+		<Using Include="Altairis.ReP.Data.Queries.OpeningHoursChangeQueries" />
+		<Using Include="Microsoft.EntityFrameworkCore.Design" />
 		<Using Include="Olbrasoft.Mapping" />
 		<Using Include="Olbrasoft.Data.Cqrs" />
 	</ItemGroup>

@@ -8,5 +8,5 @@ public class OpeningHoursChangeByDateQueryHandler : DbQueryHandler<OpeningHoursC
     }
 
     public override async Task<OpeningHoursChange?> HandleAsync(OpeningHoursChangeByDateQuery query, CancellationToken token)
-        => await Select.Where(ohch => ohch.Date == query.Date).ToOneAsync(token);
+        => await GetOneOrNullAsync(GetWhere(ohch => ohch.Date == query.Date), token);
 }

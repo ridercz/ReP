@@ -1,6 +1,7 @@
 ﻿using Altairis.ReP.Data.Commands;
 using Altairis.ReP.Data.Dtos.NewsMessageDtos;
 using Altairis.ReP.Data.Entities;
+using Altairis.ReP.Data.Queries.NewsMessageQueries;
 
 namespace Olbrasoft.ReP.Business;
 public class NewsMessageService : BaseService, INewsMessageService
@@ -13,7 +14,7 @@ public class NewsMessageService : BaseService, INewsMessageService
         => await new NewsMessagesQuery(Dispatcher).ToResultAsync(token);
 
     public async Task<NewsMessage?> GetFirstNewsMessageOrNullAsync(CancellationToken token = default)
-        => await new FirstNewsMessageOrNullQuery(Dispatcher).ToResultAsync(token);
+        => await new NewsMessageOrNullQuery(Dispatcher).ToResultAsync(token);
 
     public async Task<IEnumerable<RecipientDto>> GetNewsletterRecipients(CancellationToken token = default)
         => await new NewsletterRecipientsQuery(Dispatcher).ToResultAsync(token);

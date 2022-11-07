@@ -6,4 +6,5 @@ public class UpdateReservationCommand : SaveReservationCommand
     }
 
     public int Id { get; set; }
+    public int ResourceId { get; set; }
 }

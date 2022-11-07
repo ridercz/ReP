@@ -10,6 +10,6 @@ public class IndexModel : PageModel {
     public IEnumerable<UserInfoDto> Users { get; set; }
 
     public async Task OnGetAsync(CancellationToken token)
-        => this.Users = await _service.GetUserInfos(token);
+        => this.Users = await _service.GetUserInfosAsync(token);
 
 }

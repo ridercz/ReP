@@ -1,9 +1,8 @@
 ﻿using Altairis.ReP.Data.Commands.ReservationCommands;
-using Altairis.ReP.Data.Entities;
 using System.Linq.Expressions;
 
 namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ReservationCommandHandlers;
-public class DeleteReservationCommandHandler : CommandHandler<Reservation, DeleteReservationCommand, CommandStatus>
+public class DeleteReservationCommandHandler : DbCommandHandler<Reservation, DeleteReservationCommand, CommandStatus>
 {
     public DeleteReservationCommandHandler(RepDbContext context) : base(context)
     {
@@ -18,7 +17,7 @@ public class DeleteReservationCommandHandler : CommandHandler<Reservation, Delet
             predicate = r => r.Id == command.ResevationId && r.UserId == command.UserId && r.DateEnd > command.Now;
         }
 
-        var reservation = await SingleOrDefaultAsync(predicate, cancellationToken: token);
+        var reservation = await GetOneOrNullAsync(predicate, cancellationToken: token);
 
         return reservation is null ? CommandStatus.NotFound : await RemoveAndSaveAsync(reservation, token);
     }

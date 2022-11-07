@@ -80,7 +80,7 @@ public class ReservationsModel : PageModel
         while (this.CalendarDateBegin.DayOfWeek != CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) this.CalendarDateBegin = this.CalendarDateBegin.AddDays(-1);
 
         // Get future reservations
-        this.Reservations = (await _reservationService.GetReservationsByAsync(resourceId, this.CalendarDateBegin))
+        this.Reservations = (await _reservationService.GetByResourceIdAsync(resourceId, this.CalendarDateBegin))
                .Select(r => new CalendarEvent
                {
                    Id = "reservation_" + r.Id,

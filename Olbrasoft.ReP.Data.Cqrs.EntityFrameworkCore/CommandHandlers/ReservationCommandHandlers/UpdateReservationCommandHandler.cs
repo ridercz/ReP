@@ -1,6 +1,5 @@
 ﻿using Altairis.ReP.Data.Commands.ReservationCommands;
 using Altairis.ReP.Data.Dtos.ReservationDtos;
-using Altairis.ReP.Data.Entities;
 
 namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ReservationCommandHandlers;
 public class UpdateReservationCommandHandler : CommandHandlerWithMapperAndProjector<Reservation, UpdateReservationCommand, SaveReservationCommandResult>

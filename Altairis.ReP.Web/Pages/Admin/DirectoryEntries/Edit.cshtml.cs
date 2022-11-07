@@ -26,7 +26,7 @@ public class EditModel : PageModel
 
     public async Task<IActionResult> OnGetAsync(int directoryEntryId, CancellationToken token)
     {
-        var de = await _service.GetDirectoryEntryOrNull(directoryEntryId, token);
+        var de = await _service.GetDirectoryEntryOrNullAsync(directoryEntryId, token);
         
         if (de is null) return this.NotFound();
 

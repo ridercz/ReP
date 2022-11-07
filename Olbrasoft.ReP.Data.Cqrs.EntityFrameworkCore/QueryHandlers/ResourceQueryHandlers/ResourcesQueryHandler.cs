@@ -1,6 +1,4 @@
-﻿using Altairis.ReP.Data.Entities;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers.ResourceQueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers.ResourceQueryHandlers;
 public class ResourcesQueryHandler : BaseQueryHandler<Resource, ResourcesQuery, IEnumerable<Resource>>
 {
     public ResourcesQueryHandler(RepDbContext context) : base(context)

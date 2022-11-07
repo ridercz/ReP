@@ -1,5 +1,4 @@
-﻿using Olbrasoft.Data.Cqrs;
-using Olbrasoft.Dispatching;
+﻿using Olbrasoft.Dispatching;
 using System.Linq.Expressions;
 
 namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers;
@@ -8,9 +7,11 @@ public abstract class DbQueryHandler<TEntity, TQuery, TResult> : IRequestHandler
 {
     private readonly IDbSetProvider? _setProvider;
     private readonly IDataSelector? _selector;
-
-    protected ISelect<TEntity> Select { get; set; }
-
+    private readonly IConfigure<TEntity>? _configurator;
+    private ISelect<TEntity>? _select;
+    
+    protected ISelect<TEntity> Select { get => _select is not null ? _select : GetSelect();
+        set => _select = value; }
 
     protected DbQueryHandler(IDbSetProvider setProvider)
     {
@@ -18,9 +19,7 @@ public abstract class DbQueryHandler<TEntity, TQuery, TResult> : IRequestHandler
             throw new ArgumentNullException(nameof(setProvider));
 
         _setProvider = setProvider;
-
-
-        Select = _setProvider.Set<TEntity>().Select;
+       
     }
 
     protected DbQueryHandler(IDataSelector selector)
@@ -29,9 +28,19 @@ public abstract class DbQueryHandler<TEntity, TQuery, TResult> : IRequestHandler
             throw new ArgumentNullException(nameof(selector));
 
         _selector = selector;
-
-        Select = _selector.Select<TEntity>();
+      
     }
+
+    private ISelect<TEntity> GetSelect()
+        => _selector is not null
+            ? _selector.Select<TEntity>()
+            : _setProvider is not null
+            ? _setProvider.Set<TEntity>().Select
+            : throw new NullReferenceException($"GetSelect {nameof(_selector)} and {nameof(_setProvider)} is null!");
+
+
+    public DbQueryHandler(IConfigure<TEntity> configurator, IDataSelector selector) : this(selector)
+        => _configurator = configurator ?? throw new ArgumentNullException(nameof(configurator));
 
     public abstract Task<TResult> HandleAsync(TQuery query, CancellationToken token);
 
@@ -48,7 +57,7 @@ public abstract class DbQueryHandler<TEntity, TQuery, TResult> : IRequestHandler
     /// </summary>
     /// <param name="column">列</param>
     /// <returns></returns>
-    protected ISelect<TEntity> OrderByDescending<TKey>(Expression<Func<TEntity, TKey>> keySelector) 
+    protected ISelect<TEntity> GetOrderByDescending<TKey>(Expression<Func<TEntity, TKey>> keySelector)
         => Select.OrderByDescending(keySelector);
 
 
@@ -57,7 +66,7 @@ public abstract class DbQueryHandler<TEntity, TQuery, TResult> : IRequestHandler
     /// </summary>
     /// <param name="exp">lambda expression</param>
     /// <returns></returns>
-    protected ISelect<TEntity> Where(Expression<Func<TEntity, bool>> exp) 
+    protected ISelect<TEntity> GetWhere(Expression<Func<TEntity, bool>> exp)
         => Select.Where(exp);
 
     /// <summary>
@@ -66,8 +75,46 @@ public abstract class DbQueryHandler<TEntity, TQuery, TResult> : IRequestHandler
     /// <typeparam name="TMember"></typeparam>
     /// <param name="column"></param>
     /// <returns></returns>
-    protected ISelect<TEntity> OrderBy<TMember>(Expression<Func<TEntity, TMember>> column) 
-        => Select.OrderBy(column);
+    protected ISelect<TEntity> GetOrderBy<TMember>(Expression<Func<TEntity, TMember>> column) => Select.OrderBy(column);
+
+    protected Task<bool> AnyAsync(CancellationToken token = default) => Select.AnyAsync(token);
+
+    protected Task<List<TDto>> ToListAsync<TDto>(CancellationToken token = default) => Select.ToListAsync<TDto>(token);
+
+    public Expression<Func<TEntity, TDestination>> ProjectionConfigure<TDestination>() where TDestination : new()
+    {
+        if (_configurator is null) throw new NullReferenceException($"{nameof(_configurator)} is null !");
+
+        return _configurator.Configure<TDestination>();
+    }
+
+    protected async Task<IEnumerable<TDestination>> GetEnumerableAsync<TDestination>(ISelect<TEntity> select, CancellationToken token)
+        where TDestination : new()
+        => await select.ToListAsync(ProjectionConfigure<TDestination>(), token);
+
+    protected async Task<IEnumerable<TDestination>> GetEnumerableAsync<TDestination>(CancellationToken token)
+       where TDestination : new()
+       => await Select.ToListAsync(ProjectionConfigure<TDestination>(), token);
+
+    protected async Task<IEnumerable<TEntity>> GetEnumerableAsync(ISelect<TEntity> select, CancellationToken token)
+        => await select.ToListAsync(token);
+
+    protected async Task<TEntity> GetOneOrNullAsync(ISelect<TEntity> select, CancellationToken token)
+          => await select.ToOneAsync(token);
+
+
+    protected async Task<TDestination> GetOneOrNullAsync<TDestination>(ISelect<TEntity> select, CancellationToken token) where TDestination : new()
+    {
+        return await select.ToOneAsync(ProjectionConfigure<TDestination>(), token);
+    }
+
+    protected async Task<TEntity> GetOneOrNullAsync(Expression<Func<TEntity, bool>> exp, CancellationToken token)
+       => await GetOneOrNullAsync(Select.Where(exp), token);
+
+
+    protected async Task<TDestination> GetOneOrNullAsync<TDestination>(Expression<Func<TEntity, bool>> exp, CancellationToken token)
+        where TDestination : new()
+       => await GetOneOrNullAsync<TDestination>(Select.Where(exp), token);
 
 
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Altairis.ReP.Data.Entities;
 
 namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore;
 

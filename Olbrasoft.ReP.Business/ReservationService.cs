@@ -2,6 +2,7 @@
 using Altairis.ReP.Data.Commands.ReservationCommands;
 using Altairis.ReP.Data.Dtos.ReservationDtos;
 using Altairis.Services.DateProvider;
+using NetBox.Extensions;
 
 namespace Olbrasoft.ReP.Business;
 public class ReservationService : BaseService, IReservationService
@@ -24,7 +25,6 @@ public class ReservationService : BaseService, IReservationService
 
     public async Task<IEnumerable<ReservationInfoDto>> GetReservationInfosAsync(int userId, CancellationToken token = default)
     {
-
         var query = new ReservationsByUserIdAndDateEndQuery(Dispatcher)
         {
             UserId = userId,
@@ -33,18 +33,10 @@ public class ReservationService : BaseService, IReservationService
 
         };
 
-        var result = await query.ToResultAsync(token);
-
-        foreach (var item in result)
-        {
-            item.CanBeDeleted = item.DateEnd > query.Now;
-        }
-
-        return result;
-
+       return (await query.ToResultAsync(token)).ForEach(r => r.CanBeDeleted = r.DateEnd > query.Now);
     }
 
-    public async Task<IEnumerable<ReservationWithDesignInfoDto>> GetReservationsBetweenAsync(DateTime dateBegin,
+    public async Task<IEnumerable<ReservationWithDesignInfoDto>> GetBetweenDatesAsync(DateTime dateBegin,
                                                                                              DateTime dateEnd,
                                                                                              CancellationToken token = default)
         => await new ReservationsBetweenDatesQuery(Dispatcher)
@@ -54,7 +46,7 @@ public class ReservationService : BaseService, IReservationService
 
         }.ToResultAsync(token);
 
-    public async Task<IEnumerable<ReservationWithDesignInfoDto>> GetReservationsByAsync(int resourceId,
+    public async Task<IEnumerable<ReservationWithDesignInfoDto>> GetByResourceIdAsync(int resourceId,
                                                                                                          DateTime dateBegin,
                                                                                                          CancellationToken token = default)
         => await new ReservationsByResourceIdAndDateBeginQuery(Dispatcher)
@@ -83,11 +75,12 @@ public class ReservationService : BaseService, IReservationService
         return result;
     }
 
-    public async Task<SaveReservationCommandResult> SaveAsync(int id, DateTime dateBegin, DateTime dateEnd, bool system, string? comment, CancellationToken token = default)
+    public async Task<SaveReservationCommandResult> SaveAsync(int id, int resourceId, DateTime dateBegin, DateTime dateEnd, bool system, string? comment, CancellationToken token = default)
     {
         var result = await new UpdateReservationCommand(Dispatcher)
         {
             Id = id,
+            ResourceId = resourceId,
             DateBegin = dateBegin,
             DateEnd = dateEnd,
             System = system,

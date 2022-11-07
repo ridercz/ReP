@@ -3,5 +3,6 @@
 namespace Olbrasoft.ReP.Business.Abstractions;
 public interface IUserService
 {
-    Task<IEnumerable<UserInfoDto>> GetUserInfos(CancellationToken token = default);
+    Task<IEnumerable<UserInfoDto>> GetUserInfosAsync(CancellationToken token = default);
+    Task<bool> IsThereAnyUserAsync(CancellationToken token = default);
 }

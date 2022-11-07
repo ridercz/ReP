@@ -1,5 +1,4 @@
 ﻿using Altairis.ReP.Data.Dtos.ReservationDtos;
-using Altairis.ReP.Data.Entities;
 using Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore;
 using Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
 

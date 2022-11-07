@@ -1,6 +1,6 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers;
 
-public abstract class CommandHandlerWithMapper<TEntity, TCommand, TResult> : CommandHandler<TEntity, TCommand, TResult>
+public abstract class CommandHandlerWithMapper<TEntity, TCommand, TResult> : DbCommandHandler<TEntity, TCommand, TResult>
     where TCommand : BaseCommand<TResult> where TEntity : class
 {
     protected CommandHandlerWithMapper(IMapper mapper, RepDbContext context) : base(context)

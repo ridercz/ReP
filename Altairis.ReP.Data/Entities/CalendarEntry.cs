@@ -1,4 +1,6 @@
-﻿namespace Altairis.ReP.Data.Entities;
+﻿using System.Security.Principal;
+
+namespace Altairis.ReP.Data.Entities;
 
 [Table("CalendarEntries")]
 
@@ -6,6 +8,7 @@ public class CalendarEntry
 {
 
     [Key]
+  
     public int Id { get; set; }
 
     [Required]

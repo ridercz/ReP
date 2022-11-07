@@ -107,7 +107,7 @@ public partial class CalendarModel : PageModel
         if (!this.ModelState.IsValid || !this.CanManageEntries) return this.Page();
 
         // Create new entry
-        await _calendarEntryService.CreateCalendarEntryAsync(Input.Date, Input.Title, Input.Comment, token);
+        await _calendarEntryService.SaveAsync(Input.Date, Input.Title, Input.Comment, token);
 
 
         return this.RedirectToPage(pageName: null, pageHandler: null, fragment: string.Empty);
@@ -124,7 +124,7 @@ public partial class CalendarModel : PageModel
         // Get all resources for tags
         this.Resources = _mapper.Map<IEnumerable<ResourceTag>>(await _resourceService.GetResourceTagsAsync(token));
 
-        var qri = (await _reservationService.GetReservationsBetweenAsync(this.DateBegin.AddDays(-6), this.DateEnd.AddDays(6),token))
+        var ri = (await _reservationService.GetBetweenDatesAsync(this.DateBegin.AddDays(-6), this.DateEnd.AddDays(6),token))
               .Select(rwdid => new CalendarEvent
               {
                   Id = "reservation_" + rwdid.Id,
@@ -138,9 +138,9 @@ public partial class CalendarModel : PageModel
                   IsFullDay = false
               });
 
-        var calendarEntries = await _calendarEntryService.GetCalendarEntriesBetweenAsync(DateBegin.AddDays(-6), DateEnd.AddDays(6),token);
+        var calendarEntries = await _calendarEntryService.GetBetweenDatesAsync(DateBegin.AddDays(-6), DateEnd.AddDays(6),token);
 
-        var qei = calendarEntries.Select(ce => new CalendarEvent
+        var ei = calendarEntries.Select(ce => new CalendarEvent
         {
             Id = "event_" + ce.Id,
             BackgroundColor = this.options.Value.Design.CalendarEntryBgColor,
@@ -152,7 +152,7 @@ public partial class CalendarModel : PageModel
             Href = "#event_detail_" + ce.Id,
         });
 
-        this.Reservations = qei.Concat(qri);
+        this.Reservations = ei.Concat(ri);
 
         this.CalendarEntries = calendarEntries.Select(ce => new CalendarEntryInfo
         {
