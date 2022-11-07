@@ -74,7 +74,7 @@ public class EditModel : PageModel {
 
         // Check reservation for conflicts
         var q = from cr in this.dc.Reservations
-                where cr.DateBegin < this.Input.DateEnd && cr.DateEnd > this.Input.DateBegin && cr.Id != r.Id
+                where cr.ResourceId == r.ResourceId && cr.DateBegin < this.Input.DateEnd && cr.DateEnd > this.Input.DateBegin && cr.Id != r.Id
                 select new { cr.DateBegin, cr.User.UserName };
         foreach (var item in await q.ToListAsync()) {
             this.ModelState.AddModelError(string.Empty, string.Format(UI.My_Reservations_Err_Conflict, item.UserName, item.DateBegin));
