@@ -507,14 +507,23 @@ table.details tbody tr:hover {
 }
 
 .calendar {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   border: 1px solid #000;
 }
+@media (min-width: 1000px) {
+  .calendar {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .calendar > header {
-  display: flex;
-  flex-direction: row;
+  display: none;
+}
+@media (min-width: 1000px) {
+  .calendar > header {
+    display: flex;
+    flex-direction: row;
+  }
 }
 .calendar > header > div {
   flex: 1;
@@ -525,19 +534,39 @@ table.details tbody tr:hover {
   background-color: rgba(255, 106, 0, 0.75);
   color: #fff;
 }
-.calendar section.week {
-  display: flex;
-  flex-direction: row;
+@media (min-width: 1000px) {
+  .calendar section.week {
+    display: flex;
+    flex-direction: row;
+  }
 }
 .calendar section.week > article {
   flex: 1;
   border: 1px solid #000;
-  min-height: 10em;
+}
+@media (min-width: 1000px) {
+  .calendar section.week > article {
+    min-height: 10em;
+  }
 }
 .calendar section.week > article header {
   margin: 0.5ex;
   padding: 1ex;
-  text-align: right;
+}
+@media (min-width: 1000px) {
+  .calendar section.week > article header {
+    text-align: right;
+  }
+}
+.calendar section.week > article header::before {
+  content: attr(data-dow);
+  float: right;
+}
+@media (min-width: 1000px) {
+  .calendar section.week > article header::before {
+    content: initial;
+    float: none;
+  }
 }
 .calendar section.week > article.today header {
   color: #ff6a00;
