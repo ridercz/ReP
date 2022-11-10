@@ -20,7 +20,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.ReP.Business", "O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.ReP.Business.Abstractions", "Olbrasoft.ReP.Business.Abstractions\Olbrasoft.ReP.Business.Abstractions.csproj", "{2CC79F60-82A8-404A-846D-0E1C6CCEDFD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.ReP.Data.Cqrs.FreeSql", "Olbrasoft.ReP.Data.Cqrs.FreeSql\Olbrasoft.ReP.Data.Cqrs.FreeSql.csproj", "{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.ReP.Data.Cqrs.FreeSql", "Olbrasoft.ReP.Data.Cqrs.FreeSql\Olbrasoft.ReP.Data.Cqrs.FreeSql.csproj", "{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.Data.Cqrs.FreeSql", "Olbrasoft.Data.Cqrs.FreeSql\Olbrasoft.Data.Cqrs.FreeSql.csproj", "{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Data.Cqrs.EntityFrameworkCore", "Olbrasoft.Data.Cqrs.EntityFrameworkCore\Olbrasoft.Data.Cqrs.EntityFrameworkCore.csproj", "{1905A513-B46D-4684-BFE1-7C04036561D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +56,14 @@ Global
 		{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1905A513-B46D-4684-BFE1-7C04036561D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1905A513-B46D-4684-BFE1-7C04036561D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1905A513-B46D-4684-BFE1-7C04036561D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1905A513-B46D-4684-BFE1-7C04036561D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

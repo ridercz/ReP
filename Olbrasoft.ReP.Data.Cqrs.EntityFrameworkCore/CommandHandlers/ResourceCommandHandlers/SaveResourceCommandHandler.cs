@@ -1,7 +1,5 @@
-﻿using Altairis.ReP.Data.Commands;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ResourceCommandHandlers;
-public class SaveResourceCommandHandler : CommandHandlerWithMapper<Resource, SaveResourceCommand, CommandStatus>
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ResourceCommandHandlers;
+public class SaveResourceCommandHandler : RepDbCommandHandler<Resource, SaveResourceCommand, CommandStatus>
 {
     public SaveResourceCommandHandler(IMapper mapper, RepDbContext context) : base(mapper, context)
     {

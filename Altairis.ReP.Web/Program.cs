@@ -20,6 +20,7 @@ using IGeekFan.AspNetCore.Identity.FreeSql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Olbrasoft.Blog.Data.MappingRegisters;
+using Olbrasoft.Data.Cqrs.FreeSql;
 using Olbrasoft.Extensions.DependencyInjection;
 using Olbrasoft.Mapping.Mapster.DependencyInjection.Microsoft;
 using Olbrasoft.ReP.Business;
@@ -75,17 +76,17 @@ else
 }
 
 //FreeSql proxies DbContext
-builder.Services.AddTransient<IDbSetProvider>(p => p.GetRequiredService<RepDbContextFreeSql>());
-builder.Services.AddTransient<IDbContextProxy>(p => p.GetRequiredService<RepDbContextFreeSql>());
-builder.Services.AddTransient<IDataSelector, DbSelector>();
-builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
+//builder.Services.AddTransient<IDbSetProvider>(p => p.GetRequiredService<RepDbContextFreeSql>());
+//builder.Services.AddTransient<IDbContextProxy>(p => p.GetRequiredService<RepDbContextFreeSql>());
+//builder.Services.AddTransient<IDataSelector, DbSelector>();
+//builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
 
 
 
 //Cqrs urèuje které handlery respektivnì jestli EF nebo FreeSql ještì je potøeba pøepnout
 //.AddFreeSqlStores<RepDbContextFreeSql>()/ AddEntityFrameworkStores<RepDbContext>
 // u addidentity
-builder.Services.AddDispatching(typeof(RepDbContextFreeSql).Assembly);
+builder.Services.AddDispatching(typeof(RepDbContext).Assembly);
 
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -98,8 +99,8 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     options.Password.RequireUppercase = false;
     options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedEmail = true;
-}) .AddFreeSqlStores<RepDbContextFreeSql>()
-   // .AddEntityFrameworkStores<RepDbContext>()
+}) //.AddFreeSqlStores<RepDbContextFreeSql>()
+    .AddEntityFrameworkStores<RepDbContext>()
     .AddDefaultTokenProviders()
     .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
     .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();

@@ -16,6 +16,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Altairis.ReP.Data\Altairis.ReP.Data.csproj" />
+	  <ProjectReference Include="..\Olbrasoft.Data.Cqrs.FreeSql\Olbrasoft.Data.Cqrs.FreeSql.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -30,5 +31,6 @@
 		<Using Include="Altairis.ReP.Data.Dtos.ReservationDtos" />
 		<Using Include="Altairis.ReP.Data.Queries.DirectoryEntryQueries" />
 		<Using Include="FreeSql.Extensions.EfCoreFluentApi" />
+		<Using Include="Olbrasoft.Data.Cqrs.FreeSql"/>
 	</ItemGroup>
 </Project>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FreeSql.DbContext" Version="3.2.682" />
+    <PackageReference Include="Olbrasoft.Data.Cqrs" Version="1.6.8" />
+    <PackageReference Include="Olbrasoft.Extensions" Version="1.0.6" />
+    <PackageReference Include="Olbrasoft.Mapping.Abstractions" Version="7.3.2" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="FreeSql" />
+		<Using Include="Olbrasoft.Dispatching"/>
+		<Using Include="Olbrasoft.Data.Cqrs" />
+		<Using Include="System.Linq.Expressions"/>
+		<Using Include="Microsoft.Extensions.DependencyInjection"/>
+	</ItemGroup>
+</Project>

@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 
 namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ReservationCommandHandlers;
-public class DeleteReservationCommandHandler : DbCommandHandler<Reservation, DeleteReservationCommand, CommandStatus>
+public class DeleteReservationCommandHandler : RepDbCommandHandler<Reservation, DeleteReservationCommand, CommandStatus>
 {
     public DeleteReservationCommandHandler(RepDbContext context) : base(context)
     {

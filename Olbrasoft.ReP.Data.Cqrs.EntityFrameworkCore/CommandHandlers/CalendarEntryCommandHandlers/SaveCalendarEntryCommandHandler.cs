@@ -1,7 +1,5 @@
-﻿using Altairis.ReP.Data.Commands;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.CalendarEntryCommandHandlers;
-public class SaveCalendarEntryCommandHandler : CommandHandlerWithMapper<CalendarEntry, SaveCalendarEntryCommand, CommandStatus>
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.CalendarEntryCommandHandlers;
+public class SaveCalendarEntryCommandHandler : RepDbCommandHandler<CalendarEntry, SaveCalendarEntryCommand, CommandStatus>
 {
     public SaveCalendarEntryCommandHandler(IMapper mapper, RepDbContext context) : base(mapper, context)
     {}

@@ -1,9 +1,15 @@
 ﻿namespace Altairis.ReP.Data.Commands.ReservationCommands;
-public abstract class SaveReservationCommand : BaseCommand<SaveReservationCommandResult>
+public class SaveReservationCommand : BaseCommand<SaveReservationCommandResult>
 {
-    protected SaveReservationCommand(IDispatcher dispatcher) : base(dispatcher)
+    public SaveReservationCommand(IDispatcher dispatcher) : base(dispatcher)
     {
     }
+
+    public int Id { get; set; }
+
+    public int ResourceId { get; set; }
+
+    public int UserId { get; set; }
 
     public DateTime DateBegin { get; set; }
 

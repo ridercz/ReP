@@ -1,8 +1,6 @@
-﻿using Olbrasoft.Dispatching;
-using Olbrasoft.ReP.Data.Cqrs.FreeSql;
-using System.Linq.Expressions;
+﻿using Olbrasoft.Mapping;
 
-namespace Olbrasoft.Blog.Data.FreeSql.CommandHandlers;
+namespace Olbrasoft.Data.Cqrs.FreeSql;
 
 public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHandler<TCommand, TResult>
     where TCommand : BaseCommand<TResult> where TEntity : class
@@ -14,7 +12,6 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
     private TCommand? _command;
 
     private readonly IConfigure<TEntity>? _configurator;
-
 
     protected DbSet<TEntity> Entities { get; private set; }
     protected ISelect<TEntity> Select { get; private set; }

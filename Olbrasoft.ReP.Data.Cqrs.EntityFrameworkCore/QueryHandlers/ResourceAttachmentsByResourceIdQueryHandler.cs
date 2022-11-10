@@ -2,7 +2,7 @@
 
 namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
 public class ResourceAttachmentsByResourceIdQueryHandler :
-    BaseQueryHandler<ResourceAttachment, ResourceAttachmentsByResourceIdQuery, IEnumerable<ResourceAttachment>>
+    RepDbQueryHandler<ResourceAttachment, ResourceAttachmentsByResourceIdQuery, IEnumerable<ResourceAttachment>>
 {
     public ResourceAttachmentsByResourceIdQueryHandler(RepDbContext context) : base(context)
     {
@@ -11,7 +11,7 @@ public class ResourceAttachmentsByResourceIdQueryHandler :
     protected override async Task<IEnumerable<ResourceAttachment>> GetResultToHandleAsync(
         ResourceAttachmentsByResourceIdQuery query,
         CancellationToken token)
-        => await Where(ra => ra.ResourceId == query.ResourceId)
+        => await GetWhere(ra => ra.ResourceId == query.ResourceId)
                                     .OrderByDescending(x => x.DateCreated)
                                     .ToArrayAsync(token);
 }

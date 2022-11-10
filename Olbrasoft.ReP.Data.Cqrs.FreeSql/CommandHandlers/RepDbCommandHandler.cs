@@ -1,6 +1,4 @@
-﻿using Olbrasoft.Blog.Data.FreeSql.CommandHandlers;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers;
 public abstract class RepDbCommandHandler<TEntity, TCommand, TResult> : DbCommandHandler< TEntity, TCommand, TResult>
         where TCommand : BaseCommand<TResult> where TEntity : class
 {

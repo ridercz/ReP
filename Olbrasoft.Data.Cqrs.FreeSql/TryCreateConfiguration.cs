@@ -1,4 +1,4 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql;
+﻿namespace Olbrasoft.Data.Cqrs.FreeSql;
 
 /// <summary>
 /// Method used to try resolve configuration.

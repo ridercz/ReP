@@ -14,23 +14,30 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		  <TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="Olbrasoft.Mapping.Abstractions" Version="7.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Altairis.ReP.Data\Altairis.ReP.Data.csproj" />
+		<ProjectReference Include="..\Olbrasoft.Data.Cqrs.EntityFrameworkCore\Olbrasoft.Data.Cqrs.EntityFrameworkCore.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Using Include="Microsoft.EntityFrameworkCore" />
 		<Using Include="Altairis.ReP.Data" />
+		<Using Include="Olbrasoft.Mapping" />
+		<Using Include="Olbrasoft.Data.Cqrs" />
+		<Using Include="Altairis.ReP.Data.Dtos" />
+		<Using Include="Altairis.ReP.Data.Queries" />
+		<Using Include="Altairis.ReP.Data.Commands" />
 		<Using Include="Altairis.ReP.Data.Entities" />
+		<Using Include="Altairis.ReP.Data.Dtos.NewsMessageDtos" />
 		<Using Include="Altairis.ReP.Data.Queries.UserQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ResourceQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ReservationQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.OpeningHoursChangeQueries" />
+		<Using Include="Altairis.ReP.Data.Queries.DirectoryEntryQueries" />
+		<Using Include="Altairis.ReP.Data.Queries.NewsMessageQueries" />
 		<Using Include="Microsoft.EntityFrameworkCore.Design" />
-		<Using Include="Olbrasoft.Mapping" />
-		<Using Include="Olbrasoft.Data.Cqrs" />
 	</ItemGroup>
+
 </Project>

@@ -1,8 +1,4 @@
-﻿using Olbrasoft.ReP.Data.Cqrs.FreeSql;
-using Olbrasoft.ReP.Data.Cqrs.FreeSql.Configurations.EntityToDtoConfigurations;
-using System.Linq.Expressions;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore;
+﻿namespace Olbrasoft.Data.Cqrs.FreeSql;
 public class ProjectionConfigurator<TSource> : IConfigure<TSource>
 {
     private readonly TryCreateConfiguration _tryCreateConfiguration;

@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.Configurations.EntityToDtoConfigurations;
+﻿namespace Olbrasoft.Data.Cqrs.FreeSql;
 
 public interface IEntityToDtoConfigure<TEntity, TDto> : IConfiguration
 {

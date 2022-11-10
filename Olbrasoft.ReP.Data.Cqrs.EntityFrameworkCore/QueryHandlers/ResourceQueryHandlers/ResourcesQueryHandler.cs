@@ -1,5 +1,5 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers.ResourceQueryHandlers;
-public class ResourcesQueryHandler : BaseQueryHandler<Resource, ResourcesQuery, IEnumerable<Resource>>
+public class ResourcesQueryHandler : RepDbQueryHandler<Resource, ResourcesQuery, IEnumerable<Resource>>
 {
     public ResourcesQueryHandler(RepDbContext context) : base(context)
     {
@@ -7,6 +7,6 @@ public class ResourcesQueryHandler : BaseQueryHandler<Resource, ResourcesQuery, 
 
     protected override async Task<IEnumerable<Resource>> GetResultToHandleAsync(ResourcesQuery query, CancellationToken token) 
         => query.IsPrivilegedUser
-            ? await OrderBy(x => x.Name).ToArrayAsync(token)
-            : await Where(x => x.Enabled).OrderBy(x => x.Name).ToArrayAsync(token);
+            ? await GetOrderBy(x => x.Name).ToArrayAsync(token)
+            : await GetWhere(x => x.Enabled).OrderBy(x => x.Name).ToArrayAsync(token);
 }

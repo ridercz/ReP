@@ -1,13 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Olbrasoft.Dispatching;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using Olbrasoft.Data.Cqrs.FreeSql;
 using Olbrasoft.Extensions;
-using Olbrasoft.Extensions.DependencyInjection;
-using Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore;
-using Olbrasoft.ReP.Data.Cqrs.FreeSql.Configurations.EntityToDtoConfigurations;
 using System.Reflection;
 
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql;
+namespace Olbrasoft.Data.Cqrs.FreeSql;
 public static class ServiceCollectionExtensions
 {
 
@@ -40,7 +36,7 @@ public static class ServiceCollectionExtensions
         var configurationsGenericInterfaceType = new[] { typeof(IEntityToDtoConfigure<,>) };
 
         return configurationsGenericInterfaceType.SelectMany(openType => AllTypes(assemblies)
-             .Where(t => t.AsType().ImplementsGenericInterface(openType) && !t.IsGenericType )  );
+             .Where(t => t.AsType().ImplementsGenericInterface(openType) && !t.IsGenericType));
     }
 
     private static IEnumerable<TypeInfo> AllTypes(IEnumerable<Assembly> assemblies)

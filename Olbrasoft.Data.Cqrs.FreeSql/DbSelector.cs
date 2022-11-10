@@ -1,4 +1,4 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql;
+﻿namespace Olbrasoft.Data.Cqrs.FreeSql;
 
 public class DbSelector : IDataSelector
 {

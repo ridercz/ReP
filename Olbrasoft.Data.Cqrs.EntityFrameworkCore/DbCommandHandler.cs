@@ -1,33 +1,34 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Olbrasoft.Dispatching;
-using System.Linq.Expressions;
 
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers;
-
-public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHandler<TCommand, TResult>
-    where TCommand : BaseCommand<TResult> where TEntity : class
+namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore;
+public abstract class DbCommandHandler<TContext, TEntity, TCommand, TResult> : IRequestHandler<TCommand, TResult>
+   where TContext : DbContext where TEntity : class where TCommand : BaseCommand<TResult>
 {
-    private readonly RepDbContext _context;
+    protected virtual TContext Context { get; }
 
-    private TCommand? _command;
+    protected TCommand? Command;
+    private readonly IMapper? _mapper;
+    private readonly IProjector? _projector;
 
     protected DbSet<TEntity> Entities { get; private set; }
 
-    protected DbCommandHandler(RepDbContext context)
+    public DbCommandHandler(TContext context)
     {
-        _context = context ?? throw new ArgumentNullException(nameof(context));
-
-        Entities = _context.Set<TEntity>();
+        Context = context ?? throw new ArgumentNullException(nameof(context));
+        Entities = Context.Set<TEntity>();
     }
 
-    public virtual Task<TResult> HandleAsync(TCommand command, CancellationToken token)
+    public DbCommandHandler(IMapper mapper, TContext context) : this(context)
     {
-        ThrowIfCommandIsNullOrCancellationRequested(command, token);
-
-        _command = command;
-
-        return GetResultToHandleAsync(command, token);
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
+
+    public DbCommandHandler(IProjector projector, IMapper mapper, TContext context) : this(mapper, context)
+    {
+        _projector = projector ?? throw new ArgumentNullException(nameof(projector));
+    }
+
+    public abstract Task<TResult> HandleAsync(TCommand request, CancellationToken token);
 
     protected void ThrowIfCommandStatusCannotBeSet(CommandStatus status)
     {
@@ -38,15 +39,12 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
 
     protected bool TrySetCommandStatus(CommandStatus status)
     {
-        if (_command is null) return false;
+        if (Command is null) return false;
 
-        _command.Status = status;
+        Command.Status = status;
 
         return true;
     }
-
-    protected abstract Task<TResult> GetResultToHandleAsync(TCommand command, CancellationToken token);
-
 
     protected static void ThrowIfCommandIsNullOrCancellationRequested(TCommand command, CancellationToken token)
     {
@@ -58,10 +56,21 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
 
     protected virtual Task<int> SaveChangesAsync(CancellationToken token = default)
     {
-        return _context.SaveChangesAsync(token);
+        return Context.SaveChangesAsync(token);
     }
 
-    protected virtual EntityState GetEntityState(object entity) => _context.Entry(entity).State;
+    protected virtual EntityState GetEntityState(object entity) => Context.Entry(entity).State;
+
+    protected virtual async Task<CommandStatus> RemoveAndSaveAsync(Expression<Func<TEntity, bool>> exp, CancellationToken token = default)
+    {
+        var entity = await GetOneOrNullAsync(exp, token);
+
+        if (entity is not null) return await RemoveAndSaveAsync(entity, token);
+        
+        TrySetCommandStatus(CommandStatus.NotFound);
+
+        return CommandStatus.NotFound;
+    }
 
     protected virtual async Task<CommandStatus> RemoveAndSaveAsync(TEntity detachedOrUnchangedEntity, CancellationToken token = default)
     {
@@ -71,7 +80,7 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         {
             Remove(detachedOrUnchangedEntity);
 
-            if(await SaveOneEntityAsync(token))
+            if (await SaveOneEntityAsync(token))
             {
                 TrySetCommandStatus(CommandStatus.Deleted);
                 return CommandStatus.Deleted;
@@ -108,7 +117,6 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         return await SaveAsync(unchangedEntity, token);
     }
 
-
     protected virtual async Task<CommandStatus> SaveAsync(TEntity modifiedEntity, CancellationToken token = default)
     {
         var state = GetEntityState(modifiedEntity);
@@ -119,7 +127,7 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
             return CommandStatus.Unchanged;
         }
 
-        if (state == EntityState.Modified )
+        if (state == EntityState.Modified)
         {
             TrySetCommandStatus(CommandStatus.Modified);
 
@@ -134,12 +142,10 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         return CommandStatus.Error;
     }
 
-
     protected virtual async Task<bool> SaveOneEntityAsync(CancellationToken token = default)
     {
-        return (await _context.SaveChangesAsync(token) == 1);
+        return await Context.SaveChangesAsync(token) == 1;
     }
-
 
     protected virtual EntityEntry<TEntity> Remove(TEntity entity)
     {
@@ -164,12 +170,7 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         return result;
     }
 
-    protected virtual async Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
-    {
-        var result = await Entities.FirstOrDefaultAsync(predicate, cancellationToken);
-        if (result is null) TrySetCommandStatus(CommandStatus.NotFound);
-        return result;
-    }
+ 
 
     protected virtual async Task<TEntity?> GetOneOrNullAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
     {
@@ -178,13 +179,51 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         return result;
     }
 
+    protected async Task<IEnumerable<TDestination>> GetEnumerableAsync<TDestination>(Expression<Func<TEntity, bool>> predicate,
+                                                                                   CancellationToken token)
+   => await ProjectTo<TDestination>(GetWhere(predicate)).ToArrayAsync(token);
+
+
     protected virtual Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
       => Entities.SingleAsync(predicate, cancellationToken);
 
-    protected IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+    protected IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> predicate)
         => Entities.Where(predicate);
 
     protected async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken token = default)
         => await Entities.AnyAsync(predicate, token);
 
+    /// <summary>
+    /// Execute a mapping from the command to a new entity.
+    /// The source type is inferred from the source object.
+    /// </summary>
+    /// <param name="command">TCommand to map from</param>
+    /// <returns>Mapped entity</returns>
+    protected TEntity MapCommandToNewEntity(TCommand command)
+        => _mapper is null ? throw new NullReferenceException(nameof(_mapper)) : _mapper.MapSourceToNewDestination<TEntity>(command);
+
+    /// <summary>
+    /// Execute a mapping from the command to the existing entity.
+    /// </summary>
+    /// <param name="command">Command object to map from</param>
+    /// <param name="entity">Destination object to map into</param>
+    /// <returns>The mapped destination object, same instance as the <paramref name="entity"/> object and returns.</returns>
+    protected TEntity MapCommandToExistingEntity(TCommand command, TEntity entity)
+    {
+        if (_mapper is null) throw new NullReferenceException(nameof(_mapper));
+        _mapper.MapSourceToExistingDestination(command, entity);
+        return entity;
+    }
+
+    /// <summary>
+    /// Project the input queryable.
+    /// </summary>
+    /// <remarks>Projections</remarks>
+    /// <typeparam name="TDestination">Destination type</typeparam>
+    /// <param name="source">Queryable source</param>
+    /// <returns>Queryable result, use queryable extension methods to project and execute result</returns>
+    protected IQueryable<TDestination> ProjectTo<TDestination>(IQueryable source)
+        => _projector is null ? throw new NullReferenceException(nameof(_projector)) : _projector.ProjectTo<TDestination>(source);
+
 }
+

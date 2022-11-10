@@ -1,7 +1,5 @@
-﻿using Altairis.ReP.Data.Commands;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ResourceCommandHandlers;
-public class DeleteResourceCommandHandler : DbCommandHandler<Resource, DeleteResourceCommand, CommandStatus>
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ResourceCommandHandlers;
+public class DeleteResourceCommandHandler : RepDbCommandHandler<Resource, DeleteResourceCommand, CommandStatus>
 {
     public DeleteResourceCommandHandler(RepDbContext context) : base(context)
     {

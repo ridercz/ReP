@@ -59,7 +59,7 @@ public class ReservationService : BaseService, IReservationService
 
     public async Task<SaveReservationCommandResult> SaveAsync(DateTime dateBegin, DateTime dateEnd, int userId, int resourceId, bool system, string? comment, CancellationToken token = default)
     {
-        var result = await new InsertReservationCommand(Dispatcher)
+        var result = await new SaveReservationCommand(Dispatcher)
         {
             DateBegin = dateBegin,
             DateEnd = dateEnd,
@@ -77,7 +77,7 @@ public class ReservationService : BaseService, IReservationService
 
     public async Task<SaveReservationCommandResult> SaveAsync(int id, int resourceId, DateTime dateBegin, DateTime dateEnd, bool system, string? comment, CancellationToken token = default)
     {
-        var result = await new UpdateReservationCommand(Dispatcher)
+        var result = await new SaveReservationCommand(Dispatcher)
         {
             Id = id,
             ResourceId = resourceId,

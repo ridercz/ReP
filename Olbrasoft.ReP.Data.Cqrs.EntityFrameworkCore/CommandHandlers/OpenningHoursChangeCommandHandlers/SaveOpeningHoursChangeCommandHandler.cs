@@ -1,7 +1,5 @@
-﻿using Altairis.ReP.Data.Commands;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.OpenningHoursChangeCommandHandlers;
-public class SaveOpeningHoursChangeCommandHandler : CommandHandlerWithMapper<OpeningHoursChange, SaveOpeningHoursChangeCommand, CommandStatus>
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.OpenningHoursChangeCommandHandlers;
+public class SaveOpeningHoursChangeCommandHandler : RepDbCommandHandler<OpeningHoursChange, SaveOpeningHoursChangeCommand, CommandStatus>
 {
     public SaveOpeningHoursChangeCommandHandler(IMapper mapper, RepDbContext context) : base(mapper, context)
     {

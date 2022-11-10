@@ -1,7 +1,5 @@
-﻿using Altairis.ReP.Data.Commands;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.DirectoryEntryCommandHandlers;
-public class SaveDirectoryEntryCommandHandler : CommandHandlerWithMapper<DirectoryEntry, SaveDirectoryEntryCommand, CommandStatus>
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.DirectoryEntryCommandHandlers;
+public class SaveDirectoryEntryCommandHandler : RepDbCommandHandler<DirectoryEntry, SaveDirectoryEntryCommand, CommandStatus>
 {
     public SaveDirectoryEntryCommandHandler(IMapper mapper, RepDbContext context) : base(mapper, context)
     {

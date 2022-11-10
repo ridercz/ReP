@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Olbrasoft.ReP.Data.Cqrs.FreeSql;
-
-namespace Olbrasoft.Extensions.DependencyInjection;
+﻿namespace Olbrasoft.Data.Cqrs.FreeSql;
 
 public static class ServiceProviderExtensions
 {
@@ -37,13 +34,13 @@ public static class ServiceProviderExtensions
     public static bool TryGetConfiguration(this IServiceProvider provider, Type exactTypeConfiguration, out IConfiguration? configuration)
     {
         if (provider == null) throw new ArgumentNullException(nameof(provider));
-        
+
         if (exactTypeConfiguration is null) throw new ArgumentNullException(nameof(exactTypeConfiguration));
 
-        configuration = (IConfiguration?) provider.GetService(exactTypeConfiguration);
+        configuration = (IConfiguration?)provider.GetService(exactTypeConfiguration);
 
         if (configuration is null) return false;
-        
+
         return true;
     }
 
