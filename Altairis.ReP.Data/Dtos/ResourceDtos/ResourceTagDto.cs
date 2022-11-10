@@ -1,4 +1,4 @@
-﻿namespace Altairis.ReP.Data.Dtos;
+﻿namespace Altairis.ReP.Data.Dtos.ResourceDtos;
 
 public class ResourceTagDto
 {

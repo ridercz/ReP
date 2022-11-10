@@ -21,6 +21,7 @@
 		<Using Include="Olbrasoft.Data.Cqrs" />
 		<Using Include="Altairis.ReP.Data.Dtos" />
 		<Using Include="Altairis.ReP.Data.Queries" />
+		<Using Include="Altairis.ReP.Data.Entities"/>
 		<Using Include="Altairis.ReP.Data.Queries.ResourceQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ReservationQueries" />
 		<Using Include="Olbrasoft.ReP.Business.Abstractions" />

@@ -1,4 +1,4 @@
-﻿namespace Altairis.ReP.Data.Commands;
+﻿namespace Altairis.ReP.Data.Commands.CalendarEntryCommands;
 public class SaveCalendarEntryCommand : BaseCommand<CommandStatus>
 {
     public SaveCalendarEntryCommand(IDispatcher dispatcher) : base(dispatcher)

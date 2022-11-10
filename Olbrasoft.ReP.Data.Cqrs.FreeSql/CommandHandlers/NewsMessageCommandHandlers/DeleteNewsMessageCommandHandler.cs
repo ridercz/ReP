@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.NewsMessageCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.NewsMessageCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.NewsMessageCommandHandlers;
 public class DeleteNewsMessageCommandHandler : RepDbCommandHandler<NewsMessage, DeleteNewsMessageCommand, CommandStatus>
 {
-    public DeleteNewsMessageCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public DeleteNewsMessageCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

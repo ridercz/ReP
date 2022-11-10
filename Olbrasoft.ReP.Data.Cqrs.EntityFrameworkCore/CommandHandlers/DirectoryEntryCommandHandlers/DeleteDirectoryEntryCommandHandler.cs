@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.DirectoryEntryCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.DirectoryEntryCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.DirectoryEntryCommandHandlers;
 public class DeleteDirectoryEntryCommandHandler : RepDbCommandHandler<DirectoryEntry, DeleteDirectoryEntryCommand, CommandStatus>
 {
     public DeleteDirectoryEntryCommandHandler(RepDbContext context) : base(context)

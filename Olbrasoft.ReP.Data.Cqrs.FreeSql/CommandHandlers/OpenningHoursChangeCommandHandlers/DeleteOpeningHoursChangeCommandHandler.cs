@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.OpenningHoursChangeCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.OpenningHoursChangeCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.OpenningHoursChangeCommandHandlers;
 public class DeleteOpeningHoursChangeCommandHandler : RepDbCommandHandler<OpeningHoursChange, DeleteOpeningHoursChangeCommand, CommandStatus>
 {
-    public DeleteOpeningHoursChangeCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public DeleteOpeningHoursChangeCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

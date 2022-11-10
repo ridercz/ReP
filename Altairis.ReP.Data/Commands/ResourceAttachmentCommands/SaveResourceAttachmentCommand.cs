@@ -1,6 +1,6 @@
 ﻿using Altairis.ReP.Data.Entities;
 
-namespace Altairis.ReP.Data.Commands;
+namespace Altairis.ReP.Data.Commands.ResourceAttachmentCommands;
 public class SaveResourceAttachmentCommand : BaseCommand<ResourceAttachment>
 {
     public SaveResourceAttachmentCommand(IDispatcher dispatcher) : base(dispatcher)

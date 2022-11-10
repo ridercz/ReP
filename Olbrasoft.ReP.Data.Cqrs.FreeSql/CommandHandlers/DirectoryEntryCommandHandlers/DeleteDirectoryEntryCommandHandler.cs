@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.DirectoryEntryCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.DirectoryEntryCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.DirectoryEntryCommandHandlers;
 public class DeleteDirectoryEntryCommandHandler : RepDbCommandHandler<DirectoryEntry, DeleteDirectoryEntryCommand, CommandStatus>
 {
-    public DeleteDirectoryEntryCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public DeleteDirectoryEntryCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

@@ -2,35 +2,32 @@
 
 namespace Olbrasoft.Data.Cqrs.FreeSql;
 
-public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHandler<TCommand, TResult>
-    where TCommand : BaseCommand<TResult> where TEntity : class
+public abstract class DbCommandHandler<TContext, TEntity, TCommand, TResult> : DbRequestHandler<TContext, TEntity, TCommand, TResult>
+   where TEntity : class where TContext : DbContext where TCommand : BaseCommand<TResult>
 {
-    private readonly IMapper _mapper;
-
-    private readonly IDbContextProxy _proxy;
-
     private TCommand? _command;
+    private DbSet<TEntity>? _entities;
+    private readonly IMapper? _mapper;
 
-    private readonly IConfigure<TEntity>? _configurator;
+    protected DbSet<TEntity> Entities { get => _entities is null ? Context.Set<TEntity>() : _entities; private set => _entities = value; }
 
-    protected DbSet<TEntity> Entities { get; private set; }
-    protected ISelect<TEntity> Select { get; private set; }
-
-    protected DbCommandHandler(IMapper mapper, IDbContextProxy proxy)
+    protected DbCommandHandler(TContext context) : base(context)
     {
-        _proxy = proxy ?? throw new ArgumentNullException(nameof(proxy));
+    }
+
+    protected DbCommandHandler(IConfigure<TEntity> configurator, TContext context) : base(configurator, context)
+    {
+    }
+
+    protected DbCommandHandler(IMapper mapper, TContext context) : this(context)
+    {
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        Entities = _proxy.Set<TEntity>();
-        Select = Getselect<TEntity>();
     }
 
-    public DbCommandHandler(IConfigure<TEntity> configurator, IMapper mapper, IDbContextProxy proxy) : this(mapper, proxy)
+    protected DbCommandHandler(IMapper mapper, IConfigure<TEntity> configurator, TContext context) : this(configurator, context)
     {
-        if (configurator is null) throw new ArgumentNullException(nameof(configurator));
-
-        _configurator = configurator;
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
 
     protected bool TrySetCommandStatus(CommandStatus status)
     {
@@ -46,26 +43,15 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         _command = command;
     }
 
-    protected Expression<Func<TEntity, TDestination>> ProjectionConfigure<TDestination>() where TDestination : new()
+    protected DbSet<TForeignEntity> GetSet<TForeignEntity>() where TForeignEntity : class
     {
-        if (_configurator is null) throw new NullReferenceException($"{nameof(_configurator)} is null !");
-
-        return _configurator.Configure<TDestination>();
+        return Context.Set<TForeignEntity>();
     }
 
 
-    protected ISelect<TForeignEntity> Getselect<TForeignEntity>() where TForeignEntity : class
-        => _proxy.Set<TForeignEntity>().Select;
-
-    protected Task RemoveAsync<TForeignEntity>(Expression<Func<TForeignEntity, bool>> predicate) where TForeignEntity : class
-        => _proxy.Set<TForeignEntity>().RemoveAsync(predicate);
-
-    protected DbSet<TForeignEntity> Set<TForeignEntity>() where TForeignEntity : class
-        => _proxy.Set<TForeignEntity>();
-
     protected async Task<bool> SaveOneEntityAsync(CancellationToken token)
     {
-        return await _proxy.SaveChangesAsync(token) == 1;
+        return await Context.SaveChangesAsync(token) == 1;
     }
 
     protected TDestination MapTo<TDestination>(object source) => _mapper.MapTo<TDestination>(source);
@@ -77,8 +63,6 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
 
         token.ThrowIfCancellationRequested();
     }
-
-    public abstract Task<TResult> HandleAsync(TCommand request, CancellationToken token);
 
     public async Task AddAsync(TEntity entity, CancellationToken token = default)
     {
@@ -139,7 +123,7 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         {
             TrySetCommandStatus(CommandStatus.Removed);
 
-            if (await _proxy.SaveChangesAsync(token) == 0)
+            if (await Context.SaveChangesAsync(token) == 0)
             {
                 TrySetCommandStatus(CommandStatus.Deleted);
                 return CommandStatus.Deleted;
@@ -149,7 +133,6 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         TrySetCommandStatus(CommandStatus.Error);
         return CommandStatus.Error;
     }
-
 
     protected virtual async Task<CommandStatus> RemoveAndSaveAsync(TEntity detachedOrUnchangedEntity, CancellationToken token = default)
     {
@@ -168,25 +151,13 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
         return CommandStatus.Error;
     }
 
-    protected async Task<TEntity> GetOneOrNullAsync(ISelect<TEntity> select, CancellationToken token)
-      => await select.ToOneAsync(token);
-
-    protected async Task<TEntity> GetOneOrNullAsync(Expression<Func<TEntity, bool>> exp, CancellationToken token)
-        => await GetOneOrNullAsync(Entities.Select.Where(exp), token);
-
-    protected async Task<IEnumerable<TDestination>> GetEnumerableAsync<TDestination>(Expression<Func<TEntity, bool>> exp, CancellationToken token)
-        where TDestination : new()
-        => await Entities.Select.Where(exp).ToListAsync(ProjectionConfigure<TDestination>(), token);
-
     /// <summary>
     /// Execute a mapping from the command to a new entity.
     /// The source type is inferred from the source object.
     /// </summary>
     /// <param name="command">TCommand to map from</param>
     /// <returns>Mapped entity</returns>
-    protected TEntity MapCommandToNewEntity(TCommand command)
-        => _mapper.MapSourceToNewDestination<TEntity>(command);
-
+    protected TEntity MapCommandToNewEntity(TCommand command) => GetMapper().MapSourceToNewDestination<TEntity>(command);
 
     /// <summary>
     /// Execute a mapping from the command to the existing entity.
@@ -196,15 +167,9 @@ public abstract class DbCommandHandler<TEntity, TCommand, TResult> : IRequestHan
     /// <returns>The mapped destination object, same instance as the <paramref name="entity"/> object and returns.</returns>
     protected TEntity MapCommandToExistingEntity(TCommand command, TEntity entity)
     {
-        _mapper.MapSourceToExistingDestination(command, entity);
+        GetMapper().MapSourceToExistingDestination(command, entity);
         return entity;
     }
 
-    /// <summary>
-    /// Query conditions，Where(a => a.Id > 10)，Support navigation object query，Where(a => a.Author.Email == "2881099@qq.com")
-    /// </summary>
-    /// <param name="exp">lambda expression</param>
-    /// <returns></returns>
-    protected ISelect<TEntity> GetWhere(Expression<Func<TEntity, bool>> exp)
-        => Select.Where(exp);
+    protected IMapper GetMapper() => _mapper is null ? throw new NullReferenceException(nameof(_mapper)) : _mapper;
 }

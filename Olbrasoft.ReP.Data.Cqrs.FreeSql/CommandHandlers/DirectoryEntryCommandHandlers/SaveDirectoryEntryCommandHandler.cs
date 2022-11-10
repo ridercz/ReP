@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.DirectoryEntryCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.DirectoryEntryCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.DirectoryEntryCommandHandlers;
 public class SaveDirectoryEntryCommandHandler : RepDbCommandHandler<DirectoryEntry, SaveDirectoryEntryCommand, CommandStatus>
 {
-    public SaveDirectoryEntryCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public SaveDirectoryEntryCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

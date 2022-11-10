@@ -1,7 +1,7 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.ReservationQueryHandlers;
 public class ReservationsByUserIdAndDateEndQueryHandler : RepDbQueryHandler<Reservation, ReservationsByUserIdAndDateEndQuery, IEnumerable<ReservationInfoDto>>
 {
-    public ReservationsByUserIdAndDateEndQueryHandler(IConfigure<Reservation> projectionConfigurator, IDataSelector selector) : base(projectionConfigurator, selector)
+    public ReservationsByUserIdAndDateEndQueryHandler(IConfigure<Reservation> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

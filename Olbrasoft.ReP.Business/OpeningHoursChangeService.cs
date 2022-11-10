@@ -1,5 +1,4 @@
-﻿using Altairis.ReP.Data.Commands;
-using Altairis.ReP.Data.Entities;
+﻿using Altairis.ReP.Data.Commands.OpenningHoursChangeCommands;
 using Altairis.ReP.Data.Queries.OpeningHoursChangeQueries;
 
 namespace Olbrasoft.ReP.Business;

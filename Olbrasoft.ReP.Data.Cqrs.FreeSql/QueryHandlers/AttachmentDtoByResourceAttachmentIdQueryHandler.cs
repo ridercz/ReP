@@ -1,9 +1,7 @@
-﻿using Altairis.ReP.Data.Dtos;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers;
 public class AttachmentDtoByResourceAttachmentIdQueryHandler : RepDbQueryHandler<ResourceAttachment, AttachmentDtoByResourceAttachmentIdQuery, AttachmentDto?>
 {
-    public AttachmentDtoByResourceAttachmentIdQueryHandler(IConfigure<ResourceAttachment> projectionConfigurator, IDataSelector selector) : base(projectionConfigurator, selector)
+    public AttachmentDtoByResourceAttachmentIdQueryHandler(IConfigure<ResourceAttachment> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

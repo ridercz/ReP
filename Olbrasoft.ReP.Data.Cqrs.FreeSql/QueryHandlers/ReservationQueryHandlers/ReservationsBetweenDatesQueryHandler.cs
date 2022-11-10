@@ -1,7 +1,7 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.ReservationQueryHandlers;
 public class ReservationsBetweenDatesQueryHandler : RepDbQueryHandler<Reservation, ReservationsBetweenDatesQuery, IEnumerable<ReservationWithDesignInfoDto>>
 {
-    public ReservationsBetweenDatesQueryHandler(IConfigure<Reservation> configurator, IDataSelector selector) : base(configurator, selector)
+    public ReservationsBetweenDatesQueryHandler(IConfigure<Reservation> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

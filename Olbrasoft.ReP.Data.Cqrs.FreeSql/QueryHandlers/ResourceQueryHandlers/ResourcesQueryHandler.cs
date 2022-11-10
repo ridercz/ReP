@@ -1,7 +1,7 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.ResourceQueryHandlers;
 public class ResourcesQueryHandler : RepDbQueryHandler<Resource, ResourcesQuery, IEnumerable<Resource>>
 {
-    public ResourcesQueryHandler(IConfigure<Resource> projectionConfigurator, IDataSelector selector) : base(projectionConfigurator, selector)
+    public ResourcesQueryHandler(IConfigure<Resource> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

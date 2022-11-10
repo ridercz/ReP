@@ -1,4 +1,4 @@
-using Altairis.ReP.Data.Dtos;
+using Altairis.ReP.Data.Dtos.ResourceDtos;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
 public class IndexModel : PageModel 

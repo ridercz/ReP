@@ -1,4 +1,4 @@
-﻿using Altairis.ReP.Data.Dtos;
+﻿using Altairis.ReP.Data.Dtos.ResourceDtos;
 using Altairis.ReP.Data.Entities;
 
 namespace Olbrasoft.ReP.Business.Abstractions;

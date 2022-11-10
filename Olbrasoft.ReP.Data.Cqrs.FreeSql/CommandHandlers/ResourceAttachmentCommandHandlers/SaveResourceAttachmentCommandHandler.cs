@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceAttachmentCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.ResourceAttachmentCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceAttachmentCommandHandlers;
 public class SaveResourceAttachmentCommandHandler : RepDbCommandHandler<ResourceAttachment, SaveResourceAttachmentCommand, ResourceAttachment>
 {
-    public SaveResourceAttachmentCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public SaveResourceAttachmentCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

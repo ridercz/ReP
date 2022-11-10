@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ReservationCommandHandlers;
 public class DeleteReservationCommandHandler : RepDbCommandHandler<Reservation, DeleteReservationCommand, CommandStatus>
 {
-    public DeleteReservationCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public DeleteReservationCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers.ResourceQueryHandlers;
+﻿using Altairis.ReP.Data.Dtos.ResourceDtos;
+
+namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers.ResourceQueryHandlers;
 public class ResourceInfoQueryHandler : RepDbQueryHandler<Resource, ResourceInfosQuery, IEnumerable<ResourceInfoDto>>
 {
     public ResourceInfoQueryHandler(IProjector projector, RepDbContext context) : base(projector, context)

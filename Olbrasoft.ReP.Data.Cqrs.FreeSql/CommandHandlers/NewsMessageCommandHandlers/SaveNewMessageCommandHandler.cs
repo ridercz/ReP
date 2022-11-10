@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.NewsMessageCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.NewsMessageCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.NewsMessageCommandHandlers;
 public class SaveNewMessageCommandHandler : RepDbCommandHandler<NewsMessage, SaveNewMessageCommand, CommandStatus>
 {
-    public SaveNewMessageCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public SaveNewMessageCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

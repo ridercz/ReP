@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.ResourceCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceCommandHandlers;
 public class DeleteResourceCommandHandler : RepDbCommandHandler<Resource, DeleteResourceCommand, CommandStatus>
 {
-    public DeleteResourceCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public DeleteResourceCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

@@ -1,4 +1,4 @@
-﻿namespace Altairis.ReP.Data.Commands;
+﻿namespace Altairis.ReP.Data.Commands.ResourceCommands;
 public class SaveResourceCommand : BaseCommand<CommandStatus>
 {
     public SaveResourceCommand(IDispatcher dispatcher) : base(dispatcher)

@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.CalendarEntryCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.CalendarEntryCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.CalendarEntryCommandHandlers;
 public class DeleteCalendarEntryCommandHandler : RepDbCommandHandler<CalendarEntry, DeleteCalendarEntryCommand, CommandStatus>
 {
     public DeleteCalendarEntryCommandHandler(RepDbContext context) : base(context)

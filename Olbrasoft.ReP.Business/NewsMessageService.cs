@@ -1,6 +1,5 @@
-﻿using Altairis.ReP.Data.Commands;
+﻿using Altairis.ReP.Data.Commands.NewsMessageCommands;
 using Altairis.ReP.Data.Dtos.NewsMessageDtos;
-using Altairis.ReP.Data.Entities;
 using Altairis.ReP.Data.Queries.NewsMessageQueries;
 
 namespace Olbrasoft.ReP.Business;

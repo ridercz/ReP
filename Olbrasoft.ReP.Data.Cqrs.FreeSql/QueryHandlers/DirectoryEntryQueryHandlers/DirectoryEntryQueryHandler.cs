@@ -1,7 +1,7 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.DirectoryEntryQueryHandlers;
 public class DirectoryEntryQueryHandler : RepDbQueryHandler<DirectoryEntry, DirectoryEntryQuery, DirectoryEntry?>
 {
-    public DirectoryEntryQueryHandler(IDataSelector selector) : base(selector)
+    public DirectoryEntryQueryHandler(RepDbContextFreeSql context) : base(context)
     {
     }
 

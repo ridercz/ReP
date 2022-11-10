@@ -1,7 +1,7 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.ReservationQueryHandlers;
 public class ReservationEditQueryHandler : RepDbQueryHandler<Reservation, ReservationEditQuery, ReservationEditDto?>
 {
-    public ReservationEditQueryHandler(IConfigure<Reservation> projectionConfigurator, IDataSelector selector) : base(projectionConfigurator, selector)
+    public ReservationEditQueryHandler(IConfigure<Reservation> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.NewsMessageCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.NewsMessageCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.NewsMessageCommandHandlers;
 public class DeleteNewsMessageCommandHandler : RepDbCommandHandler<NewsMessage, DeleteNewsMessageCommand, CommandStatus>
 {
     public DeleteNewsMessageCommandHandler(RepDbContext context) : base(context)

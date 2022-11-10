@@ -1,9 +1,9 @@
-﻿using Altairis.ReP.Data.Dtos;
+﻿using Altairis.ReP.Data.Dtos.ResourceDtos;
 
 namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.ResourceQueryHandlers;
 public class ResourceInfoQueryHandler : RepDbQueryHandler<Resource, ResourceInfosQuery, IEnumerable<ResourceInfoDto>>
 {
-    public ResourceInfoQueryHandler(IConfigure<Resource> configurator, IDataSelector selector) : base(configurator, selector)
+    public ResourceInfoQueryHandler(IConfigure<Resource> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

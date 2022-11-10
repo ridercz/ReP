@@ -25,7 +25,6 @@ using Olbrasoft.Extensions.DependencyInjection;
 using Olbrasoft.Mapping.Mapster.DependencyInjection.Microsoft;
 using Olbrasoft.ReP.Business;
 using Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore;
-using Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
 using Olbrasoft.ReP.Data.Cqrs.FreeSql;
 using Storage.Net;
 
@@ -44,14 +43,12 @@ IFreeSql fsql = new FreeSql.FreeSqlBuilder()
       .UseAutoSyncStructure(false) //automatically synchronize the entity structure to the database
       .Build();
 
-
 builder.Services.AddSingleton(fsql);
 
 builder.Services.AddFreeDbContext<RepDbContextFreeSql>(o =>
 {
     o.UseFreeSql(fsql);
 });
-
 
 
 // Configure database
@@ -75,18 +72,14 @@ else
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
 }
 
-//FreeSql proxies DbContext
-//builder.Services.AddTransient<IDbSetProvider>(p => p.GetRequiredService<RepDbContextFreeSql>());
-//builder.Services.AddTransient<IDbContextProxy>(p => p.GetRequiredService<RepDbContextFreeSql>());
-//builder.Services.AddTransient<IDataSelector, DbSelector>();
-//builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
-
+//FreeSql projection
+builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
 
 
 //Cqrs urèuje které handlery respektivnì jestli EF nebo FreeSql ještì je potøeba pøepnout
 //.AddFreeSqlStores<RepDbContextFreeSql>()/ AddEntityFrameworkStores<RepDbContext>
 // u addidentity
-builder.Services.AddDispatching(typeof(RepDbContext).Assembly);
+builder.Services.AddDispatching(typeof(RepDbContextFreeSql).Assembly);
 
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -99,8 +92,8 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     options.Password.RequireUppercase = false;
     options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedEmail = true;
-}) //.AddFreeSqlStores<RepDbContextFreeSql>()
-    .AddEntityFrameworkStores<RepDbContext>()
+}).AddFreeSqlStores<RepDbContextFreeSql>()
+    // .AddEntityFrameworkStores<RepDbContext>()
     .AddDefaultTokenProviders()
     .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
     .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
@@ -137,10 +130,6 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("IsMaster", policy => policy.RequireRole(ApplicationRole.Master));
     options.AddPolicy("IsAdministrator", policy => policy.RequireRole(ApplicationRole.Administrator));
 });
-
-
-
-
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

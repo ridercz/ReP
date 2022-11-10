@@ -1,8 +1,7 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.DirectoryEntryQueryHandlers;
 public class DirectoryEntriesQueryHandler : RepDbQueryHandler<DirectoryEntry, DirectoryEntriesQuery, IEnumerable<DirectoryEntry>>
 {
-    public DirectoryEntriesQueryHandler(IConfigure<DirectoryEntry> projectionConfigurator, IDataSelector selector)
-        : base(projectionConfigurator, selector)
+    public DirectoryEntriesQueryHandler(IConfigure<DirectoryEntry> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

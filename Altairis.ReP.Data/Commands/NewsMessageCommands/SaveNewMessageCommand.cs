@@ -1,4 +1,4 @@
-﻿namespace Altairis.ReP.Data.Commands;
+﻿namespace Altairis.ReP.Data.Commands.NewsMessageCommands;
 public class SaveNewMessageCommand : BaseCommand<CommandStatus>
 {
     public SaveNewMessageCommand(IDispatcher dispatcher) : base(dispatcher)

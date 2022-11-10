@@ -1,12 +1,20 @@
 ﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers;
-public abstract class RepDbCommandHandler<TEntity, TCommand, TResult> : DbCommandHandler< TEntity, TCommand, TResult>
+public abstract class RepDbCommandHandler<TEntity, TCommand, TResult> : DbCommandHandler<RepDbContextFreeSql, TEntity, TCommand, TResult>
         where TCommand : BaseCommand<TResult> where TEntity : class
 {
-    protected RepDbCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    protected RepDbCommandHandler(RepDbContextFreeSql context) : base(context)
     {
     }
 
-    protected RepDbCommandHandler(IConfigure<TEntity> configurator, IMapper mapper, IDbContextProxy proxy) : base(configurator, mapper, proxy)
+    protected RepDbCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
+    {
+    }
+
+    protected RepDbCommandHandler(IConfigure<TEntity> configurator, RepDbContextFreeSql context) : base(configurator, context)
+    {
+    }
+
+    protected RepDbCommandHandler(IMapper mapper, IConfigure<TEntity> configurator, RepDbContextFreeSql context) : base(mapper, configurator, context)
     {
     }
 

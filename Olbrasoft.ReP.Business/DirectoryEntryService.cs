@@ -1,5 +1,4 @@
-﻿using Altairis.ReP.Data.Commands;
-using Altairis.ReP.Data.Entities;
+﻿using Altairis.ReP.Data.Commands.DirectoryEntryCommands;
 using Altairis.ReP.Data.Queries.DirectoryEntryQueries;
 
 namespace Olbrasoft.ReP.Business;

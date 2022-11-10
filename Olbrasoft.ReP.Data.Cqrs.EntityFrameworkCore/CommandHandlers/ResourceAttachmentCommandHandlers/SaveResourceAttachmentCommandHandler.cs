@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ResourceAttachmentCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.ResourceAttachmentCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.ResourceAttachmentCommandHandlers;
 public class SaveResourceAttachmentCommandHandler : RepDbCommandHandler<ResourceAttachment, SaveResourceAttachmentCommand, ResourceAttachment>
 {
     public SaveResourceAttachmentCommandHandler(IMapper mapper, RepDbContext context) : base(mapper, context)

@@ -44,5 +44,4 @@ public static class ServiceCollectionExtensions
         return assemblies.Where(a => !a.IsDynamic && a.GetName().Name != typeof(IRequest<>).Assembly.GetName().Name).Distinct()
             .SelectMany(a => a.DefinedTypes).Where(c => c.IsClass && !c.IsAbstract);
     }
-
 }

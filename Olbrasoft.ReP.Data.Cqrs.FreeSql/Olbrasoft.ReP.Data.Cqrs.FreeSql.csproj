@@ -21,7 +21,9 @@
 
 	<ItemGroup>
 		<Using Include="Altairis.ReP.Data.Entities" />
+		<Using Include="Altairis.ReP.Data.Dtos"/>
 		<Using Include="Altairis.ReP.Data.Queries" />
+		<Using Include="Altairis.ReP.Data.Queries.UserQueries"/>
 		<Using Include="Altairis.ReP.Data.Queries.ResourceQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ReservationQueries" />
 		<Using Include="FreeSql" />
@@ -29,7 +31,10 @@
 		<Using Include="Olbrasoft.Data.Cqrs" />
 		<Using Include="Altairis.ReP.Data.Commands" />
 		<Using Include="Altairis.ReP.Data.Dtos.ReservationDtos" />
+		<Using Include="Altairis.ReP.Data.Dtos.NewsMessageDtos"/>
 		<Using Include="Altairis.ReP.Data.Queries.DirectoryEntryQueries" />
+		<Using Include="Altairis.ReP.Data.Queries.OpeningHoursChangeQueries"/>
+		<Using Include="Altairis.ReP.Data.Queries.NewsMessageQueries"/>
 		<Using Include="FreeSql.Extensions.EfCoreFluentApi" />
 		<Using Include="Olbrasoft.Data.Cqrs.FreeSql"/>
 	</ItemGroup>

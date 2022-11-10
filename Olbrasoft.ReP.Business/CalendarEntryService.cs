@@ -1,5 +1,4 @@
-﻿using Altairis.ReP.Data.Commands;
-using Altairis.ReP.Data.Entities;
+﻿using Altairis.ReP.Data.Commands.CalendarEntryCommands;
 
 namespace Olbrasoft.ReP.Business;
 public class CalendarEntryService : BaseService, ICalendarEntryService

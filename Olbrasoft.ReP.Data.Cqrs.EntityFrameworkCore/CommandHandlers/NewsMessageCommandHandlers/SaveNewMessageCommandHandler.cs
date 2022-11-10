@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.NewsMessageCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.NewsMessageCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.NewsMessageCommandHandlers;
 public class SaveNewMessageCommandHandler : RepDbCommandHandler<NewsMessage, SaveNewMessageCommand, CommandStatus>
 {
     public SaveNewMessageCommandHandler(IMapper mapper, RepDbContext context) : base(mapper, context)

@@ -1,11 +1,10 @@
-﻿using Altairis.ReP.Data.Queries.UserQueries;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.UserQueryHandlers;
-public class IsThereAnyUserQueryHandler : DbQueryHandler<ApplicationUser, IsThereAnyUserQuery>
+﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.UserQueryHandlers;
+public class IsThereAnyUserQueryHandler : RepDbQueryHandler<ApplicationUser, IsThereAnyUserQuery>
 {
-    public IsThereAnyUserQueryHandler(IDbSetProvider setOwner) : base(setOwner)
+    public IsThereAnyUserQueryHandler(RepDbContextFreeSql context) : base(context)
     {
     }
 
-    public override async Task<bool> HandleAsync(IsThereAnyUserQuery query, CancellationToken token) => await AnyAsync(token);
+    protected override async Task<bool> GetResultToHandleAsync(IsThereAnyUserQuery query, CancellationToken token)
+    => await ExistsAsync(token);
 }

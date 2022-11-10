@@ -1,12 +1,11 @@
-﻿using Altairis.ReP.Data.Queries.OpeningHoursChangeQueries;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.OpeningHoursChangeQueryHandlers;
-public class OpeningHoursChangeByDateQueryHandler : DbQueryHandler<OpeningHoursChange, OpeningHoursChangeByDateQuery, OpeningHoursChange?>
+﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.OpeningHoursChangeQueryHandlers;
+public class OpeningHoursChangeByDateQueryHandler : RepDbQueryHandler<OpeningHoursChange, OpeningHoursChangeByDateQuery, OpeningHoursChange?>
 {
-    public OpeningHoursChangeByDateQueryHandler(IDataSelector selector) : base(selector)
+    public OpeningHoursChangeByDateQueryHandler(RepDbContextFreeSql context) : base(context)
     {
     }
+ 
+    protected override async Task<OpeningHoursChange?> GetResultToHandleAsync(OpeningHoursChangeByDateQuery query, CancellationToken token)
+          => await GetOneOrNullAsync(ohch => ohch.Date == query.Date, token);
 
-    public override async Task<OpeningHoursChange?> HandleAsync(OpeningHoursChangeByDateQuery query, CancellationToken token)
-        => await GetOneOrNullAsync(GetWhere(ohch => ohch.Date == query.Date), token);
 }

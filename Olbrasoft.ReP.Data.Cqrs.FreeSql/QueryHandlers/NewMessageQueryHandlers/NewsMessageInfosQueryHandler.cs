@@ -1,10 +1,7 @@
-﻿using Altairis.ReP.Data.Dtos.NewsMessageDtos;
-using Altairis.ReP.Data.Queries.NewsMessageQueries;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.NewMessageQueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.NewMessageQueryHandlers;
 public class NewsMessageInfosQueryHandler : RepDbQueryHandler<NewsMessage, NewsMessageInfosQuery, IEnumerable<NewsMessageInfoDto>>
 {
-    public NewsMessageInfosQueryHandler(IConfigure<NewsMessage> projectionConfigurator, IDataSelector selector) : base(projectionConfigurator, selector)
+    public NewsMessageInfosQueryHandler(IConfigure<NewsMessage> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

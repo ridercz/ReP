@@ -1,10 +1,7 @@
-﻿using Altairis.ReP.Data.Dtos;
-using Altairis.ReP.Data.Queries.UserQueries;
-
-namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.UserQueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.QueryHandlers.UserQueryHandlers;
 public class UserInfosQueryHandler : RepDbQueryHandler<ApplicationUser, UserInfosQuery, IEnumerable<UserInfoDto>>
 {
-    public UserInfosQueryHandler(IConfigure<ApplicationUser> projectionConfigurator, IDataSelector selector) : base(projectionConfigurator, selector)
+    public UserInfosQueryHandler(IConfigure<ApplicationUser> configurator, RepDbContextFreeSql context) : base(configurator, context)
     {
     }
 

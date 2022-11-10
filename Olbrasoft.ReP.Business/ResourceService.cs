@@ -1,5 +1,5 @@
-﻿using Altairis.ReP.Data.Commands;
-using Altairis.ReP.Data.Entities;
+﻿using Altairis.ReP.Data.Commands.ResourceCommands;
+using Altairis.ReP.Data.Dtos.ResourceDtos;
 
 namespace Olbrasoft.ReP.Business;
 public class ResourceService : BaseService, IResourceService

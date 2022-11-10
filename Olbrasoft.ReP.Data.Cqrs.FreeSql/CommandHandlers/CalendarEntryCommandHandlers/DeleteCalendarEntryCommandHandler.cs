@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.CalendarEntryCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.CalendarEntryCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.CalendarEntryCommandHandlers;
 public class DeleteCalendarEntryCommandHandler : RepDbCommandHandler<CalendarEntry, DeleteCalendarEntryCommand, CommandStatus>
 {
-    public DeleteCalendarEntryCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public DeleteCalendarEntryCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

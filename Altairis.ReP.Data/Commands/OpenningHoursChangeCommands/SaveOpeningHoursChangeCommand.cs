@@ -1,4 +1,4 @@
-﻿namespace Altairis.ReP.Data.Commands;
+﻿namespace Altairis.ReP.Data.Commands.OpenningHoursChangeCommands;
 public class SaveOpeningHoursChangeCommand : BaseCommand<CommandStatus>
 {
     public SaveOpeningHoursChangeCommand(IDispatcher dispatcher) : base(dispatcher)

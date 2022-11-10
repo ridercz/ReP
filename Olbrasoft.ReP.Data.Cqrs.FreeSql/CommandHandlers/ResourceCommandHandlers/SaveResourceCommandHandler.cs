@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.ResourceCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceCommandHandlers;
 public class SaveResourceCommandHandler : RepDbCommandHandler<Resource, SaveResourceCommand, CommandStatus>
 {
-    public SaveResourceCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public SaveResourceCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {}
 
     protected override async Task<CommandStatus> GetResultToHandleAsync(SaveResourceCommand command, CancellationToken token) 

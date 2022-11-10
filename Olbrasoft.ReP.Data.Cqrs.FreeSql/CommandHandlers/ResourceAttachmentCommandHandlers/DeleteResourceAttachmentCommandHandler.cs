@@ -1,7 +1,9 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceAttachmentCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.ResourceAttachmentCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.FreeSql.CommandHandlers.ResourceAttachmentCommandHandlers;
 public class DeleteResourceAttachmentCommandHandler : RepDbCommandHandler<ResourceAttachment, DeleteResourceAttachmentCommand, CommandStatus>
 {
-    public DeleteResourceAttachmentCommandHandler(IMapper mapper, IDbContextProxy proxy) : base(mapper, proxy)
+    public DeleteResourceAttachmentCommandHandler(IMapper mapper, RepDbContextFreeSql context) : base(mapper, context)
     {
     }
 

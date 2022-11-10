@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.OpenningHoursChangeCommandHandlers;
+﻿using Altairis.ReP.Data.Commands.OpenningHoursChangeCommands;
+
+namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.CommandHandlers.OpenningHoursChangeCommandHandlers;
 public class DeleteOpeningHoursChangeCommandHandler : RepDbCommandHandler<OpeningHoursChange, DeleteOpeningHoursChangeCommand, CommandStatus>
 {
     public DeleteOpeningHoursChangeCommandHandler(RepDbContext context) : base(context)
