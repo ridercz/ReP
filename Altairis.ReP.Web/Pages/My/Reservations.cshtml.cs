@@ -4,6 +4,7 @@ using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Altairis.ReP.Web.Pages.Models;
 
 namespace Altairis.ReP.Web.Pages.My;
 public class ReservationsModel : PageModel {
@@ -39,9 +40,13 @@ public class ReservationsModel : PageModel {
         public string Comment { get; set; }
     }
 
+    public bool CanManageEntries => this.options.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
+
     public Resource Resource { get; set; }
 
     public IEnumerable<CalendarEvent> Reservations { get; set; }
+
+    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; }
 
     public DateTime CalendarDateBegin { get; set; }
 
@@ -62,21 +67,52 @@ public class ReservationsModel : PageModel {
         while (this.CalendarDateBegin.DayOfWeek != CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) this.CalendarDateBegin = this.CalendarDateBegin.AddDays(-1);
 
         // Get future reservations
-        var q = from r in this.dc.Reservations
-                where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
-                select new CalendarEvent {
-                    Id = "reservation_" + r.Id,
-                    BackgroundColor = r.System ? r.Resource.ForegroundColor : r.Resource.BackgroundColor,
-                    ForegroundColor = r.System ? r.Resource.BackgroundColor : r.Resource.ForegroundColor,
-                    CssClass = r.System ? "system" : string.Empty,
-                    DateBegin = r.DateBegin,
-                    DateEnd = r.DateEnd,
-                    Name = r.System ? r.Comment : r.User.DisplayName,
-                    Description = r.System ? r.User.DisplayName : r.Comment,
-                    IsFullDay = false,
-                };
-        var lastEventEnd = await q.MaxAsync(x => x.DateEnd);
-        this.Reservations = await q.ToListAsync();
+        var qr = from r in this.dc.Reservations
+                 where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin && r.DateEnd <= this.CalendarDateEnd
+                 select new CalendarEvent {
+                     Id = "reservation_" + r.Id,
+                     BackgroundColor = r.System ? r.Resource.ForegroundColor : r.Resource.BackgroundColor,
+                     ForegroundColor = r.System ? r.Resource.BackgroundColor : r.Resource.ForegroundColor,
+                     CssClass = r.System ? "system" : string.Empty,
+                     DateBegin = r.DateBegin,
+                     DateEnd = r.DateEnd,
+                     Name = r.System ? r.Comment : r.User.DisplayName,
+                     Description = r.System ? r.User.DisplayName : r.Comment,
+                     IsFullDay = false,
+                 };
+
+        // Get Future calendar entries
+        var qe = from e in this.dc.CalendarEntries
+                 where e.Date >= this.CalendarDateBegin
+                 orderby e.Date
+                 select new CalendarEvent {
+                     Id = "event_" + e.Id,
+                     BackgroundColor = this.options.Design.CalendarEntryBgColor,
+                     ForegroundColor = this.options.Design.CalendarEntryFgColor,
+                     DateBegin = e.Date,
+                     DateEnd = e.Date,
+                     Name = e.Title,
+                     IsFullDay = true,
+                     Href = "#event_detail_" + e.Id,
+                 };
+        var qd = from e in this.dc.CalendarEntries
+                 where e.Date >= this.CalendarDateBegin
+                 orderby e.Date
+                 select new CalendarEntryInfo {
+                     Id = e.Id,
+                     Date = e.Date,
+                     Title = e.Title,
+                     Comment = e.Comment
+                 };
+
+        // Materialize queries
+        var qri = await qr.ToListAsync();
+        var qei = await qe.ToListAsync();
+        this.Reservations = qei.Concat(qri);
+        this.CalendarEntries = await qd.ToListAsync();
+
+        // Get calendar end date
+        var lastEventEnd = this.Reservations.Max(x => x.DateEnd);
         this.CalendarDateEnd = this.CalendarDateBegin.AddMonths(1);
         if (lastEventEnd.HasValue && lastEventEnd > this.CalendarDateEnd) this.CalendarDateEnd = lastEventEnd.Value;
 

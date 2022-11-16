@@ -1,4 +1,4 @@
-using System;
+using Altairis.ReP.Web.Pages.Models;
 using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
 using Microsoft.Extensions.Options;
@@ -16,8 +16,6 @@ public class CalendarModel : PageModel {
         this.options = options ?? throw new ArgumentNullException(nameof(options));
     }
 
-    public bool CanManageEntries => this.options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
-
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -34,7 +32,7 @@ public class CalendarModel : PageModel {
 
     }
 
-    public IEnumerable<CalendarEvent> Reservations { get; set; }
+    public bool CanManageEntries => this.options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
     public IEnumerable<ResourceTag> Resources { get; set; }
 
@@ -45,14 +43,10 @@ public class CalendarModel : PageModel {
 
         public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
     }
-    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; }
 
-    public class CalendarEntryInfo {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public string Title { get; set; }
-        public string Comment { get; set; }
-    }
+    public IEnumerable<CalendarEvent> Reservations { get; set; }
+
+    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; }
 
     public DateTime DateBegin { get; set; }
 
@@ -156,7 +150,6 @@ public class CalendarModel : PageModel {
                      Title = e.Title,
                      Comment = e.Comment
                  };
-
 
         // Materialize queries
         var qri = await qr.ToListAsync();

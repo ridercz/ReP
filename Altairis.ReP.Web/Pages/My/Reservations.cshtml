@@ -40,6 +40,20 @@
           general-date-format="d."
           new-month-date-format="d. MMMM"></calendar>
 
+@foreach (var item in this.Model.CalendarEntries) {
+    <div id="event_detail_@item.Id" class="modal">
+        <article class="l">
+            <header>@item.Date.ToLongDateString()</header>
+            <p class="strong">@item.Title</p>
+            <markdown text="@item.Comment"></markdown>
+            <footer>
+                <a href="#" class="button">@UI._OK</a>
+                <a asp-page="Calendar" asp-page-handler="delete" asp-route-entryId="@item.Id" class="button tertiary" visible="this.Model.CanManageEntries">@UI._Delete</a>
+            </footer>
+        </article>
+    </div>
+}
+
 <markdown text="@Model.Resource.Instructions"></markdown>
 
 @if (this.Model.Attachments.Any()) {
