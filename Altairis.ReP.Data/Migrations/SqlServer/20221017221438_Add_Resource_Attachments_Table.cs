@@ -2,12 +2,9 @@
 
 #nullable disable
 
-namespace Altairis.ReP.Data.Migrations.SqlServer
-{
-    public partial class Add_Resource_Attachments_Table : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace Altairis.ReP.Data.Migrations.SqlServer {
+    public partial class Add_Resource_Attachments_Table : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_ResourceAttachment_Resources_ResourceId",
                 table: "ResourceAttachment");
@@ -39,8 +36,7 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
                 onDelete: ReferentialAction.Cascade);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_ResourceAttachments_Resources_ResourceId",
                 table: "ResourceAttachments");

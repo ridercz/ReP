@@ -1,5 +1,4 @@
-﻿using Altairis.ReP.Data;
-using Altairis.Services.DateProvider;
+﻿using Altairis.Services.DateProvider;
 using Storage.Net.Blobs;
 
 namespace Altairis.ReP.Web.Services;
@@ -26,7 +25,7 @@ public class AttachmentProcessor {
         };
 
         // Create attachment storage path
-        newAttachment.StoragePath = string.Format(AttachmentPath, 
+        newAttachment.StoragePath = string.Format(AttachmentPath,
             newAttachment.ResourceId,               // 0
             newAttachment.DateCreated,              // 1
             Guid.NewGuid(),                         // 2

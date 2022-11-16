@@ -8,7 +8,7 @@ public class ResourceAttachment {
     public int Id { get; set; }
 
     [ForeignKey(nameof(this.Resource))]
-    public int  ResourceId { get; set; }
+    public int ResourceId { get; set; }
 
     [ForeignKey(nameof(this.ResourceId))]
     public Resource Resource { get; set; }

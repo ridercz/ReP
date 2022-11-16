@@ -55,7 +55,7 @@ public class IndexModel : PageModel {
         this.Me.PhoneNumber = this.Input.PhoneNumber;
         this.Me.SendNews = this.Input.SendNews;
         this.Me.SendNotifications = this.Input.SendNotifications;
-        this.Me.DisplayName= this.Input.DisplayName;
+        this.Me.DisplayName = this.Input.DisplayName;
         this.Me.ShowInMemberDirectory = this.Input.ShowInMemberDirectory;
         await this.userManager.UpdateAsync(this.Me);
 

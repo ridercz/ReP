@@ -1,8 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Storage.Net.Blobs;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources {
     public class AttachmentsModel : PageModel {

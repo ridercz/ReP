@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Altairis.ReP.Data;
+﻿namespace Altairis.ReP.Data;
 public class SqliteRepDbContext : RepDbContext {
 
     public SqliteRepDbContext(DbContextOptions options) : base(options) { }

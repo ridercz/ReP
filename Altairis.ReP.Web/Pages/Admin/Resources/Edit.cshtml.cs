@@ -62,7 +62,7 @@ public class EditModel : PageModel {
         resource.Name = this.Input.Name;
         resource.ForegroundColor = this.Input.ForegroundColor;
         resource.BackgroundColor = this.Input.BackgroundColor;
-        resource.Instructions= this.Input.Instructions;
+        resource.Instructions = this.Input.Instructions;
 
         await this.dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "saved");

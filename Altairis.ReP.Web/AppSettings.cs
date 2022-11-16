@@ -42,14 +42,14 @@ public class AppSettings {
     }
 
     public OpeningHoursConfig[] OpeningHours { get; set; }
-    
+
     public class OpeningHoursConfig {
         public DayOfWeek DayOfWeek { get; set; }
         public TimeSpan OpeningTime { get; set; }
         public TimeSpan ClosingTime { get; set; }
     }
 
-    public AttachmentsConfig Attachments { get; set; }= new AttachmentsConfig();
+    public AttachmentsConfig Attachments { get; set; } = new AttachmentsConfig();
 
     public class AttachmentsConfig {
         public long MaximumFileSize { get; set; } = 104_857_600; // 100 MB

@@ -1,10 +1,10 @@
 using System.Globalization;
+using Altairis.ReP.Web.Pages.Models;
 using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using Altairis.ReP.Web.Pages.Models;
 
 namespace Altairis.ReP.Web.Pages.My;
 public class ReservationsModel : PageModel {

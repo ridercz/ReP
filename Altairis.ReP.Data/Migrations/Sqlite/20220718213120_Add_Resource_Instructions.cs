@@ -2,12 +2,9 @@
 
 #nullable disable
 
-namespace Altairis.ReP.Data.Migrations.Sqlite
-{
-    public partial class Add_Resource_Instructions : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace Altairis.ReP.Data.Migrations.Sqlite {
+    public partial class Add_Resource_Instructions : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AddColumn<string>(
                 name: "Instructions",
                 table: "Resources",
@@ -15,8 +12,7 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                 nullable: true);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropColumn(
                 name: "Instructions",
                 table: "Resources");
