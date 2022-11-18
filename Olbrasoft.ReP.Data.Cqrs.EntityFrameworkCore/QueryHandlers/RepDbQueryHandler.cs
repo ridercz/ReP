@@ -11,14 +11,7 @@ public abstract class RepDbQueryHandler<TEntity, TQuery, TResult> : DbQueryHandl
     protected RepDbQueryHandler(IProjector projector, RepDbContext context) : base(projector, context)
     {
     }
-
-    protected static void ThrowIfQueryIsNullOrCancellationRequested(TQuery query, CancellationToken token)
-    {
-        if (query is null)
-            throw new ArgumentNullException(nameof(query));
-
-        token.ThrowIfCancellationRequested();
-    }
+       
 
     public override Task<TResult> HandleAsync(TQuery query, CancellationToken token)
     {

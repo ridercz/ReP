@@ -33,7 +33,7 @@ public class ReservationService : BaseService, IReservationService
 
         };
 
-       return (await query.ToResultAsync(token)).ForEach(r => r.CanBeDeleted = r.DateEnd > query.Now);
+        return (await query.ToResultAsync(token)).ForEach(r => r.CanBeDeleted = r.DateEnd > query.Now);
     }
 
     public async Task<IEnumerable<ReservationWithDesignInfoDto>> GetBetweenDatesAsync(DateTime dateBegin,

@@ -36,7 +36,7 @@ public class RepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<RepDbCo
     {
         var builder = new DbContextOptionsBuilder<RepDbContext>();
         // builder.UseSqlServer("SERVER=.\\SqlExpress;TRUSTED_CONNECTION=yes;DATABASE=ReP_design");
-        builder.UseSqlServer("SERVER=.;TRUSTED_CONNECTION=yes;DATABASE=ReP_design");
+        builder.UseSqlServer("SERVER=.;TRUSTED_CONNECTION=yes;DATABASE=ReP_design;encrypt=false");
         return new RepDbContext(builder.Options);
     }
 }

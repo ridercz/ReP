@@ -14,7 +14,7 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		  <TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="Olbrasoft.Data.Cqrs.EntityFrameworkCore" Version="1.6.3" />
+		<PackageReference Include="Olbrasoft.Data.Cqrs.EntityFrameworkCore" Version="1.6.4" />
 	</ItemGroup>
 
 	<ItemGroup>
