@@ -17,7 +17,7 @@ public class DeleteReservationCommandHandler : RepDbCommandHandler<Reservation, 
             predicate = r => r.Id == command.ResevationId && r.UserId == command.UserId && r.DateEnd > command.Now;
         }
 
-        var reservation = await GetOneOrNullAsync(predicate, cancellationToken: token);
+        var reservation = await GetOneOrNullAsync(predicate, token);
 
         return reservation is null ? CommandStatus.NotFound : await RemoveAndSaveAsync(reservation, token);
     }

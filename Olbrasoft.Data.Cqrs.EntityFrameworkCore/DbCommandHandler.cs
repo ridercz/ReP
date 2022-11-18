@@ -1,34 +1,36 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Olbrasoft.Dispatching;
 
 namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore;
-public abstract class DbCommandHandler<TContext, TEntity, TCommand, TResult> : IRequestHandler<TCommand, TResult>
+public abstract class DbCommandHandler<TContext, TEntity, TCommand, TResult> : DbRequestHandler<TContext, TEntity, TCommand, TResult>
    where TContext : DbContext where TEntity : class where TCommand : BaseCommand<TResult>
 {
-    protected virtual TContext Context { get; }
 
+    private DbSet<TEntity>? _entities;
     protected TCommand? Command;
     private readonly IMapper? _mapper;
-    private readonly IProjector? _projector;
+    
 
-    protected DbSet<TEntity> Entities { get; private set; }
-
-    public DbCommandHandler(TContext context)
+    protected DbCommandHandler(TContext context) : base(context)
     {
-        Context = context ?? throw new ArgumentNullException(nameof(context));
-        Entities = Context.Set<TEntity>();
     }
 
-    public DbCommandHandler(IMapper mapper, TContext context) : this(context)
+    protected DbCommandHandler(IProjector projector, TContext context) : base(projector, context)
+    {
+    }
+
+    protected DbCommandHandler(IMapper mapper, TContext context) : this(context)
     {
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public DbCommandHandler(IProjector projector, IMapper mapper, TContext context) : this(mapper, context)
+    public DbCommandHandler(IProjector projector, IMapper mapper, TContext context):this(projector, context)
     {
-        _projector = projector ?? throw new ArgumentNullException(nameof(projector));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public abstract Task<TResult> HandleAsync(TCommand request, CancellationToken token);
+
+    protected DbSet<TEntity> Entities { get => _entities is null ? Context.Set<TEntity>() : _entities; private set => _entities = value; }
 
     protected void ThrowIfCommandStatusCannotBeSet(CommandStatus status)
     {
@@ -169,29 +171,9 @@ public abstract class DbCommandHandler<TContext, TEntity, TCommand, TResult> : I
         TrySetCommandStatus(CommandStatus.Modified);
         return result;
     }
+      
 
- 
-
-    protected virtual async Task<TEntity?> GetOneOrNullAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
-    {
-        var result = await Entities.SingleOrDefaultAsync(predicate, cancellationToken);
-        if (result is null) TrySetCommandStatus(CommandStatus.NotFound);
-        return result;
-    }
-
-    protected async Task<IEnumerable<TDestination>> GetEnumerableAsync<TDestination>(Expression<Func<TEntity, bool>> predicate,
-                                                                                   CancellationToken token)
-   => await ProjectTo<TDestination>(GetWhere(predicate)).ToArrayAsync(token);
-
-
-    protected virtual Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
-      => Entities.SingleAsync(predicate, cancellationToken);
-
-    protected IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> predicate)
-        => Entities.Where(predicate);
-
-    protected async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken token = default)
-        => await Entities.AnyAsync(predicate, token);
+    
 
     /// <summary>
     /// Execute a mapping from the command to a new entity.
@@ -215,15 +197,7 @@ public abstract class DbCommandHandler<TContext, TEntity, TCommand, TResult> : I
         return entity;
     }
 
-    /// <summary>
-    /// Project the input queryable.
-    /// </summary>
-    /// <remarks>Projections</remarks>
-    /// <typeparam name="TDestination">Destination type</typeparam>
-    /// <param name="source">Queryable source</param>
-    /// <returns>Queryable result, use queryable extension methods to project and execute result</returns>
-    protected IQueryable<TDestination> ProjectTo<TDestination>(IQueryable source)
-        => _projector is null ? throw new NullReferenceException(nameof(_projector)) : _projector.ProjectTo<TDestination>(source);
+   
 
 }
 

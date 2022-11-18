@@ -22,10 +22,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.ReP.Business.Abst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.ReP.Data.Cqrs.FreeSql", "Olbrasoft.ReP.Data.Cqrs.FreeSql\Olbrasoft.ReP.Data.Cqrs.FreeSql.csproj", "{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.Data.Cqrs.FreeSql", "Olbrasoft.Data.Cqrs.FreeSql\Olbrasoft.Data.Cqrs.FreeSql.csproj", "{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Data.Cqrs.EntityFrameworkCore", "Olbrasoft.Data.Cqrs.EntityFrameworkCore\Olbrasoft.Data.Cqrs.EntityFrameworkCore.csproj", "{1905A513-B46D-4684-BFE1-7C04036561D5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,20 +52,12 @@ Global
 		{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A044B6F-63D3-479C-BBE8-22AFF17ABB0D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B81006E2-7CDB-40C7-BE59-B3B18843A9A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1905A513-B46D-4684-BFE1-7C04036561D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1905A513-B46D-4684-BFE1-7C04036561D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1905A513-B46D-4684-BFE1-7C04036561D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1905A513-B46D-4684-BFE1-7C04036561D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_TranslatorConfiguration = {"Azure":"{\"AutoDetectHtml\":true,\"MaxCharactersPerMinute\":33300,\"AuthenticationKey\":null,\"Region\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","Baidu":"{\"AppId\":null,\"SecretKey\":null,\"ApiUrl\":null,\"Domain\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","DeepL":"{\"ApiKey\":\"646f6abf-2283-46d4-a9c6-749685d1d098:fx\",\"ApiUrl\":\"https://api-free.deepl.com/v2/translate\",\"IsEnabled\":true,\"SaveCredentials\":true,\"Ranking\":1.0}","Google":"{\"ApiKey\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","MSTerm":"{\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","MyMemory":"{\"Key\":null,\"Mail\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}"}
 		SolutionGuid = {6F230D7F-70E8-44C0-BD0A-9EA08C18CBED}
+		RESX_TranslatorConfiguration = {"Azure":"{\"AutoDetectHtml\":true,\"MaxCharactersPerMinute\":33300,\"AuthenticationKey\":null,\"Region\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","Baidu":"{\"AppId\":null,\"SecretKey\":null,\"ApiUrl\":null,\"Domain\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","DeepL":"{\"ApiKey\":\"646f6abf-2283-46d4-a9c6-749685d1d098:fx\",\"ApiUrl\":\"https://api-free.deepl.com/v2/translate\",\"IsEnabled\":true,\"SaveCredentials\":true,\"Ranking\":1.0}","Google":"{\"ApiKey\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","MSTerm":"{\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}","MyMemory":"{\"Key\":null,\"Mail\":null,\"IsEnabled\":false,\"SaveCredentials\":false,\"Ranking\":1.0}"}
 	EndGlobalSection
 EndGlobal

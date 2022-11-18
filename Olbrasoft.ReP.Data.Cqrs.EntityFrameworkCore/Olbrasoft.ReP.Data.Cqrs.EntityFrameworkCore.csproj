@@ -7,18 +7,18 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		  <TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
+		<PackageReference Include="Olbrasoft.Data.Cqrs.EntityFrameworkCore" Version="1.6.3" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Altairis.ReP.Data\Altairis.ReP.Data.csproj" />
-		<ProjectReference Include="..\Olbrasoft.Data.Cqrs.EntityFrameworkCore\Olbrasoft.Data.Cqrs.EntityFrameworkCore.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

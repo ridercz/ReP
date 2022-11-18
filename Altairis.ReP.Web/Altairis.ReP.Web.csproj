@@ -12,7 +12,9 @@
 		<ProjectReference Include="..\Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore\Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\Olbrasoft.ReP.Data.Cqrs.FreeSql\Olbrasoft.ReP.Data.Cqrs.FreeSql.csproj" />
 		<PackageReference Include="Altairis.ConventionalMetadataProviders" Version="1.0.5" />
-		<PackageReference Include="Altairis.Services.DateProvider" Version="1.0.0" />
+		<PackageReference Include="Altairis.Services.DateProvider" Version="1.0.0">
+		  <TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
 		<PackageReference Include="Altairis.Services.Mailing.Core" Version="1.0.5" />
 		<PackageReference Include="Altairis.Services.Mailing.Rfc2822" Version="1.0.5" />
 		<PackageReference Include="Altairis.Services.Mailing.SendGrid" Version="1.0.5" />
@@ -22,16 +24,11 @@
 		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
 		<PackageReference Include="BuildWebCompiler" Version="1.12.405" />
 		<PackageReference Include="Markdig" Version="0.30.4" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 		<PackageReference Include="Olbrasoft.Dispatching.Extensions.Microsoft.DependencyInjection" Version="1.6.7" />
 		<PackageReference Include="Olbrasoft.Mapping.Mapster.DependencyInjection.Microsoft" Version="7.3.2" />
-		<PackageReference Include="Storage.Net" Version="9.3.0" />
+		<PackageReference Include="Storage.Net" Version="9.3.0">
+		  <TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
 		<PackageReference Include="Storage.Net.Microsoft.Azure.Storage.Blobs" Version="9.3.0" />
 	</ItemGroup>
 

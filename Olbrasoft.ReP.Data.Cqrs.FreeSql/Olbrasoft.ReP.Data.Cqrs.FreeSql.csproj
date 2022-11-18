@@ -10,20 +10,20 @@
 	  <PackageReference Include="FreeSql.Provider.SqlServer" Version="3.2.682" />
 	  <PackageReference Include="IGeekFan.AspNetCore.Identity.FreeSql" Version="0.0.519" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+	  <PackageReference Include="Olbrasoft.Data.Cqrs.FreeSql" Version="1.6.3" />
 	  <PackageReference Include="Olbrasoft.Extensions" Version="1.0.6" />
 	  <PackageReference Include="Olbrasoft.Mapping.Abstractions" Version="7.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Altairis.ReP.Data\Altairis.ReP.Data.csproj" />
-	  <ProjectReference Include="..\Olbrasoft.Data.Cqrs.FreeSql\Olbrasoft.Data.Cqrs.FreeSql.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Using Include="Altairis.ReP.Data.Entities" />
-		<Using Include="Altairis.ReP.Data.Dtos"/>
+		<Using Include="Altairis.ReP.Data.Dtos" />
 		<Using Include="Altairis.ReP.Data.Queries" />
-		<Using Include="Altairis.ReP.Data.Queries.UserQueries"/>
+		<Using Include="Altairis.ReP.Data.Queries.UserQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ResourceQueries" />
 		<Using Include="Altairis.ReP.Data.Queries.ReservationQueries" />
 		<Using Include="FreeSql" />
@@ -31,11 +31,11 @@
 		<Using Include="Olbrasoft.Data.Cqrs" />
 		<Using Include="Altairis.ReP.Data.Commands" />
 		<Using Include="Altairis.ReP.Data.Dtos.ReservationDtos" />
-		<Using Include="Altairis.ReP.Data.Dtos.NewsMessageDtos"/>
+		<Using Include="Altairis.ReP.Data.Dtos.NewsMessageDtos" />
 		<Using Include="Altairis.ReP.Data.Queries.DirectoryEntryQueries" />
-		<Using Include="Altairis.ReP.Data.Queries.OpeningHoursChangeQueries"/>
-		<Using Include="Altairis.ReP.Data.Queries.NewsMessageQueries"/>
+		<Using Include="Altairis.ReP.Data.Queries.OpeningHoursChangeQueries" />
+		<Using Include="Altairis.ReP.Data.Queries.NewsMessageQueries" />
 		<Using Include="FreeSql.Extensions.EfCoreFluentApi" />
-		<Using Include="Olbrasoft.Data.Cqrs.FreeSql"/>
+		<Using Include="Olbrasoft.Data.Cqrs.FreeSql" />
 	</ItemGroup>
 </Project>
