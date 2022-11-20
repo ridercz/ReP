@@ -72,6 +72,8 @@ else
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
 }
 
+
+
 //FreeSql projection
 //builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
 
