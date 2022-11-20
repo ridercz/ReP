@@ -73,13 +73,13 @@ else
 }
 
 //FreeSql projection
-builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
+//builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
 
 
 //Cqrs urèuje které handlery respektivnì jestli EF nebo FreeSql ještì je potøeba pøepnout
 //.AddFreeSqlStores<RepDbContextFreeSql>()/ AddEntityFrameworkStores<RepDbContext>
 // u addidentity
-builder.Services.AddDispatching(typeof(RepDbContextFreeSql).Assembly);
+builder.Services.AddDispatching(typeof(RepDbContext).Assembly);
 
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -92,8 +92,8 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     options.Password.RequireUppercase = false;
     options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedEmail = true;
-}).AddFreeSqlStores<RepDbContextFreeSql>()
-  //   .AddEntityFrameworkStores<RepDbContext>()
+})//.AddFreeSqlStores<RepDbContextFreeSql>()
+     .AddEntityFrameworkStores<RepDbContext>()
     .AddDefaultTokenProviders()
     .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
     .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
