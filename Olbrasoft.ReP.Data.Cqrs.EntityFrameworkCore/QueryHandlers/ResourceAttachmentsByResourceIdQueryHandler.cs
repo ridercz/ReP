@@ -1,6 +1,4 @@
-﻿using Altairis.ReP.Data.Queries;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
 public class ResourceAttachmentsByResourceIdQueryHandler :
     RepDbQueryHandler<ResourceAttachment, ResourceAttachmentsByResourceIdQuery, IEnumerable<ResourceAttachment>>
 {

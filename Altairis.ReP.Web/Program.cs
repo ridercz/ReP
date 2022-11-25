@@ -16,11 +16,9 @@ using Altairis.Services.Mailing.SendGrid;
 using Altairis.Services.Mailing.Templating;
 using Altairis.Services.PwnedPasswordsValidator;
 using Altairis.TagHelpers;
-using IGeekFan.AspNetCore.Identity.FreeSql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Olbrasoft.Blog.Data.MappingRegisters;
-using Olbrasoft.Data.Cqrs.FreeSql;
 using Olbrasoft.Extensions.DependencyInjection;
 using Olbrasoft.Mapping.Mapster.DependencyInjection.Microsoft;
 using Olbrasoft.ReP.Business;
@@ -64,7 +62,7 @@ else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCas
 {
     builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options =>
     {
-        options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
+       options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
     });
 }
 else
@@ -72,11 +70,8 @@ else
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
 }
 
-
-
 //FreeSql projection
 //builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
-
 
 //Cqrs urèuje které handlery respektivnì jestli EF nebo FreeSql ještì je potøeba pøepnout
 //.AddFreeSqlStores<RepDbContextFreeSql>()/ AddEntityFrameworkStores<RepDbContext>
@@ -99,7 +94,6 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     .AddDefaultTokenProviders()
     .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
     .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
-
 
 
 // Configure blob storage

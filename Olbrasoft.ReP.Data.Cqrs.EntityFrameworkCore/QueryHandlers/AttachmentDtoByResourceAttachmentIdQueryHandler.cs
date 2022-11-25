@@ -1,6 +1,4 @@
-﻿using Altairis.ReP.Data.Queries;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
 public class AttachmentDtoByResourceAttachmentIdQueryHandler : RepDbQueryHandler<ResourceAttachment, AttachmentDtoByResourceAttachmentIdQuery, AttachmentDto?>
 {
     public AttachmentDtoByResourceAttachmentIdQueryHandler(IProjector projector, RepDbContext context) : base(projector, context)

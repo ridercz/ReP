@@ -1,6 +1,4 @@
-﻿using Altairis.ReP.Data.Queries;
-
-namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
+﻿namespace Olbrasoft.ReP.Data.Cqrs.EntityFrameworkCore.QueryHandlers;
 public class NewsletterRecipientsQueryHandler : RepDbQueryHandler<ApplicationUser, NewsletterRecipientsQuery, IEnumerable<RecipientDto>>
 {
     public NewsletterRecipientsQueryHandler(IProjector projector, RepDbContext context) : base(projector, context)
