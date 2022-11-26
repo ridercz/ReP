@@ -16,9 +16,11 @@ using Altairis.Services.Mailing.SendGrid;
 using Altairis.Services.Mailing.Templating;
 using Altairis.Services.PwnedPasswordsValidator;
 using Altairis.TagHelpers;
+using IGeekFan.AspNetCore.Identity.FreeSql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Olbrasoft.Blog.Data.MappingRegisters;
+using Olbrasoft.Data.Cqrs.FreeSql;
 using Olbrasoft.Extensions.DependencyInjection;
 using Olbrasoft.Mapping.Mapster.DependencyInjection.Microsoft;
 using Olbrasoft.ReP.Business;
@@ -36,50 +38,10 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 var appSettings = new AppSettings();
 builder.Configuration.Bind(appSettings);
 
-IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-      .UseConnectionString(FreeSql.DataType.SqlServer, builder.Configuration.GetConnectionString("SqlServer"))
-      .UseAutoSyncStructure(false) //automatically synchronize the entity structure to the database
-      .Build();
-
-builder.Services.AddSingleton(fsql);
-
-builder.Services.AddFreeDbContext<RepDbContextFreeSql>(o =>
-{
-    o.UseFreeSql(fsql);
-});
 
 
-// Configure database
-if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase))
-{
-    builder.Services.AddDbContext<RepDbContext>(options =>
-    {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
-    });
-
-}
-else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCase))
-{
-    builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options =>
-    {
-       options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
-    });
-}
-else
-{
-    throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
-}
-
-//FreeSql projection
-//builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
-
-//Cqrs urèuje které handlery respektivnì jestli EF nebo FreeSql ještì je potøeba pøepnout
-//.AddFreeSqlStores<RepDbContextFreeSql>()/ AddEntityFrameworkStores<RepDbContext>
-// u addidentity
-builder.Services.AddDispatching(typeof(RepDbContext).Assembly);
-
-
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+//Configure Identity without Orm 
+var identityBuilder = builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {
     options.Password.RequiredLength = appSettings.Security.MinimumPasswordLength;
     options.Password.RequiredUniqueChars = 4;
@@ -89,11 +51,88 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     options.Password.RequireUppercase = false;
     options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedEmail = true;
-})//.AddFreeSqlStores<RepDbContextFreeSql>()
-     .AddEntityFrameworkStores<RepDbContext>()
-    .AddDefaultTokenProviders()
-    .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
-    .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
+}).AddDefaultTokenProviders()
+  .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
+  .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
+
+
+// Configure ORM https://cs.wikipedia.org/wiki/Objektov%C4%9B_rela%C4%8Dn%C3%AD_mapov%C3%A1n%C3%AD
+if (appSettings.Orm.Equals("EntityFrameworkCore")) // using EntityFrameworkCore
+{
+
+    // Configure the database when using EntityFrameworkCore
+    if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase))
+    {
+        builder.Services.AddDbContext<RepDbContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
+        });
+
+    }
+    else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCase))
+    {
+        builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options =>
+        {
+            options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
+        });
+    }
+    else
+    {
+        throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
+    }
+
+    // Configure CQS when using EntityFrameworkCore https://en.wikipedia.org/wiki/Command%E2%80%93query_separation
+    builder.Services.AddDispatching(typeof(RepDbContext).Assembly);
+
+    // Configure Identity when using EntityFrameworkCore
+    identityBuilder.AddEntityFrameworkStores<RepDbContext>();
+}
+else if (appSettings.Orm.Equals("FreeSql"))  // using FreeSql
+{
+
+    var freeSqlBuilder = new FreeSql.FreeSqlBuilder().UseAutoSyncStructure(false);
+
+    // Configure the database when using FreeSql
+    if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase))
+    {
+        freeSqlBuilder.UseConnectionString(FreeSql.DataType.SqlServer, builder.Configuration.GetConnectionString("SqlServer"));
+
+    }
+    else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCase))
+    {
+
+        freeSqlBuilder.UseConnectionString(FreeSql.DataType.Sqlite, builder.Configuration.GetConnectionString("Sqlite"));
+    }
+    else
+    {
+        throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
+    }
+
+
+    IFreeSql fsql = freeSqlBuilder.Build();
+
+    builder.Services.AddSingleton(fsql);
+
+    builder.Services.AddFreeDbContext<RepDbContextFreeSql>(o =>
+    {
+        o.UseFreeSql(fsql);
+    });
+
+
+    builder.Services.AddProjectionConfigurations(typeof(RepDbContextFreeSql).Assembly);
+
+    // Configure CQS when using FreeSql https://en.wikipedia.org/wiki/Command%E2%80%93query_separation
+    builder.Services.AddDispatching(typeof(RepDbContextFreeSql).Assembly);
+
+
+    // Configure Identity when using FreeSql
+    identityBuilder.AddFreeSqlStores<RepDbContextFreeSql>();
+
+}
+else
+{
+    throw new Exception($"Unsupported Orm `{appSettings.Orm}`. Use `EntityFrameworkCore` or `FreeSql`.");
+}
 
 
 // Configure blob storage

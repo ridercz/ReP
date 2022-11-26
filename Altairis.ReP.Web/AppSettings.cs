@@ -2,7 +2,10 @@
 
 public class AppSettings {
 
+    public string Orm { get; set; } = "EntityFrameworkCore";
+
     public string Database { get; set; } = "Sqlite";
+
 
     public FeaturesConfig Features { get; set; } = new FeaturesConfig();
 
