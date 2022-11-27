@@ -1,14 +1,15 @@
-using System.Globalization;
 using Altairis.ReP.Data.Entities;
 using Microsoft.AspNetCore.Identity;
-using NetBox.Terminal.Core;
+using System.Globalization;
 
 namespace Altairis.ReP.Web.Pages;
-public class FirstRunModel : PageModel {
+public class FirstRunModel : PageModel
+{
     private readonly IUserService _service;
     private readonly UserManager<ApplicationUser> userManager;
 
-    public FirstRunModel(IUserService service, UserManager<ApplicationUser> userManager) {
+    public FirstRunModel(IUserService service, UserManager<ApplicationUser> userManager)
+    {
         _service = service ?? throw new ArgumentNullException(nameof(service));
         this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
     }
@@ -16,7 +17,8 @@ public class FirstRunModel : PageModel {
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
-    public class InputModel {
+    public class InputModel
+    {
 
         [Required, MaxLength(50)]
         public string UserName { get; set; }
@@ -32,18 +34,21 @@ public class FirstRunModel : PageModel {
 
     }
 
-    public async Task<IActionResult> OnGet(CancellationToken token) {
+    public async Task<IActionResult> OnGet(CancellationToken token)
+    {
         if (await _service.IsThereAnyUserAsync(token)) return this.NotFound();
         this.Input.Password = SecurityHelper.GenerateRandomPassword();
         return this.Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(CancellationToken token) {
+    public async Task<IActionResult> OnPostAsync(CancellationToken token)
+    {
         if (await _service.IsThereAnyUserAsync(token)) return this.NotFound();
         if (!this.ModelState.IsValid) return this.Page();
 
         // Create user
-        var user = new ApplicationUser {
+        var user = new ApplicationUser
+        {
             UserName = this.Input.UserName,
             DisplayName = this.Input.DisplayName,
             Email = this.Input.Email,
