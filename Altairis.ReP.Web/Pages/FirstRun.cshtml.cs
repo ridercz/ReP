@@ -1,12 +1,15 @@
 using System.Globalization;
 using Altairis.ReP.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using NetBox.Terminal.Core;
 
 namespace Altairis.ReP.Web.Pages;
 public class FirstRunModel : PageModel {
+    private readonly IUserService _service;
     private readonly UserManager<ApplicationUser> userManager;
 
-    public FirstRunModel(UserManager<ApplicationUser> userManager) {
+    public FirstRunModel(IUserService service, UserManager<ApplicationUser> userManager) {
+        _service = service ?? throw new ArgumentNullException(nameof(service));
         this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
     }
 
@@ -29,14 +32,14 @@ public class FirstRunModel : PageModel {
 
     }
 
-    public IActionResult OnGet() {
-        if (this.userManager.Users.Any()) return this.NotFound();
+    public async Task<IActionResult> OnGet(CancellationToken token) {
+        if (await _service.IsThereAnyUserAsync(token)) return this.NotFound();
         this.Input.Password = SecurityHelper.GenerateRandomPassword();
         return this.Page();
     }
 
-    public async Task<IActionResult> OnPostAsync() {
-        if (this.userManager.Users.Any()) return this.NotFound();
+    public async Task<IActionResult> OnPostAsync(CancellationToken token) {
+        if (await _service.IsThereAnyUserAsync(token)) return this.NotFound();
         if (!this.ModelState.IsValid) return this.Page();
 
         // Create user

@@ -1,4 +1,4 @@
 {
-   "Database": "SqlServer",
-    "Orm":"EntityFrameworkCore"
+   "Database": "Sqlite",
+    "Orm":"FreeSql"
 }
