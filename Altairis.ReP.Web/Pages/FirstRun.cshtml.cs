@@ -19,7 +19,6 @@ public class FirstRunModel : PageModel
 
     public class InputModel
     {
-
         [Required, MaxLength(50)]
         public string UserName { get; set; }
 
@@ -31,7 +30,6 @@ public class FirstRunModel : PageModel
 
         [Required, DataType(DataType.Password)]
         public string Password { get; set; }
-
     }
 
     public async Task<IActionResult> OnGet(CancellationToken token)
@@ -64,5 +62,4 @@ public class FirstRunModel : PageModel
         // Redirect to home page
         return this.RedirectToPage("Index");
     }
-
 }
