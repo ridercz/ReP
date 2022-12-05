@@ -68,7 +68,7 @@ public class ReservationsModel : PageModel {
 
         // Get future reservations
         var qr = from r in this.dc.Reservations
-                 where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin && r.DateEnd <= this.CalendarDateEnd
+                 where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
                  select new CalendarEvent {
                      Id = "reservation_" + r.Id,
                      BackgroundColor = r.System ? r.Resource.ForegroundColor : r.Resource.BackgroundColor,
