@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Options;
-
 namespace Altairis.ReP.Web.Pages.Admin.Resources {
     public class AttachmentsModel : PageModel {
         private readonly RepDbContext dc;

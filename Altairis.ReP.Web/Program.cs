@@ -1,11 +1,13 @@
 global using System.ComponentModel.DataAnnotations;
 global using Altairis.ReP.Data;
 global using Altairis.ReP.Web;
+global using Altairis.ReP.Web.Pages.Models;
 global using Altairis.ReP.Web.Resources;
 global using Altairis.ReP.Web.Services;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.RazorPages;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Options;
 using Altairis.ConventionalMetadataProviders;
 using Altairis.Services.DateProvider;
 using Altairis.Services.Mailing;

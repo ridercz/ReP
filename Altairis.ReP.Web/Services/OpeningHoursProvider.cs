@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using Altairis.Services.DateProvider;
-using Microsoft.Extensions.Options;
 
 namespace Altairis.ReP.Web.Services;
 

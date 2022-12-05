@@ -2,7 +2,6 @@ using System.Globalization;
 using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Options;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
 public class CreateModel : PageModel {
