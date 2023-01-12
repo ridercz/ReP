@@ -16,8 +16,10 @@ using Altairis.Services.Mailing.SendGrid;
 using Altairis.Services.Mailing.Templating;
 using Altairis.Services.PwnedPasswordsValidator;
 using Altairis.TagHelpers;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Storage.Net;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,15 +31,21 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 var appSettings = new AppSettings();
 builder.Configuration.Bind(appSettings);
 
+// Configure health checks
+var hcb = builder.Services.AddHealthChecks()
+    .AddTypeActivatedCheck<SetupCompleteHealthCheck>(name: "Setup Complete");
+
 // Configure database
 if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)) {
     builder.Services.AddDbContext<RepDbContext>(options => {
         options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
     });
+    hcb.AddSqlServer(connectionString: builder.Configuration.GetConnectionString("SqlServer"), name: "SQL Server");
 } else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCase)) {
     builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options => {
         options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
     });
+    hcb.AddSqlite(sqliteConnectionString: builder.Configuration.GetConnectionString("Sqlite"), name: "Sqlite");
 } else {
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
 }
@@ -80,7 +88,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
 })
     .AddEntityFrameworkStores<RepDbContext>()
     .AddDefaultTokenProviders()
-    .AddSignInManager<Altairis.ReP.Web.Services.ApplicationSignInManager>()
+    .AddSignInManager<ApplicationSignInManager>()
     .AddPasswordValidator<PwnedPasswordsValidator<ApplicationUser>>();
 builder.Services.ConfigureApplicationCookie(options => {
     options.Cookie.Name = "ReP-Auth";
@@ -168,6 +176,9 @@ app.UseAuthorization();
 
 // Map endpoints
 app.MapRazorPages();
+app.MapHealthChecks("/api/health.json", new() {
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 // Run app
 await app.RunAsync();
