@@ -25,7 +25,7 @@ public class ForgotPasswordModel : PageModel {
         if (!this.ModelState.IsValid) return this.Page();
 
         // Try to find user by name
-        var user = await this.userManager.FindByNameAsync(this.Input.UserName).ConfigureAwait(false);
+        var user = await this.userManager.FindByNameAsync(this.Input.UserName);
         if (user == null) {
             this.ModelState.AddModelError(nameof(this.Input.UserName), UI.Login_ForgotPassword_UserNotFound);
             return this.Page();
@@ -45,7 +45,7 @@ public class ForgotPasswordModel : PageModel {
         await this.mailerService.SendMessageAsync(msg, new {
             userName = user.UserName,
             url = passwordResetUrl
-        }).ConfigureAwait(false);
+        });
 
         return this.RedirectToPage("Index", null, "sent");
     }

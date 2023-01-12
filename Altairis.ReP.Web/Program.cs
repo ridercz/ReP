@@ -134,7 +134,7 @@ var dc = scope.ServiceProvider.GetRequiredService<RepDbContext>();
 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
 // Migrate database to latest version
-await dc.Database.MigrateAsync().ConfigureAwait(false);
+await dc.Database.MigrateAsync();
 
 // Configure identity
 static void EnsureIdentitySuccess(IdentityResult result) {
@@ -145,11 +145,11 @@ static void EnsureIdentitySuccess(IdentityResult result) {
 
 // Create roles
 async Task EnsureRoleCreated(string roleName) {
-    if (await roleManager.FindByNameAsync(roleName).ConfigureAwait(false) != null) return;
-    EnsureIdentitySuccess(await roleManager.CreateAsync(new ApplicationRole { Name = roleName }).ConfigureAwait(false));
+    if (await roleManager.FindByNameAsync(roleName) != null) return;
+    EnsureIdentitySuccess(await roleManager.CreateAsync(new ApplicationRole { Name = roleName }));
 }
-await EnsureRoleCreated(ApplicationRole.Master).ConfigureAwait(false);
-await EnsureRoleCreated(ApplicationRole.Administrator).ConfigureAwait(false);
+await EnsureRoleCreated(ApplicationRole.Master);
+await EnsureRoleCreated(ApplicationRole.Administrator);
 
 // Configure localization
 var supportedCultures = new[] { "cs-CZ", "en-US" };

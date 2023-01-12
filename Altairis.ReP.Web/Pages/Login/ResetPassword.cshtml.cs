@@ -22,7 +22,7 @@ public class ResetPasswordModel : PageModel {
         if (!this.ModelState.IsValid) return this.Page();
 
         // Try to find user by ID
-        var user = await this.userManager.FindByIdAsync(userId).ConfigureAwait(false);
+        var user = await this.userManager.FindByIdAsync(userId);
         if (user == null) {
             this.ModelState.AddModelError(nameof(this.Input.Password), UI.Login_ForgotPassword_UserNotFound);
             return this.Page();
