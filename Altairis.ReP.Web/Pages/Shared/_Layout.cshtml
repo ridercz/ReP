@@ -1,8 +1,5 @@
 ﻿<!DOCTYPE html>
-@{
-    var currentCulture = System.Globalization.CultureInfo.CurrentUICulture.Name;
-}
-<html lang="@currentCulture">
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name">
 <head>
     <title>@this.ViewBag.Title | @this.OptionsAccessor.Value.Design.ApplicationName</title>
     <meta name="viewport" content="width=device-width" />
@@ -17,10 +14,7 @@
 </head>
 <body>
     <header>
-        <div class="lang">
-            <a visible="@(!currentCulture.StartsWith("cs"))" asp-page="/SetLanguage" asp-route-culture="cs" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_CS"><span class="fi fi-cz"></span></a>
-            <a visible="@(!currentCulture.StartsWith("en"))" asp-page="/SetLanguage" asp-route-culture="en" asp-route-returnUrl="@this.Context.Request.Path" title="@UI.My_Settings_Index_Language_EN"><span class="fi fi-gb"></span></a>
-        </div>
+        <vc:language-switch />
         <img src="@this.OptionsAccessor.Value.Design.HeaderImageUrl" alt="@this.OptionsAccessor.Value.Design.ApplicationName" asp-append-version="true" />
     </header>
     <nav>

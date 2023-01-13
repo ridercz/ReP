@@ -9,6 +9,7 @@ global using Microsoft.AspNetCore.Mvc.RazorPages;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 using Altairis.ConventionalMetadataProviders;
+using Altairis.ReP.Web.Components;
 using Altairis.Services.DateProvider;
 using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Rfc2822;
@@ -152,7 +153,7 @@ await EnsureRoleCreated(ApplicationRole.Master);
 await EnsureRoleCreated(ApplicationRole.Administrator);
 
 // Configure localization
-var supportedCultures = new[] { "cs-CZ", "en-US" };
+var supportedCultures = new[] { "cs-CZ", "en-GB" };
 app.UseRequestLocalization(options => {
     options.SetDefaultCulture(supportedCultures[0]);
     options.AddSupportedCultures(supportedCultures);
@@ -160,6 +161,7 @@ app.UseRequestLocalization(options => {
     options.RequestCultureProviders.Clear();
     options.RequestCultureProviders.Add(new CookieRequestCultureProvider());
 });
+app.MapGet("/api/set-language", LanguageSwitchViewComponent.SetCultureCookieHandler).WithName(LanguageSwitchViewComponent.SetCultureCookieHandlerRouteName);
 
 // Configure middleware
 app.UseStatusCodePagesWithReExecute("/Errors/{0}");

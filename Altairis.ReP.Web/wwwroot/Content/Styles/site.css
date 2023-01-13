@@ -26,6 +26,9 @@ html body {
 html body > header .lang {
   float: right;
 }
+html body > header .lang a.current {
+  filter: grayscale(1);
+}
 html body > nav a:link, html body > nav a:visited {
   color: #fff;
 }

@@ -27,6 +27,10 @@ html {
         > header {
             .lang {
                 float: right;
+
+                a.current {
+                    filter: grayscale(1);
+                }
             }
         }
 
