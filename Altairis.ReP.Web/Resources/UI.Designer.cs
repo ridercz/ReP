@@ -886,6 +886,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to my calendar.
+        /// </summary>
+        public static string My_Calendar_Ics {
+            get {
+                return ResourceManager.GetString("My_Calendar_Ics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage my reservations.
         /// </summary>
         public static string My_Calendar_Manage {
@@ -1138,6 +1147,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to reset the calendar access token? You would need to change the calendar address everywhere you are using it..
+        /// </summary>
+        public static string My_Setting_ResetRak_Confirm {
+            get {
+                return ResourceManager.GetString("My_Setting_ResetRak_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid password..
         /// </summary>
         public static string My_Settings_Email_InvalidPassword {
@@ -1176,6 +1194,33 @@ namespace Altairis.ReP.Web.Resources {
         public static string My_Settings_EmailConfirm_TryAgain {
             get {
                 return ResourceManager.GetString("My_Settings_EmailConfirm_TryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All reservations.
+        /// </summary>
+        public static string My_Settings_Ics_Full {
+            get {
+                return ResourceManager.GetString("My_Settings_Ics_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My reservations only.
+        /// </summary>
+        public static string My_Settings_Ics_My {
+            get {
+                return ResourceManager.GetString("My_Settings_Ics_My", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset calendar access token.
+        /// </summary>
+        public static string My_Settings_Ics_ResetRak {
+            get {
+                return ResourceManager.GetString("My_Settings_Ics_ResetRak", resourceCulture);
             }
         }
         
@@ -1248,6 +1293,15 @@ namespace Altairis.ReP.Web.Resources {
         public static string My_Settings_Index_Msg_Delete {
             get {
                 return ResourceManager.GetString("My_Settings_Index_Msg_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your calendar access token was changed and old calendar URLs are no longer valid..
+        /// </summary>
+        public static string My_Settings_Index_Msg_ResetRakDone {
+            get {
+                return ResourceManager.GetString("My_Settings_Index_Msg_ResetRakDone", resourceCulture);
             }
         }
         

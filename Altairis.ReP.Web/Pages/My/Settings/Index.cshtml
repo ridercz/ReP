@@ -64,6 +64,14 @@
                     <label asp-for="Input.ShowInMemberDirectory"></label>
                 </td>
             </tr>
+            <tr>
+                <th>@UI.My_Calendar_Ics</th>
+                <td>
+                    <div><i class="fas fa-calendar-plus"></i> <a asp-route="FullIcs" asp-route-rak="@this.Model.Me.ResourceAuthorizationKey">@UI.My_Settings_Ics_Full</a></div>
+                    <div><i class="fas fa-calendar-plus"></i> <a asp-route="MyIcs" asp-route-rak="@this.Model.Me.ResourceAuthorizationKey">@UI.My_Settings_Ics_My</a></div>
+                    <div><i class="fas fa-calendar-xmark"></i> <a href="#resetrak">@UI.My_Settings_Ics_ResetRak</a></div>
+                </td>
+            </tr>
         </tbody>
         <tfoot>
             <tr>
@@ -83,3 +91,15 @@
 <modal-box id="changeemaildone" message="@UI.My_Settings_Index_Msg_ChangeEmailDone" />
 <modal-box id="delete" message="@UI.My_Settings_Index_Msg_Delete" />
 <modal-box id="saved" message="@UI.My_Settings_Index_Msg_Saved" />
+<modal-box id="resetrakdone" message="@UI.My_Settings_Index_Msg_ResetRakDone" />
+
+<div id="resetrak" class="modal">
+    <form method="post" asp-page-handler="ResetRak">
+        <header><i class="fa fa-info-circle"></i></header>
+        <p>@UI.My_Setting_ResetRak_Confirm</p>
+        <footer>
+            <input type="submit" value="@UI._Yes" />
+            <a href="#" class="button">@UI._No</a>
+        </footer>
+    </form>
+</div>

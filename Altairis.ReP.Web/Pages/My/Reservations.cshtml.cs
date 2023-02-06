@@ -54,11 +54,16 @@ public class ReservationsModel : PageModel {
 
     public bool CanDoReservation { get; set; } = false;
 
+    public string ResourceAuthorizationKey { get; set; }
+
     private async Task<bool> Init(int resourceId) {
         // Get resource
         this.Resource = await this.dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId);
         if (this.Resource == null) return false;
         this.CanDoReservation = this.Resource.Enabled || this.User.IsPrivilegedUser();
+
+        // Get user RAK
+        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName.Equals(this.User.Identity.Name))).ResourceAuthorizationKey;
 
         // Get last Monday as the start date
         this.CalendarDateBegin = this.dateProvider.Today;

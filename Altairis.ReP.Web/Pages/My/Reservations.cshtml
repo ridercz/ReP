@@ -7,6 +7,7 @@
 
 <p>
     <a visible="Model.CanDoReservation" href="#new" class="button">@UI.My_Reservations_New</a>
+    <a asp-route="ResourceIcs" asp-route-rak="@this.Model.ResourceAuthorizationKey" class="button">@UI.My_Calendar_Ics</a>
 </p>
 
 <div id="new" class="modal" visible="Model.CanDoReservation">

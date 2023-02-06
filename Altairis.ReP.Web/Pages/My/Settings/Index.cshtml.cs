@@ -62,4 +62,11 @@ public class IndexModel : PageModel {
         return this.RedirectToPage("Index", null, "saved");
     }
 
+    public async Task<IActionResult> OnPostResetRakAsync() {
+        var me = await this.userManager.GetUserAsync(this.User);
+        me.ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey();
+        await this.userManager.UpdateAsync(me);
+        return this.RedirectToPage("Index", null, "resetrakdone");
+    }
+
 }

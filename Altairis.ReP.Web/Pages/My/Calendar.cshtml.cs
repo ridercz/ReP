@@ -54,6 +54,8 @@ public class CalendarModel : PageModel {
 
     public DateTime DateNext { get; set; }
 
+    public string ResourceAuthorizationKey { get; set; }
+
     public async Task<IActionResult> OnGetAsync(int? year, int? month) {
         // Redirect to current month
         if (!year.HasValue || !month.HasValue) return this.RedirectToPage(new { this.dateProvider.Today.Year, this.dateProvider.Today.Month });
@@ -93,6 +95,9 @@ public class CalendarModel : PageModel {
     }
 
     private async Task Init(int? year, int? month) {
+        // Get user RAK
+        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName.Equals(this.User.Identity.Name))).ResourceAuthorizationKey;
+
         // Get month name for display
         this.DateBegin = new DateTime(year.Value, month.Value, 1);
         this.DateEnd = this.DateBegin.AddMonths(1).AddDays(-1);

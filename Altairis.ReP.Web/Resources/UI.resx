@@ -547,4 +547,22 @@ Please follow the instructions in the message.</value>
   <data name="Cal_Resource_Name" xml:space="preserve">
     <value>{0} - {1}</value>
   </data>
+  <data name="My_Calendar_Ics" xml:space="preserve">
+    <value>Add to my calendar</value>
+  </data>
+  <data name="My_Settings_Ics_Full" xml:space="preserve">
+    <value>All reservations</value>
+  </data>
+  <data name="My_Settings_Ics_My" xml:space="preserve">
+    <value>My reservations only</value>
+  </data>
+  <data name="My_Settings_Ics_ResetRak" xml:space="preserve">
+    <value>Reset calendar access token</value>
+  </data>
+  <data name="My_Setting_ResetRak_Confirm" xml:space="preserve">
+    <value>Do you really want to reset the calendar access token? You would need to change the calendar address everywhere you are using it.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ResetRakDone" xml:space="preserve">
+    <value>Your calendar access token was changed and old calendar URLs are no longer valid.</value>
+  </data>
 </root>
