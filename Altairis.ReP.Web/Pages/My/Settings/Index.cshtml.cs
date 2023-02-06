@@ -1,3 +1,4 @@
+using Altairis.ReP.Web.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -30,10 +31,7 @@ public class IndexModel : PageModel {
 
     }
 
-    public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
-        new SelectListItem(UI.My_Settings_Index_Language_CS, "cs-CZ"),
-        new SelectListItem(UI.My_Settings_Index_Language_EN, "en-US")
-    };
+    public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.GetAvailableCultures().Select(c => new SelectListItem(c.NativeName, c.Name));
 
     public ApplicationUser Me { get; set; }
 

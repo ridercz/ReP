@@ -1,4 +1,5 @@
 using System.Globalization;
+using Altairis.ReP.Web.Components;
 using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -42,10 +43,7 @@ public class CreateModel : PageModel {
 
     }
 
-    public IEnumerable<SelectListItem> AllLanguages { get; } = new List<SelectListItem>() {
-        new SelectListItem(UI.My_Settings_Index_Language_CS, "cs-CZ"),
-        new SelectListItem(UI.My_Settings_Index_Language_EN, "en-US")
-    };
+    public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.GetAvailableCultures().Select(c => new SelectListItem(c.NativeName, c.Name));
 
     public void OnGet() {
         this.Input.ShowInMemberDirectory = this.options.Features.UseMemberDirectory;
