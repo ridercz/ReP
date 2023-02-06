@@ -184,6 +184,7 @@ app.UseAuthorization();
 
 // Map endpoints
 app.MapRazorPages();
+app.MapGet("/", () => Results.LocalRedirect("/My"));
 app.MapHealthChecks("/api/health.json", new() {
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
