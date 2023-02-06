@@ -17,10 +17,10 @@ using Altairis.Services.Mailing.SendGrid;
 using Altairis.Services.Mailing.Templating;
 using Altairis.Services.PwnedPasswordsValidator;
 using Altairis.TagHelpers;
+using FluentStorage;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
-using FluentStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -159,7 +159,7 @@ await EnsureRoleCreated(ApplicationRole.Master);
 await EnsureRoleCreated(ApplicationRole.Administrator);
 
 // Configure localization
-var supportedCultures = new[] { "cs-CZ", "en-GB" };
+var supportedCultures = LanguageSwitchViewComponent.GetAvailableCultures().Select(c => c.Name).ToArray();
 app.UseRequestLocalization(options => {
     options.SetDefaultCulture(supportedCultures[0]);
     options.AddSupportedCultures(supportedCultures);

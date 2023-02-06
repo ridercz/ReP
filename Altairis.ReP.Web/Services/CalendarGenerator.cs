@@ -1,4 +1,3 @@
-using System.Resources;
 using Altairis.Services.DateProvider;
 using Ical.Net;
 using Ical.Net.DataTypes;
