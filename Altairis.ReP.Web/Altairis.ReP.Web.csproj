@@ -22,6 +22,8 @@
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />
 		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
 		<PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+		<PackageReference Include="FluentStorage" Version="5.0.0" />
+		<PackageReference Include="FluentStorage.Azure.Blobs" Version="5.0.0" />
 		<PackageReference Include="Markdig" Version="0.30.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
@@ -31,8 +33,6 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Storage.Net" Version="9.3.0" />
-		<PackageReference Include="Storage.Net.Microsoft.Azure.Storage.Blobs" Version="9.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -90,6 +90,10 @@
 		<None Update="App_Data\.gitkeep">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\Content\Scripts\" />
 	</ItemGroup>
 
 </Project>

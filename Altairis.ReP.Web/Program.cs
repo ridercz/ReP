@@ -21,7 +21,7 @@ using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Storage.Net;
+using FluentStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 

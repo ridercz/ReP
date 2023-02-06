@@ -1,5 +1,5 @@
 ﻿using Altairis.Services.DateProvider;
-using Storage.Net.Blobs;
+using FluentStorage.Blobs;
 
 namespace Altairis.ReP.Web.Services;
 public class AttachmentProcessor {
