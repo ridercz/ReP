@@ -429,12 +429,6 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Settings_Index_Change" xml:space="preserve">
     <value>Změnit...</value>
   </data>
-  <data name="My_Settings_Index_Language_CS" xml:space="preserve">
-    <value>Čeština</value>
-  </data>
-  <data name="My_Settings_Index_Language_EN" xml:space="preserve">
-    <value>Angličtina</value>
-  </data>
   <data name="My_Settings_Index_Msg_ChangeEmail" xml:space="preserve">
     <value>Právě jsme poslali e-mail na novou adresu, kterou jste zadali. Prosím, klikněte na odkaz ve zprávě pro potvrzení změny.</value>
   </data>
@@ -539,5 +533,29 @@ Postupujte podle pokynů ve zprávě.</value>
   </data>
   <data name="My_Reservations_Attachments" xml:space="preserve">
     <value>Přílohy</value>
+  </data>
+  <data name="Cal_My_Name" xml:space="preserve">
+    <value>{0} - Můj kalendář</value>
+  </data>
+  <data name="Cal_Resource_Name" xml:space="preserve">
+    <value>{0} - {1}</value>
+  </data>
+  <data name="My_Calendar_Ics" xml:space="preserve">
+    <value>Přidat do mého kalendáře</value>
+  </data>
+  <data name="My_Settings_Ics_Full" xml:space="preserve">
+    <value>Všechny rezervace</value>
+  </data>
+  <data name="My_Settings_Ics_My" xml:space="preserve">
+    <value>Pouze mé rezervace</value>
+  </data>
+  <data name="My_Settings_Ics_ResetRak" xml:space="preserve">
+    <value>Reset přístupového tokenu ke kalendáři</value>
+  </data>
+  <data name="My_Setting_ResetRak_Confirm" xml:space="preserve">
+    <value>Opravdu chcete resetovat přístupový token ke kalendáři? Museli byste změnit adresu kalendáře všude, kde ho používáte.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ResetRakDone" xml:space="preserve">
+    <value>Váš přístupový token ke kalendáři byl změněn a staré adresy kalendáře již nejsou platné.</value>
   </data>
 </root>

@@ -1234,24 +1234,6 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Czech.
-        /// </summary>
-        public static string My_Settings_Index_Language_CS {
-            get {
-                return ResourceManager.GetString("My_Settings_Index_Language_CS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to English.
-        /// </summary>
-        public static string My_Settings_Index_Language_EN {
-            get {
-                return ResourceManager.GetString("My_Settings_Index_Language_EN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to We just sent an e-mail to a new address you entered. Please follow the link in the message to confirm the e-mail change..
         /// </summary>
         public static string My_Settings_Index_Msg_ChangeEmail {

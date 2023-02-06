@@ -430,12 +430,6 @@ Please follow the instructions in the message.</value>
   <data name="My_Settings_Index_Change" xml:space="preserve">
     <value>Change...</value>
   </data>
-  <data name="My_Settings_Index_Language_CS" xml:space="preserve">
-    <value>Czech</value>
-  </data>
-  <data name="My_Settings_Index_Language_EN" xml:space="preserve">
-    <value>English</value>
-  </data>
   <data name="My_Settings_Index_Msg_ChangeEmail" xml:space="preserve">
     <value>We just sent an e-mail to a new address you entered. Please follow the link in the message to confirm the e-mail change.</value>
   </data>
