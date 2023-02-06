@@ -28,14 +28,14 @@ public class FirstRunModel : PageModel {
 
     }
 
-    public IActionResult OnGet() {
-        if (this.userManager.Users.Any()) return this.NotFound();
+    public async Task<IActionResult> OnGetAsync() {
+        if (await this.userManager.Users.AnyAsync()) return this.NotFound();
         this.Input.Password = SecurityHelper.GenerateRandomPassword();
         return this.Page();
     }
 
     public async Task<IActionResult> OnPostAsync() {
-        if (this.userManager.Users.Any()) return this.NotFound();
+        if (await this.userManager.Users.AnyAsync()) return this.NotFound();
         if (!this.ModelState.IsValid) return this.Page();
 
         // Create user

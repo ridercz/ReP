@@ -25,7 +25,7 @@ public class IndexModel : PageModel {
 
     }
 
-    public IActionResult OnGet() => this.userManager.Users.Any() ? this.Page() : (IActionResult)this.RedirectToPage("/FirstRun");
+    public async Task<IActionResult> OnGetAsync() => await this.userManager.Users.AnyAsync() ? this.Page() : (IActionResult)this.RedirectToPage("/FirstRun");
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = "/") {
         if (this.ModelState.IsValid) {
