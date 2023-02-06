@@ -159,7 +159,7 @@ await EnsureRoleCreated(ApplicationRole.Master);
 await EnsureRoleCreated(ApplicationRole.Administrator);
 
 // Configure localization
-var supportedCultures = LanguageSwitchViewComponent.GetAvailableCultures().Select(c => c.Name).ToArray();
+var supportedCultures = LanguageSwitchViewComponent.AvailableCultures.Select(c => c.Name).ToArray();
 app.UseRequestLocalization(options => {
     options.SetDefaultCulture(supportedCultures[0]);
     options.AddSupportedCultures(supportedCultures);

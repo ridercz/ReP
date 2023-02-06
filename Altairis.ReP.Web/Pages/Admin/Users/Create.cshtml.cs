@@ -43,7 +43,7 @@ public class CreateModel : PageModel {
 
     }
 
-    public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.GetAvailableCultures().Select(c => new SelectListItem(c.NativeName, c.Name));
+    public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.AvailableCultures.Select(c => new SelectListItem(c.NativeName, c.Name));
 
     public void OnGet() {
         this.Input.ShowInMemberDirectory = this.options.Features.UseMemberDirectory;

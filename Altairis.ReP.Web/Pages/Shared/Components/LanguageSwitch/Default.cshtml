@@ -1,12 +1,14 @@
 ﻿@using System.Globalization;
 @using Altairis.ReP.Web.Components;
 
-@model Lazy<IEnumerable<SupportedLanguageInfo>>
+@model IEnumerable<SupportedLanguageInfo>
 
-<distributed-cache name="LanguageSwitch" expires-sliding="TimeSpan.MaxValue" vary-by="@CultureInfo.CurrentUICulture.Name">
-    <div class="lang">
-        @foreach (var item in this.Model.Value) {
-            <a asp-route="@LanguageSwitchViewComponent.SetCultureCookieHandlerRouteName" asp-route-culture="@item.RequestCultureName" asp-route-returnUrl="@this.Context.Request.Path" title="@item.LanguageName" class="@(item.IsCurrent ? "current" : string.Empty)"><span class="fi fi-@item.FlagCode"></span></a>
-        }
-    </div>
-</distributed-cache>
+<div class="lang">
+    @foreach (var item in this.Model) {
+        <a asp-route="@LanguageSwitchViewComponent.SetCultureCookieHandlerRouteName"
+           asp-route-culture="@item.RequestCultureName"
+           asp-route-returnUrl="@this.Context.Request.Path" 
+           title="@item.LanguageName" 
+           class="@(item.IsCurrent ? "current" : string.Empty)"><span class="fi fi-@item.FlagCode"></span></a>
+    }
+</div>

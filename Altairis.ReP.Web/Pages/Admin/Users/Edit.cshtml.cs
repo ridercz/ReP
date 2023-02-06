@@ -41,7 +41,7 @@ public class EditModel : PageModel {
 
     }
 
-    public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.GetAvailableCultures().Select(c => new SelectListItem(c.NativeName, c.Name));
+    public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.AvailableCultures.Select(c => new SelectListItem(c.NativeName, c.Name));
 
     public async Task<IActionResult> OnGetAsync(int userId) {
         var user = await this.userManager.FindByIdAsync(userId.ToString());

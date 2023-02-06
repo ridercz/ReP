@@ -1,5 +1,7 @@
+using System.Collections.Immutable;
 using System.Globalization;
 using System.Resources;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Localization;
 
 namespace Altairis.ReP.Web.Components;
@@ -8,32 +10,36 @@ public record struct SupportedLanguageInfo(string RequestCultureName, string Lan
 
 public class LanguageSwitchViewComponent : ViewComponent {
     public const string SetCultureCookieHandlerRouteName = "SetCookie";
+    private static IList<CultureInfo> availableCultures;
 
     public IViewComponentResult Invoke() {
-        var model = new Lazy<IEnumerable<SupportedLanguageInfo>>(() => GetAvailableCultures()
-            .Select(c => new SupportedLanguageInfo(
+        var model = AvailableCultures.Select(c => new SupportedLanguageInfo(
                 RequestCultureName: c.Name,
                 LanguageName: c.NativeName,
                 FlagCode: c.Name[^2..].ToLowerInvariant(),
-                IsCurrent: CultureInfo.CurrentUICulture.Name.Equals(c.Name)))
-        );
+                IsCurrent: CultureInfo.CurrentUICulture.Name.Equals(c.Name)));
         return this.View(model);
     }
 
-    public static IEnumerable<CultureInfo> GetAvailableCultures() {
-        var result = new List<CultureInfo>();
-        var rm = new ResourceManager(typeof(UI));
-        var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
-        foreach (var culture in cultures) {
-            try {
-                if (culture.Equals(CultureInfo.InvariantCulture)) continue;
-                var rs = rm.GetResourceSet(culture, createIfNotExists: true, tryParents: false);
-                if (rs != null) result.Add(culture);
-            } catch (CultureNotFoundException) {
-                //NOP
+    public static IEnumerable<CultureInfo> AvailableCultures {
+        get {
+            if (availableCultures == null) {
+                availableCultures = new List<CultureInfo>();
+                var rm = new ResourceManager(typeof(UI));
+                var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+                foreach (var culture in cultures) {
+                    try {
+                        if (culture.Equals(CultureInfo.InvariantCulture)) continue;
+                        var rs = rm.GetResourceSet(culture, createIfNotExists: true, tryParents: false);
+                        if (rs != null) availableCultures.Add(culture);
+                    } catch (CultureNotFoundException) {
+                        //NOP
+                    }
+
+                }
             }
+            return availableCultures.ToImmutableList();
         }
-        return result;
     }
 
     public static IResult SetCultureCookieHandler(string culture, string returnUrl, HttpResponse rp) {
