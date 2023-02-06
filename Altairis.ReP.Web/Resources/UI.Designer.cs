@@ -601,6 +601,24 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} - My calendar.
+        /// </summary>
+        public static string Cal_My_Name {
+            get {
+                return ResourceManager.GetString("Cal_My_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} - {1}.
+        /// </summary>
+        public static string Cal_Resource_Name {
+            get {
+                return ResourceManager.GetString("Cal_Resource_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to d..
         /// </summary>
         public static string Calendar_GeneralDateFormat {

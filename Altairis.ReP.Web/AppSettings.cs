@@ -55,4 +55,11 @@ public class AppSettings {
         public long MaximumFileSize { get; set; } = 104_857_600; // 100 MB
     }
 
+    public IcsExportConfig IcsExport { get; set; } = new IcsExportConfig();
+
+    public class IcsExportConfig {
+        public TimeSpan BackDays { get; set; } = TimeSpan.FromDays(90);
+    }
+
+
 }

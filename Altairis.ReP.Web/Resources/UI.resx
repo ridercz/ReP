@@ -541,4 +541,10 @@ Please follow the instructions in the message.</value>
   <data name="My_Reservations_Attachments" xml:space="preserve">
     <value>Attachments</value>
   </data>
+  <data name="Cal_My_Name" xml:space="preserve">
+    <value>{0} - My calendar</value>
+  </data>
+  <data name="Cal_Resource_Name" xml:space="preserve">
+    <value>{0} - {1}</value>
+  </data>
 </root>

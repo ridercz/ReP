@@ -20,7 +20,6 @@ using Altairis.TagHelpers;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using FluentStorage;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -125,6 +124,7 @@ builder.Services.Configure<TimeTagHelperOptions>(options => {
     options.TodayDateFormatter = dt => string.Format(UI.TimeTagHelper_Today, dt);
     options.TomorrowDateFormatter = dt => string.Format(UI.TimeTagHelper_Tomorrow, dt);
 });
+builder.Services.AddScoped<CalendarGenerator>();
 
 // Build application
 var app = builder.Build();
@@ -182,7 +182,12 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Map endpoints
+// Map calendar endpoints
+app.MapGet("/api/full.ics", (string rak, CalendarGenerator cg) => cg.GenerateFullCalendar(rak)).WithName("FullIcs");
+app.MapGet("/api/my.ics", (string rak, CalendarGenerator cg) => cg.GeneratePersonalCalendar(rak)).WithName("MyIcs");
+app.MapGet("/api/{resourceId:int:min(1)}.ics", (int resourceId, string rak, CalendarGenerator cg) => cg.GenerateResourceCalendar(resourceId, rak)).WithName("ResourceIcs");
+
+// Map other endpoints
 app.MapRazorPages();
 app.MapGet("/", () => Results.LocalRedirect("/My"));
 app.MapHealthChecks("/api/health.json", new() {
