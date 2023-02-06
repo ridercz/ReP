@@ -137,6 +137,12 @@ var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Applicati
 // Migrate database to latest version
 await dc.Database.MigrateAsync();
 
+// Add ResourceAuthorizationKey to any users who don't have one (may happen in migrations)
+foreach (var item in dc.Users.Where(x => x.ResourceAuthorizationKey.Equals(string.Empty))) {
+    item.ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey();
+}
+dc.SaveChanges();
+
 // Configure identity
 static void EnsureIdentitySuccess(IdentityResult result) {
     if (result == IdentityResult.Success) return;

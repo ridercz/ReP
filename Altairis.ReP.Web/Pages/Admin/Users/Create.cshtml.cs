@@ -61,7 +61,8 @@ public class CreateModel : PageModel {
             PhoneNumber = this.Input.PhoneNumber,
             Language = this.Input.Language,
             DisplayName = this.Input.DisplayName,
-            ShowInMemberDirectory = this.options.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory
+            ShowInMemberDirectory = this.options.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory,
+            ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey()
         };
         var result = await this.userManager.CreateAsync(newUser);
         if (!this.IsIdentitySuccess(result)) return this.Page();

@@ -15,7 +15,7 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
 
             modelBuilder.Entity("Altairis.ReP.Data.ApplicationRole", b =>
                 {
@@ -100,6 +100,12 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ResourceAuthorizationKey")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("TEXT")
+                        .IsFixedLength();
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");

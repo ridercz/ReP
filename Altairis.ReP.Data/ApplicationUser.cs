@@ -1,6 +1,10 @@
-﻿namespace Altairis.ReP.Data;
+﻿using System.Security.Cryptography;
+
+namespace Altairis.ReP.Data;
 
 public class ApplicationUser : IdentityUser<int> {
+    private const int ResourceAuthorizationKeyLength = 30;
+    private const string ResourceAuthorizationKeyChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     [Required, MaxLength(100)]
     public string DisplayName { get; set; }
@@ -15,5 +19,16 @@ public class ApplicationUser : IdentityUser<int> {
     public bool SendNews { get; set; }
 
     public bool ShowInMemberDirectory { get; set; }
+
+    [Required, MaxLength(ResourceAuthorizationKeyLength)]
+    public string ResourceAuthorizationKey { get; set; }
+
+    public static string CreateResourceAuthorizationKey() {
+        var keyChars = new char[ResourceAuthorizationKeyLength];
+        for (var i = 0; i < ResourceAuthorizationKeyLength; i++) {
+            keyChars[i] = ResourceAuthorizationKeyChars[RandomNumberGenerator.GetInt32(ResourceAuthorizationKeyLength)];
+        }
+        return new string(keyChars);
+    }
 
 }

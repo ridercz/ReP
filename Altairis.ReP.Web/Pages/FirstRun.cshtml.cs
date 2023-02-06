@@ -45,7 +45,8 @@ public class FirstRunModel : PageModel {
             Email = this.Input.Email,
             EmailConfirmed = true,
             Language = CultureInfo.CurrentUICulture.Name,
-            Enabled = true
+            Enabled = true,
+            ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey()
         };
         if (!this.IsIdentitySuccess(await this.userManager.CreateAsync(user, this.Input.Password))) return this.Page();
 
