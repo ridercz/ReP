@@ -1,3 +1,4 @@
+using System.Resources;
 using Altairis.Services.DateProvider;
 using Ical.Net;
 using Ical.Net.DataTypes;
@@ -27,7 +28,8 @@ public class CalendarGenerator {
 
         // Create calendar
         var cal = new Calendar();
-        cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(UI.Cal_My_Name, this.options.Value.Design.ApplicationName)));
+        var formatString = UI.ResourceManager.GetString(nameof(UI.Cal_My_Name), new System.Globalization.CultureInfo(user.Language));
+        cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(formatString, this.options.Value.Design.ApplicationName)));
 
         // Get user reservations
         var rq = from r in dc.Reservations
@@ -162,7 +164,8 @@ public class CalendarGenerator {
 
         // Create calendar
         var cal = new Calendar();
-        cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(UI.Cal_Resource_Name, this.options.Value.Design.ApplicationName, resource.Name)));
+        var formatString = UI.ResourceManager.GetString(nameof(UI.Cal_Resource_Name), new System.Globalization.CultureInfo(user.Language));
+        cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(formatString, this.options.Value.Design.ApplicationName, resource.Name)));
 
         // Get reservations
         var rq = from r in dc.Reservations
