@@ -1,4 +1,7 @@
 using Altairis.Services.DateProvider;
+using Ical.Net;
+using Ical.Net.DataTypes;
+using Ical.Net.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
@@ -87,6 +90,27 @@ public class IndexModel : PageModel {
         this.dc.Reservations.Remove(reservation);
         await this.dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "reservationdeleted");
+    }
+
+    public async Task<IActionResult> OnGetSaveIcsAsync(int reservationId) {
+        var userId = int.Parse(this.userManager.GetUserId(this.User));
+        var reservation = await this.dc.Reservations.Include(x => x.Resource).SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId);
+        if (reservation == null) return this.NotFound();
+
+        // Create ICS
+        var cal = new Calendar();
+        cal.Events.Add(new() {
+            Summary = reservation.Resource.Name,
+            Description = reservation.Comment,
+            DtStart = new CalDateTime(reservation.DateBegin),
+            DtEnd = new CalDateTime(reservation.DateEnd),
+            Uid = this.Url.PageLink(pageName: "Calendar", protocol: this.Request.Scheme, fragment: "#reservation_" + reservation.Id)
+        });
+
+        // Serialize to ICAL
+        var calSer = new CalendarSerializer(cal);
+        var ics = calSer.SerializeToString();
+        return this.Content(ics, "text/calendar");
     }
 
 }
