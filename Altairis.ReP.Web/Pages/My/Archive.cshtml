@@ -10,6 +10,7 @@
             <th>@Display.ResourceId</th>
             <th>@Display.DateBegin</th>
             <th>@Display.DateEnd</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,9 @@
                 <th><i class="fas fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId">@item.ResourceName</a></th>
                 <td><time value="item.DateBegin"></time></td>
                 <td><time value="item.DateEnd"></time></td>
+                <td class="buttons">
+                    <a asp-page="Index" asp-page-handler="SaveIcs" asp-route-reservationId="@item.Id" title="@UI.My_Calendar_Ics"><i class="fas fa-calendar-plus"></i></a>
+                </td>
             </tr>
         }
     </tbody>
