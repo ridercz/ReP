@@ -19,7 +19,7 @@ namespace Altairis.ReP.Web.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Mailing {
@@ -72,7 +72,7 @@ namespace Altairis.ReP.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello,
         ///
-        ///this e-mail is to inform you that a new account {{userName}} was created for you in the FutLab IS.
+        ///this e-mail is to inform you that a new account {{userName}} was created for you in the ReP system.
         ///
         ///To activate this account and set your password, please visit the following page:
         ///{{url}}
@@ -86,10 +86,6 @@ namespace Altairis.ReP.Web.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to {0}
-        ///
-        ///--
-        ///You are receiving this message as member of FutLab.
-        ///You may configure the mailing options in the FutLab IS: https://is.futlab.cc/
         ///.
         /// </summary>
         public static string BodyTextFormatString {
@@ -110,7 +106,7 @@ namespace Altairis.ReP.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello,
         ///
-        ///someone (most likely you) requested e-mail address for the FutLab account {{userName}} to be changed to this one.
+        ///someone (most likely you) requested e-mail address for the ReP account {{userName}} to be changed to this one.
         ///
         ///If you do not want to change the e-mail, you can safely ignore this message.
         ///
@@ -158,7 +154,7 @@ namespace Altairis.ReP.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hello,
         ///
-        ///someone (most likely you) requested password reset for the FutLab account {{userName}}.
+        ///someone (most likely you) requested password reset for the ReP account {{userName}}.
         ///
         ///If you do not want to reset the password, you can safely ignore this message.
         ///

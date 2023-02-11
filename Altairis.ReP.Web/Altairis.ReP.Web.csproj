@@ -5,6 +5,7 @@
 		<Version>$([System.DateTime]::UtcNow.ToString('yyyy.MM.dd.HHmm'))</Version>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<NeutralLanguage>en-GB</NeutralLanguage>
+		<GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -94,7 +95,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\Content\Scripts\" />
+		<Folder Include="wwwroot\Content\Scripts\" />
 	</ItemGroup>
 
 </Project>
