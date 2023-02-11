@@ -54,7 +54,7 @@ public class FirstRunModel : PageModel {
         if (!this.IsIdentitySuccess(await this.userManager.AddToRoleAsync(user, ApplicationRole.Administrator))) return this.Page();
 
         // Redirect to home page
-        return this.RedirectToPage("Index");
+        return this.RedirectToPage("My/Index");
     }
 
 }
