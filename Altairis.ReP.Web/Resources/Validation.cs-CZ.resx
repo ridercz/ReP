@@ -126,6 +126,9 @@
   <data name="CustomValidation" xml:space="preserve">
     <value>Pole {0} obsahuje neplatnou hodnotu.</value>
   </data>
+  <data name="DateOffset" xml:space="preserve">
+    <value>Pole {0} musí být mezi {1:d} a {2:d}.</value>
+  </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Pole {0} musí obsahovat platnou e-mailovou adresu.</value>
   </data>
@@ -152,9 +155,6 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>Pole {0} je povinné.</value>
-  </data>
-  <data name="ReservationsModel_Input_DateBegin_DateOffset" xml:space="preserve">
-    <value>Pole {0} musí obsahovat datum v budoucnosti.</value>
   </data>
   <data name="StringLength" xml:space="preserve">
     <value>Pole {0} musí mít délku mezi {2} a {1} znaky.</value>

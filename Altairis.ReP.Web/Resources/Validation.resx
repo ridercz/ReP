@@ -126,6 +126,9 @@
   <data name="CustomValidation" xml:space="preserve">
     <value>The {0} field is invalid.</value>
   </data>
+  <data name="DateOffset" xml:space="preserve">
+    <value>The {0} field must be between {1:d} and {2:d}.</value>
+  </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>The {0} field must contain valid e-mail address.</value>
   </data>
@@ -152,9 +155,6 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>The {0} field is required.</value>
-  </data>
-  <data name="ReservationsModel_Input_DateBegin_DateOffset" xml:space="preserve">
-    <value>The {0} field must contain a date in the future.</value>
   </data>
   <data name="StringLength" xml:space="preserve">
     <value>The {0} field must be from {2} to {1} characters long.</value>

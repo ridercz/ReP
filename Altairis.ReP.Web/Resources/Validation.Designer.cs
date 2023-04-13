@@ -88,6 +88,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} field must be between {1:d} and {2:d}..
+        /// </summary>
+        public static string DateOffset {
+            get {
+                return ResourceManager.GetString("DateOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} field must contain valid e-mail address..
         /// </summary>
         public static string EmailAddress {
@@ -165,15 +174,6 @@ namespace Altairis.ReP.Web.Resources {
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The {0} field must contain a date in the future..
-        /// </summary>
-        public static string ReservationsModel_Input_DateBegin_DateOffset {
-            get {
-                return ResourceManager.GetString("ReservationsModel_Input_DateBegin_DateOffset", resourceCulture);
             }
         }
         
