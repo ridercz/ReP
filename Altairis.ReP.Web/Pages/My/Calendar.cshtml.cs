@@ -61,13 +61,13 @@ public class CalendarModel : PageModel {
         if (!year.HasValue || !month.HasValue) return this.RedirectToPage(new { this.dateProvider.Today.Year, this.dateProvider.Today.Month });
 
         // Initialize data
-        await Init(year, month);
+        await this.Init(year, month);
         return this.Page();
     }
 
     public async Task<IActionResult> OnGetDeleteAsync(int? year, int? month, int entryId) {
         // Initialize data
-        await Init(year, month);
+        await this.Init(year, month);
 
         // Delete entry
         if (this.CanManageEntries) {
@@ -79,7 +79,7 @@ public class CalendarModel : PageModel {
 
     public async Task<IActionResult> OnPostAsync(int? year, int? month) {
         // Initialize data
-        await Init(year, month);
+        await this.Init(year, month);
 
         // Validate arguments
         if (!this.ModelState.IsValid || !this.CanManageEntries) return this.Page();

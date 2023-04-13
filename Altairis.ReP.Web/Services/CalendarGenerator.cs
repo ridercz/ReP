@@ -31,7 +31,7 @@ public class CalendarGenerator {
         cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(formatString, this.options.Value.Design.ApplicationName)));
 
         // Get user reservations
-        var rq = from r in dc.Reservations
+        var rq = from r in this.dc.Reservations
                  where r.UserId == user.Id && r.DateBegin >= this.calendarStart
                  select new {
                      r.Id,
@@ -55,7 +55,7 @@ public class CalendarGenerator {
         }
 
         // Get events
-        var eq = from e in dc.CalendarEntries
+        var eq = from e in this.dc.CalendarEntries
                  where e.Date > this.calendarStart
                  select new {
                      e.Id,
@@ -95,7 +95,7 @@ public class CalendarGenerator {
         cal.AddProperty(new CalendarProperty("X-WR-CALNAME", this.options.Value.Design.ApplicationName));
 
         // Get user reservations
-        var rq = from r in dc.Reservations
+        var rq = from r in this.dc.Reservations
                  where r.DateBegin >= this.calendarStart
                  select new {
                      r.Id,
@@ -125,7 +125,7 @@ public class CalendarGenerator {
         }
 
         // Get events
-        var eq = from e in dc.CalendarEntries
+        var eq = from e in this.dc.CalendarEntries
                  where e.Date > this.calendarStart
                  select new {
                      e.Id,
@@ -167,7 +167,7 @@ public class CalendarGenerator {
         cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(formatString, this.options.Value.Design.ApplicationName, resource.Name)));
 
         // Get reservations
-        var rq = from r in dc.Reservations
+        var rq = from r in this.dc.Reservations
                  where r.ResourceId == resourceId && r.DateBegin >= this.calendarStart
                  select new {
                      r.Id,
@@ -192,7 +192,7 @@ public class CalendarGenerator {
         }
 
         // Get events
-        var eq = from e in dc.CalendarEntries
+        var eq = from e in this.dc.CalendarEntries
                  where e.Date > this.calendarStart
                  select new {
                      e.Id,

@@ -30,7 +30,7 @@ namespace Altairis.ReP.Web.Pages.Admin.Resources {
 
         public async Task<IActionResult> OnPostAsync(int resourceId) {
             if (!await this.Init(resourceId)) return this.NotFound();
-            if ((this.Input?.File?.Length ?? 0) > 0) await attachmentProcessor.CreateAttachment(this.Input.File, resourceId);
+            if ((this.Input?.File?.Length ?? 0) > 0) await this.attachmentProcessor.CreateAttachment(this.Input.File, resourceId);
             return this.RedirectToPage();
         }
 

@@ -84,7 +84,7 @@ public class EditModel : PageModel {
         // Send notification if time changed
         if ((r.DateBegin != this.Input.DateBegin || r.DateEnd != this.Input.DateEnd) && !string.IsNullOrEmpty(this.NotificationEmail)) {
             var msg = new TemplatedMailMessageDto("ReservationChanged", this.NotificationEmail);
-            await mailer.SendMessageAsync(msg, new {
+            await this.mailer.SendMessageAsync(msg, new {
                 resourceName = this.ResourceName,
                 userName = this.User.Identity.Name,
                 oldDateBegin = r.DateBegin,

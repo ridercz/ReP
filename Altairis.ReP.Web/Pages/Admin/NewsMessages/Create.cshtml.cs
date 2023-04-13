@@ -42,7 +42,7 @@ public class CreateModel : PageModel {
 
         // Send mailing
         var msg = new TemplatedMailMessageDto("News");
-        var recipients = await dc.Users.Where(x => x.SendNews).Select(x => new { x.Email, x.UserName, x.Language }).ToListAsync();
+        var recipients = await this.dc.Users.Where(x => x.SendNews).Select(x => new { x.Email, x.UserName, x.Language }).ToListAsync();
         foreach (var item in recipients) {
             msg.To.Clear();
             msg.To.Add(new MailAddressDto(item.Email, item.UserName));
