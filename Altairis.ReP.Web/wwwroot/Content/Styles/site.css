@@ -571,8 +571,10 @@ table.details tbody tr:hover {
     float: none;
   }
 }
+.calendar section.week > article.today {
+  background-color: rgba(255, 106, 0, 0.5);
+}
 .calendar section.week > article.today header {
-  color: #ff6a00;
   font-weight: bold;
 }
 .calendar section.week > article.weekend {

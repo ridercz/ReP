@@ -68,9 +68,10 @@ $ScreenStop: 1000px;
 
             &.today {
                 header {
-                    color: $Accent;
                     font-weight: bold;
                 }
+
+                background-color: rgba($Accent, .5);
             }
 
             &.weekend {
