@@ -287,7 +287,7 @@
     <value>Settings</value>
   </data>
   <data name="Login_Activate_Html" xml:space="preserve">
-    <value>&lt;p&gt;Welcome to the FutLab IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
+    <value>&lt;p&gt;Welcome to the ReP IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
 &lt;p&gt;Please create a password to activate your account. The password should be long and unique. Consider using a &lt;i&gt;passphrase&lt;/i&gt;, entire sentence. It's easier to remember and more secure than typical password.&lt;/p&gt;</value>
   </data>
   <data name="Login_Activate_Title" xml:space="preserve">

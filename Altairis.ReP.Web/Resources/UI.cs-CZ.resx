@@ -286,8 +286,8 @@
     <value>Nastavení</value>
   </data>
   <data name="Login_Activate_Html" xml:space="preserve">
-    <value>&lt;p&gt;Vítejte na FutLab IS! Vaše uživatelské jméno je &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
-&lt;p&gt;Chcete-li aktivovat svůj účet, vytvořte heslo. Heslo by mělo být dlouhé a jedinečné. Zvažte použití &lt;i&gt;přístupového žiteje&lt;/i&gt;, celou větu. Je to snadněji zapamatovatelné a bezpečnější než typické heslo.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Vítejte v systému ReP IS! Vaše uživatelské jméno je &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
+&lt;p&gt;Chcete-li aktivovat svůj účet, vytvořte heslo. Heslo by mělo být dlouhé a jedinečné. Zvažte použití &lt;i&gt;passphrase&lt;/i&gt;, celé věty místo jednoho "slova". Je to snadněji zapamatovatelné a bezpečnější než typické heslo.&lt;/p&gt;</value>
   </data>
   <data name="Login_Activate_Title" xml:space="preserve">
     <value>Aktivace nového účtu</value>

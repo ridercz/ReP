@@ -745,7 +745,7 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;p&gt;Welcome to the FutLab IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
+        ///   Looks up a localized string similar to &lt;p&gt;Welcome to the ReP IS! Your user name is &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
         ///&lt;p&gt;Please create a password to activate your account. The password should be long and unique. Consider using a &lt;i&gt;passphrase&lt;/i&gt;, entire sentence. It&apos;s easier to remember and more secure than typical password.&lt;/p&gt;.
         /// </summary>
         public static string Login_Activate_Html {
