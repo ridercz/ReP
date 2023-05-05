@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="_Cancel" xml:space="preserve">
+    <value>Kanselahin</value>
+  </data>
+  <data name="_Create" xml:space="preserve">
+    <value>Gumawa...</value>
+  </data>
+  <data name="_Delete" xml:space="preserve">
+    <value>Tanggalin</value>
+  </data>
+  <data name="_No" xml:space="preserve">
+    <value>Hindi</value>
+  </data>
+  <data name="_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="_Submit" xml:space="preserve">
+    <value>Ipasa</value>
+  </data>
+  <data name="_Yes" xml:space="preserve">
+    <value>Oo</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Created" xml:space="preserve">
+    <value>Matagumpay na ginawa ang bagong entry sa direktoryo.</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Deleted" xml:space="preserve">
+    <value>Ang entry sa direktoryo ay tinggal.</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Index_Msg_Saved" xml:space="preserve">
+    <value>Ang entry sa direktoryo ay na-iligtas.</value>
+  </data>
+  <data name="Admin_DirectoryEntries_Title" xml:space="preserve">
+    <value>Mga entry sa direktoryo</value>
+  </data>
+  <data name="Admin_DirectoryEntry_Edit_Title" xml:space="preserve">
+    <value>I-edit ang entry sa direktoryo</value>
+  </data>
+  <data name="Admin_Index_ManageDirectory" xml:space="preserve">
+    <value>Pamahalaan ang mga entry sa direktoryo</value>
+  </data>
+  <data name="Admin_Index_ManageNews" xml:space="preserve">
+    <value>Pamahalaan ang mga mensahe ng balita</value>
+  </data>
+  <data name="Admin_Index_ManageOpeningHours" xml:space="preserve">
+    <value>Pamahalaan ang mga oras ng pagbubukas</value>
+  </data>
+  <data name="Admin_Index_ManageReservations" xml:space="preserve">
+    <value>Pamahalaan ang reserbasyon</value>
+  </data>
+  <data name="Admin_Index_ManageResources" xml:space="preserve">
+    <value>Pamahalaan ang maopagkukunan</value>
+  </data>
+  <data name="Admin_Index_ManageUsers" xml:space="preserve">
+    <value>Pamahalaan ang mga gumagamit</value>
+  </data>
+  <data name="Admin_Index_Title" xml:space="preserve">
+    <value>Pangangasiwa ng sistema</value>
+  </data>
+  <data name="Admin_NewsMessages_Create_Title" xml:space="preserve">
+    <value>Gumawa ng bagong mensahe ng balita</value>
+  </data>
+  <data name="Admin_NewsMessages_Edit_DeleteConfirm" xml:space="preserve">
+    <value>Sigurado ka bang nais mong taggalin ang mensheng ito?</value>
+  </data>
+  <data name="Admin_NewsMessages_Edit_Title" xml:space="preserve">
+    <value>I-edit ang mensahe ng balita</value>
+  </data>
+  <data name="Admin_NewsMessages_Index_Msg_Created" xml:space="preserve">
+    <value>Matagumpay na ginawa ang bagong mensahe.</value>
+  </data>
+  <data name="Admin_NewsMessages_Index_Msg_Deleted" xml:space="preserve">
+    <value>Matagumpay na tinanggal ang mensahe.</value>
+  </data>
+  <data name="Admin_NewsMessages_Index_Msg_Saved" xml:space="preserve">
+    <value>Matagumpay na nabago ang mensahe.</value>
+  </data>
+  <data name="Admin_NewsMessages_Index_Title" xml:space="preserve">
+    <value>Mga bagong mensahe</value>
+  </data>
+  <data name="Admin_OpeningHours_Add" xml:space="preserve">
+    <value>Magdagdag ng pagbubukod</value>
+  </data>
+  <data name="Admin_OpeningHours_Add_Text" xml:space="preserve">
+    <value>Pag buong araw ay sarado, itakda ang parahong oras ng pagbubukas at pagsasara hanggang hatinggabi.</value>
+  </data>
+  <data name="Admin_OpeningHours_DeleteConfirm" xml:space="preserve">
+    <value>Sigurado ka bang nais mong taggalin ang pagbubukod ng oras ng pagbubukas nito?</value>
+  </data>
+  <data name="Admin_OpeningHours_Exceptions" xml:space="preserve">
+    <value>Pagbubukod</value>
+  </data>
+  <data name="Admin_OpeningHours_Msg_Created" xml:space="preserve">
+    <value>Ang oras ng pagbubukas ng pagbubukod ay matagumpay na ginawa.</value>
+  </data>
+  <data name="Admin_OpeningHours_Msg_Deleted" xml:space="preserve">
+    <value>Ang oras ng pagbubukas ng pagbubukod ay matagumpay na tinanggal.</value>
+  </data>
+  <data name="Admin_OpeningHours_Standard" xml:space="preserve">
+    <value>Pamantayan</value>
+  </data>
+  <data name="Admin_OpeningHours_Title" xml:space="preserve">
+    <value>Mga oras ng pagbubukas</value>
+  </data>
+  <data name="Admin_Reservations_Edit_Msg_Saved" xml:space="preserve">
+    <value>Ang mga pagbabago ng reserbasyon sa mapagkukunan ay matagumpay na nai-save.</value>
+  </data>
+  <data name="Admin_Reservations_Edit_Title" xml:space="preserve">
+    <value>I-edit ang reserbasyon ng {0} by {1}</value>
+  </data>
+  <data name="Admin_Reservations_Index_Title" xml:space="preserve">
+    <value>Lahat ng reserbasyon</value>
+  </data>
+  <data name="Admin_Reservations_NoReservations" xml:space="preserve">
+    <value>Walang reserbasyon sa sistema.</value>
+  </data>
+  <data name="Admin_Resources_Attachments_AddAttachment" xml:space="preserve">
+    <value>Magdagdag ng bagong kalakip</value>
+  </data>
+  <data name="Admin_Resources_Attachments_ConfirmDelete" xml:space="preserve">
+    <value>Sigurado ka bang gusto mong taggalin ang kalakip na ito?</value>
+  </data>
+  <data name="Admin_Resources_Attachments_Current" xml:space="preserve">
+    <value>Kasalukuyang kalakip</value>
+  </data>
+  <data name="Admin_Resources_Attachments_Title" xml:space="preserve">
+    <value>Mga kalakip para sa {0}</value>
+  </data>
+  <data name="Admin_Resources_Create_Title" xml:space="preserve">
+    <value>Gumawa ng bagong mapagkukunan</value>
+  </data>
+  <data name="Admin_Resources_Edit_DeleteConfirm" xml:space="preserve">
+    <value>Sigurado ka bang nais mong taggalin ang mapagkukunang ito at ang lahat ng nauugnay na datos? Ang gawaing ito ay hindi pwedeng baguhin.</value>
+  </data>
+  <data name="Admin_Resources_Edit_Title" xml:space="preserve">
+    <value>I-edit ang mapagkukunan</value>
+  </data>
+  <data name="Admin_Resources_Index_Msg_Created" xml:space="preserve">
+    <value>Matagumpay na ginawa ang bagong mapagkukunan.</value>
+  </data>
+  <data name="Admin_Resources_Index_Msg_Deleted" xml:space="preserve">
+    <value>Matagumpay na tinanggal ang mapagkukunan.</value>
+  </data>
+  <data name="Admin_Resources_Index_Msg_Saved" xml:space="preserve">
+    <value>Ang mga pagbabago sa mapagkukunan ay matagumpay na na-isave.</value>
+  </data>
+  <data name="Admin_Resources_Index_Title" xml:space="preserve">
+    <value>Mapagkukunan</value>
+  </data>
+  <data name="Admin_User_Index_Msg_Created" xml:space="preserve">
+    <value>Matagumpay na ginawa ang bagong gumagamit.</value>
+  </data>
+  <data name="Admin_User_Index_Msg_Deleted" xml:space="preserve">
+    <value>Matagumpay na itanngal ang gumagamit.</value>
+  </data>
+  <data name="Admin_User_Index_Msg_Saved" xml:space="preserve">
+    <value>Ang gumagamit nito ay matagumpay na i-save.</value>
+  </data>
+  <data name="Admin_Users_Create_Text" xml:space="preserve">
+    <value>Ang sistema ay magpapadala ng maligayang mensahe sa bagong ginawa na e-mail adress ng gumagamit. Upang maisaaktibo ang account at itakda ang hudyat, dapat sundin ng gumagamit ang link na nilalaman sa mensahe.</value>
+  </data>
+  <data name="Admin_Users_Create_Title" xml:space="preserve">
+    <value>Lumikha ng bagong gamit na pangalan</value>
+  </data>
+  <data name="Admin_Users_Edit_DeleteConfirm" xml:space="preserve">
+    <value>Sigurado ka bang nais mong taggalin ang gumagamit nito at lahat ng nauugnay na datos? Ang gawaing ito ay hindi pwedeng baguhin.</value>
+  </data>
+  <data name="Admin_Users_Edit_Title" xml:space="preserve">
+    <value>I-edit ang gamit na pangalan</value>
+  </data>
+  <data name="Admin_Users_Index_Disabled" xml:space="preserve">
+    <value>Ang gumagamit nito ay hindi pinapagana</value>
+  </data>
+  <data name="Admin_Users_Index_Enabled" xml:space="preserve">
+    <value>Ang gumagamit nito ay pinapagana</value>
+  </data>
+  <data name="Admin_Users_Index_Title" xml:space="preserve">
+    <value>Ang mga gumagamit</value>
+  </data>
+  <data name="Admin_Users_Index_Waiting" xml:space="preserve">
+    <value>Ang gumagamit nito ay naghihintay na ma i-aktib</value>
+  </data>
+  <data name="Cal_My_Name" xml:space="preserve">
+    <value>{0} - Ang akin kalendaryo</value>
+  </data>
+  <data name="Cal_Resource_Name" xml:space="preserve">
+    <value>{0} - {1}</value>
+  </data>
+  <data name="Calendar_GeneralDateFormat" xml:space="preserve">
+    <value>d.</value>
+  </data>
+  <data name="Calendar_NewMonthDateFormat" xml:space="preserve">
+    <value>MMMM d.</value>
+  </data>
+  <data name="FirstRun_Text" xml:space="preserve">
+    <value>Walang tinukoy na gumagamit sa aplikasyon. Mangyaring gumawa ng unang gumagamit na magiging isang tagapangasiwa.</value>
+  </data>
+  <data name="FirstRun_Title" xml:space="preserve">
+    <value>Gumawa ng gumagamit na admin</value>
+  </data>
+  <data name="Layout_LoginStatus_SignIn" xml:space="preserve">
+    <value>Mag-sign in</value>
+  </data>
+  <data name="Layout_LoginStatus_SignOut" xml:space="preserve">
+    <value>Mag sign out</value>
+  </data>
+  <data name="Layout_Menu_Administration" xml:space="preserve">
+    <value>Pangangasiwa</value>
+  </data>
+  <data name="Layout_Menu_Calendar" xml:space="preserve">
+    <value>Kalendaryo</value>
+  </data>
+  <data name="Layout_Menu_Directory" xml:space="preserve">
+    <value>Direktoryo</value>
+  </data>
+  <data name="Layout_Menu_Home" xml:space="preserve">
+    <value>Bahay</value>
+  </data>
+  <data name="Layout_Menu_Login" xml:space="preserve">
+    <value>Mag log-in</value>
+  </data>
+  <data name="Layout_Menu_News" xml:space="preserve">
+    <value>Mga balita</value>
+  </data>
+  <data name="Layout_Menu_ResetPassword" xml:space="preserve">
+    <value>Gumawa ng bagong hudyat</value>
+  </data>
+  <data name="Layout_Menu_Settings" xml:space="preserve">
+    <value>Mga setting</value>
+  </data>
+  <data name="Login_Activate_Html" xml:space="preserve">
+    <value>&lt;p&gt;Maligayang pagdating sa ReP IS! ang iyong user name ay &lt;b&gt;{0}&lt;/b&gt;.&lt;/p&gt;
+&lt;p&gt;Gumawa ng isang password upang i-aktib ang iyong account. Ang hudyat ay dapat mahaba at natatangi. Isaalang-alang ang paggamit ng &lt;i&gt;passphrase&lt;/i&gt;, buong pangungusap. Mas madaling matandaan at mas seguridad kaysa sa karaniwang hudyat.&lt;/p&gt;</value>
+  </data>
+  <data name="Login_Activate_Title" xml:space="preserve">
+    <value>I-aktib ang iyong bagong account</value>
+  </data>
+  <data name="Login_ForgotPassword_Text" xml:space="preserve">
+    <value>Kapag ang gumagamit nito ay my kapareho, magpapadala kami ng impormasyon sa iyong e-mail para gumagawa ulit ng bagong hudyat.</value>
+  </data>
+  <data name="Login_ForgotPassword_Title" xml:space="preserve">
+    <value>Gumawa ulit ng panibagong hudyat</value>
+  </data>
+  <data name="Login_ForgotPassword_UserNotFound" xml:space="preserve">
+    <value>Hindi mahanap ang tinutukoy na gumagamit.</value>
+  </data>
+  <data name="Login_Index_LoginFailed" xml:space="preserve">
+    <value>Hindi nagtagumpay ang pag log-in.</value>
+  </data>
+  <data name="Login_Index_Msg_ADone" xml:space="preserve">
+    <value>Matagumpay na na-iaktib ang iyong account.
+Maari ka na ngayong mag-log in gamit ang iyong bagong hudyat.</value>
+  </data>
+  <data name="Login_Index_Msg_AFail" xml:space="preserve">
+    <value>Nabigo ang pag-aktib ng gumamit nito.
+Pakisuri kung tama at kumpleto ang link na binisita mo.
+Maaring na i-aktib na ng gumagamit nito dati.</value>
+  </data>
+  <data name="Login_Index_Msg_Logout" xml:space="preserve">
+    <value>Matagumpay kang na-sign out.</value>
+  </data>
+  <data name="Login_Index_Msg_Reset" xml:space="preserve">
+    <value>Matagumpay na ginawa ang iyong hudyat.
+Maari ka na ngayong mag-login gamit ang iyong bagong hudyat.</value>
+  </data>
+  <data name="Login_Index_Msg_Sent" xml:space="preserve">
+    <value>Ang mga tagubilin sa paggawa ng hudyat ay ipinadala sa iyong e-mail adress na nakarehistro para sa account na ito.
+Magyaring sundin ang mga tagubilin sa mensahe.</value>
+  </data>
+  <data name="Login_Index_Title" xml:space="preserve">
+    <value>Mag log-in</value>
+  </data>
+  <data name="Login_ResetPassword_Title" xml:space="preserve">
+    <value>Gumawa ng bagong hudyat</value>
+  </data>
+  <data name="My_Archive_NoReservations" xml:space="preserve">
+    <value>Wala kang reserbasyon.</value>
+  </data>
+  <data name="My_Calendar_AddEntry" xml:space="preserve">
+    <value>Magdagdag ng entry</value>
+  </data>
+  <data name="My_Calendar_Ics" xml:space="preserve">
+    <value>Idagdag sa aking kalendaryo</value>
+  </data>
+  <data name="My_Calendar_Manage" xml:space="preserve">
+    <value>Pamahalaan ang aking mga reserbasyon</value>
+  </data>
+  <data name="My_Calendar_Title" xml:space="preserve">
+    <value>Kalendaryo ng reserbasyon para sa {0:y}</value>
+  </data>
+  <data name="My_Directory_IsEmpty" xml:space="preserve">
+    <value>Ang direktoryo ay walang laman.</value>
+  </data>
+  <data name="My_Directory_Title" xml:space="preserve">
+    <value>Direktoryo</value>
+  </data>
+  <data name="My_Index_Archive" xml:space="preserve">
+    <value>Lahat ng aking reserbasyon</value>
+  </data>
+  <data name="My_Index_Msg_ReservationDeleted" xml:space="preserve">
+    <value>Matagumpay na natanggal ang iyong reserbasyon.</value>
+  </data>
+  <data name="My_Index_NoReservations" xml:space="preserve">
+    <value>Walang kasalukuyang reserbasyon.</value>
+  </data>
+  <data name="My_Index_OpeningHours" xml:space="preserve">
+    <value>Higit pang mga oras ng pagbubukas...</value>
+  </data>
+  <data name="My_Index_Reservations" xml:space="preserve">
+    <value>Ang aking mga paparating na reserbasyon</value>
+  </data>
+  <data name="My_Index_Resources" xml:space="preserve">
+    <value>Magagamit na mapagkukunan</value>
+  </data>
+  <data name="My_Index_Title" xml:space="preserve">
+    <value>Maligayang pagdating sa ReP- ang mapagkukunan ng reserbasyong sistema!</value>
+  </data>
+  <data name="My_Index_TodayLab_Closed" xml:space="preserve">
+    <value>Ngayon ay &lt;b&gt;sarado&lt;/b&gt;.</value>
+  </data>
+  <data name="My_Index_TodayLab_Open" xml:space="preserve">
+    <value>Ngayon ay &lt;b&gt;bukas {0}&lt;/b&gt;.</value>
+  </data>
+  <data name="My_Index_TomorrowLab_Closed" xml:space="preserve">
+    <value>Bukas ay sarado.</value>
+  </data>
+  <data name="My_Index_TomorrowLab_Open" xml:space="preserve">
+    <value>Bukas ay bukas {0}.</value>
+  </data>
+  <data name="My_News_NoNews" xml:space="preserve">
+    <value>Walang balitang naitala.</value>
+  </data>
+  <data name="My_News_Title" xml:space="preserve">
+    <value>Mga balita</value>
+  </data>
+  <data name="My_OpeningHours_Closed" xml:space="preserve">
+    <value>Sarado</value>
+  </data>
+  <data name="My_OpeningHours_Title" xml:space="preserve">
+    <value>Mga oras ng pagbubukas</value>
+  </data>
+  <data name="My_Reservations_Attachments" xml:space="preserve">
+    <value>Mga kalakip</value>
+  </data>
+  <data name="My_Reservations_DeleteConfirm" xml:space="preserve">
+    <value>Sigurado ka bang nais mong tanggalin ang reserbasyong ito?</value>
+  </data>
+  <data name="My_Reservations_Err_Conflict" xml:space="preserve">
+    <value>Ang reserbasyong ito ay sumasalungat sa {0}‘s reserbasyon mula sa {1:d} {1:t}.</value>
+  </data>
+  <data name="My_Reservations_Err_Maxlength" xml:space="preserve">
+    <value>Pinakamataas na oras ng pagpapaserba para sa mapagkukunang ito ay {0} minuto.</value>
+  </data>
+  <data name="My_Reservations_Err_OpeningHours" xml:space="preserve">
+    <value>Ang reserbasyon ay wala sa oras ng pagbubukas.</value>
+  </data>
+  <data name="My_Reservations_Err_SingleDay" xml:space="preserve">
+    <value>Hindi maaring tumagal ng maraming araw ang reserbasyon.</value>
+  </data>
+  <data name="My_Reservations_Msg_Created" xml:space="preserve">
+    <value>Matagumpay na ginawa ang iyong reserbasyon.</value>
+  </data>
+  <data name="My_Reservations_New" xml:space="preserve">
+    <value>Bagong reserbasyon</value>
+  </data>
+  <data name="My_Reservations_NewTitle" xml:space="preserve">
+    <value>Gumawa ulit ng panibagong reserbasyon</value>
+  </data>
+  <data name="My_Setting_ResetRak_Confirm" xml:space="preserve">
+    <value>Gusto mo ba talagang palitan ang token ng access sa kalendaryo? Kakailanganin mong baguhin ang address ng kalendaryo kung saanman mo ito ginagamit.</value>
+  </data>
+  <data name="My_Settings_Email_InvalidPassword" xml:space="preserve">
+    <value>Hindi wasto ang hudyat.</value>
+  </data>
+  <data name="My_Settings_Email_Title" xml:space="preserve">
+    <value>Palitan ang aking e-mail address</value>
+  </data>
+  <data name="My_Settings_EmailConfirm_FailedHtml" xml:space="preserve">
+    <value>&lt;p&gt;Nabigo ang kumpirmasyon. Ang karaniwang dahilan ay:&lt;/p&gt; 
+&lt;ul&gt;
+&lt;li&gt;Mali o hindi kumpleto ang address ng pahina Maaring ito ay nakabalot sa maraming linya ng iyong e-mail kliyente&lt;/li&gt;
+&lt;li&gt;Ang nais na e-mail address ay ginagamit na ng isa pang account sa sistemang ito.&lt;/li&gt;
+&lt;li&gt;Nakumpirma na ang pagbabago.&lt;/li&gt;
+&lt;li&gt;Ang link na kumpirmasyon ay na-apdayt. Mangyaring simulan muli ang pagbabago.&lt;/li&gt;
+&lt;/ul&gt;</value>
+  </data>
+  <data name="My_Settings_EmailConfirm_TryAgain" xml:space="preserve">
+    <value>Subukan ulit</value>
+  </data>
+  <data name="My_Settings_Ics_Full" xml:space="preserve">
+    <value>Lahat ng mga reserbasyon</value>
+  </data>
+  <data name="My_Settings_Ics_My" xml:space="preserve">
+    <value>Ang aking reserbasyon lamang</value>
+  </data>
+  <data name="My_Settings_Ics_ResetRak" xml:space="preserve">
+    <value>Palitan ang token ng access sa kalendaryo</value>
+  </data>
+  <data name="My_Settings_Index_Change" xml:space="preserve">
+    <value>Palitan...</value>
+  </data>
+  <data name="My_Settings_Index_Msg_Delete" xml:space="preserve">
+    <value>Para tanggalin ang iyong account, mangyaring makipag-ugnayan sa sistema ng pangagasiwa.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ChangeEmail" xml:space="preserve">
+    <value>Nagpadala kami ng e-mail sa bagong address na iyong inilagay. Mangyaring sundin ang link sa mensahe upang kumpirmahin ang pagbabago ng e-mail.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ChangeEmailDone" xml:space="preserve">
+    <value>Matagumpay na nabago ang iyong e-mail address.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ChangePassword" xml:space="preserve">
+    <value>Matagumpay na napalitan ang iyong hudyat.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ChangeUserName" xml:space="preserve">
+    <value>Upang baguhin ang iyong pangalan, magyaring makipag-ugnayan sa sistema ng pangangasiwa.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_ResetRakDone" xml:space="preserve">
+    <value>Binago ang iyong token sa pag-access sa kalendaryo at hindi na wasto ang mga lumang URLs ng kalendaryo.</value>
+  </data>
+  <data name="My_Settings_Index_Msg_Saved" xml:space="preserve">
+    <value>Matagumpay na ginagawa ang iyong mga pagbabago.</value>
+  </data>
+  <data name="My_Settings_Index_Title" xml:space="preserve">
+    <value>Mga setting</value>
+  </data>
+  <data name="My_Settings_Mailing_System" xml:space="preserve">
+    <value>Mga mensaheng nauugnay sa account (laging pinapayagan)</value>
+  </data>
+  <data name="My_Settings_Password_Title" xml:space="preserve">
+    <value>Baguhin ang aking hudyat</value>
+  </data>
+  <data name="My_Settings_Privacy" xml:space="preserve">
+    <value>Palihim</value>
+  </data>
+  <data name="TimeTagHelper_Today" xml:space="preserve">
+    <value>ngayon, {0:t}</value>
+  </data>
+  <data name="TimeTagHelper_Tomorrow" xml:space="preserve">
+    <value>bukas, {0:t}</value>
+  </data>
+  <data name="TimeTagHelper_Yesterday" xml:space="preserve">
+    <value>kahapon, {0:t}</value>
+  </data>
+</root>
