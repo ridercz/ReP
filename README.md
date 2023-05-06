@@ -80,9 +80,11 @@ This project aims to show localization features of ASP.NET Core and how to write
 
 Currently supported languages:
 
-* Czech (`cs-CZ`)
-* English (`en-GB`)
-* Filipino/Tagalog (`fil-PH`) contributed by Maribel Faderon
+Locale   | Language         | Contributed by
+-------- | ---------------- | --------------
+`cs-CZ`  | Czech            | Michal Altair Valášek
+`en-GB`  | English          | Michal Altair Valášek
+`fil-PH` | Filipino/Tagalog | Maribel Faderon
 
 Contributions are welcome, especially for the following languages:
 
