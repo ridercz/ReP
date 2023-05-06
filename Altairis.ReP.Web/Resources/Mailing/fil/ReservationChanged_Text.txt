@@ -1,0 +1,9 @@
+﻿Kamusta,
+
+ang mensaheng ito ay nagpapaalam sa iyo na ang iyong reserbasyon sa {{resourceName}} ay binago ni {{userName}}.
+
+Orihinal na reserbasyon ay mula {{oldDateBegin}} hanggang {{oldDateEnd}}.
+
+Kasalukuyang resrbasyon ay mula sa {{dateBegin}} hanggang {{dateEnd}}.
+
+

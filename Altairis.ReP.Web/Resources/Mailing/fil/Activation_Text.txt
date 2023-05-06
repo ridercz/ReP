@@ -1,0 +1,7 @@
+﻿Kamusta, 
+
+ang e-mail na ito ay para ipaalam sa iyo ang bagong account {{userName}} ay ginawa para sa iyo sa sistema ng ReP. 
+
+Para i-aktib ang account at gumawa ng hudyat, maaring pumunta sa sumusunod na pahina:
+{{url}}
+

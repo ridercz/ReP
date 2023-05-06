@@ -1,0 +1,5 @@
+﻿Kamusta,
+
+ang mensaheng ito ay para ipaalam sa iyo na ang iyong reserbasyon ng {{resourceName}} ay tininggal ni {{userName}}.
+
+Orihinal na reserbasyon ay mula sa {{oldDateBegin}} hanggang {{oldDateEnd}}.

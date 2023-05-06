@@ -145,4 +145,23 @@ Ang sumusunod na balita ay inilathala sa sistema ng ReP:
   <data name="SubjectFormatString" xml:space="preserve">
     <value>(ReP) {0}</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Activation_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\fil\activation_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="BodyTextFormatString" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\fil\bodytextformatstring.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="EmailConfirm_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\fil\emailconfirm_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PasswordReset_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\fil\passwordreset_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ReservationChanged_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\fil\reservationchanged_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ReservationDeleted_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>mailing\fil\reservationdeleted_text.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

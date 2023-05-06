@@ -1,0 +1,9 @@
+﻿Kamusta,
+
+sinuman (malamang ikaw) ay hiniling ang e-mail address para sa ReP account {{userName}} upang mabago sa isang tao. 
+
+At kung nais mong kumpirmahin ang pagbabago pumunta sa sumusunod na pahina:
+
+{{url}}
+
+
