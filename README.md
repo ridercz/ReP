@@ -74,6 +74,24 @@ You might want to customize the following files to suit your needs:
   * `Resources/Mailing/*/BodyTextFormatString.txt` - general message format, add common footer here.
   * `Resources/Mailing/*/*.txt` - text of e-mail messages.
 
+## Translation
+
+This project aims to show localization features of ASP.NET Core and how to write internationalized features. I would like to have it translated to many different languages, especially some that use non-Latin characters.
+
+Currently supported languages:
+
+* Czech (`cs-CZ`)
+* English (`en-GB`)
+* Filipino/Tagalog (`fil-PH`) contributed by Maribel Faderon
+
+Contributions are welcome, especially for the following languages:
+
+* German (to test layout with longer words)
+* Languages using non-Latin scripts (Chinese, Japanese, Korean, Thai, Russian, Ukrainian, Bulgarian...)
+* Languages using right to left writing systems (Arabic, Hebrew)
+
+If you want to contribute translation but do not know how, please contact me and I'll help you.
+
 ## Contributor Code of Conduct
 
 This project adheres to No Code of Conduct. We are all adults. We accept anyone's contributions. Nothing else matters.
