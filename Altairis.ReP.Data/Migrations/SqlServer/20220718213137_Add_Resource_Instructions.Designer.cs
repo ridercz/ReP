@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Altairis.ReP.Data.Migrations.SqlServer
 {
-    [DbContext(typeof(RepDbContext))]
+    [DbContext(typeof(SqlServerRepDbContext))]
     [Migration("20220718213137_Add_Resource_Instructions")]
     partial class Add_Resource_Instructions
     {

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Altairis.ReP.Data.Migrations.SqlServer
 {
-    [DbContext(typeof(RepDbContext))]
-    partial class RepDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(SqlServerRepDbContext))]
+    partial class SqlServerRepDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

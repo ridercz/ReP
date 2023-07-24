@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Altairis.ReP.Data.Migrations.SqlServer
 {
-    [DbContext(typeof(RepDbContext))]
+    [DbContext(typeof(SqlServerRepDbContext))]
     [Migration("20220702112708_InitialCreate")]
     partial class InitialCreate
     {

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Altairis.ReP.Data.Migrations.SqlServer
 {
-    [DbContext(typeof(RepDbContext))]
+    [DbContext(typeof(SqlServerRepDbContext))]
     [Migration("20230206124519_Add_User_ResourceAuthorizationKey")]
     partial class AddUserResourceAuthorizationKey
     {

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Altairis.ReP.Data.Migrations.SqlServer
 {
-    [DbContext(typeof(RepDbContext))]
+    [DbContext(typeof(SqlServerRepDbContext))]
     [Migration("20221017224316_Add_Resource_Attachments_FileSize_Long")]
     partial class Add_Resource_Attachments_FileSize_Long
     {

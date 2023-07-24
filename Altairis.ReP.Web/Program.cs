@@ -39,7 +39,7 @@ var hcb = builder.Services.AddHealthChecks()
 
 // Configure database
 if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)) {
-    builder.Services.AddDbContext<RepDbContext>(options => {
+    builder.Services.AddDbContext<RepDbContext, SqlServerRepDbContext>(options => {
         options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
     });
     // Add health check for SQL Server

@@ -6,7 +6,9 @@ global using Microsoft.EntityFrameworkCore.Design;
 
 namespace Altairis.ReP.Data;
 
-public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
+// Abstract base class for all database contexts
+
+public abstract class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
     public RepDbContext(DbContextOptions options) : base(options) { }
 
     public DbSet<Resource> Resources => this.Set<Resource>();
@@ -32,10 +34,32 @@ public class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
     }
 }
 
-public class RepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<RepDbContext> {
-    public RepDbContext CreateDbContext(string[] args) {
+// Support for Sqlite
+
+public class SqliteRepDbContext : RepDbContext {
+
+    public SqliteRepDbContext(DbContextOptions options) : base(options) { }
+
+}
+
+public class SqliteRepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<SqliteRepDbContext> {
+    public SqliteRepDbContext CreateDbContext(string[] args) {
+        var builder = new DbContextOptionsBuilder<RepDbContext>();
+        builder.UseSqlite("Data Source=../Altairis.ReP.Web/App_Data/ReP_design.db");
+        return new SqliteRepDbContext(builder.Options);
+    }
+}
+
+// Support for Microsoft SQL Server
+
+public class SqlServerRepDbContext : RepDbContext {
+    public SqlServerRepDbContext(DbContextOptions options) : base(options) { }
+}
+
+public class SqlServerRepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<SqlServerRepDbContext> {
+    public SqlServerRepDbContext CreateDbContext(string[] args) {
         var builder = new DbContextOptionsBuilder<RepDbContext>();
         builder.UseSqlServer("SERVER=.\\SqlExpress;TRUSTED_CONNECTION=yes;DATABASE=ReP_design");
-        return new RepDbContext(builder.Options);
+        return new SqlServerRepDbContext(builder.Options);
     }
 }
