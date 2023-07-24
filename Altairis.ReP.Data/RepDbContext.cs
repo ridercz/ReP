@@ -3,12 +3,13 @@ global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 
 namespace Altairis.ReP.Data;
 
 // Abstract base class for all database contexts
 
-public abstract class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
+public abstract class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>, IDataProtectionKeyContext {
     public RepDbContext(DbContextOptions options) : base(options) { }
 
     public DbSet<Resource> Resources => this.Set<Resource>();
@@ -24,6 +25,8 @@ public abstract class RepDbContext : IdentityDbContext<ApplicationUser, Applicat
     public DbSet<CalendarEntry> CalendarEntries => this.Set<CalendarEntry>();
 
     public DbSet<ResourceAttachment> ResourceAttachments => this.Set<ResourceAttachment>();
+
+    public DbSet<DataProtectionKey> DataProtectionKeys => this.Set<DataProtectionKey>();
 
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);

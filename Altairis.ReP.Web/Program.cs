@@ -21,6 +21,7 @@ using Altairis.SqliteBackup.AzureStorage;
 using Altairis.TagHelpers;
 using FluentStorage;
 using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 
@@ -64,6 +65,10 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
 // Configure blob storage
 StorageFactory.Modules.UseAzureBlobStorage();
 builder.Services.AddTransient(s => StorageFactory.Blobs.FromConnectionString(builder.Configuration.GetConnectionString("Blob")));
+
+// Configure storage of ASP.NET Data protection keys in database
+builder.Services.AddDataProtection()
+    .PersistKeysToDbContext<RepDbContext>();
 
 // Configure maximum file size
 builder.WebHost.ConfigureKestrel(options => {
