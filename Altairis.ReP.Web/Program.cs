@@ -16,6 +16,8 @@ using Altairis.Services.Mailing.Rfc2822;
 using Altairis.Services.Mailing.SendGrid;
 using Altairis.Services.Mailing.Templating;
 using Altairis.Services.PwnedPasswordsValidator;
+using Altairis.SqliteBackup;
+using Altairis.SqliteBackup.AzureStorage;
 using Altairis.TagHelpers;
 using FluentStorage;
 using HealthChecks.UI.Client;
@@ -40,12 +42,21 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
     builder.Services.AddDbContext<RepDbContext>(options => {
         options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
     });
+    // Add health check for SQL Server
     hcb.AddSqlServer(connectionString: builder.Configuration.GetConnectionString("SqlServer"), name: "SQL Server");
 } else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCase)) {
     builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options => {
         options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
     });
+    // Add health check for Sqlite
     hcb.AddSqlite(sqliteConnectionString: builder.Configuration.GetConnectionString("Sqlite"), name: "Sqlite");
+    // Add backup for Sqlite, if there is Azure Blob Storage configured for it
+    if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("SqliteBackupStorage"))) {
+        builder.Services.AddSqliteBackup(builder.Configuration.GetConnectionString("Sqlite"))
+            .WithGZip() // Compress the backup
+            .WithAzureStorageUpload(builder.Configuration.GetConnectionString("SqliteBackupStorage")) // Upload to Azure
+            .WithFileCleanup("*.bak.gz", 3); // Retain only 3 latest backups
+    }
 } else {
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
 }
