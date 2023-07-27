@@ -49,8 +49,10 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
     builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options => {
         options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
     });
+
     // Add health check for Sqlite
     hcb.AddSqlite(sqliteConnectionString: builder.Configuration.GetConnectionString("Sqlite"), name: "Sqlite");
+    
     // Add backup for Sqlite, if there is Azure Blob Storage configured for it
     if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("SqliteBackupStorage"))) {
         builder.Services.AddSqliteBackup(builder.Configuration.GetConnectionString("Sqlite"))
@@ -60,6 +62,10 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
                 options.CreateContainer = false;
             })
             .WithFileCleanup("*.bak.gz", 3);
+
+        // Add health check for Sqlite backup
+        builder.Services.AddSqliteBackupHealthCheck();
+        hcb.AddCheck<BackupServiceHealthCheck>("SqliteBackup");
     }
 } else {
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
