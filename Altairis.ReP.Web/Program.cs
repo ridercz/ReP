@@ -54,9 +54,12 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
     // Add backup for Sqlite, if there is Azure Blob Storage configured for it
     if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("SqliteBackupStorage"))) {
         builder.Services.AddSqliteBackup(builder.Configuration.GetConnectionString("Sqlite"))
-            .WithGZip() // Compress the backup
-            .WithAzureStorageUpload(builder.Configuration.GetConnectionString("SqliteBackupStorage")) // Upload to Azure
-            .WithFileCleanup("*.bak.gz", 3); // Retain only 3 latest backups
+            .WithGZip()
+            .WithAzureStorageUpload(builder.Configuration.GetConnectionString("SqliteBackupStorage"), options => {
+                options.ContainerName = "sqlite-backup";
+                options.CreateContainer = false;
+            })
+            .WithFileCleanup("*.bak.gz", 3);
     }
 } else {
     throw new Exception($"Unsupported database `{appSettings.Database}`. Use `SqlServer` or `Sqlite`.");
