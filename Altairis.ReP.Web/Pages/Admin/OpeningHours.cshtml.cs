@@ -33,6 +33,8 @@ public class OpeningHoursModel : PageModel {
     public async Task OnGetAsync() => this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
 
     public async Task<IActionResult> OnPostAsync() {
+        this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
+
         if (!this.ModelState.IsValid) return this.Page();
 
         var item = await this.dc.OpeningHoursChanges.SingleOrDefaultAsync(x => x.Date == this.Input.Date);
