@@ -20,7 +20,7 @@ public class ReservationsModel : PageModel {
         this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
         this.attachmentProcessor = attachmentProcessor;
-        this.options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.",nameof(optionsAccessor));
+        this.options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.", nameof(optionsAccessor));
     }
 
     [BindProperty]

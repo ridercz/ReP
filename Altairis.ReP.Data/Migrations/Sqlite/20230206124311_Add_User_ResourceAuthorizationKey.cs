@@ -2,14 +2,11 @@
 
 #nullable disable
 
-namespace Altairis.ReP.Data.Migrations.Sqlite
-{
+namespace Altairis.ReP.Data.Migrations.Sqlite {
     /// <inheritdoc />
-    public partial class AddUserResourceAuthorizationKey : Migration
-    {
+    public partial class AddUserResourceAuthorizationKey : Migration {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AddColumn<string>(
                 name: "ResourceAuthorizationKey",
                 table: "AspNetUsers",
@@ -19,12 +16,11 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                 nullable: false,
                 defaultValue: "");
 
-            
+
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropColumn(
                 name: "ResourceAuthorizationKey",
                 table: "AspNetUsers");

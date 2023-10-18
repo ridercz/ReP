@@ -1,7 +1,6 @@
 using System.Collections.Immutable;
 using System.Globalization;
 using System.Resources;
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Localization;
 
 namespace Altairis.ReP.Web.Components;
