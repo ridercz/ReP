@@ -32,7 +32,7 @@ ReP can be deployed on premises or in the cloud. It's fairly standard ASP.NET Co
 
 ### Technical requirements
 
-* Web server supporting ASP.NET Core 6.0.
+* Web server supporting ASP.NET Core 7.0.
 * Microsoft SQL Server (any supported version and edition), Azure SQL Database or Sqlite.
 
 ### Configuration
