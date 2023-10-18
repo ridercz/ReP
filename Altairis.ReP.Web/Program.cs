@@ -51,8 +51,8 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
     });
 
     // Add health check for Sqlite
-    hcb.AddSqlite(sqliteConnectionString: builder.Configuration.GetConnectionString("Sqlite"), name: "Sqlite");
-    
+    hcb.AddSqlite(connectionString: builder.Configuration.GetConnectionString("Sqlite"), name: "Sqlite");
+
     // Add backup for Sqlite, if there is Azure Blob Storage configured for it
     if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("SqliteBackupStorage"))) {
         builder.Services.AddSqliteBackup(builder.Configuration.GetConnectionString("Sqlite"))
