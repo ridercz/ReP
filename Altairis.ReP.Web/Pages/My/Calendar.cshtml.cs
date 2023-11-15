@@ -3,16 +3,10 @@ using Altairis.TagHelpers;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class CalendarModel : PageModel {
-    private readonly RepDbContext dc;
-    private readonly IDateProvider dateProvider;
-    private readonly IOptions<AppSettings> options;
-
-    public CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions<AppSettings> options) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-        this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-        this.options = options ?? throw new ArgumentNullException(nameof(options));
-    }
+public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions<AppSettings> options) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+    private readonly IOptions<AppSettings> options = options ?? throw new ArgumentNullException(nameof(options));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

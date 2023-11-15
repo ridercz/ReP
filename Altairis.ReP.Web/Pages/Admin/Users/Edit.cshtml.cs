@@ -3,14 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
-public class EditModel : PageModel {
-    private readonly UserManager<ApplicationUser> userManager;
-    private readonly AppSettings options;
-
-    public EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSettings> optionsAccessor) {
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-        this.options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
-    }
+public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSettings> optionsAccessor) : PageModel {
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

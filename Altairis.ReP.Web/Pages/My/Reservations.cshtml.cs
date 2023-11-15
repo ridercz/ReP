@@ -6,22 +6,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class ReservationsModel : PageModel {
-    private readonly RepDbContext dc;
-    private readonly IDateProvider dateProvider;
-    private readonly UserManager<ApplicationUser> userManager;
-    private readonly OpeningHoursProvider hoursProvider;
-    private readonly AttachmentProcessor attachmentProcessor;
-    private readonly AppSettings options;
-
-    public ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor, AttachmentProcessor attachmentProcessor) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-        this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-        this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
-        this.attachmentProcessor = attachmentProcessor;
-        this.options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.", nameof(optionsAccessor));
-    }
+public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor, AttachmentProcessor attachmentProcessor) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly OpeningHoursProvider hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
+    private readonly AttachmentProcessor attachmentProcessor = attachmentProcessor;
+    private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.", nameof(optionsAccessor));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

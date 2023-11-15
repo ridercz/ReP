@@ -1,14 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
-public class IndexModel : PageModel {
-    private readonly SignInManager<ApplicationUser> signInManager;
-    private readonly UserManager<ApplicationUser> userManager;
-
-    public IndexModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) {
-        this.signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    }
+public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) : PageModel {
+    private readonly SignInManager<ApplicationUser> signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

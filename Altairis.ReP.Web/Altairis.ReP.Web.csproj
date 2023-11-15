@@ -4,6 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Version>$([System.DateTime]::UtcNow.ToString('yyyy.MM.dd.HHmm'))</Version>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 		<NeutralLanguage>en-GB</NeutralLanguage>
 		<GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
 	</PropertyGroup>

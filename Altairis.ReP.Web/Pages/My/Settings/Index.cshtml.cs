@@ -3,12 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.My.Settings;
-public class IndexModel : PageModel {
-    private readonly UserManager<ApplicationUser> userManager;
-
-    public IndexModel(UserManager<ApplicationUser> userManager) {
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    }
+public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

@@ -2,12 +2,8 @@ using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages;
-public class FirstRunModel : PageModel {
-    private readonly UserManager<ApplicationUser> userManager;
-
-    public FirstRunModel(UserManager<ApplicationUser> userManager) {
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    }
+public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel {
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

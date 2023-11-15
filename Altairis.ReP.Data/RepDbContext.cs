@@ -9,8 +9,7 @@ namespace Altairis.ReP.Data;
 
 // Abstract base class for all database contexts
 
-public abstract class RepDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>, IDataProtectionKeyContext {
-    public RepDbContext(DbContextOptions options) : base(options) { }
+public abstract class RepDbContext(DbContextOptions options) : IdentityDbContext<ApplicationUser, ApplicationRole, int>(options), IDataProtectionKeyContext {
 
     public DbSet<Resource> Resources => this.Set<Resource>();
 
@@ -39,10 +38,7 @@ public abstract class RepDbContext : IdentityDbContext<ApplicationUser, Applicat
 
 // Support for Sqlite
 
-public class SqliteRepDbContext : RepDbContext {
-
-    public SqliteRepDbContext(DbContextOptions options) : base(options) { }
-
+public class SqliteRepDbContext(DbContextOptions options) : RepDbContext(options) {
 }
 
 public class SqliteRepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<SqliteRepDbContext> {
@@ -55,8 +51,7 @@ public class SqliteRepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<S
 
 // Support for Microsoft SQL Server
 
-public class SqlServerRepDbContext : RepDbContext {
-    public SqlServerRepDbContext(DbContextOptions options) : base(options) { }
+public class SqlServerRepDbContext(DbContextOptions options) : RepDbContext(options) {
 }
 
 public class SqlServerRepDbContextDesignTimeFactory : IDesignTimeDbContextFactory<SqlServerRepDbContext> {

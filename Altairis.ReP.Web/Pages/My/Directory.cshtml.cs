@@ -1,11 +1,7 @@
 namespace Altairis.ReP.Web.Pages.My;
 
-public class DirectoryModel : PageModel {
-    private readonly RepDbContext dc;
-
-    public DirectoryModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+public class DirectoryModel(RepDbContext dc) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
 
     public class DirectoryEntryInfo {
         public string IconClass { get; set; }

@@ -4,14 +4,10 @@ using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Altairis.ReP.Web.TagHelpers;
-public class PlaintextTagHelper : TagHelper {
+public class PlaintextTagHelper(HtmlEncoder htmlEncoder) : TagHelper {
     private const string LINK_PATTERN = @"((https?)+\:\/\/)[^\s]+";
     private const int MAX_PATH_LENGTH = 20;
-    private readonly HtmlEncoder htmlEncoder;
-
-    public PlaintextTagHelper(HtmlEncoder htmlEncoder) {
-        this.htmlEncoder = htmlEncoder ?? throw new ArgumentNullException(nameof(htmlEncoder));
-    }
+    private readonly HtmlEncoder htmlEncoder = htmlEncoder ?? throw new ArgumentNullException(nameof(htmlEncoder));
 
     public string Text { get; set; }
 

@@ -2,14 +2,9 @@ using System.Globalization;
 using Altairis.Services.Mailing.Templating;
 
 namespace Altairis.ReP.Web.Pages.Admin.Reservations;
-public class EditModel : PageModel {
-    private readonly RepDbContext dc;
-    private readonly ITemplatedMailerService mailer;
-
-    public EditModel(RepDbContext dc, ITemplatedMailerService mailer) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-        this.mailer = mailer ?? throw new ArgumentNullException(nameof(mailer));
-    }
+public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly ITemplatedMailerService mailer = mailer ?? throw new ArgumentNullException(nameof(mailer));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

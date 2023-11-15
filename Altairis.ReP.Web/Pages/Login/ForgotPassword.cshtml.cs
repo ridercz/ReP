@@ -2,14 +2,9 @@ using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
-public class ForgotPasswordModel : PageModel {
-    private readonly UserManager<ApplicationUser> userManager;
-    private readonly ITemplatedMailerService mailerService;
-
-    public ForgotPasswordModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService) {
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-        this.mailerService = mailerService ?? throw new ArgumentNullException(nameof(mailerService));
-    }
+public class ForgotPasswordModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService) : PageModel {
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly ITemplatedMailerService mailerService = mailerService ?? throw new ArgumentNullException(nameof(mailerService));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

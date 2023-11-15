@@ -1,11 +1,7 @@
 namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 
-public class CreateModel : PageModel {
-    private readonly RepDbContext dc;
-
-    public CreateModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+public class CreateModel(RepDbContext dc) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

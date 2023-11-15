@@ -1,12 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
-public class ResetPasswordModel : PageModel {
-    private readonly UserManager<ApplicationUser> userManager;
-
-    public ResetPasswordModel(UserManager<ApplicationUser> userManager) {
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    }
+public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : PageModel {
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

@@ -4,16 +4,10 @@ using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Templating;
 
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
-public class CreateModel : PageModel {
-    private readonly RepDbContext dc;
-    private readonly IDateProvider dateProvider;
-    private readonly ITemplatedMailerService mailer;
-
-    public CreateModel(RepDbContext dc, IDateProvider dateProvider, ITemplatedMailerService mailer) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-        this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-        this.mailer = mailer ?? throw new ArgumentNullException(nameof(mailer));
-    }
+public class CreateModel(RepDbContext dc, IDateProvider dateProvider, ITemplatedMailerService mailer) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+    private readonly ITemplatedMailerService mailer = mailer ?? throw new ArgumentNullException(nameof(mailer));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

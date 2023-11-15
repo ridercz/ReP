@@ -1,14 +1,9 @@
 using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin;
-public class OpeningHoursModel : PageModel {
-    private readonly RepDbContext dc;
-    private readonly OpeningHoursProvider hoursProvider;
-
-    public OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvider) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-        this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
-    }
+public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvider) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly OpeningHoursProvider hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
 
     public IEnumerable<OpeningHoursInfo> StandardOpeningHours => this.hoursProvider.GetStandardOpeningHours();
 
@@ -33,8 +28,6 @@ public class OpeningHoursModel : PageModel {
     public async Task OnGetAsync() => this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
 
     public async Task<IActionResult> OnPostAsync() {
-        this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
-
         if (!this.ModelState.IsValid) return this.Page();
 
         var item = await this.dc.OpeningHoursChanges.SingleOrDefaultAsync(x => x.Date == this.Input.Date);

@@ -5,18 +5,11 @@ using Ical.Net.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
-public class IndexModel : PageModel {
-    private readonly RepDbContext dc;
-    private readonly UserManager<ApplicationUser> userManager;
-    private readonly IDateProvider dateProvider;
-    private readonly OpeningHoursProvider hoursProvider;
-
-    public IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, OpeningHoursProvider hoursProvider) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-        this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-        this.hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
-    }
+public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, OpeningHoursProvider hoursProvider) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+    private readonly OpeningHoursProvider hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
 
     public IEnumerable<Resource> Resources { get; set; }
 

@@ -1,12 +1,8 @@
 using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
-public class EditModel : PageModel {
-    private readonly RepDbContext dc;
-
-    public EditModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+public class EditModel(RepDbContext dc) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

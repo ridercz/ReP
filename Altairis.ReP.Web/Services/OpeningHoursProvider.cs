@@ -3,16 +3,10 @@ using Altairis.Services.DateProvider;
 
 namespace Altairis.ReP.Web.Services;
 
-public class OpeningHoursProvider {
-    private readonly IOptions<AppSettings> optionsAccessor;
-    private readonly IDateProvider dateProvider;
-    private readonly RepDbContext dc;
-
-    public OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDateProvider dateProvider, RepDbContext dc) {
-        this.optionsAccessor = optionsAccessor ?? throw new ArgumentNullException(nameof(optionsAccessor));
-        this.dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+public class OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDateProvider dateProvider, RepDbContext dc) {
+    private readonly IOptions<AppSettings> optionsAccessor = optionsAccessor ?? throw new ArgumentNullException(nameof(optionsAccessor));
+    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
 
     public OpeningHoursInfo GetOpeningHours(int dayOffset) => this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffset));
 

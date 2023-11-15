@@ -5,16 +5,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
-public class CreateModel : PageModel {
-    private readonly UserManager<ApplicationUser> userManager;
-    private readonly ITemplatedMailerService mailerService;
-    private readonly AppSettings options;
-
-    public CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService, IOptions<AppSettings> optionsAccessor) {
-        this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-        this.mailerService = mailerService ?? throw new ArgumentNullException(nameof(mailerService));
-        this.options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
-    }
+public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService, IOptions<AppSettings> optionsAccessor) : PageModel {
+    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly ITemplatedMailerService mailerService = mailerService ?? throw new ArgumentNullException(nameof(mailerService));
+    private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();

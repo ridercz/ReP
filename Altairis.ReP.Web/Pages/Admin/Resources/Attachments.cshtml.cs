@@ -1,14 +1,8 @@
 namespace Altairis.ReP.Web.Pages.Admin.Resources {
-    public class AttachmentsModel : PageModel {
-        private readonly RepDbContext dc;
-        private readonly AttachmentProcessor attachmentProcessor;
-        private readonly IOptions<AppSettings> options;
-
-        public AttachmentsModel(RepDbContext dc, AttachmentProcessor attachmentProcessor, IOptions<AppSettings> options) {
-            this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-            this.attachmentProcessor = attachmentProcessor;
-            this.options = options;
-        }
+    public class AttachmentsModel(RepDbContext dc, AttachmentProcessor attachmentProcessor, IOptions<AppSettings> options) : PageModel {
+        private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+        private readonly AttachmentProcessor attachmentProcessor = attachmentProcessor;
+        private readonly IOptions<AppSettings> options = options;
 
         public string ResourceName { get; set; }
 

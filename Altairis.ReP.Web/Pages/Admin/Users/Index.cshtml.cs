@@ -1,10 +1,6 @@
 namespace Altairis.ReP.Web.Pages.Admin.Users;
-public class IndexModel : PageModel {
-    private readonly RepDbContext dc;
-
-    public IndexModel(RepDbContext dc) {
-        this.dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    }
+public class IndexModel(RepDbContext dc) : PageModel {
+    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
 
     public class UserInfo {
         public int Id { get; set; }
