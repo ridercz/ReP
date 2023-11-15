@@ -200,7 +200,7 @@ if (app.Environment.IsDevelopment()) {
     app.UseStaticFiles();
 } else {
     app.UseStaticFiles(new StaticFileOptions {
-        OnPrepareResponse = c => c.Context.Response.Headers.Add("Cache-Control", "public,max-age=31536000")
+        OnPrepareResponse = c => c.Context.Response.Headers.CacheControl = "public,max-age=31536000"
     });
 }
 app.UseRouting();
