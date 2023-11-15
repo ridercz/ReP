@@ -11,16 +11,16 @@ public class ResourceAttachment {
     public int ResourceId { get; set; }
 
     [ForeignKey(nameof(this.ResourceId))]
-    public Resource Resource { get; set; }
+    public Resource? Resource { get; set; }
 
     [Required, MaxLength(100)]
-    public string FileName { get; set; }
+    public required string FileName { get; set; }
 
     public long FileSize { get; set; }
 
     public DateTime DateCreated { get; set; }
 
     [Required, MaxLength(100)]
-    public string StoragePath { get; set; }
+    public required string StoragePath { get; set; }
 
 }

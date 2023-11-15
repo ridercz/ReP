@@ -7,9 +7,9 @@ public class NewsMessage {
     public DateTime Date { get; set; }
 
     [Required, MaxLength(100)]
-    public string Title { get; set; }
+    public required string Title { get; set; }
 
     [Required]
-    public string Text { get; set; }
+    public required string Text { get; set; }
 
 }

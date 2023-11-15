@@ -9,8 +9,8 @@ public class CalendarEntry {
     public DateTime Date { get; set; }
 
     [Required, MaxLength(50)]
-    public string Title { get; set; }
+    public string Title { get; set; } = string.Empty;
 
-    public string Comment { get; set; }
+    public string? Comment { get; set; }
 
 }
