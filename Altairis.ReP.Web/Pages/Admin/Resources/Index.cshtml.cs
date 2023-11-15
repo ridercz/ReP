@@ -1,29 +1,17 @@
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
 public class IndexModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
-    public IEnumerable<ResourceInfo> Resources { get; set; }
+    public IEnumerable<ResourceInfo> Resources { get; set; } = new List<ResourceInfo>();
 
-    public class ResourceInfo {
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public int Id { get; set; }
-        public string ForegroundColor { get; set; }
-        public string BackgroundColor { get; set; }
-
+    public record ResourceInfo(string? Description, string Name, int Id, string ForegroundColor, string BackgroundColor) {
         public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
     }
 
     public async Task OnGetAsync() {
         var q = from r in this.dc.Resources
                 orderby r.Name
-                select new ResourceInfo {
-                    Id = r.Id,
-                    Name = r.Name,
-                    Description = r.Description,
-                    ForegroundColor = r.ForegroundColor,
-                    BackgroundColor = r.BackgroundColor
-                };
+                select new ResourceInfo(r.Description, r.Name, r.Id, r.ForegroundColor, r.BackgroundColor);
         this.Resources = await q.ToListAsync();
     }
 

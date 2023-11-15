@@ -4,24 +4,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.My.Settings;
 public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
     public class InputModel {
 
-        public string Language { get; set; }
+        [Required]
+        public string Language { get; set; } = string.Empty;
 
         [Phone]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         public bool SendNotifications { get; set; }
 
         public bool SendNews { get; set; }
 
         [Required, MaxLength(100)]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = string.Empty;
 
         public bool ShowInMemberDirectory { get; set; }
 
@@ -29,10 +30,10 @@ public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
 
     public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.AvailableCultures.Select(c => new SelectListItem(c.NativeName, c.Name));
 
-    public ApplicationUser Me { get; set; }
+    public ApplicationUser? Me { get; set; }
 
     public async Task OnGetAsync() {
-        this.Me = await this.userManager.GetUserAsync(this.User);
+        this.Me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
         this.Input.Language = this.Me.Language;
         this.Input.PhoneNumber = this.Me.PhoneNumber;
         this.Input.SendNotifications = this.Me.SendNotifications;
@@ -43,7 +44,7 @@ public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
-        this.Me = await this.userManager.GetUserAsync(this.User);
+        this.Me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
 
         this.Me.Language = this.Input.Language;
         this.Me.PhoneNumber = this.Input.PhoneNumber;
@@ -57,7 +58,7 @@ public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
     }
 
     public async Task<IActionResult> OnPostResetRakAsync() {
-        var me = await this.userManager.GetUserAsync(this.User);
+        var me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
         me.ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey();
         await this.userManager.UpdateAsync(me);
         return this.RedirectToPage("Index", null, "resetrakdone");

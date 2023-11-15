@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
 public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly SignInManager<ApplicationUser> signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly SignInManager<ApplicationUser> signInManager = signInManager;
+    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -11,16 +11,16 @@ public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManage
     public class InputModel {
 
         [Required, MaxLength(50)]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         [Required, DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         public bool RememberMe { get; set; }
 
     }
 
-    public async Task<IActionResult> OnGetAsync() => await this.userManager.Users.AnyAsync() ? this.Page() : (IActionResult)this.RedirectToPage("/FirstRun");
+    public async Task<IActionResult> OnGetAsync() => await this.userManager.Users.AnyAsync() ? this.Page() : this.RedirectToPage("/FirstRun");
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = "/") {
         if (this.ModelState.IsValid) {

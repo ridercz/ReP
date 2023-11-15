@@ -44,20 +44,20 @@ if (appSettings.Database.Equals("SqlServer", StringComparison.OrdinalIgnoreCase)
         options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
     });
     // Add health check for SQL Server
-    hcb.AddSqlServer(connectionString: builder.Configuration.GetConnectionString("SqlServer"), name: "SQL Server");
+    hcb.AddSqlServer(connectionString: builder.Configuration.GetConnectionString("SqlServer") ?? throw new Exception("Connection string SqlServer is not defined."), name: "SQL Server");
 } else if (appSettings.Database.Equals("Sqlite", StringComparison.OrdinalIgnoreCase)) {
     builder.Services.AddDbContext<RepDbContext, SqliteRepDbContext>(options => {
         options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
     });
 
     // Add health check for Sqlite
-    hcb.AddSqlite(connectionString: builder.Configuration.GetConnectionString("Sqlite"), name: "Sqlite");
+    hcb.AddSqlite(connectionString: builder.Configuration.GetConnectionString("Sqlite") ?? throw new Exception("Connection string Sqlite is not defined."), name: "Sqlite");
 
     // Add backup for Sqlite, if there is Azure Blob Storage configured for it
     if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("SqliteBackupStorage"))) {
-        builder.Services.AddSqliteBackup(builder.Configuration.GetConnectionString("Sqlite"))
+        builder.Services.AddSqliteBackup(builder.Configuration.GetConnectionString("Sqlite") ?? throw new Exception("Connection string Sqlite is not defined."))
             .WithGZip()
-            .WithAzureStorageUpload(builder.Configuration.GetConnectionString("SqliteBackupStorage"), options => {
+            .WithAzureStorageUpload(builder.Configuration.GetConnectionString("SqliteBackupStorage") ?? throw new Exception("Connection string SqliteBackupStorage is not defined."), options => {
                 options.ContainerName = "sqlite-backup";
                 options.CreateContainer = false;
             })
@@ -96,11 +96,10 @@ builder.Services.AddRazorPages(options => {
 });
 
 // Configure identity
-builder.Services.AddAuthorization(options => {
-    options.AddPolicy("IsLoggedIn", policy => policy.RequireAuthenticatedUser());
-    options.AddPolicy("IsMaster", policy => policy.RequireRole(ApplicationRole.Master));
-    options.AddPolicy("IsAdministrator", policy => policy.RequireRole(ApplicationRole.Administrator));
-});
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("IsLoggedIn", policy => policy.RequireAuthenticatedUser())
+    .AddPolicy("IsMaster", policy => policy.RequireRole(ApplicationRole.Master))
+    .AddPolicy("IsAdministrator", policy => policy.RequireRole(ApplicationRole.Administrator));
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
     options.Password.RequiredLength = appSettings.Security.MinimumPasswordLength;
     options.Password.RequiredUniqueChars = 4;

@@ -1,23 +1,15 @@
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
 public class IndexModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
-    public IEnumerable<NewsMessageInfo> NewsMessages { get; set; }
+    public IEnumerable<NewsMessageInfo> NewsMessages { get; set; } = Enumerable.Empty<NewsMessageInfo>();
 
-    public class NewsMessageInfo {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public string Title { get; set; }
-    }
+    public record NewsMessageInfo(int Id, DateTime Date, string Title);
 
     public async Task OnGetAsync() {
         var q = from m in this.dc.NewsMessages
                 orderby m.Date descending
-                select new NewsMessageInfo {
-                    Id = m.Id,
-                    Date = m.Date,
-                    Title = m.Title
-                };
+                select new NewsMessageInfo(m.Id, m.Date, m.Title);
         this.NewsMessages = await q.ToListAsync();
     }
 

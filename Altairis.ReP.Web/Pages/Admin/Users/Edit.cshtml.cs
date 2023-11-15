@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
-public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSettings> optionsAccessor) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
+public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSettings> options) : PageModel {
+    private readonly UserManager<ApplicationUser> userManager = userManager;
+    private readonly IOptions<AppSettings> options = options;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -13,15 +13,16 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
     public class InputModel {
 
         [Required, MaxLength(50)]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         [Required, MaxLength(50), EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
-        public string Language { get; set; }
+        [Required]
+        public string Language { get; set; } = string.Empty;
 
         [MaxLength(20), Phone]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         public bool IsMaster { get; set; }
 
@@ -30,7 +31,7 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
         public bool UserEnabled { get; set; }
 
         [Required, MaxLength(100)]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = string.Empty;
 
         public bool ShowInMemberDirectory { get; set; }
 
@@ -43,11 +44,11 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
         if (user == null) return this.NotFound();
 
         this.Input = new InputModel {
-            Email = user.Email,
+            Email = user!.Email ??  throw new ImpossibleException(),
             UserEnabled = user.Enabled,
             Language = user.Language,
             PhoneNumber = user.PhoneNumber,
-            UserName = user.UserName,
+            UserName = user.UserName ?? throw new ImpossibleException(),
             IsAdministrator = await this.userManager.IsInRoleAsync(user, ApplicationRole.Administrator),
             IsMaster = await this.userManager.IsInRoleAsync(user, ApplicationRole.Master),
             DisplayName = user.DisplayName,
@@ -69,7 +70,7 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
         user.UserName = this.Input.UserName;
         user.Language = this.Input.Language;
         user.DisplayName = this.Input.DisplayName;
-        user.ShowInMemberDirectory = this.options.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory;
+        user.ShowInMemberDirectory = this.options.Value.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory;
 
         var result = await this.userManager.UpdateAsync(user);
         if (!this.IsIdentitySuccess(result)) return this.Page();

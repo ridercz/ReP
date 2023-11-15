@@ -5,7 +5,7 @@ namespace Altairis.ReP.Web.TagHelpers;
 
 public class MarkdownTagHelper : TagHelper {
 
-    public string Text { get; set; }
+    public string Text { get; set; } = string.Empty;
 
     public override void Process(TagHelperContext context, TagHelperOutput output) {
         output.TagName = string.Empty;

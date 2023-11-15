@@ -1,7 +1,7 @@
 namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 
 public class CreateModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -9,13 +9,13 @@ public class CreateModel(RepDbContext dc) : PageModel {
     public class InputModel {
 
         [Required, MaxLength(100)]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = string.Empty;
 
         [MaxLength(100), EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [MaxLength(50), Phone]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
     }
 

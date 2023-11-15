@@ -6,12 +6,12 @@ public class DirectoryEntry {
     public int Id { get; set; }
 
     [Required, MaxLength(100)]
-    public string DisplayName { get; set; }
+    public string DisplayName { get; set; }     = string.Empty;
 
     [MaxLength(100), EmailAddress]
-    public string Email { get; set; }
+    public string? Email { get; set; }
 
     [MaxLength(50), Phone]
-    public string PhoneNumber { get; set; }
+    public string? PhoneNumber { get; set; }
 
 }

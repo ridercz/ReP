@@ -7,15 +7,15 @@ namespace Altairis.ReP.Web.TagHelpers;
 [HtmlTargetElement("modal-box", Attributes = "id,message")]
 public class ModalBoxTagHelper : TagHelper {
 
-    public string Message { get; set; }
+    public string Message { get; set; } = string.Empty;
 
     public string Icon { get; set; } = "fa-info-circle";
 
     public string TargetUrl { get; set; } = "#";
 
     public override void Process(TagHelperContext context, TagHelperOutput output) {
-        if (context is null) throw new System.ArgumentNullException(nameof(context));
-        if (output is null) throw new System.ArgumentNullException(nameof(output));
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(output);
 
         output.TagName = "div";
         output.TagMode = TagMode.StartTagAndEndTag;

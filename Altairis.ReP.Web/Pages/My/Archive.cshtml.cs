@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Altairis.ReP.Web.Pages.My;
 public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly RepDbContext dc = dc;
+    private readonly UserManager<ApplicationUser> userManager = userManager;
 
-    public IEnumerable<ReservationInfo> Reservations { get; set; }
+    public IEnumerable<ReservationInfo> Reservations { get; set; } = Enumerable.Empty<ReservationInfo>();
 
     public class ReservationInfo {
 
@@ -13,7 +14,7 @@ public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userMana
 
         public int ResourceId { get; set; }
 
-        public string ResourceName { get; set; }
+        public string ResourceName { get; set; } = string.Empty;
 
         public DateTime DateBegin { get; set; }
 
@@ -24,7 +25,7 @@ public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userMana
     }
 
     public async Task OnGetAsync() {
-        var userId = int.Parse(this.userManager.GetUserId(this.User));
+        var userId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException());
         var reservationsQuery = from r in this.dc.Reservations
                                 where r.UserId == userId
                                 orderby r.DateBegin descending
@@ -33,7 +34,7 @@ public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userMana
                                     DateEnd = r.DateEnd,
                                     Id = r.Id,
                                     ResourceId = r.ResourceId,
-                                    ResourceName = r.Resource.Name,
+                                    ResourceName = r.Resource!.Name,
                                     System = r.System
                                 };
         this.Reservations = await reservationsQuery.ToListAsync();

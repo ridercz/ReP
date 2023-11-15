@@ -1,39 +1,16 @@
 namespace Altairis.ReP.Web.Pages.Admin.Reservations;
+
 public class IndexModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
-    public class ReservationInfo {
+    public record ReservationInfo(int ReservationId, string UserDisplayName, string ResourceName, DateTime DateBegin, DateTime DateEnd, bool System, string? Comment);
 
-        public int ReservationId { get; set; }
-
-        public string UserDisplayName { get; set; }
-
-        public string ResourceName { get; set; }
-
-        public DateTime DateBegin { get; set; }
-
-        public DateTime DateEnd { get; set; }
-
-        public bool System { get; set; }
-
-        public string Comment { get; set; }
-
-    }
-
-    public IEnumerable<ReservationInfo> Reservations { get; set; }
+    public IEnumerable<ReservationInfo> Reservations { get; set; } = new List<ReservationInfo>();
 
     public async Task OnGetAsync() {
         var q = from r in this.dc.Reservations
                 orderby r.DateBegin descending
-                select new ReservationInfo {
-                    Comment = r.Comment,
-                    DateBegin = r.DateBegin,
-                    DateEnd = r.DateEnd,
-                    ReservationId = r.Id,
-                    ResourceName = r.Resource.Name,
-                    System = r.System,
-                    UserDisplayName = r.User.DisplayName
-                };
+                select new ReservationInfo(r.Id, r.User!.DisplayName, r.Resource!.Name, r.DateBegin, r.DateEnd, r.System, r.Comment);
         this.Reservations = await q.ToListAsync();
     }
 

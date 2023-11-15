@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
 public class ForgotPasswordModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    private readonly ITemplatedMailerService mailerService = mailerService ?? throw new ArgumentNullException(nameof(mailerService));
+    private readonly UserManager<ApplicationUser> userManager = userManager;
+    private readonly ITemplatedMailerService mailer = mailerService;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -12,11 +12,11 @@ public class ForgotPasswordModel(UserManager<ApplicationUser> userManager, ITemp
     public class InputModel {
 
         [Required]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
     }
 
-    public async Task<IActionResult> OnPostAsync(string locale) {
+    public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
 
         // Try to find user by name
@@ -37,7 +37,7 @@ public class ForgotPasswordModel(UserManager<ApplicationUser> userManager, ITemp
 
         // Send password reset mail
         var msg = new TemplatedMailMessageDto("PasswordReset", user.Email);
-        await this.mailerService.SendMessageAsync(msg, new {
+        await this.mailer.SendMessageAsync(msg, new {
             userName = user.UserName,
             url = passwordResetUrl
         });

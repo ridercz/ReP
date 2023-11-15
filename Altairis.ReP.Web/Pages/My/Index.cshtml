@@ -4,10 +4,10 @@
     this.ViewBag.Title = UI.My_Index_Title;
 }
 
-<p class="infobox" visible="@this.OptionsAccessor.Value.Features.UseOpeningHours">
+<p class="infobox" visible="@this.OptionsAccessor.Value.Features.UseOpeningHours && this.Model.OpenToday != null && this.Model.OpenTomorrow != null">
     <i class="fas fa-clock fa-2x fa-pull-left"></i>
-    @Html.Raw(this.Model.OpenToday.IsOpen ? string.Format(UI.My_Index_TodayLab_Open, this.Model.OpenToday) : UI.My_Index_TodayLab_Closed)
-    @Html.Raw(this.Model.OpenTomorrow.IsOpen ? string.Format(UI.My_Index_TomorrowLab_Open, this.Model.OpenTomorrow) : UI.My_Index_TomorrowLab_Closed)<br />
+    @Html.Raw(this.Model.OpenToday!.IsOpen ? string.Format(UI.My_Index_TodayLab_Open, this.Model.OpenToday) : UI.My_Index_TodayLab_Closed)
+    @Html.Raw(this.Model.OpenTomorrow!.IsOpen ? string.Format(UI.My_Index_TomorrowLab_Open, this.Model.OpenTomorrow) : UI.My_Index_TomorrowLab_Closed)<br />
     <a asp-page="OpeningHours">@UI.My_Index_OpeningHours</a>
 </p>
 

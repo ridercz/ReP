@@ -1,7 +1,7 @@
 ﻿@page "{resourceId}"
 @model Altairis.ReP.Web.Pages.My.ReservationsModel
 @{
-    this.ViewBag.Title = Model.Resource.Name;
+    this.ViewBag.Title = Model.Resource!.Name;
 }
 <p>@Model.Resource.Description</p>
 

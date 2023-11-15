@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My.Settings;
 public class EmailModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    private readonly ITemplatedMailerService mailerService = mailerService ?? throw new ArgumentNullException(nameof(mailerService));
+    private readonly UserManager<ApplicationUser> userManager = userManager;
+    private readonly ITemplatedMailerService mailer = mailerService;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -12,25 +12,25 @@ public class EmailModel(UserManager<ApplicationUser> userManager, ITemplatedMail
     public class InputModel {
 
         [Required, EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
 
         [Required, DataType(DataType.Password)]
-        public string CurrentPassword { get; set; }
+        public string CurrentPassword { get; set; } = string.Empty;
 
     }
 
     public async Task OnGetAsync() {
-        var me = await this.userManager.GetUserAsync(this.User);
-        this.Input.Email = me.Email;
+        var me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
+        this.Input.Email = me.Email ?? throw new ImpossibleException();
     }
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
 
         // Check if the address is really changed
-        var me = await this.userManager.GetUserAsync(this.User);
-        if (me.Email.Equals(this.Input.Email, StringComparison.OrdinalIgnoreCase)) return this.RedirectToPage("Index");
+        var me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
+        if (this.Input.Email.Equals(me.Email, StringComparison.OrdinalIgnoreCase)) return this.RedirectToPage("Index");
 
         // Check password
         var passwordCorrect = await this.userManager.CheckPasswordAsync(me, this.Input.CurrentPassword);
@@ -53,7 +53,7 @@ public class EmailModel(UserManager<ApplicationUser> userManager, ITemplatedMail
 
         // Send message
         var msg = new TemplatedMailMessageDto("EmailConfirm", this.Input.Email);
-        await this.mailerService.SendMessageAsync(msg, new {
+        await this.mailer.SendMessageAsync(msg, new {
             userName = me.UserName,
             url = url
         });

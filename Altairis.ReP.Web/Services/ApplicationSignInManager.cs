@@ -16,7 +16,7 @@ public class ApplicationSignInManager(UserManager<ApplicationUser> userManager, 
     }
 
     public override async Task<bool> CanSignInAsync(ApplicationUser user) {
-        if (user is null) throw new System.ArgumentNullException(nameof(user));
+        ArgumentNullException.ThrowIfNull(user);
 
         return await base.CanSignInAsync(user) && user.Enabled;
     }

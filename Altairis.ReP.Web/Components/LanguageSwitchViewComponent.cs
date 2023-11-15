@@ -9,7 +9,7 @@ public record struct SupportedLanguageInfo(string RequestCultureName, string Lan
 
 public class LanguageSwitchViewComponent : ViewComponent {
     public const string SetCultureCookieHandlerRouteName = "SetCookie";
-    private static IList<CultureInfo> availableCultures;
+    private static IList<CultureInfo>? availableCultures;
 
     public IViewComponentResult Invoke() {
         var model = AvailableCultures.Select(c => new SupportedLanguageInfo(
@@ -34,7 +34,6 @@ public class LanguageSwitchViewComponent : ViewComponent {
                     } catch (CultureNotFoundException) {
                         //NOP
                     }
-
                 }
             }
             return availableCultures.ToImmutableList();

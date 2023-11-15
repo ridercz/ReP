@@ -5,8 +5,8 @@ namespace Altairis.ReP.Web.Services;
 public class AttachmentProcessor(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) {
     private const string AttachmentPath = "attachments/{0:0000}/{1:yyyyMMddHHmmss}-{2:n}{3}";
 
-    private readonly IBlobStorage blobStorage = blobStorage ?? throw new ArgumentNullException(nameof(blobStorage));
-    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
+    private readonly IBlobStorage blobStorage = blobStorage;
+    private readonly IDateProvider dateProvider = dateProvider;
     private readonly RepDbContext dc = dc;
 
     public async Task<ResourceAttachment> CreateAttachment(IFormFile formFile, int resourceId) {
@@ -15,7 +15,8 @@ public class AttachmentProcessor(IBlobStorage blobStorage, IDateProvider datePro
             DateCreated = this.dateProvider.Now,
             FileName = Path.GetFileName(formFile.FileName),
             FileSize = formFile.Length,
-            ResourceId = resourceId
+            ResourceId = resourceId,
+            StoragePath = string.Empty
         };
 
         // Create attachment storage path
@@ -52,8 +53,7 @@ public class AttachmentProcessor(IBlobStorage blobStorage, IDateProvider datePro
 
     public async Task<(byte[], string)> GetAttachment(int resourceAttachmentId) {
         // Get attachment info
-        var a = await this.dc.ResourceAttachments.FindAsync(resourceAttachmentId);
-        if (a == null) throw new FileNotFoundException();
+        var a = await this.dc.ResourceAttachments.FindAsync(resourceAttachmentId) ?? throw new FileNotFoundException();
 
         // Get data from storage
         var data = await this.blobStorage.ReadBytesAsync(a.StoragePath);

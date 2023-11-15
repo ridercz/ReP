@@ -2,15 +2,15 @@ using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin;
 public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvider) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    private readonly OpeningHoursProvider hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
+    private readonly RepDbContext dc = dc;
+    private readonly OpeningHoursProvider hoursProvider = hoursProvider;
 
     public IEnumerable<OpeningHoursInfo> StandardOpeningHours => this.hoursProvider.GetStandardOpeningHours();
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
-    public IEnumerable<OpeningHoursChange> OpeningHoursChanges { get; set; }
+    public IEnumerable<OpeningHoursChange> OpeningHoursChanges { get; set; } = Enumerable.Empty<OpeningHoursChange>();
 
     public class InputModel {
 

@@ -1,35 +1,16 @@
 namespace Altairis.ReP.Web.Pages.Admin.Users;
+
 public class IndexModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
-    public class UserInfo {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string DisplayName { get; set; }
-        public string Email { get; set; }
-        public string Language { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool Enabled { get; set; }
+    public record UserInfo(int Id, string UserName, string DisplayName, string Email, string Language, string? PhoneNumber, bool Enabled, bool EmailConfirmed);
 
-        public bool EmailConfirmed { get; set; }
-    }
-
-
-    public IEnumerable<UserInfo> Users { get; set; }
+    public IEnumerable<UserInfo> Users { get; set; } = new List<UserInfo>();
 
     public async Task OnGetAsync() {
         var q = from u in this.dc.Users
                 orderby u.UserName
-                select new UserInfo {
-                    Id = u.Id,
-                    UserName = u.UserName,
-                    DisplayName = u.DisplayName,
-                    Email = u.Email,
-                    Language = u.Language,
-                    PhoneNumber = u.PhoneNumber,
-                    Enabled = u.Enabled,
-                    EmailConfirmed = u.EmailConfirmed
-                };
+                select new UserInfo(u.Id, u.UserName ?? string.Empty, u.DisplayName, u.Email ?? string.Empty, u.Language, u.PhoneNumber, u.Enabled, u.EmailConfirmed);
         this.Users = await q.ToListAsync();
     }
 

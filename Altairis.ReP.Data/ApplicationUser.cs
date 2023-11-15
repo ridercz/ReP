@@ -7,7 +7,7 @@ public class ApplicationUser : IdentityUser<int> {
     private const string ResourceAuthorizationKeyChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     [Required, MaxLength(100)]
-    public string DisplayName { get; set; }
+    public string DisplayName { get; set; } = string.Empty;
 
     public bool Enabled { get; set; } = true;
 
@@ -21,7 +21,7 @@ public class ApplicationUser : IdentityUser<int> {
     public bool ShowInMemberDirectory { get; set; }
 
     [Required, MaxLength(ResourceAuthorizationKeyLength)]
-    public string ResourceAuthorizationKey { get; set; }
+    public string ResourceAuthorizationKey { get; set; } = CreateResourceAuthorizationKey();
 
     public static string CreateResourceAuthorizationKey() {
         var keyChars = new char[ResourceAuthorizationKeyLength];

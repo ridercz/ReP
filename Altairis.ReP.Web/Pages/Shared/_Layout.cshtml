@@ -29,7 +29,7 @@
             <li include-roles="*"><a asp-page="/My/Calendar" asp-route-year="" asp-route-month=""><i class="fas fa-fw fa-calendar"></i> @UI.Layout_Menu_Calendar</a></li>
             <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseMemberDirectory"><a asp-page="/My/Directory"><i class="fas fa-fw fa-address-card"></i> @UI.Layout_Menu_Directory</a></li>
             <li include-roles="@ApplicationRole.Administrator"><a asp-page="/Admin/Index"><i class="fas fa-fw fa-cogs"></i> @UI.Layout_Menu_Administration</a></li>
-            <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-fw fa-user"></i> @this.User.Identity.Name</a></li>
+            <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-fw fa-user"></i> @this.User.Identity!.Name</a></li>
             <li include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)"><a asp-page="/Login/Logout"><i class="fa fa-fw fa-sign-out-alt"></i> @UI.Layout_LoginStatus_SignOut</a></li>
         </ul>
     </nav>

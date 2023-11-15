@@ -6,12 +6,12 @@ public class Resource {
     public int Id { get; set; }
 
     [Required, MaxLength(50)]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [DataType("Markdown")]
-    public string Instructions { get; set; }
+    public string? Instructions { get; set; }
 
     [Required, Range(0, 1440)]
     public int MaximumReservationTime { get; set; }

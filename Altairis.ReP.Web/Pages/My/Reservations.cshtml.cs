@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.ReP.Web.Pages.My;
 
 public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor, AttachmentProcessor attachmentProcessor) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-    private readonly OpeningHoursProvider hoursProvider = hoursProvider ?? throw new ArgumentNullException(nameof(hoursProvider));
+    private readonly RepDbContext dc = dc;
+    private readonly IDateProvider dateProvider = dateProvider;
+    private readonly UserManager<ApplicationUser> userManager = userManager;
+    private readonly OpeningHoursProvider hoursProvider = hoursProvider;
     private readonly AttachmentProcessor attachmentProcessor = attachmentProcessor;
     private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.", nameof(optionsAccessor));
 
@@ -27,16 +27,16 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
         public bool System { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
     }
 
     public bool CanManageEntries => this.options.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
-    public Resource Resource { get; set; }
+    public Resource? Resource { get; set; }
 
-    public IEnumerable<CalendarEvent> Reservations { get; set; }
+    public IEnumerable<CalendarEvent> Reservations { get; set; } = Enumerable.Empty<CalendarEvent>();
 
-    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; }
+    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; } = Enumerable.Empty<CalendarEntryInfo>();
 
     public DateTime CalendarDateBegin { get; set; }
 
@@ -46,16 +46,16 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
     public bool CanDoReservation { get; set; } = false;
 
-    public string ResourceAuthorizationKey { get; set; }
+    public string ResourceAuthorizationKey { get; set; } = string.Empty;
 
     private async Task<bool> Init(int resourceId) {
         // Get resource
-        this.Resource = await this.dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId);
+        this.Resource = await this.dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId) ?? throw new ImpossibleException();
         if (this.Resource == null) return false;
         this.CanDoReservation = this.Resource.Enabled || this.User.IsPrivilegedUser();
 
         // Get user RAK
-        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName.Equals(this.User.Identity.Name))).ResourceAuthorizationKey;
+        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName!.Equals(this.User.Identity!.Name))).ResourceAuthorizationKey;
 
         // Get last Monday as the start date
         this.CalendarDateBegin = this.dateProvider.Today;
@@ -66,13 +66,13 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
                  where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
                  select new CalendarEvent {
                      Id = "reservation_" + r.Id,
-                     BackgroundColor = r.System ? r.Resource.ForegroundColor : r.Resource.BackgroundColor,
+                     BackgroundColor = r.System ? r.Resource!.ForegroundColor : r.Resource!.BackgroundColor,
                      ForegroundColor = r.System ? r.Resource.BackgroundColor : r.Resource.ForegroundColor,
                      CssClass = r.System ? "system" : string.Empty,
                      DateBegin = r.DateBegin,
                      DateEnd = r.DateEnd,
-                     Name = r.System ? r.Comment : r.User.DisplayName,
-                     Description = r.System ? r.User.DisplayName : r.Comment,
+                     Name = r.System ? r.Comment : r.User!.DisplayName,
+                     Description = r.System ? r.User!.DisplayName : r.Comment,
                      IsFullDay = false,
                  };
 
@@ -138,7 +138,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
     }
 
     public async Task<IActionResult> OnPostAsync(int resourceId) {
-        if (!(await this.Init(resourceId) && (this.Resource.Enabled || this.User.IsPrivilegedUser()))) return this.NotFound();
+        if (!(await this.Init(resourceId) && (this.Resource!.Enabled || this.User.IsPrivilegedUser()))) return this.NotFound();
         if (!this.ModelState.IsValid) return this.Page();
 
         if (!this.User.IsPrivilegedUser()) {
@@ -168,7 +168,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
         // Check against other reservations
         var q = from r in this.dc.Reservations
                 where r.ResourceId == resourceId && r.DateBegin < this.Input.DateEnd && r.DateEnd > this.Input.DateBegin
-                select new { r.DateBegin, r.User.UserName };
+                select new { r.DateBegin, r.User!.UserName };
         foreach (var item in await q.ToListAsync()) {
             this.ModelState.AddModelError(string.Empty, string.Format(UI.My_Reservations_Err_Conflict, item.UserName, item.DateBegin));
         }
@@ -178,7 +178,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
         var newReservation = new Reservation {
             DateBegin = this.Input.DateBegin,
             DateEnd = this.Input.DateEnd,
-            UserId = int.Parse(this.userManager.GetUserId(this.User)),
+            UserId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException()),
             ResourceId = resourceId,
             System = this.User.IsPrivilegedUser() && this.Input.System,
             Comment = this.User.IsPrivilegedUser() ? this.Input.Comment : null

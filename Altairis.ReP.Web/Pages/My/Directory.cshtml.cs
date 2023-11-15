@@ -1,17 +1,17 @@
 namespace Altairis.ReP.Web.Pages.My;
 
 public class DirectoryModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
     public class DirectoryEntryInfo {
-        public string IconClass { get; set; }
-        public string DisplayName { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public required string IconClass { get; set; }
+        public required string DisplayName { get; set; }
+        public string? UserName { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
     }
 
-    public IEnumerable<DirectoryEntryInfo> Items { get; set; }
+    public IEnumerable<DirectoryEntryInfo> Items { get; set; } = Enumerable.Empty<DirectoryEntryInfo>();
 
     public async Task OnGetAsync() {
         var userInfoQuery = from u in this.dc.Users

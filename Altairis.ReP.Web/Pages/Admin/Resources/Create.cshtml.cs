@@ -2,7 +2,7 @@ using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
 public class CreateModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -10,12 +10,12 @@ public class CreateModel(RepDbContext dc) : PageModel {
     public class InputModel {
 
         [Required, MaxLength(50)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [DataType("Markdown")]
-        public string Instructions { get; set; }
+        public string? Instructions { get; set; }
 
         [Required, Range(0, 1440)]
         public int MaximumReservationTime { get; set; }

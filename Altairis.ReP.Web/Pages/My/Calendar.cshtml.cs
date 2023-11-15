@@ -3,10 +3,10 @@ using Altairis.TagHelpers;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions<AppSettings> options) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    private readonly IDateProvider dateProvider = dateProvider ?? throw new ArgumentNullException(nameof(dateProvider));
-    private readonly IOptions<AppSettings> options = options ?? throw new ArgumentNullException(nameof(options));
+public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions<AppSettings> optionsAccessor) : PageModel {
+    private readonly RepDbContext dc = dc;
+    private readonly IDateProvider dateProvider = dateProvider;
+    private readonly IOptions<AppSettings> options = optionsAccessor;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -17,28 +17,28 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         public DateTime Date { get; set; } = DateTime.Today.AddDays(1);
 
         [Required, MaxLength(50)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [DataType("Markdown")]
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
     }
 
     public bool CanManageEntries => this.options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
-    public IEnumerable<ResourceTag> Resources { get; set; }
+    public IEnumerable<ResourceTag> Resources { get; set; } = Enumerable.Empty<ResourceTag>();
 
     public class ResourceTag {
-        public string Name { get; set; }
-        public string ForegroundColor { get; set; }
-        public string BackgroundColor { get; set; }
+        public required string Name { get; set; }
+        public required string ForegroundColor { get; set; }
+        public required string BackgroundColor { get; set; }
 
         public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
     }
 
-    public IEnumerable<CalendarEvent> Reservations { get; set; }
+    public IEnumerable<CalendarEvent> Reservations { get; set; } = Enumerable.Empty<CalendarEvent>();
 
-    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; }
+    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; } = Enumerable.Empty<CalendarEntryInfo>();
 
     public DateTime DateBegin { get; set; }
 
@@ -48,18 +48,18 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     public DateTime DateNext { get; set; }
 
-    public string ResourceAuthorizationKey { get; set; }
+    public string ResourceAuthorizationKey { get; set; } = string.Empty;
 
     public async Task<IActionResult> OnGetAsync(int? year, int? month) {
         // Redirect to current month
         if (!year.HasValue || !month.HasValue) return this.RedirectToPage(new { this.dateProvider.Today.Year, this.dateProvider.Today.Month });
 
         // Initialize data
-        await this.Init(year, month);
+        await this.Init(year.Value, month.Value);
         return this.Page();
     }
 
-    public async Task<IActionResult> OnGetDeleteAsync(int? year, int? month, int entryId) {
+    public async Task<IActionResult> OnGetDeleteAsync(int year, int month, int entryId) {
         // Initialize data
         await this.Init(year, month);
 
@@ -71,7 +71,7 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         return this.RedirectToPage(pageName: null, pageHandler: null, fragment: string.Empty);
     }
 
-    public async Task<IActionResult> OnPostAsync(int? year, int? month) {
+    public async Task<IActionResult> OnPostAsync(int year, int month) {
         // Initialize data
         await this.Init(year, month);
 
@@ -88,12 +88,12 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         return this.RedirectToPage(pageName: null, pageHandler: null, fragment: string.Empty);
     }
 
-    private async Task Init(int? year, int? month) {
+    private async Task Init(int year, int month) {
         // Get user RAK
-        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName.Equals(this.User.Identity.Name))).ResourceAuthorizationKey;
+        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => this.User.Identity!.Name!.Equals(x.UserName))).ResourceAuthorizationKey;
 
         // Get month name for display
-        this.DateBegin = new DateTime(year.Value, month.Value, 1);
+        this.DateBegin = new DateTime(year, month, 1);
         this.DateEnd = this.DateBegin.AddMonths(1).AddDays(-1);
         this.DatePrev = this.DateBegin.AddMonths(-1);
         this.DateNext = this.DateBegin.AddMonths(+1);
@@ -114,13 +114,13 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
                  orderby r.DateBegin
                  select new CalendarEvent {
                      Id = "reservation_" + r.Id,
-                     BackgroundColor = r.System ? r.Resource.ForegroundColor : r.Resource.BackgroundColor,
+                     BackgroundColor = r.System ? r.Resource!.ForegroundColor : r.Resource!.BackgroundColor,
                      ForegroundColor = r.System ? r.Resource.BackgroundColor : r.Resource.ForegroundColor,
                      CssClass = r.System ? "system" : string.Empty,
                      DateBegin = r.DateBegin,
                      DateEnd = r.DateEnd,
-                     Name = r.System ? r.Comment : r.User.DisplayName,
-                     Description = r.System ? r.User.DisplayName : r.Comment,
+                     Name = r.System ? r.Comment : r.User!.DisplayName,
+                     Description = r.System ? r.User!.DisplayName : r.Comment,
                      IsFullDay = false
                  };
 

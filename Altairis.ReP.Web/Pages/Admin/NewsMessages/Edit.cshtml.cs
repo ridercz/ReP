@@ -1,6 +1,7 @@
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
+
 public class EditModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+    private readonly RepDbContext dc = dc;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -8,10 +9,10 @@ public class EditModel(RepDbContext dc) : PageModel {
     public class InputModel {
 
         [Required, MaxLength(100)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [Required, DataType("Markdown")]
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
 
     }
 

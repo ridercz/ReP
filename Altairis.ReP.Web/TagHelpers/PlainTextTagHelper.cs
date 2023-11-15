@@ -4,20 +4,22 @@ using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Altairis.ReP.Web.TagHelpers;
-public class PlaintextTagHelper(HtmlEncoder htmlEncoder) : TagHelper {
+public partial class PlaintextTagHelper(HtmlEncoder htmlEncoder) : TagHelper {
     private const string LINK_PATTERN = @"((https?)+\:\/\/)[^\s]+";
     private const int MAX_PATH_LENGTH = 20;
-    private readonly HtmlEncoder htmlEncoder = htmlEncoder ?? throw new ArgumentNullException(nameof(htmlEncoder));
+    private readonly HtmlEncoder htmlEncoder = htmlEncoder;
 
-    public string Text { get; set; }
+    public string Text { get; set; } = string.Empty;
+
+    private static readonly string[] LineSeparators = ["\r\n", "\n"];
 
     public override void Process(TagHelperContext context, TagHelperOutput output) {
-        if (context is null) throw new System.ArgumentNullException(nameof(context));
-        if (output is null) throw new System.ArgumentNullException(nameof(output));
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(output);
 
         output.TagName = "div";
 
-        var lines = this.Text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+        var lines = this.Text.Split(LineSeparators, StringSplitOptions.None);
         var sb = new StringBuilder();
         for (var i = 0; i < lines.Length; i++) {
             sb.Append(this.ProcessLine(lines[i]));
@@ -30,7 +32,7 @@ public class PlaintextTagHelper(HtmlEncoder htmlEncoder) : TagHelper {
     private string ProcessLine(string s) {
         if (string.IsNullOrWhiteSpace(s)) return string.Empty;
         s = this.htmlEncoder.Encode(s);
-        s = Regex.Replace(s, LINK_PATTERN, CreateLink, RegexOptions.IgnoreCase);
+        s = LinkRegex().Replace(s, CreateLink);
         return s;
     }
 
@@ -41,11 +43,13 @@ public class PlaintextTagHelper(HtmlEncoder htmlEncoder) : TagHelper {
         try {
             var uri = new Uri(text);
             text = uri.Host;
-            if (uri.PathAndQuery.Length > 1) text += (uri.PathAndQuery.Length <= MAX_PATH_LENGTH ? uri.PathAndQuery : uri.PathAndQuery.Substring(0, MAX_PATH_LENGTH) + "&hellip;");
+            if (uri.PathAndQuery.Length > 1) text += (uri.PathAndQuery.Length <= MAX_PATH_LENGTH ? uri.PathAndQuery : string.Concat(uri.PathAndQuery.AsSpan(0, MAX_PATH_LENGTH), "&hellip;"));
         } catch (Exception) { }
         var html = $"<a href=\"{href}\" target=\"_blank\" title=\"{href}\">{text}</a>";
         if (endsWithPunctation) html += m.Value[href.Length..];
         return html;
     }
 
+    [GeneratedRegex(LINK_PATTERN, RegexOptions.IgnoreCase, "cs-CZ")]
+    private static partial Regex LinkRegex();
 }

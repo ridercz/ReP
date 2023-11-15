@@ -2,6 +2,7 @@ using Altairis.Services.DateProvider;
 using Ical.Net;
 using Ical.Net.DataTypes;
 using Ical.Net.Serialization;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Altairis.ReP.Web;
 
@@ -27,7 +28,7 @@ public class CalendarGenerator {
 
         // Create calendar
         var cal = new Calendar();
-        var formatString = UI.ResourceManager.GetString(nameof(UI.Cal_My_Name), new System.Globalization.CultureInfo(user.Language));
+        var formatString = UI.ResourceManager.GetString(nameof(UI.Cal_My_Name), new System.Globalization.CultureInfo(user.Language)) ?? throw new ImpossibleException();
         cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(formatString, this.options.Value.Design.ApplicationName)));
 
         // Get user reservations
@@ -37,7 +38,7 @@ public class CalendarGenerator {
                      r.Id,
                      r.DateBegin,
                      r.DateEnd,
-                     r.Resource.Name,
+                     r.Resource!.Name,
                      r.Comment
                  };
 
@@ -48,7 +49,7 @@ public class CalendarGenerator {
                 Description = item.Comment,
                 DtStart = new CalDateTime(item.DateBegin),
                 DtEnd = new CalDateTime(item.DateEnd),
-                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext,
+                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext ?? throw new ImpossibleException(),
                     page: "/My/Calendar",
                     fragment: new FragmentString("#reservation_" + item.Id))
             });
@@ -72,7 +73,7 @@ public class CalendarGenerator {
                 DtStart = new CalDateTime(item.Date),
                 DtEnd = new CalDateTime(item.Date),
                 IsAllDay = true,
-                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext,
+                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext ?? throw new ImpossibleException(),
                     page: "/My/Calendar",
                     fragment: new FragmentString("#event_" + item.Id))
             });
@@ -101,8 +102,8 @@ public class CalendarGenerator {
                      r.Id,
                      r.DateBegin,
                      r.DateEnd,
-                     r.Resource.Name,
-                     UserName = r.User.DisplayName,
+                     r.Resource!.Name,
+                     UserName = r.User!.DisplayName,
                      UserEmail = r.User.Email,
                      r.Comment
                  };
@@ -118,7 +119,7 @@ public class CalendarGenerator {
                     CommonName = item.UserName,
                     Value = new Uri("mailto:" + item.UserEmail),
                 },
-                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext,
+                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext ?? throw new ImpossibleException(),
                     page: "/My/Calendar",
                     fragment: new FragmentString("#reservation_" + item.Id))
             });
@@ -142,7 +143,7 @@ public class CalendarGenerator {
                 DtStart = new CalDateTime(item.Date),
                 DtEnd = new CalDateTime(item.Date),
                 IsAllDay = true,
-                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext,
+                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext ?? throw new ImpossibleException(),
                     page: "/My/Calendar",
                     fragment: new FragmentString("#event_" + item.Id))
             });
@@ -163,7 +164,7 @@ public class CalendarGenerator {
 
         // Create calendar
         var cal = new Calendar();
-        var formatString = UI.ResourceManager.GetString(nameof(UI.Cal_Resource_Name), new System.Globalization.CultureInfo(user.Language));
+        var formatString = UI.ResourceManager.GetString(nameof(UI.Cal_Resource_Name), new System.Globalization.CultureInfo(user.Language)) ?? throw new ImpossibleException();
         cal.AddProperty(new CalendarProperty("X-WR-CALNAME", string.Format(formatString, this.options.Value.Design.ApplicationName, resource.Name)));
 
         // Get reservations
@@ -173,7 +174,7 @@ public class CalendarGenerator {
                      r.Id,
                      r.DateBegin,
                      r.DateEnd,
-                     Name = r.User.DisplayName,
+                     Name = r.User!.DisplayName,
                      r.Comment
                  };
 
@@ -184,7 +185,7 @@ public class CalendarGenerator {
                 Description = item.Comment,
                 DtStart = new CalDateTime(item.DateBegin),
                 DtEnd = new CalDateTime(item.DateEnd),
-                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext,
+                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext ?? throw new ImpossibleException(),
                     page: "/My/Reservations",
                     values: new { resourceId },
                     fragment: new FragmentString("#reservation_" + item.Id))
@@ -209,7 +210,7 @@ public class CalendarGenerator {
                 DtStart = new CalDateTime(item.Date),
                 DtEnd = new CalDateTime(item.Date),
                 IsAllDay = true,
-                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext,
+                Uid = this.linkGenerator.GetUriByPage(this.contextAccessor.HttpContext ?? throw new ImpossibleException(),
                     page: "/My/Reservations",
                     values: new { resourceId },
                     fragment: new FragmentString("#event_" + item.Id))

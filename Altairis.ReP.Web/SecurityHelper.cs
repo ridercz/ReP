@@ -21,11 +21,11 @@ public static class SecurityHelper {
             period);                                    // 5
     }
 
-    public static string FormatSecret(string secret, string separator = "-", Func<string, string> formatter = null) {
-        if (secret == null) throw new ArgumentNullException(nameof(secret));
-        if (separator == null) throw new ArgumentNullException(nameof(separator));
+    public static string FormatSecret(string secret, string separator = "-", Func<string, string>? formatter = null) {
+        ArgumentNullException.ThrowIfNull(secret);
+        ArgumentNullException.ThrowIfNull(separator);
         if (string.IsNullOrEmpty(separator)) throw new ArgumentException("Value cannot be null or empty string.", nameof(separator));
-        if (formatter == null) formatter = s => s;
+        formatter ??= s => s;
 
         var result = new StringBuilder();
 
@@ -50,8 +50,8 @@ public static class SecurityHelper {
     }
 
     public static bool IsIdentitySuccess(this PageModel page, IdentityResult result) {
-        if (page is null) throw new ArgumentNullException(nameof(page));
-        if (result is null) throw new ArgumentNullException(nameof(result));
+        ArgumentNullException.ThrowIfNull(page);
+        ArgumentNullException.ThrowIfNull(result);
 
         if (!result.Succeeded) {
             foreach (var err in result.Errors) {

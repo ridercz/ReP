@@ -2,9 +2,10 @@ using System.Globalization;
 using Altairis.Services.Mailing.Templating;
 
 namespace Altairis.ReP.Web.Pages.Admin.Reservations;
+
 public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageModel {
-    private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
-    private readonly ITemplatedMailerService mailer = mailer ?? throw new ArgumentNullException(nameof(mailer));
+    private readonly RepDbContext dc = dc;
+    private readonly ITemplatedMailerService mailer = mailer;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -17,31 +18,31 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
 
         public bool System { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
     }
 
     public int ResourceId { get; set; }
 
-    public string ResourceName { get; set; }
+    public string ResourceName { get; set; } = string.Empty;
 
     public int UserId { get; set; }
 
-    public string UserName { get; set; }
+    public string UserName { get; set; } = string.Empty;
 
-    public string NotificationEmail { get; set; }
+    public string NotificationEmail { get; set; } = string.Empty;
 
-    public CultureInfo NotificationCulture { get; set; }
+    public CultureInfo NotificationCulture { get; set; } = CultureInfo.InvariantCulture;
 
-    public async Task<Reservation> Init(int reservationId) {
+    public async Task<Reservation?> Init(int reservationId) {
         var r = await this.dc.Reservations.Include(x => x.Resource).Include(x => x.User).SingleOrDefaultAsync(x => x.Id == reservationId);
         if (r != null) {
             this.ResourceId = r.ResourceId;
-            this.ResourceName = r.Resource.Name;
+            this.ResourceName = r.Resource!.Name;
             this.UserId = r.UserId;
-            this.UserName = r.User.UserName;
-            if (r.User.SendNotifications && r.User.UserName != this.User.Identity.Name) {
-                this.NotificationEmail = r.User.Email;
+            this.UserName = r!.User!.UserName ?? throw new ImpossibleException();
+            if (r.User.SendNotifications && r.User.UserName != this.User.Identity!.Name) {
+                this.NotificationEmail = r!.User!.Email ?? throw new ImpossibleException();
                 this.NotificationCulture = new CultureInfo(r.User.Language);
             }
         }
@@ -70,7 +71,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
         // Check reservation for conflicts
         var q = from cr in this.dc.Reservations
                 where cr.ResourceId == r.ResourceId && cr.DateBegin < this.Input.DateEnd && cr.DateEnd > this.Input.DateBegin && cr.Id != r.Id
-                select new { cr.DateBegin, cr.User.UserName };
+                select new { cr.DateBegin, cr.User!.UserName };
         foreach (var item in await q.ToListAsync()) {
             this.ModelState.AddModelError(string.Empty, string.Format(UI.My_Reservations_Err_Conflict, item.UserName, item.DateBegin));
         }
@@ -81,7 +82,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
             var msg = new TemplatedMailMessageDto("ReservationChanged", this.NotificationEmail);
             await this.mailer.SendMessageAsync(msg, new {
                 resourceName = this.ResourceName,
-                userName = this.User.Identity.Name,
+                userName = this.User.Identity!.Name,
                 oldDateBegin = r.DateBegin,
                 oldDateEnd = r.DateEnd,
                 dateBegin = this.Input.DateBegin,
@@ -108,7 +109,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
             var msg = new TemplatedMailMessageDto("ReservationDeleted", this.NotificationEmail);
             await this.mailer.SendMessageAsync(msg, new {
                 resourceName = this.ResourceName,
-                userName = this.User.Identity.Name,
+                userName = this.User.Identity!.Name,
                 oldDateBegin = r.DateBegin,
                 oldDateEnd = r.DateEnd,
             }, this.NotificationCulture, this.NotificationCulture);

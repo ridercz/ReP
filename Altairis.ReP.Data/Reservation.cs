@@ -9,13 +9,13 @@ public class Reservation {
     public int Id { get; set; }
 
     [ForeignKey(nameof(ResourceId))]
-    public Resource Resource { get; set; }
+    public Resource? Resource { get; set; }
 
     [ForeignKey(nameof(Resource))]
     public int ResourceId { get; set; }
 
     [ForeignKey(nameof(UserId))]
-    public ApplicationUser User { get; set; }
+    public ApplicationUser? User { get; set; }
 
     [ForeignKey(nameof(User))]
     public int UserId { get; set; }
@@ -28,6 +28,6 @@ public class Reservation {
 
     public bool System { get; set; } = false;
 
-    public string Comment { get; set; }
+    public string? Comment { get; set; }
 
 }

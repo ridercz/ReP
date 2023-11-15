@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages;
 public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -11,16 +11,16 @@ public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel
     public class InputModel {
 
         [Required, MaxLength(50)]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         [Required, MaxLength(100)]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = string.Empty;
 
         [Required, MaxLength(50), EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required, DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
     }
 

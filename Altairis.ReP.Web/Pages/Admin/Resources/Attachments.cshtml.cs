@@ -1,30 +1,27 @@
 namespace Altairis.ReP.Web.Pages.Admin.Resources {
     public class AttachmentsModel(RepDbContext dc, AttachmentProcessor attachmentProcessor, IOptions<AppSettings> options) : PageModel {
-        private readonly RepDbContext dc = dc ?? throw new ArgumentNullException(nameof(dc));
+        private readonly RepDbContext dc = dc;
         private readonly AttachmentProcessor attachmentProcessor = attachmentProcessor;
         private readonly IOptions<AppSettings> options = options;
 
-        public string ResourceName { get; set; }
+        public string ResourceName { get; set; } = string.Empty;
 
-        public IEnumerable<ResourceAttachment> Items { get; set; }
+        public IEnumerable<ResourceAttachment> Items { get; set; } = Enumerable.Empty<ResourceAttachment>();
 
         [BindProperty]
         public InputModel Input { get; set; } = new InputModel();
 
         public class InputModel {
 
-            public IFormFile File { get; set; }
+            public IFormFile? File { get; set; }
 
         }
 
-        public async Task<IActionResult> OnGetAsync(int resourceId) {
-            if (!await this.Init(resourceId)) return this.NotFound();
-            return this.Page();
-        }
+        public async Task<IActionResult> OnGetAsync(int resourceId) => await this.Init(resourceId) ? this.Page() : this.NotFound();
 
         public async Task<IActionResult> OnPostAsync(int resourceId) {
             if (!await this.Init(resourceId)) return this.NotFound();
-            if ((this.Input?.File?.Length ?? 0) > 0) await this.attachmentProcessor.CreateAttachment(this.Input.File, resourceId);
+            if (this.Input.File != null && this.Input.File.Length > 0) await this.attachmentProcessor.CreateAttachment(this.Input.File, resourceId);
             return this.RedirectToPage();
         }
 

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
 public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -10,7 +10,7 @@ public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : Page
     public class InputModel {
 
         [Required, DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
     }
 

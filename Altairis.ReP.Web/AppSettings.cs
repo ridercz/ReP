@@ -36,12 +36,12 @@ public class AppSettings {
 
     public class MailingConfig {
         public string PickupFolder { get; set; } = @"C:\InetPub\MailRoot\pickup";
-        public string SendGridApiKey { get; set; }
-        public string SenderName { get; set; }
-        public string SenderAddress { get; set; }
+        public string? SendGridApiKey { get; set; }
+        public string SenderName { get; set; } = "ReP";
+        public string SenderAddress { get; set; } = "example@example.com";
     }
 
-    public OpeningHoursConfig[] OpeningHours { get; set; }
+    public OpeningHoursConfig[] OpeningHours { get; set; } = [];
 
     public class OpeningHoursConfig {
         public DayOfWeek DayOfWeek { get; set; }
