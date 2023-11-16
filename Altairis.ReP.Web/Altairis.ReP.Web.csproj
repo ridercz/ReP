@@ -28,8 +28,6 @@
 		<PackageReference Include="AspNetCore.HealthChecks.Sqlite" Version="7.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="7.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
-		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-		<PackageReference Include="BuildWebCompiler" Version="1.12.405" />
 		<PackageReference Include="FluentStorage" Version="5.4.1" />
 		<PackageReference Include="FluentStorage.Azure.Blobs" Version="5.2.2" />
 		<PackageReference Include="Ical.Net" Version="4.2.0" />
