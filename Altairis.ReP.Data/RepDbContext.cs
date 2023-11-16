@@ -11,25 +11,16 @@ namespace Altairis.ReP.Data;
 
 public abstract class RepDbContext(DbContextOptions options) : IdentityDbContext<ApplicationUser, ApplicationRole, int>(options), IDataProtectionKeyContext {
 
-    public DbSet<Resource> Resources => this.Set<Resource>();
-
-    public DbSet<Reservation> Reservations => this.Set<Reservation>();
-
-    public DbSet<OpeningHoursChange> OpeningHoursChanges => this.Set<OpeningHoursChange>();
-
-    public DbSet<NewsMessage> NewsMessages => this.Set<NewsMessage>();
-
-    public DbSet<DirectoryEntry> DirectoryEntries => this.Set<DirectoryEntry>();
-
     public DbSet<CalendarEntry> CalendarEntries => this.Set<CalendarEntry>();
-
-    public DbSet<ResourceAttachment> ResourceAttachments => this.Set<ResourceAttachment>();
-
     public DbSet<DataProtectionKey> DataProtectionKeys => this.Set<DataProtectionKey>();
-
+    public DbSet<DirectoryEntry> DirectoryEntries => this.Set<DirectoryEntry>();
     public DbSet<JournalEntry> JournalEntries => this.Set<JournalEntry>();
-
     public DbSet<JournalEntryAttachment> JournalEntryAttachments => this.Set<JournalEntryAttachment>();
+    public DbSet<NewsMessage> NewsMessages => this.Set<NewsMessage>();
+    public DbSet<OpeningHoursChange> OpeningHoursChanges => this.Set<OpeningHoursChange>();
+    public DbSet<Reservation> Reservations => this.Set<Reservation>();
+    public DbSet<Resource> Resources => this.Set<Resource>();
+    public DbSet<ResourceAttachment> ResourceAttachments => this.Set<ResourceAttachment>();
 
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);
