@@ -11,7 +11,7 @@ public class ResourceAttachment {
     public int ResourceId { get; set; }
 
     [ForeignKey(nameof(this.ResourceId))]
-    public Resource? Resource { get; set; }
+    public virtual Resource? Resource { get; set; }
 
     [Required, MaxLength(100)]
     public required string FileName { get; set; }

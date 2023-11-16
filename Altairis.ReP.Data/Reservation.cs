@@ -15,7 +15,7 @@ public class Reservation {
     public int ResourceId { get; set; }
 
     [ForeignKey(nameof(UserId))]
-    public ApplicationUser? User { get; set; }
+    public virtual ApplicationUser? User { get; set; }
 
     [ForeignKey(nameof(User))]
     public int UserId { get; set; }

@@ -24,6 +24,6 @@ public class Resource {
     [Required, MinLength(7), MaxLength(7), RegularExpression(@"^\#[0-9A-Fa-f]{6}$")]
     public string BackgroundColor { get; set; } = "#ffffff";
 
-    public IEnumerable<ResourceAttachment> Attachments { get; set; } = new HashSet<ResourceAttachment>();
+    public virtual IEnumerable<ResourceAttachment> Attachments { get; set; } = new HashSet<ResourceAttachment>();
 
 }
