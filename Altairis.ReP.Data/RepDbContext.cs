@@ -27,6 +27,10 @@ public abstract class RepDbContext(DbContextOptions options) : IdentityDbContext
 
     public DbSet<DataProtectionKey> DataProtectionKeys => this.Set<DataProtectionKey>();
 
+    public DbSet<JournalEntry> JournalEntries => this.Set<JournalEntry>();
+
+    public DbSet<JournalEntryAttachment> JournalEntryAttachments => this.Set<JournalEntryAttachment>();
+
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);
         builder.Entity<ApplicationUser>().Property(x => x.Language).IsFixedLength();

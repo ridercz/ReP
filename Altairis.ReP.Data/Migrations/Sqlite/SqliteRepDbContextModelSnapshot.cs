@@ -15,7 +15,7 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.9");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
             modelBuilder.Entity("Altairis.ReP.Data.ApplicationRole", b =>
                 {
@@ -182,6 +182,71 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                     b.HasKey("Id");
 
                     b.ToTable("DirectoryEntries");
+                });
+
+            modelBuilder.Entity("Altairis.ReP.Data.JournalEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ResourceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResourceId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("JournalEntries");
+                });
+
+            modelBuilder.Entity("Altairis.ReP.Data.JournalEntryAttachment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("JournalEntryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("StoragePath")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JournalEntryId");
+
+                    b.ToTable("JournalEntryAttachments");
                 });
 
             modelBuilder.Entity("Altairis.ReP.Data.NewsMessage", b =>
@@ -451,6 +516,34 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Altairis.ReP.Data.JournalEntry", b =>
+                {
+                    b.HasOne("Altairis.ReP.Data.Resource", "Resource")
+                        .WithMany()
+                        .HasForeignKey("ResourceId");
+
+                    b.HasOne("Altairis.ReP.Data.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resource");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Altairis.ReP.Data.JournalEntryAttachment", b =>
+                {
+                    b.HasOne("Altairis.ReP.Data.JournalEntry", "JournalEntry")
+                        .WithMany()
+                        .HasForeignKey("JournalEntryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JournalEntry");
+                });
+
             modelBuilder.Entity("Altairis.ReP.Data.Reservation", b =>
                 {
                     b.HasOne("Altairis.ReP.Data.Resource", "Resource")
@@ -460,7 +553,7 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                         .IsRequired();
 
                     b.HasOne("Altairis.ReP.Data.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -530,6 +623,11 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Altairis.ReP.Data.ApplicationUser", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("Altairis.ReP.Data.Resource", b =>
