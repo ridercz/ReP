@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor, AttachmentProcessor attachmentProcessor) : PageModel {
+public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor, ResourceAttachmentProcessor attachmentProcessor) : PageModel {
     private readonly RepDbContext dc = dc;
     private readonly IDateProvider dateProvider = dateProvider;
     private readonly UserManager<ApplicationUser> userManager = userManager;
     private readonly OpeningHoursProvider hoursProvider = hoursProvider;
-    private readonly AttachmentProcessor attachmentProcessor = attachmentProcessor;
+    private readonly ResourceAttachmentProcessor attachmentProcessor = attachmentProcessor;
     private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.", nameof(optionsAccessor));
 
     [BindProperty]

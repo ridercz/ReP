@@ -142,7 +142,7 @@ builder.Services.AddResourceTemplatedMailerService(new ResourceTemplatedMailerSe
 // Configure misc services
 builder.Services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
 builder.Services.AddScoped<OpeningHoursProvider>();
-builder.Services.AddScoped<AttachmentProcessor>();
+builder.Services.AddScoped<ResourceAttachmentProcessor>();
 builder.Services.Configure<TimeTagHelperOptions>(options => {
     options.YesterdayDateFormatter = dt => string.Format(UI.TimeTagHelper_Yesterday, dt);
     options.TodayDateFormatter = dt => string.Format(UI.TimeTagHelper_Today, dt);

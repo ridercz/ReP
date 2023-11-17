@@ -2,7 +2,7 @@
 using FluentStorage.Blobs;
 
 namespace Altairis.ReP.Web.Services;
-public class AttachmentProcessor(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) {
+public class ResourceAttachmentProcessor(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) {
     private const string AttachmentPath = "attachments/{0:0000}/{1:yyyyMMddHHmmss}-{2:n}{3}";
 
     private readonly IBlobStorage blobStorage = blobStorage;
