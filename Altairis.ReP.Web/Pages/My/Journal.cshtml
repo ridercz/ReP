@@ -1,0 +1,51 @@
+﻿@page
+@model Altairis.ReP.Web.Pages.My.JournalModel
+@{
+    this.ViewBag.Title = UI.My_Journal_Title;
+}
+
+<p>
+    <a visible="Model.CanAddEntry" href="#new" class="button">@UI.My_Journal_New</a>
+</p>
+
+<div id="new" class="modal" visible="Model.CanAddEntry">
+    <form method="post">
+        <header>@UI.My_Journal_New</header>
+        <p>
+            <label asp-for="Input.ResourceId"></label>
+            <select asp-for="Input.ResourceId" asp-items="Model.AvailableResources"></select>
+        </p>
+        <p>
+            <label asp-for="Input.Title"></label>
+            <input asp-for="Input.Title" />
+        </p>
+        <p>
+            <label asp-for="Input.Text"></label>
+            <span class="control-icons"><i class="fa-brands fa-markdown" title="Markdown"></i></span>
+            <textarea asp-for="Input.Text"></textarea>
+        </p>
+        <div asp-validation-summary="All"></div>
+        <footer>
+            <input type="submit" value="@UI._Submit" />
+            <a href="#" class="button secondary">@UI._Cancel</a>
+        </footer>
+    </form>
+</div>
+
+<p visible="!this.Model.Items.Any()" class="infobox">
+    <i class="fas fa-book fa-2x fa-pull-left"></i>
+    @UI.My_Journal_NoEntries
+</p>
+
+@foreach (var item in this.Model.Items) {
+    var style = item.Resource == null ? string.Empty : $"background-color:{item.Resource.BackgroundColor};color:{item.Resource.ForegroundColor};";
+    <h2>@item.Title</h2>
+    <div class="r em">
+        @item.User!.DisplayName
+        <time value="@item.DateCreated"></time>
+        <span class="tag" style="@style" visible="@item.Resource != null">@item.Resource!.Name</span>
+    </div>
+    <markdown text="@item.Text"></markdown>
+}
+
+<modal-box id="created" message="@UI.My_Journal_Msg_Created" />

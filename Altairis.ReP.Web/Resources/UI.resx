@@ -559,4 +559,22 @@ Please follow the instructions in the message.</value>
   <data name="My_Settings_Index_Msg_ResetRakDone" xml:space="preserve">
     <value>Your calendar access token was changed and old calendar URLs are no longer valid.</value>
   </data>
+  <data name="Layout_Menu_Journal" xml:space="preserve">
+    <value>Journal</value>
+  </data>
+  <data name="My_Journal_Title" xml:space="preserve">
+    <value>Journal</value>
+  </data>
+  <data name="My_Journal_NoEntries" xml:space="preserve">
+    <value>There are no journal entries yet.</value>
+  </data>
+  <data name="My_Journal_New" xml:space="preserve">
+    <value>New journal entry</value>
+  </data>
+  <data name="My_Journal_ResourceUnspecified" xml:space="preserve">
+    <value>n/a</value>
+  </data>
+  <data name="My_Journal_Msg_Created" xml:space="preserve">
+    <value>New journal entry was created successfully.</value>
+  </data>
 </root>

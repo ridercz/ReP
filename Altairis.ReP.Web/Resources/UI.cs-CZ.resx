@@ -558,4 +558,22 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Settings_Index_Msg_ResetRakDone" xml:space="preserve">
     <value>Váš přístupový token ke kalendáři byl změněn a staré adresy kalendáře již nejsou platné.</value>
   </data>
+  <data name="Layout_Menu_Journal" xml:space="preserve">
+    <value>Deník</value>
+  </data>
+  <data name="My_Journal_Title" xml:space="preserve">
+    <value>Provozní deník</value>
+  </data>
+  <data name="My_Journal_NoEntries" xml:space="preserve">
+    <value>V deníku zatím nejsou žádné záznamy.</value>
+  </data>
+  <data name="My_Journal_New" xml:space="preserve">
+    <value>Nový záznam v deníku</value>
+  </data>
+  <data name="My_Journal_ResourceUnspecified" xml:space="preserve">
+    <value>n/a</value>
+  </data>
+  <data name="My_Journal_Msg_Created" xml:space="preserve">
+    <value>Nový záznam v deníku byl úspěšně vytvořen.</value>
+  </data>
 </root>

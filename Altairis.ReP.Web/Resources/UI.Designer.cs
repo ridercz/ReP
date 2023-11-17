@@ -709,6 +709,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Journal.
+        /// </summary>
+        public static string Layout_Menu_Journal {
+            get {
+                return ResourceManager.GetString("Layout_Menu_Journal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Layout_Menu_Login {
@@ -1026,6 +1035,51 @@ namespace Altairis.ReP.Web.Resources {
         public static string My_Index_TomorrowLab_Open {
             get {
                 return ResourceManager.GetString("My_Index_TomorrowLab_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New journal entry was created successfully..
+        /// </summary>
+        public static string My_Journal_Msg_Created {
+            get {
+                return ResourceManager.GetString("My_Journal_Msg_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New journal entry.
+        /// </summary>
+        public static string My_Journal_New {
+            get {
+                return ResourceManager.GetString("My_Journal_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no journal entries yet..
+        /// </summary>
+        public static string My_Journal_NoEntries {
+            get {
+                return ResourceManager.GetString("My_Journal_NoEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to n/a.
+        /// </summary>
+        public static string My_Journal_ResourceUnspecified {
+            get {
+                return ResourceManager.GetString("My_Journal_ResourceUnspecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Journal.
+        /// </summary>
+        public static string My_Journal_Title {
+            get {
+                return ResourceManager.GetString("My_Journal_Title", resourceCulture);
             }
         }
         
