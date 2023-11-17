@@ -243,4 +243,7 @@
   <data name="FileSize" xml:space="preserve">
     <value>Velikost</value>
   </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Přílohy</value>
+  </data>
 </root>
