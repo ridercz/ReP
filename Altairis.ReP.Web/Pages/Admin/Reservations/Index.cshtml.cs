@@ -3,9 +3,13 @@ namespace Altairis.ReP.Web.Pages.Admin.Reservations;
 public class IndexModel(RepDbContext dc) : PageModel {
     private readonly RepDbContext dc = dc;
 
-    public record ReservationInfo(int ReservationId, string UserDisplayName, string ResourceName, DateTime DateBegin, DateTime DateEnd, bool System, string? Comment);
+    // Output model
 
     public IEnumerable<ReservationInfo> Reservations { get; set; } = new List<ReservationInfo>();
+
+    public record ReservationInfo(int ReservationId, string UserDisplayName, string ResourceName, DateTime DateBegin, DateTime DateEnd, bool System, string? Comment);
+
+    // Handlers
 
     public async Task OnGetAsync() {
         var q = from r in this.dc.Reservations

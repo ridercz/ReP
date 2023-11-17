@@ -2,9 +2,11 @@
 
 public class AppSettings {
 
+    // Common configuration
+
     public string Database { get; set; } = "Sqlite";
 
-    public FeaturesConfig Features { get; set; } = new FeaturesConfig();
+    public FeaturesConfig Features { get; set; } = new();
 
     public class FeaturesConfig {
         public bool UseAttachments { get; set; } = true;
@@ -15,7 +17,9 @@ public class AppSettings {
         public bool UseOpeningHours { get; set; } = true;
     }
 
-    public DesignConfig Design { get; set; } = new DesignConfig();
+    // Design configuration
+
+    public DesignConfig Design { get; set; } = new();
 
     public class DesignConfig {
         public string ApplicationName { get; set; } = "ReP";
@@ -25,7 +29,9 @@ public class AppSettings {
         public string StylesheetUrl { get; set; } = "~/Content/Styles/site.min.css";
     }
 
-    public SecurityConfig Security { get; set; } = new SecurityConfig();
+    // Authentication and security configuration
+
+    public SecurityConfig Security { get; set; } = new();
 
     public class SecurityConfig {
         public int DefaultPasswordLength { get; set; } = 14;
@@ -33,7 +39,9 @@ public class AppSettings {
         public int MinimumPasswordLength { get; set; } = 12;
     }
 
-    public MailingConfig Mailing { get; set; } = new MailingConfig();
+    // Mailing configuration
+
+    public MailingConfig Mailing { get; set; } = new();
 
     public class MailingConfig {
         public string PickupFolder { get; set; } = @"C:\InetPub\MailRoot\pickup";
@@ -42,27 +50,31 @@ public class AppSettings {
         public string? SendGridApiKey { get; set; }
     }
 
+    // Openings hours configuration
+
     public OpeningHoursConfig[] OpeningHours { get; set; } = [];
 
-    public class OpeningHoursConfig {
-        public DayOfWeek DayOfWeek { get; set; }
-        public TimeSpan ClosingTime { get; set; }
-        public TimeSpan OpeningTime { get; set; }
-    }
+    public record OpeningHoursConfig(DayOfWeek DayOfWeek, TimeSpan ClosingTime, TimeSpan OpeningTime);
 
-    public AttachmentsConfig Attachments { get; set; } = new AttachmentsConfig();
+    // Attachment handling configuration
+
+    public AttachmentsConfig Attachments { get; set; } = new();
 
     public class AttachmentsConfig {
         public long MaximumFileSize { get; set; } = 104_857_600; // 100 MB
     }
 
-    public IcsExportConfig IcsExport { get; set; } = new IcsExportConfig();
+    // ICalendar export configuration
+
+    public IcsExportConfig IcsExport { get; set; } = new();
 
     public class IcsExportConfig {
         public TimeSpan BackDays { get; set; } = TimeSpan.FromDays(90);
     }
 
-    public JournalConfig Journal { get; set; } = new JournalConfig();
+    // Journal configuration
+
+    public JournalConfig Journal { get; set; } = new();
 
     public class JournalConfig {
         public bool OnlyMastersCanWrite { get; set; } = false;

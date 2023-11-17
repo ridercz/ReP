@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Altairis.ReP.Web.TagHelpers;
+
 public partial class PlaintextTagHelper(HtmlEncoder htmlEncoder) : TagHelper {
     private const string LINK_PATTERN = @"((https?)+\:\/\/)[^\s]+";
     private const int MAX_PATH_LENGTH = 20;
@@ -52,4 +53,5 @@ public partial class PlaintextTagHelper(HtmlEncoder htmlEncoder) : TagHelper {
 
     [GeneratedRegex(LINK_PATTERN, RegexOptions.IgnoreCase, "cs-CZ")]
     private static partial Regex LinkRegex();
+
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
-
 namespace Altairis.ReP.Web.TagHelpers;
 
 public class FileSizeTagHelper : TagHelper {

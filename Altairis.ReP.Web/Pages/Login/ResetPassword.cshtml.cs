@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
+
 public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : PageModel {
     private readonly UserManager<ApplicationUser> userManager = userManager;
+
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -13,6 +16,8 @@ public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : Page
         public string Password { get; set; } = string.Empty;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnPostAsync(string userId, string token) {
         if (!this.ModelState.IsValid) return this.Page();
@@ -41,4 +46,5 @@ public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : Page
 
         return this.Page();
     }
+
 }

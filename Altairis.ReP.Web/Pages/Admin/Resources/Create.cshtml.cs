@@ -4,6 +4,8 @@ namespace Altairis.ReP.Web.Pages.Admin.Resources;
 public class CreateModel(RepDbContext dc) : PageModel {
     private readonly RepDbContext dc = dc;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -29,6 +31,8 @@ public class CreateModel(RepDbContext dc) : PageModel {
         public bool ResourceEnabled { get; set; } = true;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();

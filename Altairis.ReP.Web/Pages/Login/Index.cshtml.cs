@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.Login;
+
 public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) : PageModel {
     private readonly SignInManager<ApplicationUser> signInManager = signInManager;
     private readonly UserManager<ApplicationUser> userManager = userManager;
+
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -19,6 +22,8 @@ public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManage
         public bool RememberMe { get; set; }
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync() => await this.userManager.Users.AnyAsync() ? this.Page() : this.RedirectToPage("/FirstRun");
 

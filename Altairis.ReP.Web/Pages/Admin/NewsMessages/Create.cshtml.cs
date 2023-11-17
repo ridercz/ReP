@@ -9,6 +9,8 @@ public class CreateModel(RepDbContext dc, IDateProvider dateProvider, ITemplated
     private readonly IDateProvider dateProvider = dateProvider;
     private readonly ITemplatedMailerService mailer = mailer;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -21,6 +23,8 @@ public class CreateModel(RepDbContext dc, IDateProvider dateProvider, ITemplated
         public string Text { get; set; } = string.Empty;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();

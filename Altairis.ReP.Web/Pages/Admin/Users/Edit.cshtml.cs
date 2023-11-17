@@ -7,6 +7,8 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
     private readonly UserManager<ApplicationUser> userManager = userManager;
     private readonly IOptions<AppSettings> options = options;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -37,14 +39,18 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
 
     }
 
+    // Output model
+
     public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.AvailableCultures.Select(c => new SelectListItem(c.NativeName, c.Name));
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int userId) {
         var user = await this.userManager.FindByIdAsync(userId.ToString());
         if (user == null) return this.NotFound();
 
         this.Input = new InputModel {
-            Email = user!.Email ??  throw new ImpossibleException(),
+            Email = user!.Email ?? throw new ImpossibleException(),
             UserEnabled = user.Enabled,
             Language = user.Language,
             PhoneNumber = user.PhoneNumber,

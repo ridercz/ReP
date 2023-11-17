@@ -6,7 +6,7 @@ public class DirectoryEntry {
     public int Id { get; set; }
 
     [Required, MaxLength(100)]
-    public string DisplayName { get; set; }     = string.Empty;
+    public string DisplayName { get; set; } = string.Empty;
 
     [MaxLength(100), EmailAddress]
     public string? Email { get; set; }

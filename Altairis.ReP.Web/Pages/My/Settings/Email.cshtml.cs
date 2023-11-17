@@ -2,9 +2,12 @@ using Altairis.Services.Mailing.Templating;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My.Settings;
+
 public class EmailModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService) : PageModel {
     private readonly UserManager<ApplicationUser> userManager = userManager;
     private readonly ITemplatedMailerService mailer = mailerService;
+
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -19,6 +22,8 @@ public class EmailModel(UserManager<ApplicationUser> userManager, ITemplatedMail
         public string CurrentPassword { get; set; } = string.Empty;
 
     }
+
+    // Handlers
 
     public async Task OnGetAsync() {
         var me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();

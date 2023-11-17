@@ -2,7 +2,6 @@ using Altairis.Services.DateProvider;
 using Ical.Net;
 using Ical.Net.DataTypes;
 using Ical.Net.Serialization;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Altairis.ReP.Web;
 

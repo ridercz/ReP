@@ -3,6 +3,8 @@ namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 public class CreateModel(RepDbContext dc) : PageModel {
     private readonly RepDbContext dc = dc;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -18,6 +20,8 @@ public class CreateModel(RepDbContext dc) : PageModel {
         public string? PhoneNumber { get; set; }
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();

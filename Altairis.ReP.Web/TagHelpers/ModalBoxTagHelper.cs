@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Altairis.ReP.Web.TagHelpers;
+
 [HtmlTargetElement("modal-box", Attributes = "id,message")]
 public class ModalBoxTagHelper : TagHelper {
 
@@ -30,5 +31,5 @@ public class ModalBoxTagHelper : TagHelper {
         output.Content.AppendHtmlLine($"<footer><a href=\"{this.TargetUrl}\" class=\"button\">{UI._OK}</a></footer>");
         output.Content.AppendHtmlLine("</article>");
     }
-}
 
+}

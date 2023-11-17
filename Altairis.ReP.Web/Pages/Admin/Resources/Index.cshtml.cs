@@ -1,12 +1,17 @@
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
+
 public class IndexModel(RepDbContext dc) : PageModel {
     private readonly RepDbContext dc = dc;
+
+    // Output model
 
     public IEnumerable<ResourceInfo> Resources { get; set; } = new List<ResourceInfo>();
 
     public record ResourceInfo(string? Description, string Name, int Id, string ForegroundColor, string BackgroundColor) {
         public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
     }
+
+    // Handlers
 
     public async Task OnGetAsync() {
         var q = from r in this.dc.Resources

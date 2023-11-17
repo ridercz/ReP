@@ -1,6 +1,7 @@
 ﻿@page
-@model Altairis.ReP.Web.Pages.Admin.IndexModel
-@{ this.ViewBag.Title = UI.Admin_Index_Title; }
+@{
+    this.ViewBag.Title = UI.Admin_Index_Title;
+}
 
 <ul class="tasklist">
     <li><a class="button" asp-page="Users/Index"><i class="fas fa-fw fa-users"></i> @UI.Admin_Index_ManageUsers</a></li>

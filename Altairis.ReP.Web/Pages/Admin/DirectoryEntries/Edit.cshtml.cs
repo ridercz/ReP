@@ -3,6 +3,8 @@ namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 public class EditModel(RepDbContext dc) : PageModel {
     private readonly RepDbContext dc = dc;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -18,6 +20,8 @@ public class EditModel(RepDbContext dc) : PageModel {
         public string? PhoneNumber { get; set; }
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int directoryEntryId) {
         var de = await this.dc.DirectoryEntries.FindAsync(directoryEntryId);

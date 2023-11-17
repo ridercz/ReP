@@ -6,6 +6,8 @@ public class ForgotPasswordModel(UserManager<ApplicationUser> userManager, ITemp
     private readonly UserManager<ApplicationUser> userManager = userManager;
     private readonly ITemplatedMailerService mailer = mailerService;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -15,6 +17,8 @@ public class ForgotPasswordModel(UserManager<ApplicationUser> userManager, ITemp
         public string UserName { get; set; } = string.Empty;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();

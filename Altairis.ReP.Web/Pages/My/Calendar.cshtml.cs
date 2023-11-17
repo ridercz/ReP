@@ -8,6 +8,8 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
     private readonly IDateProvider dateProvider = dateProvider;
     private readonly IOptions<AppSettings> options = optionsAccessor;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -24,15 +26,13 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     }
 
+    // Output model
+
     public bool CanManageEntries => this.options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
     public IEnumerable<ResourceTag> Resources { get; set; } = Enumerable.Empty<ResourceTag>();
 
-    public class ResourceTag {
-        public required string Name { get; set; }
-        public required string ForegroundColor { get; set; }
-        public required string BackgroundColor { get; set; }
-
+    public record ResourceTag(string Name, string ForegroundColor, string BackgroundColor) {
         public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
     }
 
@@ -49,6 +49,8 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
     public DateTime DateNext { get; set; }
 
     public string ResourceAuthorizationKey { get; set; } = string.Empty;
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int? year, int? month) {
         // Redirect to current month
@@ -88,6 +90,8 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         return this.RedirectToPage(pageName: null, pageHandler: null, fragment: string.Empty);
     }
 
+    // Helpers
+
     private async Task Init(int year, int month) {
         // Get user RAK
         this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => this.User.Identity!.Name!.Equals(x.UserName))).ResourceAuthorizationKey;
@@ -101,11 +105,7 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         // Get all resources for tags
         this.Resources = await this.dc.Resources
             .OrderBy(x => x.Name)
-            .Select(x => new ResourceTag {
-                Name = x.Name,
-                ForegroundColor = x.ForegroundColor,
-                BackgroundColor = x.BackgroundColor
-            })
+            .Select(x => new ResourceTag(x.Name, x.ForegroundColor, x.BackgroundColor))
             .ToListAsync();
 
         // Get all reservations in this month

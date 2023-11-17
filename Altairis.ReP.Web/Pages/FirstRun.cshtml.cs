@@ -2,8 +2,11 @@ using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages;
+
 public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel {
     private readonly UserManager<ApplicationUser> userManager = userManager;
+
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -23,6 +26,8 @@ public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel
         public string Password { get; set; } = string.Empty;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync() {
         if (await this.userManager.Users.AnyAsync()) return this.NotFound();

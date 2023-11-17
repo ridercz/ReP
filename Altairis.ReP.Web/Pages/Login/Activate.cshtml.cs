@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Altairis.ReP.Web.Pages.Login;
 public class ActivateModel(UserManager<ApplicationUser> userManager) : PageModel {
-    
     private readonly UserManager<ApplicationUser> userManager = userManager;
+
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
-    public string NewUserName { get; set; } = string.Empty;
 
     public class InputModel {
 
@@ -17,6 +16,12 @@ public class ActivateModel(UserManager<ApplicationUser> userManager) : PageModel
         public string Password { get; set; } = string.Empty;
 
     }
+
+    // Output model
+
+    public string NewUserName { get; set; } = string.Empty;
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int userId, string token) {
         // Get user

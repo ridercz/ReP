@@ -4,6 +4,8 @@ namespace Altairis.ReP.Web.Pages.Admin.Resources;
 public class EditModel(RepDbContext dc) : PageModel {
     private readonly RepDbContext dc = dc;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -29,6 +31,8 @@ public class EditModel(RepDbContext dc) : PageModel {
         public bool ResourceEnabled { get; set; } = true;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int resourceId) {
         var resource = await this.dc.Resources.FindAsync(resourceId);

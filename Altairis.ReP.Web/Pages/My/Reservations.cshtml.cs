@@ -14,6 +14,8 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
     private readonly ResourceAttachmentProcessor attachmentProcessor = attachmentProcessor;
     private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.", nameof(optionsAccessor));
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -29,6 +31,8 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
         public string? Comment { get; set; }
     }
+
+    // Output model
 
     public bool CanManageEntries => this.options.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
@@ -48,74 +52,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
     public string ResourceAuthorizationKey { get; set; } = string.Empty;
 
-    private async Task<bool> Init(int resourceId) {
-        // Get resource
-        this.Resource = await this.dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId) ?? throw new ImpossibleException();
-        if (this.Resource == null) return false;
-        this.CanDoReservation = this.Resource.Enabled || this.User.IsPrivilegedUser();
-
-        // Get user RAK
-        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName!.Equals(this.User.Identity!.Name))).ResourceAuthorizationKey;
-
-        // Get last Monday as the start date
-        this.CalendarDateBegin = this.dateProvider.Today;
-        while (this.CalendarDateBegin.DayOfWeek != CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) this.CalendarDateBegin = this.CalendarDateBegin.AddDays(-1);
-
-        // Get future reservations
-        var qr = from r in this.dc.Reservations
-                 where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
-                 select new CalendarEvent {
-                     Id = "reservation_" + r.Id,
-                     BackgroundColor = r.System ? r.Resource!.ForegroundColor : r.Resource!.BackgroundColor,
-                     ForegroundColor = r.System ? r.Resource.BackgroundColor : r.Resource.ForegroundColor,
-                     CssClass = r.System ? "system" : string.Empty,
-                     DateBegin = r.DateBegin,
-                     DateEnd = r.DateEnd,
-                     Name = r.System ? r.Comment : r.User!.DisplayName,
-                     Description = r.System ? r.User!.DisplayName : r.Comment,
-                     IsFullDay = false,
-                 };
-
-        // Get Future calendar entries
-        var qe = from e in this.dc.CalendarEntries
-                 where e.Date >= this.CalendarDateBegin
-                 orderby e.Date
-                 select new CalendarEvent {
-                     Id = "event_" + e.Id,
-                     BackgroundColor = this.options.Design.CalendarEntryBgColor,
-                     ForegroundColor = this.options.Design.CalendarEntryFgColor,
-                     DateBegin = e.Date,
-                     DateEnd = e.Date,
-                     Name = e.Title,
-                     IsFullDay = true,
-                     Href = "#event_detail_" + e.Id,
-                 };
-        var qd = from e in this.dc.CalendarEntries
-                 where e.Date >= this.CalendarDateBegin
-                 orderby e.Date
-                 select new CalendarEntryInfo {
-                     Id = e.Id,
-                     Date = e.Date,
-                     Title = e.Title,
-                     Comment = e.Comment
-                 };
-
-        // Materialize queries
-        var qri = await qr.ToListAsync();
-        var qei = await qe.ToListAsync();
-        this.Reservations = qei.Concat(qri);
-        this.CalendarEntries = await qd.ToListAsync();
-
-        // Get calendar end date
-        var lastEventEnd = this.Reservations.Max(x => x.DateEnd);
-        this.CalendarDateEnd = this.CalendarDateBegin.AddMonths(1);
-        if (lastEventEnd.HasValue && lastEventEnd > this.CalendarDateEnd) this.CalendarDateEnd = lastEventEnd.Value;
-
-        // Get attachments
-        if (this.options.Features.UseAttachments) this.Attachments = await this.dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
-
-        return true;
-    }
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int resourceId) {
         if (!await this.Init(resourceId)) return this.NotFound();
@@ -188,6 +125,77 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
         await this.dc.SaveChangesAsync();
 
         return this.RedirectToPage("Reservations", string.Empty, new { resourceId }, "created");
+    }
+    
+    // Helpers
+
+    private async Task<bool> Init(int resourceId) {
+        // Get resource
+        this.Resource = await this.dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId) ?? throw new ImpossibleException();
+        if (this.Resource == null) return false;
+        this.CanDoReservation = this.Resource.Enabled || this.User.IsPrivilegedUser();
+
+        // Get user RAK
+        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName!.Equals(this.User.Identity!.Name))).ResourceAuthorizationKey;
+
+        // Get last Monday as the start date
+        this.CalendarDateBegin = this.dateProvider.Today;
+        while (this.CalendarDateBegin.DayOfWeek != CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) this.CalendarDateBegin = this.CalendarDateBegin.AddDays(-1);
+
+        // Get future reservations
+        var qr = from r in this.dc.Reservations
+                 where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
+                 select new CalendarEvent {
+                     Id = "reservation_" + r.Id,
+                     BackgroundColor = r.System ? r.Resource!.ForegroundColor : r.Resource!.BackgroundColor,
+                     ForegroundColor = r.System ? r.Resource.BackgroundColor : r.Resource.ForegroundColor,
+                     CssClass = r.System ? "system" : string.Empty,
+                     DateBegin = r.DateBegin,
+                     DateEnd = r.DateEnd,
+                     Name = r.System ? r.Comment : r.User!.DisplayName,
+                     Description = r.System ? r.User!.DisplayName : r.Comment,
+                     IsFullDay = false,
+                 };
+
+        // Get Future calendar entries
+        var qe = from e in this.dc.CalendarEntries
+                 where e.Date >= this.CalendarDateBegin
+                 orderby e.Date
+                 select new CalendarEvent {
+                     Id = "event_" + e.Id,
+                     BackgroundColor = this.options.Design.CalendarEntryBgColor,
+                     ForegroundColor = this.options.Design.CalendarEntryFgColor,
+                     DateBegin = e.Date,
+                     DateEnd = e.Date,
+                     Name = e.Title,
+                     IsFullDay = true,
+                     Href = "#event_detail_" + e.Id,
+                 };
+        var qd = from e in this.dc.CalendarEntries
+                 where e.Date >= this.CalendarDateBegin
+                 orderby e.Date
+                 select new CalendarEntryInfo {
+                     Id = e.Id,
+                     Date = e.Date,
+                     Title = e.Title,
+                     Comment = e.Comment
+                 };
+
+        // Materialize queries
+        var qri = await qr.ToListAsync();
+        var qei = await qe.ToListAsync();
+        this.Reservations = qei.Concat(qri);
+        this.CalendarEntries = await qd.ToListAsync();
+
+        // Get calendar end date
+        var lastEventEnd = this.Reservations.Max(x => x.DateEnd);
+        this.CalendarDateEnd = this.CalendarDateBegin.AddMonths(1);
+        if (lastEventEnd.HasValue && lastEventEnd > this.CalendarDateEnd) this.CalendarDateEnd = lastEventEnd.Value;
+
+        // Get attachments
+        if (this.options.Features.UseAttachments) this.Attachments = await this.dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
+
+        return true;
     }
 
 }

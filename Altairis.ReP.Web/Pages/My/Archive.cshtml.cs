@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Altairis.ReP.Web.Pages.My;
+
 public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userManager) : PageModel {
     private readonly RepDbContext dc = dc;
     private readonly UserManager<ApplicationUser> userManager = userManager;
+
+    // Output model
 
     public IEnumerable<ReservationInfo> Reservations { get; set; } = Enumerable.Empty<ReservationInfo>();
 
@@ -24,6 +26,8 @@ public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userMana
 
     }
 
+    // Handlers
+
     public async Task OnGetAsync() {
         var userId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException());
         var reservationsQuery = from r in this.dc.Reservations
@@ -39,4 +43,5 @@ public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userMana
                                 };
         this.Reservations = await reservationsQuery.ToListAsync();
     }
+
 }

@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My.Settings;
+
 public class PasswordModel(UserManager<ApplicationUser> userManager) : PageModel {
     private readonly UserManager<ApplicationUser> userManager = userManager;
+
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -16,6 +19,8 @@ public class PasswordModel(UserManager<ApplicationUser> userManager) : PageModel
         public string NewPassword { get; set; } = string.Empty;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();

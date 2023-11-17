@@ -1,16 +1,16 @@
 using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin;
+
 public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvider) : PageModel {
     private readonly RepDbContext dc = dc;
     private readonly OpeningHoursProvider hoursProvider = hoursProvider;
 
-    public IEnumerable<OpeningHoursInfo> StandardOpeningHours => this.hoursProvider.GetStandardOpeningHours();
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
-    public IEnumerable<OpeningHoursChange> OpeningHoursChanges { get; set; } = Enumerable.Empty<OpeningHoursChange>();
 
     public class InputModel {
 
@@ -24,6 +24,14 @@ public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvid
         public TimeSpan ClosingTime { get; set; } = TimeSpan.Zero;
 
     }
+
+    // Output model
+
+    public IEnumerable<OpeningHoursInfo> StandardOpeningHours => this.hoursProvider.GetStandardOpeningHours();
+
+    public IEnumerable<OpeningHoursChange> OpeningHoursChanges { get; set; } = Enumerable.Empty<OpeningHoursChange>();
+
+    // Handlers
 
     public async Task OnGetAsync() => this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
 

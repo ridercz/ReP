@@ -3,8 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.My.Settings;
+
 public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
     private readonly UserManager<ApplicationUser> userManager = userManager;
+
+    // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
@@ -28,9 +31,13 @@ public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
 
     }
 
+    // Output model
+
     public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.AvailableCultures.Select(c => new SelectListItem(c.NativeName, c.Name));
 
     public ApplicationUser? Me { get; set; }
+
+    // Handlers
 
     public async Task OnGetAsync() {
         this.Me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();

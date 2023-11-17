@@ -10,6 +10,8 @@ public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMai
     private readonly ITemplatedMailerService mailer = mailerService;
     private readonly IOptions<AppSettings> options = options;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -37,7 +39,11 @@ public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMai
 
     }
 
+    // Output model
+
     public IEnumerable<SelectListItem> AllLanguages => LanguageSwitchViewComponent.AvailableCultures.Select(c => new SelectListItem(c.NativeName, c.Name));
+
+    // Handlers
 
     public void OnGet() => this.Input.ShowInMemberDirectory = this.options.Value.Features.UseMemberDirectory;
 

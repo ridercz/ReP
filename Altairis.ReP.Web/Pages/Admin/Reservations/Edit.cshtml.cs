@@ -7,6 +7,8 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
     private readonly RepDbContext dc = dc;
     private readonly ITemplatedMailerService mailer = mailer;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -22,6 +24,8 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
 
     }
 
+    // Output model
+
     public int ResourceId { get; set; }
 
     public string ResourceName { get; set; } = string.Empty;
@@ -34,20 +38,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
 
     public CultureInfo NotificationCulture { get; set; } = CultureInfo.InvariantCulture;
 
-    public async Task<Reservation?> Init(int reservationId) {
-        var r = await this.dc.Reservations.Include(x => x.Resource).Include(x => x.User).SingleOrDefaultAsync(x => x.Id == reservationId);
-        if (r != null) {
-            this.ResourceId = r.ResourceId;
-            this.ResourceName = r.Resource!.Name;
-            this.UserId = r.UserId;
-            this.UserName = r!.User!.UserName ?? throw new ImpossibleException();
-            if (r.User.SendNotifications && r.User.UserName != this.User.Identity!.Name) {
-                this.NotificationEmail = r!.User!.Email ?? throw new ImpossibleException();
-                this.NotificationCulture = new CultureInfo(r.User.Language);
-            }
-        }
-        return r;
-    }
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int reservationId) {
         var r = await this.Init(reservationId);
@@ -119,6 +110,23 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
         this.dc.Reservations.Remove(r);
         await this.dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "deleted");
+    }
+
+    // Helpers
+
+    public async Task<Reservation?> Init(int reservationId) {
+        var r = await this.dc.Reservations.Include(x => x.Resource).Include(x => x.User).SingleOrDefaultAsync(x => x.Id == reservationId);
+        if (r != null) {
+            this.ResourceId = r.ResourceId;
+            this.ResourceName = r.Resource!.Name;
+            this.UserId = r.UserId;
+            this.UserName = r!.User!.UserName ?? throw new ImpossibleException();
+            if (r.User.SendNotifications && r.User.UserName != this.User.Identity!.Name) {
+                this.NotificationEmail = r!.User!.Email ?? throw new ImpossibleException();
+                this.NotificationCulture = new CultureInfo(r.User.Language);
+            }
+        }
+        return r;
     }
 
 }

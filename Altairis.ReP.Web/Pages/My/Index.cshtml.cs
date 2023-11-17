@@ -5,11 +5,14 @@ using Ical.Net.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
+
 public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, OpeningHoursProvider hoursProvider) : PageModel {
     private readonly RepDbContext dc = dc;
     private readonly UserManager<ApplicationUser> userManager = userManager;
     private readonly IDateProvider dateProvider = dateProvider;
     private readonly OpeningHoursProvider hoursProvider = hoursProvider;
+
+    // Output model
 
     public IEnumerable<Resource> Resources { get; set; } = Enumerable.Empty<Resource>();
 
@@ -26,6 +29,8 @@ public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManage
     public string? LastNewsText { get; set; }
 
     public record ReservationInfo(int Id, int ResourceId, string ResourceName, DateTime DateBegin, DateTime DateEnd, bool CanBeDeleted);
+
+    // Handlers
 
     public async Task OnGetAsync() {
         // Get operning hours

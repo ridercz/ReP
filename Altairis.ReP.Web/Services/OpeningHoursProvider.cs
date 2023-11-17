@@ -18,12 +18,7 @@ public class OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDatePr
         var ohch = this.dc.OpeningHoursChanges.SingleOrDefault(x => x.Date == date);
         return ohch == null
             ? this.GetStandardOpeningHours(date)
-            : new OpeningHoursInfo {
-                Date = date,
-                IsException = true,
-                OpeningTime = ohch.OpeningTime,
-                ClosingTime = ohch.ClosingTime
-            };
+            : new OpeningHoursInfo(date, true, ohch.OpeningTime, ohch.ClosingTime);
     }
 
     public IEnumerable<OpeningHoursInfo> GetOpeningHours(DateTime dateFrom, DateTime dateTo) {
@@ -33,12 +28,7 @@ public class OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDatePr
             var ohch = ohchs.SingleOrDefault(x => x.Date == date);
             yield return ohch == null
                 ? this.GetStandardOpeningHours(date)
-                : new OpeningHoursInfo {
-                    Date = date,
-                    IsException = true,
-                    OpeningTime = ohch.OpeningTime,
-                    ClosingTime = ohch.ClosingTime
-                };
+                : new OpeningHoursInfo(date, true, ohch.OpeningTime, ohch.ClosingTime);
             date = date.AddDays(1);
         }
     }
@@ -55,22 +45,12 @@ public class OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDatePr
     private OpeningHoursInfo GetStandardOpeningHours(DateTime date) {
         var value = this.optionsAccessor.Value.OpeningHours.FirstOrDefault(x => x.DayOfWeek == date.DayOfWeek);
         return value == null
-            ? new OpeningHoursInfo { Date = date.Date }
-            : new OpeningHoursInfo { Date = date.Date, OpeningTime = value.OpeningTime, ClosingTime = value.ClosingTime, IsException = false };
+            ? new OpeningHoursInfo(date.Date, default, default, default) : new OpeningHoursInfo(date.Date, false, value.OpeningTime, value.ClosingTime);
     }
 
 }
 
-public class OpeningHoursInfo {
-
-    public DateTime Date { get; set; }
-
-    public bool IsException { get; set; }
-
-    public TimeSpan OpeningTime { get; set; }
-
-    public TimeSpan ClosingTime { get; set; }
-
+public record OpeningHoursInfo(DateTime Date, bool IsException, TimeSpan OpeningTime, TimeSpan ClosingTime) {
     public DateTime AbsoluteOpeningTime => this.Date.Add(this.OpeningTime);
 
     public DateTime AbsoluteClosingTime => this.Date.Add(this.ClosingTime);

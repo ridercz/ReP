@@ -3,6 +3,8 @@ namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
 public class EditModel(RepDbContext dc) : PageModel {
     private readonly RepDbContext dc = dc;
 
+    // Input model
+
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -15,6 +17,8 @@ public class EditModel(RepDbContext dc) : PageModel {
         public string Text { get; set; } = string.Empty;
 
     }
+
+    // Handlers
 
     public async Task<IActionResult> OnGetAsync(int newsMessageId) {
         var m = await this.dc.NewsMessages.FindAsync(newsMessageId);
