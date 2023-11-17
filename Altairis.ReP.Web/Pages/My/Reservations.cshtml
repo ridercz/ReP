@@ -1,4 +1,4 @@
-﻿@page "{resourceId}"
+﻿@page "{resourceId:int:min(1)}/{handler?}/{attachmentId:int:min(1)?}"
 @model Altairis.ReP.Web.Pages.My.ReservationsModel
 @{
     this.ViewBag.Title = Model.Resource!.Name;

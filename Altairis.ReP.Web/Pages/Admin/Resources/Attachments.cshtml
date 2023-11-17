@@ -1,4 +1,4 @@
-﻿@page "{resourceId:int}"
+﻿@page "{resourceId:int:min(1)}"
 @model Altairis.ReP.Web.Pages.Admin.Resources.AttachmentsModel
 @{
     this.ViewBag.Title = string.Format(UI.Admin_Resources_Attachments_Title, this.Model.ResourceName);
