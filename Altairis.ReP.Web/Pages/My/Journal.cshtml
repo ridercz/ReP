@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}/{attachmentId:int:min(1)?}"
 @model Altairis.ReP.Web.Pages.My.JournalModel
 @{
     this.ViewBag.Title = UI.My_Journal_Title;
@@ -9,7 +9,7 @@
 </p>
 
 <div id="new" class="modal" visible="Model.CanAddEntry">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <header>@UI.My_Journal_New</header>
         <p>
             <label asp-for="Input.ResourceId"></label>
@@ -23,6 +23,10 @@
             <label asp-for="Input.Text"></label>
             <span class="control-icons"><i class="fa-brands fa-markdown" title="Markdown"></i></span>
             <textarea asp-for="Input.Text"></textarea>
+        </p>
+        <p visible="this.OptionsAccessor.Value.Features.UseAttachments">
+            <label asp-for="Input.Attachments"></label>
+            <input asp-for="Input.Attachments" />
         </p>
         <div asp-validation-summary="All"></div>
         <footer>
@@ -46,6 +50,14 @@
         <span class="tag" style="@style" visible="@item.Resource != null">@item.Resource!.Name</span>
     </div>
     <markdown text="@item.Text"></markdown>
+
+    <ul visible="item.Attachments.Any()">
+        @foreach (var attachment in item.Attachments) {
+            <li>
+                <a asp-page-handler="attachment" asp-route-attachmentId="@attachment.Id">@attachment.FileName</a> (<file-size value="@attachment.FileSize" />)
+            </li>
+        }
+    </ul>
 }
 
 <modal-box id="created" message="@UI.My_Journal_Msg_Created" />

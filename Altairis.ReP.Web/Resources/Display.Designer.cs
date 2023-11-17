@@ -70,6 +70,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachments.
+        /// </summary>
+        public static string Attachments {
+            get {
+                return ResourceManager.GetString("Attachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Background color.
         /// </summary>
         public static string BackgroundColor {

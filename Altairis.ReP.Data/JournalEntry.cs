@@ -28,4 +28,8 @@ public class JournalEntry {
     [Required]
     public string Text { get; set; } = string.Empty;
 
+    // Navigation properties
+
+    public virtual ICollection<JournalEntryAttachment> Attachments { get; set; } = new HashSet<JournalEntryAttachment>();
+
 }

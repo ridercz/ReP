@@ -2,25 +2,25 @@
 
 namespace Altairis.ReP.Data;
 
-public class ResourceAttachment {
+public class ResourceAttachment : IAttachment {
 
     [Key]
     public int Id { get; set; }
 
-    [ForeignKey(nameof(this.Resource))]
-    public int ResourceId { get; set; }
-
-    [ForeignKey(nameof(this.ResourceId))]
-    public virtual Resource? Resource { get; set; }
-
     [Required, MaxLength(100)]
-    public required string FileName { get; set; }
+    public string FileName { get; set; } = string.Empty;
 
     public long FileSize { get; set; }
 
     public DateTime DateCreated { get; set; }
 
     [Required, MaxLength(100)]
-    public required string StoragePath { get; set; }
+    public string StoragePath { get; set; } = string.Empty;
+
+    [ForeignKey(nameof(this.Resource))]
+    public int ResourceId { get; set; }
+
+    [ForeignKey(nameof(this.ResourceId))]
+    public virtual Resource? Resource { get; set; }
 
 }

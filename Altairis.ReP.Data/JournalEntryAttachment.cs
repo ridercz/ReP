@@ -2,26 +2,25 @@
 
 namespace Altairis.ReP.Data;
 
-public class JournalEntryAttachment {
+public class JournalEntryAttachment : IAttachment {
 
     [Key]
     public int Id { get; set; }
 
-    [ForeignKey(nameof(JournalEntry))]
-    public int JournalEntryId { get; set; }
-
-    [ForeignKey(nameof(JournalEntryId))]
-    public virtual JournalEntry? JournalEntry { get; set; }
-
     [Required, MaxLength(100)]
-    public required string FileName { get; set; }
+    public string FileName { get; set; } = string.Empty;
 
     public long FileSize { get; set; }
 
     public DateTime DateCreated { get; set; }
 
     [Required, MaxLength(100)]
-    public required string StoragePath { get; set; }
+    public string StoragePath { get; set; } = string.Empty;
 
+    [ForeignKey(nameof(JournalEntry))]
+    public int JournalEntryId { get; set; }
+
+    [ForeignKey(nameof(JournalEntryId))]
+    public virtual JournalEntry? JournalEntry { get; set; }
 
 }

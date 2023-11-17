@@ -140,15 +140,16 @@ builder.Services.AddResourceTemplatedMailerService(new ResourceTemplatedMailerSe
 });
 
 // Configure misc services
-builder.Services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
 builder.Services.AddScoped<OpeningHoursProvider>();
 builder.Services.AddScoped<ResourceAttachmentProcessor>();
+builder.Services.AddScoped<JournalAttachmentProcessor>();
+builder.Services.AddScoped<CalendarGenerator>();
+builder.Services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
 builder.Services.Configure<TimeTagHelperOptions>(options => {
     options.YesterdayDateFormatter = dt => string.Format(UI.TimeTagHelper_Yesterday, dt);
     options.TodayDateFormatter = dt => string.Format(UI.TimeTagHelper_Today, dt);
     options.TomorrowDateFormatter = dt => string.Format(UI.TimeTagHelper_Tomorrow, dt);
 });
-builder.Services.AddScoped<CalendarGenerator>();
 
 // Build application
 var app = builder.Build();

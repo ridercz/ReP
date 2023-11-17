@@ -243,4 +243,7 @@
   <data name="FileSize" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
 </root>
