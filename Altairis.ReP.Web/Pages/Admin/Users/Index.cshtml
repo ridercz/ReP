@@ -8,7 +8,7 @@
             <th>@Display.DisplayName</th>
             <th>@Display.Email</th>
             <th>@Display.PhoneNumber</th>
-            <th>@Display.Language</th>
+            <th class="r">@Display.Language</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +19,7 @@
             </td>
         </tr>
         @foreach (var item in this.Model.Users) {
+            var flagClass = "fi fi-" + item.Language[^2..].ToLowerInvariant();
             <tr>
                 <th>
                     @if (!item.Enabled) {
@@ -33,7 +34,7 @@
                 <td>@item.DisplayName</td>
                 <td><a href="mailto:@item.Email">@item.Email</a></td>
                 <td>@item.PhoneNumber</td>
-                <td>@item.Language[0..2]</td>
+                <td class="r"><span class="@flagClass"></span></td>
             </tr>
         }
     </tbody>
