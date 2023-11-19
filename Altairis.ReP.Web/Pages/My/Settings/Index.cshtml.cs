@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Altairis.ReP.Web.Pages.My.Settings;
 
 public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     // Input model
 
@@ -40,7 +39,7 @@ public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
     // Handlers
 
     public async Task OnGetAsync() {
-        this.Me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
+        this.Me = await userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
         this.Input.Language = this.Me.Language;
         this.Input.PhoneNumber = this.Me.PhoneNumber;
         this.Input.SendNotifications = this.Me.SendNotifications;
@@ -51,7 +50,7 @@ public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
-        this.Me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
+        this.Me = await userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
 
         this.Me.Language = this.Input.Language;
         this.Me.PhoneNumber = this.Input.PhoneNumber;
@@ -59,15 +58,15 @@ public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel {
         this.Me.SendNotifications = this.Input.SendNotifications;
         this.Me.DisplayName = this.Input.DisplayName;
         this.Me.ShowInMemberDirectory = this.Input.ShowInMemberDirectory;
-        await this.userManager.UpdateAsync(this.Me);
+        await userManager.UpdateAsync(this.Me);
 
         return this.RedirectToPage("Index", null, "saved");
     }
 
     public async Task<IActionResult> OnPostResetRakAsync() {
-        var me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
+        var me = await userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
         me.ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey();
-        await this.userManager.UpdateAsync(me);
+        await userManager.UpdateAsync(me);
         return this.RedirectToPage("Index", null, "resetrakdone");
     }
 

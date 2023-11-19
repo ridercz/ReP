@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.ReP.Web.Pages.Login;
 
 public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly SignInManager<ApplicationUser> signInManager = signInManager;
-    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     // Input model
 
@@ -25,11 +23,11 @@ public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManage
 
     // Handlers
 
-    public async Task<IActionResult> OnGetAsync() => await this.userManager.Users.AnyAsync() ? this.Page() : this.RedirectToPage("/FirstRun");
+    public async Task<IActionResult> OnGetAsync() => await userManager.Users.AnyAsync() ? this.Page() : this.RedirectToPage("/FirstRun");
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = "/") {
         if (this.ModelState.IsValid) {
-            var result = await this.signInManager.PasswordSignInAsync(
+            var result = await signInManager.PasswordSignInAsync(
                 this.Input.UserName,
                 this.Input.Password,
                 this.Input.RememberMe,

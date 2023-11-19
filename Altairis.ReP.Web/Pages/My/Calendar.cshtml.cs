@@ -3,11 +3,8 @@ using Altairis.TagHelpers;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions<AppSettings> optionsAccessor) : PageModel {
-    private readonly RepDbContext dc = dc;
-    private readonly IDateProvider dateProvider = dateProvider;
-    private readonly IOptions<AppSettings> options = optionsAccessor;
-
+public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions<AppSettings> options) : PageModel {
+    
     // Input model
 
     [BindProperty]
@@ -28,7 +25,7 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     // Output model
 
-    public bool CanManageEntries => this.options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
+    public bool CanManageEntries => options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
     public IEnumerable<ResourceTag> Resources { get; set; } = Enumerable.Empty<ResourceTag>();
 
@@ -54,7 +51,7 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     public async Task<IActionResult> OnGetAsync(int? year, int? month) {
         // Redirect to current month
-        if (!year.HasValue || !month.HasValue) return this.RedirectToPage(new { this.dateProvider.Today.Year, this.dateProvider.Today.Month });
+        if (!year.HasValue || !month.HasValue) return this.RedirectToPage(new { dateProvider.Today.Year, dateProvider.Today.Month });
 
         // Initialize data
         await this.Init(year.Value, month.Value);
@@ -67,8 +64,8 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
         // Delete entry
         if (this.CanManageEntries) {
-            this.dc.CalendarEntries.Remove(new CalendarEntry { Id = entryId });
-            await this.dc.SaveChangesAsync();
+            dc.CalendarEntries.Remove(new CalendarEntry { Id = entryId });
+            await dc.SaveChangesAsync();
         }
         return this.RedirectToPage(pageName: null, pageHandler: null, fragment: string.Empty);
     }
@@ -81,12 +78,12 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         if (!this.ModelState.IsValid || !this.CanManageEntries) return this.Page();
 
         // Create new entry
-        await this.dc.CalendarEntries.AddAsync(new CalendarEntry {
+        await dc.CalendarEntries.AddAsync(new CalendarEntry {
             Date = this.Input.Date,
             Comment = this.Input.Comment,
             Title = this.Input.Title
         });
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage(pageName: null, pageHandler: null, fragment: string.Empty);
     }
 
@@ -94,7 +91,7 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     private async Task Init(int year, int month) {
         // Get user RAK
-        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => this.User.Identity!.Name!.Equals(x.UserName))).ResourceAuthorizationKey;
+        this.ResourceAuthorizationKey = (await dc.Users.SingleAsync(x => this.User.Identity!.Name!.Equals(x.UserName))).ResourceAuthorizationKey;
 
         // Get month name for display
         this.DateBegin = new DateTime(year, month, 1);
@@ -103,13 +100,13 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         this.DateNext = this.DateBegin.AddMonths(+1);
 
         // Get all resources for tags
-        this.Resources = await this.dc.Resources
+        this.Resources = await dc.Resources
             .OrderBy(x => x.Name)
             .Select(x => new ResourceTag(x.Name, x.ForegroundColor, x.BackgroundColor))
             .ToListAsync();
 
         // Get all reservations in this month
-        var qr = from r in this.dc.Reservations
+        var qr = from r in dc.Reservations
                  where r.DateEnd >= this.DateBegin.AddDays(-6) && r.DateBegin < this.DateEnd.AddDays(6)
                  orderby r.DateBegin
                  select new CalendarEvent {
@@ -125,20 +122,20 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
                  };
 
         // Get all calendar entries in this month
-        var qe = from e in this.dc.CalendarEntries
+        var qe = from e in dc.CalendarEntries
                  where e.Date >= this.DateBegin.AddDays(-6) && e.Date < this.DateEnd.AddDays(6)
                  orderby e.Date
                  select new CalendarEvent {
                      Id = "event_" + e.Id,
-                     BackgroundColor = this.options.Value.Design.CalendarEntryBgColor,
-                     ForegroundColor = this.options.Value.Design.CalendarEntryFgColor,
+                     BackgroundColor = options.Value.Design.CalendarEntryBgColor,
+                     ForegroundColor = options.Value.Design.CalendarEntryFgColor,
                      DateBegin = e.Date,
                      DateEnd = e.Date,
                      Name = e.Title,
                      IsFullDay = true,
                      Href = "#event_detail_" + e.Id,
                  };
-        var qd = from e in this.dc.CalendarEntries
+        var qd = from e in dc.CalendarEntries
                  where e.Date >= this.DateBegin.AddDays(-6) && e.Date < this.DateEnd.AddDays(6)
                  orderby e.Date
                  select new CalendarEntryInfo {

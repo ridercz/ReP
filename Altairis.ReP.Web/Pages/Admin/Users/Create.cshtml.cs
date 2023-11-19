@@ -5,10 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
-public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailerService, IOptions<AppSettings> options) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager;
-    private readonly ITemplatedMailerService mailer = mailerService;
-    private readonly IOptions<AppSettings> options = options;
+public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMailerService mailer, IOptions<AppSettings> options) : PageModel {
 
     // Input model
 
@@ -45,7 +42,7 @@ public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMai
 
     // Handlers
 
-    public void OnGet() => this.Input.ShowInMemberDirectory = this.options.Value.Features.UseMemberDirectory;
+    public void OnGet() => this.Input.ShowInMemberDirectory = options.Value.Features.UseMemberDirectory;
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
@@ -57,24 +54,24 @@ public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMai
             PhoneNumber = this.Input.PhoneNumber,
             Language = this.Input.Language,
             DisplayName = this.Input.DisplayName,
-            ShowInMemberDirectory = this.options.Value.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory,
+            ShowInMemberDirectory = options.Value.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory,
             ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey()
         };
-        var result = await this.userManager.CreateAsync(newUser);
+        var result = await userManager.CreateAsync(newUser);
         if (!this.IsIdentitySuccess(result)) return this.Page();
 
         // Assign roles
-        if (this.Input.IsMaster) await this.userManager.AddToRoleAsync(newUser, ApplicationRole.Master);
-        if (this.Input.IsAdministrator) await this.userManager.AddToRoleAsync(newUser, ApplicationRole.Administrator);
+        if (this.Input.IsMaster) await userManager.AddToRoleAsync(newUser, ApplicationRole.Master);
+        if (this.Input.IsAdministrator) await userManager.AddToRoleAsync(newUser, ApplicationRole.Administrator);
 
         // Get e-mail confirmation URL
-        var token = await this.userManager.GenerateEmailConfirmationTokenAsync(newUser);
+        var token = await userManager.GenerateEmailConfirmationTokenAsync(newUser);
         var activationUrl = this.Url.Page("/Login/Activate", pageHandler: null, values: new { UserId = newUser.Id, Token = token }, protocol: this.Request.Scheme);
 
         // Send welcome mail
         var culture = new CultureInfo(this.Input.Language);
         var msg = new TemplatedMailMessageDto("Activation", newUser.Email);
-        await this.mailer.SendMessageAsync(msg, new {
+        await mailer.SendMessageAsync(msg, new {
             userName = newUser.UserName,
             url = activationUrl
         }, culture, culture);

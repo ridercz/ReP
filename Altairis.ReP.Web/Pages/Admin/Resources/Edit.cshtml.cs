@@ -1,8 +1,8 @@
 using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
+
 public class EditModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Input model
 
@@ -35,7 +35,7 @@ public class EditModel(RepDbContext dc) : PageModel {
     // Handlers
 
     public async Task<IActionResult> OnGetAsync(int resourceId) {
-        var resource = await this.dc.Resources.FindAsync(resourceId);
+        var resource = await dc.Resources.FindAsync(resourceId);
         if (resource == null) return this.NotFound();
 
         this.Input = new InputModel {
@@ -51,7 +51,7 @@ public class EditModel(RepDbContext dc) : PageModel {
     }
 
     public async Task<IActionResult> OnPostAsync(int resourceId) {
-        var resource = await this.dc.Resources.FindAsync(resourceId);
+        var resource = await dc.Resources.FindAsync(resourceId);
         if (resource == null) return this.NotFound();
 
         if (!this.ModelState.IsValid) return this.Page();
@@ -64,17 +64,17 @@ public class EditModel(RepDbContext dc) : PageModel {
         resource.BackgroundColor = this.Input.BackgroundColor;
         resource.Instructions = this.Input.Instructions;
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "saved");
     }
 
     public async Task<IActionResult> OnPostDeleteAsync(int resourceId) {
-        var resource = await this.dc.Resources.FindAsync(resourceId);
+        var resource = await dc.Resources.FindAsync(resourceId);
         if (resource == null) return this.NotFound();
 
-        this.dc.Resources.Remove(resource);
+        dc.Resources.Remove(resource);
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "deleted");
     }
 }

@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.ReP.Web.Pages.My;
 
 public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly RepDbContext dc = dc;
-    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     // Output model
 
@@ -29,8 +27,8 @@ public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userMana
     // Handlers
 
     public async Task OnGetAsync() {
-        var userId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException());
-        var reservationsQuery = from r in this.dc.Reservations
+        var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
+        var reservationsQuery = from r in dc.Reservations
                                 where r.UserId == userId
                                 orderby r.DateBegin descending
                                 select new ReservationInfo {

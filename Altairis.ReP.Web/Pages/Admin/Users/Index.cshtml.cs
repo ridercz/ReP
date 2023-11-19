@@ -1,7 +1,6 @@
 namespace Altairis.ReP.Web.Pages.Admin.Users;
 
 public class IndexModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Output model
 
@@ -12,7 +11,7 @@ public class IndexModel(RepDbContext dc) : PageModel {
     // Handlers
 
     public async Task OnGetAsync() {
-        var q = from u in this.dc.Users
+        var q = from u in dc.Users
                 orderby u.UserName
                 select new UserInfo(u.Id, u.UserName ?? string.Empty, u.DisplayName, u.Email ?? string.Empty, u.Language, u.PhoneNumber, u.Enabled, u.EmailConfirmed);
         this.Users = await q.ToListAsync();

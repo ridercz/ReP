@@ -1,8 +1,8 @@
 using Altairis.ValidationToolkit;
 
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
+
 public class CreateModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Input model
 
@@ -46,8 +46,8 @@ public class CreateModel(RepDbContext dc) : PageModel {
             ForegroundColor = this.Input.ForegroundColor,
             BackgroundColor = this.Input.BackgroundColor
         };
-        this.dc.Resources.Add(newResource);
-        await this.dc.SaveChangesAsync();
+        dc.Resources.Add(newResource);
+        await dc.SaveChangesAsync();
 
         return this.RedirectToPage("Index", null, "created");
     }

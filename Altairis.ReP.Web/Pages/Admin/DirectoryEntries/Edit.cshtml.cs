@@ -1,7 +1,6 @@
 namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 
 public class EditModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Input model
 
@@ -24,7 +23,7 @@ public class EditModel(RepDbContext dc) : PageModel {
     // Handlers
 
     public async Task<IActionResult> OnGetAsync(int directoryEntryId) {
-        var de = await this.dc.DirectoryEntries.FindAsync(directoryEntryId);
+        var de = await dc.DirectoryEntries.FindAsync(directoryEntryId);
         if (de == null) return this.NotFound();
 
         this.Input = new InputModel {
@@ -37,7 +36,7 @@ public class EditModel(RepDbContext dc) : PageModel {
     }
 
     public async Task<IActionResult> OnPostAsync(int directoryEntryId) {
-        var de = await this.dc.DirectoryEntries.FindAsync(directoryEntryId);
+        var de = await dc.DirectoryEntries.FindAsync(directoryEntryId);
         if (de == null) return this.NotFound();
 
         if (!this.ModelState.IsValid) return this.Page();
@@ -46,17 +45,17 @@ public class EditModel(RepDbContext dc) : PageModel {
         de.PhoneNumber = this.Input.PhoneNumber;
         de.Email = this.Input.Email;
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "saved");
     }
 
     public async Task<IActionResult> OnPostDeleteAsync(int directoryEntryId) {
-        var de = await this.dc.DirectoryEntries.FindAsync(directoryEntryId);
+        var de = await dc.DirectoryEntries.FindAsync(directoryEntryId);
         if (de == null) return this.NotFound();
 
-        this.dc.DirectoryEntries.Remove(de);
+        dc.DirectoryEntries.Remove(de);
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "deleted");
     }
 

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.ReP.Web.Pages.My.Settings;
 
 public class PasswordModel(UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager;
 
     // Input model
 
@@ -24,8 +23,8 @@ public class PasswordModel(UserManager<ApplicationUser> userManager) : PageModel
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
-        var me = await this.userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
-        var result = await this.userManager.ChangePasswordAsync(me, this.Input.CurrentPassword, this.Input.NewPassword);
+        var me = await userManager.GetUserAsync(this.User) ?? throw new ImpossibleException();
+        var result = await userManager.ChangePasswordAsync(me, this.Input.CurrentPassword, this.Input.NewPassword);
         return this.IsIdentitySuccess(result) ? this.RedirectToPage("Index", null, "changepassword") : this.Page();
     }
 

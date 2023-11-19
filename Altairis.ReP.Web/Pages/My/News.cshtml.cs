@@ -1,7 +1,6 @@
 namespace Altairis.ReP.Web.Pages.My;
 
 public class NewsModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Output model
 
@@ -9,6 +8,6 @@ public class NewsModel(RepDbContext dc) : PageModel {
 
     // Handlers
 
-    public async Task OnGetAsync() => this.Messages = await this.dc.NewsMessages.OrderByDescending(x => x.Date).ToListAsync();
+    public async Task OnGetAsync() => this.Messages = await dc.NewsMessages.OrderByDescending(x => x.Date).ToListAsync();
 
 }

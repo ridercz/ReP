@@ -7,10 +7,6 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.ReP.Web.Pages.My;
 
 public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, OpeningHoursProvider hoursProvider) : PageModel {
-    private readonly RepDbContext dc = dc;
-    private readonly UserManager<ApplicationUser> userManager = userManager;
-    private readonly IDateProvider dateProvider = dateProvider;
-    private readonly OpeningHoursProvider hoursProvider = hoursProvider;
 
     // Output model
 
@@ -34,11 +30,11 @@ public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManage
 
     public async Task OnGetAsync() {
         // Get operning hours
-        this.OpenToday = this.hoursProvider.GetOpeningHours(0);
-        this.OpenTomorrow = this.hoursProvider.GetOpeningHours(1);
+        this.OpenToday = hoursProvider.GetOpeningHours(0);
+        this.OpenTomorrow = hoursProvider.GetOpeningHours(1);
 
         // Get latest news message
-        var latestNews = await this.dc.NewsMessages.OrderByDescending(x => x.Date).FirstOrDefaultAsync();
+        var latestNews = await dc.NewsMessages.OrderByDescending(x => x.Date).FirstOrDefaultAsync();
         if (latestNews != null) {
             this.LastNewsDate = latestNews.Date;
             this.LastNewsTitle = latestNews.Title;
@@ -46,32 +42,32 @@ public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManage
         }
 
         // Get resources accessible to user
-        var resourcesQuery = this.dc.Resources.OrderBy(x => x.Name);
+        var resourcesQuery = dc.Resources.OrderBy(x => x.Name);
         if (!this.User.IsPrivilegedUser()) resourcesQuery = (IOrderedQueryable<Resource>)resourcesQuery.Where(x => x.Enabled);
         this.Resources = await resourcesQuery.ToListAsync();
 
         // Get reservations of this user
-        var userId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException());
-        var now = this.dateProvider.Now;
-        var reservationsQuery = from r in this.dc.Reservations
-                                where r.UserId == userId && r.DateEnd >= this.dateProvider.Today
+        var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
+        var now = dateProvider.Now;
+        var reservationsQuery = from r in dc.Reservations
+                                where r.UserId == userId && r.DateEnd >= dateProvider.Today
                                 orderby r.DateBegin
-                                select new ReservationInfo(r.Id, r.ResourceId, r.Resource!.Name, r.DateBegin, r.DateEnd, r.DateEnd > this.dateProvider.Now);
+                                select new ReservationInfo(r.Id, r.ResourceId, r.Resource!.Name, r.DateBegin, r.DateEnd, r.DateEnd > dateProvider.Now);
         this.Reservations = await reservationsQuery.ToListAsync();
     }
 
     public async Task<IActionResult> OnGetDeleteAsync(int reservationId) {
-        var userId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException());
-        var reservation = await this.dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > this.dateProvider.Now);
+        var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
+        var reservation = await dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > dateProvider.Now);
         if (reservation == null) return this.NotFound();
-        this.dc.Reservations.Remove(reservation);
-        await this.dc.SaveChangesAsync();
+        dc.Reservations.Remove(reservation);
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "reservationdeleted");
     }
 
     public async Task<IActionResult> OnGetSaveIcsAsync(int reservationId) {
-        var userId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException());
-        var reservation = await this.dc.Reservations.Include(x => x.Resource).SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId);
+        var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
+        var reservation = await dc.Reservations.Include(x => x.Resource).SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId);
         if (reservation == null) return this.NotFound();
 
         // Create ICS

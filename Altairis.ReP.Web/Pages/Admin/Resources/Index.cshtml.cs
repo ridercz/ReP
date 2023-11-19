@@ -1,7 +1,6 @@
 namespace Altairis.ReP.Web.Pages.Admin.Resources;
 
 public class IndexModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Output model
 
@@ -14,7 +13,7 @@ public class IndexModel(RepDbContext dc) : PageModel {
     // Handlers
 
     public async Task OnGetAsync() {
-        var q = from r in this.dc.Resources
+        var q = from r in dc.Resources
                 orderby r.Name
                 select new ResourceInfo(r.Description, r.Name, r.Id, r.ForegroundColor, r.BackgroundColor);
         this.Resources = await q.ToListAsync();

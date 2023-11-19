@@ -3,14 +3,11 @@ using Altairis.ValidationToolkit;
 namespace Altairis.ReP.Web.Pages.Admin;
 
 public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvider) : PageModel {
-    private readonly RepDbContext dc = dc;
-    private readonly OpeningHoursProvider hoursProvider = hoursProvider;
 
     // Input model
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
-
 
     public class InputModel {
 
@@ -27,20 +24,20 @@ public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvid
 
     // Output model
 
-    public IEnumerable<OpeningHoursInfo> StandardOpeningHours => this.hoursProvider.GetStandardOpeningHours();
+    public IEnumerable<OpeningHoursInfo> StandardOpeningHours => hoursProvider.GetStandardOpeningHours();
 
     public IEnumerable<OpeningHoursChange> OpeningHoursChanges { get; set; } = Enumerable.Empty<OpeningHoursChange>();
 
     // Handlers
 
-    public async Task OnGetAsync() => this.OpeningHoursChanges = await this.dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
+    public async Task OnGetAsync() => this.OpeningHoursChanges = await dc.OpeningHoursChanges.OrderByDescending(x => x.Date).ToListAsync();
 
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
 
-        var item = await this.dc.OpeningHoursChanges.SingleOrDefaultAsync(x => x.Date == this.Input.Date);
+        var item = await dc.OpeningHoursChanges.SingleOrDefaultAsync(x => x.Date == this.Input.Date);
         if (item == null) {
-            this.dc.OpeningHoursChanges.Add(new OpeningHoursChange {
+            dc.OpeningHoursChanges.Add(new OpeningHoursChange {
                 Date = this.Input.Date,
                 OpeningTime = this.Input.OpeningTime,
                 ClosingTime = this.Input.ClosingTime
@@ -50,15 +47,15 @@ public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvid
             item.ClosingTime = this.Input.ClosingTime;
         }
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage(string.Empty, null, "created");
     }
 
     public async Task<IActionResult> OnGetDeleteAsync(int ohchId) {
-        var item = await this.dc.OpeningHoursChanges.FindAsync(ohchId);
+        var item = await dc.OpeningHoursChanges.FindAsync(ohchId);
         if (item == null) return this.NotFound();
-        this.dc.OpeningHoursChanges.Remove(item);
-        await this.dc.SaveChangesAsync();
+        dc.OpeningHoursChanges.Remove(item);
+        await dc.SaveChangesAsync();
         return this.RedirectToPage(string.Empty, null, "deleted");
     }
 

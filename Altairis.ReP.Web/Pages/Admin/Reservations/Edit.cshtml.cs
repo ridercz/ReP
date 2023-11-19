@@ -4,8 +4,6 @@ using Altairis.Services.Mailing.Templating;
 namespace Altairis.ReP.Web.Pages.Admin.Reservations;
 
 public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageModel {
-    private readonly RepDbContext dc = dc;
-    private readonly ITemplatedMailerService mailer = mailer;
 
     // Input model
 
@@ -60,7 +58,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
         if (!this.ModelState.IsValid) return this.Page();
 
         // Check reservation for conflicts
-        var q = from cr in this.dc.Reservations
+        var q = from cr in dc.Reservations
                 where cr.ResourceId == r.ResourceId && cr.DateBegin < this.Input.DateEnd && cr.DateEnd > this.Input.DateBegin && cr.Id != r.Id
                 select new { cr.DateBegin, cr.User!.UserName };
         foreach (var item in await q.ToListAsync()) {
@@ -71,7 +69,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
         // Send notification if time changed
         if ((r.DateBegin != this.Input.DateBegin || r.DateEnd != this.Input.DateEnd) && !string.IsNullOrEmpty(this.NotificationEmail)) {
             var msg = new TemplatedMailMessageDto("ReservationChanged", this.NotificationEmail);
-            await this.mailer.SendMessageAsync(msg, new {
+            await mailer.SendMessageAsync(msg, new {
                 resourceName = this.ResourceName,
                 userName = this.User.Identity!.Name,
                 oldDateBegin = r.DateBegin,
@@ -87,7 +85,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
         r.DateEnd = this.Input.DateEnd;
         r.System = this.Input.System;
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "saved");
     }
 
@@ -98,7 +96,7 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
         // Send notification
         if (!string.IsNullOrEmpty(this.NotificationEmail)) {
             var msg = new TemplatedMailMessageDto("ReservationDeleted", this.NotificationEmail);
-            await this.mailer.SendMessageAsync(msg, new {
+            await mailer.SendMessageAsync(msg, new {
                 resourceName = this.ResourceName,
                 userName = this.User.Identity!.Name,
                 oldDateBegin = r.DateBegin,
@@ -107,15 +105,15 @@ public class EditModel(RepDbContext dc, ITemplatedMailerService mailer) : PageMo
         }
 
         // Delete reservation
-        this.dc.Reservations.Remove(r);
-        await this.dc.SaveChangesAsync();
+        dc.Reservations.Remove(r);
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "deleted");
     }
 
     // Helpers
 
     public async Task<Reservation?> Init(int reservationId) {
-        var r = await this.dc.Reservations.Include(x => x.Resource).Include(x => x.User).SingleOrDefaultAsync(x => x.Id == reservationId);
+        var r = await dc.Reservations.Include(x => x.Resource).Include(x => x.User).SingleOrDefaultAsync(x => x.Id == reservationId);
         if (r != null) {
             this.ResourceId = r.ResourceId;
             this.ResourceName = r.Resource!.Name;

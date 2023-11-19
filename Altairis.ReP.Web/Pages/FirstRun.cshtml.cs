@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.ReP.Web.Pages;
 
 public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager;
-
+    
     // Input model
 
     [BindProperty]
@@ -30,13 +29,13 @@ public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel
     // Handlers
 
     public async Task<IActionResult> OnGetAsync() {
-        if (await this.userManager.Users.AnyAsync()) return this.NotFound();
+        if (await userManager.Users.AnyAsync()) return this.NotFound();
         this.Input.Password = SecurityHelper.GenerateRandomPassword();
         return this.Page();
     }
 
     public async Task<IActionResult> OnPostAsync() {
-        if (await this.userManager.Users.AnyAsync()) return this.NotFound();
+        if (await userManager.Users.AnyAsync()) return this.NotFound();
         if (!this.ModelState.IsValid) return this.Page();
 
         // Create user
@@ -49,10 +48,10 @@ public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel
             Enabled = true,
             ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey()
         };
-        if (!this.IsIdentitySuccess(await this.userManager.CreateAsync(user, this.Input.Password))) return this.Page();
+        if (!this.IsIdentitySuccess(await userManager.CreateAsync(user, this.Input.Password))) return this.Page();
 
         // Assign Administrator role
-        if (!this.IsIdentitySuccess(await this.userManager.AddToRoleAsync(user, ApplicationRole.Administrator))) return this.Page();
+        if (!this.IsIdentitySuccess(await userManager.AddToRoleAsync(user, ApplicationRole.Administrator))) return this.Page();
 
         // Redirect to home page
         return this.RedirectToPage("My/Index");

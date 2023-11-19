@@ -3,19 +3,16 @@ using Altairis.Services.DateProvider;
 
 namespace Altairis.ReP.Web.Services;
 
-public class OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDateProvider dateProvider, RepDbContext dc) {
-    private readonly IOptions<AppSettings> optionsAccessor = optionsAccessor;
-    private readonly IDateProvider dateProvider = dateProvider;
-    private readonly RepDbContext dc = dc;
+public class OpeningHoursProvider(IOptions<AppSettings> options, IDateProvider dateProvider, RepDbContext dc) {
 
-    public OpeningHoursInfo GetOpeningHours(int dayOffset) => this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffset));
+    public OpeningHoursInfo GetOpeningHours(int dayOffset) => this.GetOpeningHours(dateProvider.Today.AddDays(dayOffset));
 
-    public IEnumerable<OpeningHoursInfo> GetOpeningHours(int dayOffsetFrom, int dayOffsetTo) => this.GetOpeningHours(this.dateProvider.Today.AddDays(dayOffsetFrom), this.dateProvider.Today.AddDays(dayOffsetTo));
+    public IEnumerable<OpeningHoursInfo> GetOpeningHours(int dayOffsetFrom, int dayOffsetTo) => this.GetOpeningHours(dateProvider.Today.AddDays(dayOffsetFrom), dateProvider.Today.AddDays(dayOffsetTo));
 
     public OpeningHoursInfo GetOpeningHours(DateTime date) {
         date = date.Date;
 
-        var ohch = this.dc.OpeningHoursChanges.SingleOrDefault(x => x.Date == date);
+        var ohch = dc.OpeningHoursChanges.SingleOrDefault(x => x.Date == date);
         return ohch == null
             ? this.GetStandardOpeningHours(date)
             : new OpeningHoursInfo(date, true, ohch.OpeningTime, ohch.ClosingTime);
@@ -23,7 +20,7 @@ public class OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDatePr
 
     public IEnumerable<OpeningHoursInfo> GetOpeningHours(DateTime dateFrom, DateTime dateTo) {
         var date = dateFrom.Date;
-        var ohchs = this.dc.OpeningHoursChanges.Where(x => x.Date >= dateFrom && x.Date <= dateTo).ToList();
+        var ohchs = dc.OpeningHoursChanges.Where(x => x.Date >= dateFrom && x.Date <= dateTo).ToList();
         while (date <= dateTo.Date) {
             var ohch = ohchs.SingleOrDefault(x => x.Date == date);
             yield return ohch == null
@@ -43,7 +40,7 @@ public class OpeningHoursProvider(IOptions<AppSettings> optionsAccessor, IDatePr
     }
 
     private OpeningHoursInfo GetStandardOpeningHours(DateTime date) {
-        var value = this.optionsAccessor.Value.OpeningHours.FirstOrDefault(x => x.DayOfWeek == date.DayOfWeek);
+        var value = options.Value.OpeningHours.FirstOrDefault(x => x.DayOfWeek == date.DayOfWeek);
         return value == null
             ? new OpeningHoursInfo(date.Date, default, default, default) : new OpeningHoursInfo(date.Date, false, value.OpeningTime, value.ClosingTime);
     }

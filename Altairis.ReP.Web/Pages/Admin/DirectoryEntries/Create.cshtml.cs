@@ -1,7 +1,6 @@
 namespace Altairis.ReP.Web.Pages.Admin.DirectoryEntries;
 
 public class CreateModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Input model
 
@@ -26,12 +25,12 @@ public class CreateModel(RepDbContext dc) : PageModel {
     public async Task<IActionResult> OnPostAsync() {
         if (!this.ModelState.IsValid) return this.Page();
 
-        this.dc.DirectoryEntries.Add(new DirectoryEntry {
+        dc.DirectoryEntries.Add(new DirectoryEntry {
             DisplayName = this.Input.DisplayName,
             Email = this.Input.Email,
             PhoneNumber = this.Input.PhoneNumber,
         });
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
 
         return this.RedirectToPage("Index", null, "created");
     }

@@ -1,6 +1,6 @@
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
+
 public class IndexModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
 
     // Output model
 
@@ -11,7 +11,7 @@ public class IndexModel(RepDbContext dc) : PageModel {
     // Handlers
 
     public async Task OnGetAsync() {
-        var q = from m in this.dc.NewsMessages
+        var q = from m in dc.NewsMessages
                 orderby m.Date descending
                 select new NewsMessageInfo(m.Id, m.Date, m.Title);
         this.NewsMessages = await q.ToListAsync();

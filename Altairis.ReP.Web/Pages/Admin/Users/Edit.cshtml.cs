@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.Admin.Users;
+
 public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSettings> options) : PageModel {
-    private readonly UserManager<ApplicationUser> userManager = userManager;
-    private readonly IOptions<AppSettings> options = options;
 
     // Input model
 
@@ -46,7 +45,7 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
     // Handlers
 
     public async Task<IActionResult> OnGetAsync(int userId) {
-        var user = await this.userManager.FindByIdAsync(userId.ToString());
+        var user = await userManager.FindByIdAsync(userId.ToString());
         if (user == null) return this.NotFound();
 
         this.Input = new InputModel {
@@ -55,8 +54,8 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
             Language = user.Language,
             PhoneNumber = user.PhoneNumber,
             UserName = user.UserName ?? throw new ImpossibleException(),
-            IsAdministrator = await this.userManager.IsInRoleAsync(user, ApplicationRole.Administrator),
-            IsMaster = await this.userManager.IsInRoleAsync(user, ApplicationRole.Master),
+            IsAdministrator = await userManager.IsInRoleAsync(user, ApplicationRole.Administrator),
+            IsMaster = await userManager.IsInRoleAsync(user, ApplicationRole.Master),
             DisplayName = user.DisplayName,
             ShowInMemberDirectory = user.ShowInMemberDirectory
         };
@@ -65,7 +64,7 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
     }
 
     public async Task<IActionResult> OnPostAsync(int userId) {
-        var user = await this.userManager.FindByIdAsync(userId.ToString());
+        var user = await userManager.FindByIdAsync(userId.ToString());
         if (user == null) return this.NotFound();
 
         if (!this.ModelState.IsValid) return this.Page();
@@ -76,12 +75,12 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
         user.UserName = this.Input.UserName;
         user.Language = this.Input.Language;
         user.DisplayName = this.Input.DisplayName;
-        user.ShowInMemberDirectory = this.options.Value.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory;
+        user.ShowInMemberDirectory = options.Value.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory;
 
-        var result = await this.userManager.UpdateAsync(user);
+        var result = await userManager.UpdateAsync(user);
         if (!this.IsIdentitySuccess(result)) return this.Page();
 
-        Task<IdentityResult> SetUserMembership(ApplicationUser user, string role, bool status) => status ? this.userManager.AddToRoleAsync(user, role) : this.userManager.RemoveFromRoleAsync(user, role);
+        Task<IdentityResult> SetUserMembership(ApplicationUser user, string role, bool status) => status ? userManager.AddToRoleAsync(user, role) : userManager.RemoveFromRoleAsync(user, role);
 
         await SetUserMembership(user, ApplicationRole.Administrator, this.Input.IsAdministrator);
         await SetUserMembership(user, ApplicationRole.Master, this.Input.IsMaster);
@@ -90,10 +89,10 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
     }
 
     public async Task<IActionResult> OnPostDeleteAsync(int userId) {
-        var user = await this.userManager.FindByIdAsync(userId.ToString());
+        var user = await userManager.FindByIdAsync(userId.ToString());
         if (user == null) return this.NotFound();
 
-        await this.userManager.DeleteAsync(user);
+        await userManager.DeleteAsync(user);
 
         return this.RedirectToPage("Index", null, "deleted");
     }

@@ -6,12 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Altairis.ReP.Web.Pages.My;
 
 public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, JournalAttachmentProcessor attachmentProcessor) : PageModel {
-    private readonly RepDbContext dc = dc;
-    private readonly IOptions<AppSettings> options = options;
-    private readonly UserManager<ApplicationUser> userManager = userManager;
-    private readonly IDateProvider dateProvider = dateProvider;
-    private readonly JournalAttachmentProcessor attachmentProcessor = attachmentProcessor;
-
+    
     public IEnumerable<JournalEntry> Items { get; set; } = Enumerable.Empty<JournalEntry>();
 
     // Input model
@@ -42,23 +37,23 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
     // Handlers
 
     public async Task<IActionResult> OnGetAsync() {
-        if (!this.options.Value.Features.UseJournal) return this.NotFound();
+        if (!options.Value.Features.UseJournal) return this.NotFound();
 
         await this.Init();
 
-        this.Items = await this.dc.JournalEntries
+        this.Items = await dc.JournalEntries
             .Include(x => x.User)
             .Include(x => x.Resource)
             .Include(x => x.Attachments)
             .OrderByDescending(x => x.DateCreated)
             .ToListAsync();
-        this.CanAddEntry = !this.options.Value.Journal.OnlyMastersCanWrite || this.User.IsInRole(ApplicationRole.Master) || this.User.IsInRole(ApplicationRole.Master);
+        this.CanAddEntry = !options.Value.Journal.OnlyMastersCanWrite || this.User.IsInRole(ApplicationRole.Master) || this.User.IsInRole(ApplicationRole.Master);
 
         return this.Page();
     }
 
     public async Task<IActionResult> OnPostAsync() {
-        if (!this.options.Value.Features.UseJournal) return this.NotFound();
+        if (!options.Value.Features.UseJournal) return this.NotFound();
         await this.Init();
         if (!this.ModelState.IsValid) return this.Page();
 
@@ -67,16 +62,16 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
             ResourceId = this.Input.ResourceId,
             Title = this.Input.Title,
             Text = this.Input.Text,
-            DateCreated = this.dateProvider.Now,
-            UserId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException())
+            DateCreated = dateProvider.Now,
+            UserId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException())
         };
-        this.dc.JournalEntries.Add(newEntry);
-        await this.dc.SaveChangesAsync();
+        dc.JournalEntries.Add(newEntry);
+        await dc.SaveChangesAsync();
 
         // Save attachments
-        if (this.options.Value.Features.UseAttachments && this.Input.Attachments != null) {
+        if (options.Value.Features.UseAttachments && this.Input.Attachments != null) {
             foreach (var a in this.Input.Attachments) {
-                await this.attachmentProcessor.CreateAttachment(a, newEntry.Id);
+                await attachmentProcessor.CreateAttachment(a, newEntry.Id);
             }
         }
 
@@ -85,9 +80,9 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
     }
 
     public async Task<IActionResult> OnGetAttachmentAsync(int attachmentId) {
-        if (!this.options.Value.Features.UseJournal || !this.options.Value.Features.UseAttachments) return this.NotFound();
+        if (!options.Value.Features.UseJournal || !options.Value.Features.UseAttachments) return this.NotFound();
         try {
-            var result = await this.attachmentProcessor.GetAttachment(attachmentId);
+            var result = await attachmentProcessor.GetAttachment(attachmentId);
             return this.File(result.Item1, "application/octet-stream", result.Item2);
         } catch (FileNotFoundException) {
             return this.NotFound();
@@ -97,7 +92,7 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
     // Helpers
 
     public async Task Init() {
-        var q = from r in this.dc.Resources
+        var q = from r in dc.Resources
                 orderby r.Name
                 select new SelectListItem {
                     Text = r.Name,

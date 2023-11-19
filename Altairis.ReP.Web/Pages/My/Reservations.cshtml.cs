@@ -6,13 +6,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> optionsAccessor, ResourceAttachmentProcessor attachmentProcessor) : PageModel {
-    private readonly RepDbContext dc = dc;
-    private readonly IDateProvider dateProvider = dateProvider;
-    private readonly UserManager<ApplicationUser> userManager = userManager;
-    private readonly OpeningHoursProvider hoursProvider = hoursProvider;
-    private readonly ResourceAttachmentProcessor attachmentProcessor = attachmentProcessor;
-    private readonly AppSettings options = optionsAccessor?.Value ?? throw new ArgumentException("Options cannot be null or empty.", nameof(optionsAccessor));
+public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> options, ResourceAttachmentProcessor attachmentProcessor) : PageModel {
 
     // Input model
 
@@ -34,7 +28,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
     // Output model
 
-    public bool CanManageEntries => this.options.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
+    public bool CanManageEntries => options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
     public Resource? Resource { get; set; }
 
@@ -57,7 +51,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
     public async Task<IActionResult> OnGetAsync(int resourceId) {
         if (!await this.Init(resourceId)) return this.NotFound();
 
-        var dt = this.dateProvider.Now.AddDays(1);
+        var dt = dateProvider.Now.AddDays(1);
         this.Input.DateBegin = dt.AddMinutes(-dt.Minute);
         this.Input.DateEnd = this.Input.DateBegin.AddHours(1);
 
@@ -65,9 +59,9 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
     }
 
     public async Task<IActionResult> OnGetDownload(int attachmentId) {
-        if (!this.options.Features.UseAttachments) return this.NotFound();
+        if (!options.Value.Features.UseAttachments) return this.NotFound();
         try {
-            var result = await this.attachmentProcessor.GetAttachment(attachmentId);
+            var result = await attachmentProcessor.GetAttachment(attachmentId);
             return this.File(result.Item1, "application/octet-stream", result.Item2);
         } catch (FileNotFoundException) {
             return this.NotFound();
@@ -87,14 +81,14 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
             }
 
             // Check if it begins and ends in the same day
-            if (this.options.Features.UseOpeningHours && this.Input.DateBegin.Date != this.Input.DateEnd.Date) {
+            if (options.Value.Features.UseOpeningHours && this.Input.DateBegin.Date != this.Input.DateEnd.Date) {
                 this.ModelState.AddModelError(string.Empty, UI.My_Reservations_Err_SingleDay);
                 return this.Page();
             }
 
             // Check against opening times
-            if (this.options.Features.UseOpeningHours) {
-                var openTime = this.hoursProvider.GetOpeningHours(this.Input.DateBegin);
+            if (options.Value.Features.UseOpeningHours) {
+                var openTime = hoursProvider.GetOpeningHours(this.Input.DateBegin);
                 if (this.Input.DateBegin < openTime.AbsoluteOpeningTime || this.Input.DateEnd > openTime.AbsoluteClosingTime) {
                     this.ModelState.AddModelError(string.Empty, UI.My_Reservations_Err_OpeningHours);
                     return this.Page();
@@ -103,7 +97,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
         }
 
         // Check against other reservations
-        var q = from r in this.dc.Reservations
+        var q = from r in dc.Reservations
                 where r.ResourceId == resourceId && r.DateBegin < this.Input.DateEnd && r.DateEnd > this.Input.DateBegin
                 select new { r.DateBegin, r.User!.UserName };
         foreach (var item in await q.ToListAsync()) {
@@ -115,14 +109,14 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
         var newReservation = new Reservation {
             DateBegin = this.Input.DateBegin,
             DateEnd = this.Input.DateEnd,
-            UserId = int.Parse(this.userManager.GetUserId(this.User) ?? throw new ImpossibleException()),
+            UserId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException()),
             ResourceId = resourceId,
             System = this.User.IsPrivilegedUser() && this.Input.System,
             Comment = this.User.IsPrivilegedUser() ? this.Input.Comment : null
 
         };
-        this.dc.Reservations.Add(newReservation);
-        await this.dc.SaveChangesAsync();
+        dc.Reservations.Add(newReservation);
+        await dc.SaveChangesAsync();
 
         return this.RedirectToPage("Reservations", string.Empty, new { resourceId }, "created");
     }
@@ -131,19 +125,19 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
     private async Task<bool> Init(int resourceId) {
         // Get resource
-        this.Resource = await this.dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId) ?? throw new ImpossibleException();
+        this.Resource = await dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId) ?? throw new ImpossibleException();
         if (this.Resource == null) return false;
         this.CanDoReservation = this.Resource.Enabled || this.User.IsPrivilegedUser();
 
         // Get user RAK
-        this.ResourceAuthorizationKey = (await this.dc.Users.SingleAsync(x => x.UserName!.Equals(this.User.Identity!.Name))).ResourceAuthorizationKey;
+        this.ResourceAuthorizationKey = (await dc.Users.SingleAsync(x => x.UserName!.Equals(this.User.Identity!.Name))).ResourceAuthorizationKey;
 
         // Get last Monday as the start date
-        this.CalendarDateBegin = this.dateProvider.Today;
+        this.CalendarDateBegin = dateProvider.Today;
         while (this.CalendarDateBegin.DayOfWeek != CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) this.CalendarDateBegin = this.CalendarDateBegin.AddDays(-1);
 
         // Get future reservations
-        var qr = from r in this.dc.Reservations
+        var qr = from r in dc.Reservations
                  where r.ResourceId == resourceId && r.DateBegin >= this.CalendarDateBegin
                  select new CalendarEvent {
                      Id = "reservation_" + r.Id,
@@ -158,20 +152,20 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
                  };
 
         // Get Future calendar entries
-        var qe = from e in this.dc.CalendarEntries
+        var qe = from e in dc.CalendarEntries
                  where e.Date >= this.CalendarDateBegin
                  orderby e.Date
                  select new CalendarEvent {
                      Id = "event_" + e.Id,
-                     BackgroundColor = this.options.Design.CalendarEntryBgColor,
-                     ForegroundColor = this.options.Design.CalendarEntryFgColor,
+                     BackgroundColor = options.Value.Design.CalendarEntryBgColor,
+                     ForegroundColor = options.Value.Design.CalendarEntryFgColor,
                      DateBegin = e.Date,
                      DateEnd = e.Date,
                      Name = e.Title,
                      IsFullDay = true,
                      Href = "#event_detail_" + e.Id,
                  };
-        var qd = from e in this.dc.CalendarEntries
+        var qd = from e in dc.CalendarEntries
                  where e.Date >= this.CalendarDateBegin
                  orderby e.Date
                  select new CalendarEntryInfo {
@@ -193,7 +187,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
         if (lastEventEnd.HasValue && lastEventEnd > this.CalendarDateEnd) this.CalendarDateEnd = lastEventEnd.Value;
 
         // Get attachments
-        if (this.options.Features.UseAttachments) this.Attachments = await this.dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
+        if (options.Value.Features.UseAttachments) this.Attachments = await dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
 
         return true;
     }

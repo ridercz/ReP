@@ -1,8 +1,7 @@
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
 
 public class EditModel(RepDbContext dc) : PageModel {
-    private readonly RepDbContext dc = dc;
-
+    
     // Input model
 
     [BindProperty]
@@ -21,7 +20,7 @@ public class EditModel(RepDbContext dc) : PageModel {
     // Handlers
 
     public async Task<IActionResult> OnGetAsync(int newsMessageId) {
-        var m = await this.dc.NewsMessages.FindAsync(newsMessageId);
+        var m = await dc.NewsMessages.FindAsync(newsMessageId);
         if (m == null) return this.NotFound();
 
         this.Input = new InputModel {
@@ -32,7 +31,7 @@ public class EditModel(RepDbContext dc) : PageModel {
     }
 
     public async Task<IActionResult> OnPostAsync(int newsMessageId) {
-        var m = await this.dc.NewsMessages.FindAsync(newsMessageId);
+        var m = await dc.NewsMessages.FindAsync(newsMessageId);
         if (m == null) return this.NotFound();
 
         if (!this.ModelState.IsValid) return this.Page();
@@ -40,17 +39,17 @@ public class EditModel(RepDbContext dc) : PageModel {
         m.Title = this.Input.Title;
         m.Text = this.Input.Text;
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "saved");
     }
 
     public async Task<IActionResult> OnPostDeleteAsync(int newsMessageId) {
-        var m = await this.dc.NewsMessages.FindAsync(newsMessageId);
+        var m = await dc.NewsMessages.FindAsync(newsMessageId);
         if (m == null) return this.NotFound();
 
-        this.dc.NewsMessages.Remove(m);
+        dc.NewsMessages.Remove(m);
 
-        await this.dc.SaveChangesAsync();
+        await dc.SaveChangesAsync();
         return this.RedirectToPage("Index", null, "deleted");
     }
 }

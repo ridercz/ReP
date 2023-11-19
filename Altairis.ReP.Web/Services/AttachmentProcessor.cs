@@ -4,9 +4,6 @@ using FluentStorage.Blobs;
 namespace Altairis.ReP.Web.Services;
 
 public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) where T : class, IAttachment, new() {
-    private readonly IBlobStorage blobStorage = blobStorage;
-    private readonly IDateProvider dateProvider = dateProvider;
-    private readonly RepDbContext dc = dc;
 
     // Abstract methods
 
@@ -19,7 +16,7 @@ public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, IDateProv
     public async Task<T> CreateAttachment(IFormFile formFile, int relatedEntryId) {
         // Create attachment
         var newAttachment = new T {
-            DateCreated = this.dateProvider.Now,
+            DateCreated = dateProvider.Now,
             FileName = Path.GetFileName(formFile.FileName),
             FileSize = formFile.Length,
             StoragePath = string.Empty,
@@ -33,11 +30,11 @@ public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, IDateProv
 
         // Upload file to storage
         using var stream = formFile.OpenReadStream();
-        await this.blobStorage.WriteAsync(newAttachment.StoragePath, stream);
+        await blobStorage.WriteAsync(newAttachment.StoragePath, stream);
 
         // Save to database
-        this.dc.Entry(newAttachment).State = EntityState.Added;
-        await this.dc.SaveChangesAsync();
+        dc.Entry(newAttachment).State = EntityState.Added;
+        await dc.SaveChangesAsync();
 
         // Return data entity
         return newAttachment;
@@ -45,23 +42,23 @@ public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, IDateProv
 
     public async Task DeleteAttachment(int id) {
         // Get attachment info
-        var attachment = await this.dc.FindAsync<T>(id);
+        var attachment = await dc.FindAsync<T>(id);
         if (attachment == null) return; // Already deleted
 
         // Delete attachment from storage
-        await this.blobStorage.DeleteAsync(attachment.StoragePath);
+        await blobStorage.DeleteAsync(attachment.StoragePath);
 
         // Delete attachment from database
-        this.dc.Entry(attachment).State = EntityState.Deleted;
-        await this.dc.SaveChangesAsync();
+        dc.Entry(attachment).State = EntityState.Deleted;
+        await dc.SaveChangesAsync();
     }
 
     public async Task<(byte[], string)> GetAttachment(int id) {
         // Get attachment info
-        var a = await this.dc.FindAsync<T>(id) ?? throw new FileNotFoundException();
+        var a = await dc.FindAsync<T>(id) ?? throw new FileNotFoundException();
 
         // Get data from storage
-        var data = await this.blobStorage.ReadBytesAsync(a.StoragePath);
+        var data = await blobStorage.ReadBytesAsync(a.StoragePath);
 
         // Send data
         return new(data, a.FileName);
