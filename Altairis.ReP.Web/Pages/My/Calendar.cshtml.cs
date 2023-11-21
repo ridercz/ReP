@@ -37,6 +37,8 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; } = Enumerable.Empty<CalendarEntryInfo>();
 
+    public record CalendarEntryInfo(int Id, DateTime Date, string? Title, string? Comment);
+
     public DateTime DateBegin { get; set; }
 
     public DateTime DateEnd { get; set; }
@@ -138,12 +140,7 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
         var qd = from e in dc.CalendarEntries
                  where e.Date >= this.DateBegin.AddDays(-6) && e.Date < this.DateEnd.AddDays(6)
                  orderby e.Date
-                 select new CalendarEntryInfo {
-                     Id = e.Id,
-                     Date = e.Date,
-                     Title = e.Title,
-                     Comment = e.Comment
-                 };
+                 select new CalendarEntryInfo(e.Id, e.Date, e.Title, e.Comment);
 
         // Materialize queries
         var qri = await qr.ToListAsync();

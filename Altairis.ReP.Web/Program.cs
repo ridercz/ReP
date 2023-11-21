@@ -1,7 +1,6 @@
 global using System.ComponentModel.DataAnnotations;
 global using Altairis.ReP.Data;
 global using Altairis.ReP.Web;
-global using Altairis.ReP.Web.Pages.Models;
 global using Altairis.ReP.Web.Resources;
 global using Altairis.ReP.Web.Services;
 global using Microsoft.AspNetCore.Mvc;
