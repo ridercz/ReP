@@ -10,9 +10,9 @@ public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManage
 
     // Output model
 
-    public IEnumerable<Resource> Resources { get; set; } = Enumerable.Empty<Resource>();
+    public IEnumerable<Resource> Resources { get; set; } = [];
 
-    public IEnumerable<ReservationInfo> Reservations { get; set; } = Enumerable.Empty<ReservationInfo>();
+    public IEnumerable<ReservationInfo> Reservations { get; set; } = [];
 
     public OpeningHoursInfo? OpenToday { get; set; }
 

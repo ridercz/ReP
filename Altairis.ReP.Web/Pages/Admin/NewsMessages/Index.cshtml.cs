@@ -4,7 +4,7 @@ public class IndexModel(RepDbContext dc) : PageModel {
 
     // Output model
 
-    public IEnumerable<NewsMessageInfo> NewsMessages { get; set; } = Enumerable.Empty<NewsMessageInfo>();
+    public IEnumerable<NewsMessageInfo> NewsMessages { get; set; } = [];
 
     public record NewsMessageInfo(int Id, DateTime Date, string Title);
 

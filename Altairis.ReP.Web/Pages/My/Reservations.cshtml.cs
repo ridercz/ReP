@@ -32,9 +32,9 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
     public Resource? Resource { get; set; }
 
-    public IEnumerable<CalendarEvent> Reservations { get; set; } = Enumerable.Empty<CalendarEvent>();
+    public IEnumerable<CalendarEvent> Reservations { get; set; } = [];
 
-    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; } = Enumerable.Empty<CalendarEntryInfo>();
+    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; } = [];
 
     public record CalendarEntryInfo(int Id, DateTime Date, string? Title, string? Comment);
 
@@ -42,7 +42,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
 
     public DateTime CalendarDateEnd { get; set; }
 
-    public IEnumerable<ResourceAttachment> Attachments { get; set; } = Enumerable.Empty<ResourceAttachment>();
+    public IEnumerable<ResourceAttachment> Attachments { get; set; } = [];
 
     public bool CanDoReservation { get; set; } = false;
 

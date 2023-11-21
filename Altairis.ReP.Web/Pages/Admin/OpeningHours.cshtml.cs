@@ -26,7 +26,7 @@ public class OpeningHoursModel(RepDbContext dc, OpeningHoursProvider hoursProvid
 
     public IEnumerable<OpeningHoursInfo> StandardOpeningHours => hoursProvider.GetStandardOpeningHours();
 
-    public IEnumerable<OpeningHoursChange> OpeningHoursChanges { get; set; } = Enumerable.Empty<OpeningHoursChange>();
+    public IEnumerable<OpeningHoursChange> OpeningHoursChanges { get; set; } = [];
 
     // Handlers
 

@@ -5,7 +5,7 @@ public class DirectoryModel(RepDbContext dc) : PageModel {
     // Output model
     public record DirectoryEntryInfo(string IconClass, string DisplayName, string? UserName, string? Email, string? PhoneNumber);
 
-    public IEnumerable<DirectoryEntryInfo> Items { get; set; } = Enumerable.Empty<DirectoryEntryInfo>();
+    public IEnumerable<DirectoryEntryInfo> Items { get; set; } = [];
 
     // Handlers
 

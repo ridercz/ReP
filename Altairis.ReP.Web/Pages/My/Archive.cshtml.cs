@@ -6,7 +6,7 @@ public class ArchiveModel(RepDbContext dc, UserManager<ApplicationUser> userMana
 
     // Output model
 
-    public IEnumerable<ReservationInfo> Reservations { get; set; } = Enumerable.Empty<ReservationInfo>();
+    public IEnumerable<ReservationInfo> Reservations { get; set; } = [];
 
     public class ReservationInfo {
 

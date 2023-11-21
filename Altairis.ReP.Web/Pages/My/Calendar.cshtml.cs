@@ -27,15 +27,15 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     public bool CanManageEntries => options.Value.Features.UseCalendarEntries && this.User.IsPrivilegedUser();
 
-    public IEnumerable<ResourceTag> Resources { get; set; } = Enumerable.Empty<ResourceTag>();
+    public IEnumerable<ResourceTag> Resources { get; set; } = [];
 
     public record ResourceTag(string Name, string ForegroundColor, string BackgroundColor) {
         public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";
     }
 
-    public IEnumerable<CalendarEvent> Reservations { get; set; } = Enumerable.Empty<CalendarEvent>();
+    public IEnumerable<CalendarEvent> Reservations { get; set; } = [];
 
-    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; } = Enumerable.Empty<CalendarEntryInfo>();
+    public IEnumerable<CalendarEntryInfo> CalendarEntries { get; set; } = [];
 
     public record CalendarEntryInfo(int Id, DateTime Date, string? Title, string? Comment);
 

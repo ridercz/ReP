@@ -4,7 +4,7 @@ public class NewsModel(RepDbContext dc) : PageModel {
 
     // Output model
 
-    public IEnumerable<NewsMessage> Messages { get; set; } = Enumerable.Empty<NewsMessage>();
+    public IEnumerable<NewsMessage> Messages { get; set; } = [];
 
     // Handlers
 

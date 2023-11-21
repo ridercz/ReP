@@ -7,7 +7,7 @@ namespace Altairis.ReP.Web.Pages.My;
 
 public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, JournalAttachmentProcessor attachmentProcessor) : PageModel {
     
-    public IEnumerable<JournalEntry> Items { get; set; } = Enumerable.Empty<JournalEntry>();
+    public IEnumerable<JournalEntry> Items { get; set; } = [];
 
     // Input model
 

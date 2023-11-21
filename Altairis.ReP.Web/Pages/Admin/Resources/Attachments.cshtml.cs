@@ -17,7 +17,7 @@ public class AttachmentsModel(RepDbContext dc, ResourceAttachmentProcessor attac
 
     public string ResourceName { get; set; } = string.Empty;
 
-    public IEnumerable<ResourceAttachment> Items { get; set; } = Enumerable.Empty<ResourceAttachment>();
+    public IEnumerable<ResourceAttachment> Items { get; set; } = [];
     
     public async Task<IActionResult> OnGetAsync(int resourceId) => await this.Init(resourceId) ? this.Page() : this.NotFound();
 

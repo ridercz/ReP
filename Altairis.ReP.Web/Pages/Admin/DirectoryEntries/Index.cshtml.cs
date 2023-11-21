@@ -4,7 +4,7 @@ public class IndexModel(RepDbContext dc) : PageModel {
     
     // Output model
 
-    public IEnumerable<DirectoryEntry> DirectoryEntries { get; set; } = Enumerable.Empty<DirectoryEntry>();
+    public IEnumerable<DirectoryEntry> DirectoryEntries { get; set; } = [];
 
     // Handlers
 
