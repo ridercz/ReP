@@ -24,19 +24,19 @@
 		<PackageReference Include="Altairis.Services.PwnedPasswordsValidator" Version="1.1.0" />
 		<PackageReference Include="Altairis.SqliteBackup" Version="1.2.3" />
 		<PackageReference Include="Altairis.SqliteBackup.AzureStorage" Version="1.1.0" />
-		<PackageReference Include="Altairis.TagHelpers" Version="1.14.1" />
-		<PackageReference Include="AspNetCore.HealthChecks.Sqlite" Version="7.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="7.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
-		<PackageReference Include="FluentStorage" Version="5.4.1" />
-		<PackageReference Include="FluentStorage.Azure.Blobs" Version="5.2.2" />
+		<PackageReference Include="Altairis.TagHelpers" Version="1.16.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.Sqlite" Version="8.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
+		<PackageReference Include="FluentStorage" Version="5.4.3" />
+		<PackageReference Include="FluentStorage.Azure.Blobs" Version="5.2.3" />
 		<PackageReference Include="Ical.Net" Version="4.2.0" />
-		<PackageReference Include="Markdig" Version="0.33.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+		<PackageReference Include="Markdig" Version="0.37.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
