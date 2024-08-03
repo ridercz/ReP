@@ -6,17 +6,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Altairis.ReP.Web.Pages.My;
 
 public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, JournalAttachmentProcessor attachmentProcessor) : PageModel {
-    
+
     public IEnumerable<JournalEntry> Items { get; set; } = [];
 
     // Input model
 
     [BindProperty]
-    public InputModel Input { get; set; } = new InputModel();
+    public InputModel Input { get; set; } = new InputModel {
+        Date = dateProvider.Now
+    };
 
     public class InputModel {
 
         public int? ResourceId { get; set; }
+
+        public DateTime Date { get; set; }
 
         [Required, MaxLength(100)]
         public string Title { get; set; } = string.Empty;
@@ -62,7 +66,7 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
             ResourceId = this.Input.ResourceId,
             Title = this.Input.Title,
             Text = this.Input.Text,
-            DateCreated = dateProvider.Now,
+            DateCreated = this.Input.Date,
             UserId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException())
         };
         dc.JournalEntries.Add(newEntry);
