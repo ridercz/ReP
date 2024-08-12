@@ -124,11 +124,23 @@ builder.Services.ConfigureApplicationCookie(options => {
 
 // Configure mailing
 if (!string.IsNullOrEmpty(appSettings.Mailing.SendGridApiKey)) {
+    // Use SendGrid
     builder.Services.AddSendGridMailerService(new SendGridMailerServiceOptions {
         ApiKey = appSettings.Mailing.SendGridApiKey,
         DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName ?? appSettings.Design.ApplicationName)
     });
+} else if (!string.IsNullOrEmpty(appSettings.Mailing.SmtpHost)) {
+    // Use SMTP server
+    builder.Services.AddSmtpServerMailerService(new SmtpServerMailerServiceOptions {
+        HostName = appSettings.Mailing.SmtpHost,
+        Port = appSettings.Mailing.SmtpPort,
+        AllowSsl = appSettings.Mailing.SmtpUseTls,
+        UserName = appSettings.Mailing.SmtpUsername,
+        Password = appSettings.Mailing.SmtpPassword,
+        DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName ?? appSettings.Design.ApplicationName)
+    });
 } else {
+    // Use pickup folder
     builder.Services.AddPickupFolderMailerService(new PickupFolderMailerServiceOptions {
         PickupFolderName = appSettings.Mailing.PickupFolder,
         DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName ?? appSettings.Design.ApplicationName)

@@ -48,6 +48,12 @@ public class AppSettings {
         public string SenderAddress { get; set; } = "example@example.com";
         public string SenderName { get; set; } = "ReP";
         public string? SendGridApiKey { get; set; }
+        public string? SmtpHost { get; set; }
+        public int SmtpPort { get; set; } = 25;
+        public bool SmtpUseTls { get; set; } = false;
+        public string? SmtpUsername { get; set; }
+        public string? SmtpPassword { get; set; }
+
     }
 
     // Openings hours configuration
