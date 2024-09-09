@@ -4,11 +4,12 @@
 <table class="grid">
     <thead>
         <tr>
-            <th>@Display.UserName</th>
-            <th>@Display.DisplayName</th>
-            <th>@Display.Email</th>
-            <th>@Display.PhoneNumber</th>
-            <th class="r">@Display.Language</th>
+            <th scope="col">@Display.UserName</th>
+            <th scope="col">@Display.DisplayName</th>
+            <th scope="col">@Display.Email</th>
+            <th scope="col">@Display.PhoneNumber</th>
+            <th scope="col" class="r">&Sigma;</th>
+            <th scope="col" class="r">@Display.Language</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +22,7 @@
         @foreach (var item in this.Model.Users) {
             var flagClass = "fi fi-" + item.Language[^2..].ToLowerInvariant();
             <tr>
-                <th>
+                <th scope="row">
                     @if (!item.Enabled) {
                         <i class="fas fa-fw fa-user-times" title="@UI.Admin_Users_Index_Disabled"></i>
                     } else if (item.EmailConfirmed) {
@@ -34,6 +35,7 @@
                 <td>@item.DisplayName</td>
                 <td><a href="mailto:@item.Email">@item.Email</a></td>
                 <td>@item.PhoneNumber</td>
+                <td class="r">@item.Reservations</td>
                 <td class="r"><span class="@flagClass"></span></td>
             </tr>
         }
