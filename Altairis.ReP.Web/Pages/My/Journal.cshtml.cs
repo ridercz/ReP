@@ -98,11 +98,11 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
     public async Task Init() {
         var q = from r in dc.Resources
                 orderby r.Name
+                where r.Enabled
                 select new SelectListItem {
                     Text = r.Name,
-                    Value = r.Id.ToString()
+                    Value = r.Id.ToString(),
                 };
-        if (!this.User.IsInRole(ApplicationRole.Master) && !this.User.IsInRole(ApplicationRole.Administrator)) q = q.Where(x => x.Disabled == false);
         this.AvailableResources.AddRange(await q.ToListAsync());
     }
 }
