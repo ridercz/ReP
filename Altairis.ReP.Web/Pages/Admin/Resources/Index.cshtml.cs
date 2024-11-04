@@ -4,7 +4,7 @@ public class IndexModel(RepDbContext dc) : PageModel {
 
     // Output model
 
-    public IEnumerable<ResourceInfo> Resources { get; set; } = new List<ResourceInfo>();
+    public IEnumerable<ResourceInfo> Resources { get; set; } = [];
 
     public record ResourceInfo(string? Description, string Name, int Id, string ForegroundColor, string BackgroundColor) {
         public string GetStyle() => $"color:{this.ForegroundColor};background-color:{this.BackgroundColor};";

@@ -26,6 +26,6 @@ public class Resource {
 
     // Navigation properties
 
-    public virtual IEnumerable<ResourceAttachment> Attachments { get; set; } = new HashSet<ResourceAttachment>();
+    public virtual IEnumerable<ResourceAttachment> Attachments { get; set; } = [];
 
 }

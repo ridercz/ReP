@@ -23,7 +23,7 @@ public class ApplicationUser : IdentityUser<int> {
     [Required, MaxLength(ResourceAuthorizationKeyLength)]
     public string ResourceAuthorizationKey { get; set; } = CreateResourceAuthorizationKey();
 
-    public virtual ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
+    public virtual ICollection<Reservation> Reservations { get; set; } = [];
 
     public static string CreateResourceAuthorizationKey() {
         var keyChars = new char[ResourceAuthorizationKeyLength];

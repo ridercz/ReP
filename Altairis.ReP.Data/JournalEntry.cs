@@ -30,6 +30,6 @@ public class JournalEntry {
 
     // Navigation properties
 
-    public virtual ICollection<JournalEntryAttachment> Attachments { get; set; } = new HashSet<JournalEntryAttachment>();
+    public virtual ICollection<JournalEntryAttachment> Attachments { get; set; } = [];
 
 }

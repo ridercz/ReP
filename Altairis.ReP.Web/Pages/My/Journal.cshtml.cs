@@ -35,7 +35,7 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
 
     public bool CanAddEntry { get; set; }
 
-    public ICollection<SelectListItem> AvailableResources { get; set; } = new List<SelectListItem>() { new() { Text = UI.My_Journal_ResourceUnspecified, Value = string.Empty } };
+    public ICollection<SelectListItem> AvailableResources { get; set; } = [new() { Text = UI.My_Journal_ResourceUnspecified, Value = string.Empty }];
 
     // Handlers
 

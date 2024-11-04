@@ -4,7 +4,7 @@ public class IndexModel(RepDbContext dc) : PageModel {
 
     // Output model
 
-    public IEnumerable<UserInfo> Users { get; set; } = new List<UserInfo>();
+    public IEnumerable<UserInfo> Users { get; set; } = [];
 
     public record UserInfo(int Id, string UserName, string DisplayName, string Email, string Language, string? PhoneNumber, bool Enabled, bool EmailConfirmed, int Reservations);
 

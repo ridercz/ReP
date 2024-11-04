@@ -23,7 +23,7 @@ public class LanguageSwitchViewComponent : ViewComponent {
     public static IEnumerable<CultureInfo> AvailableCultures {
         get {
             if (availableCultures == null) {
-                availableCultures = new List<CultureInfo>();
+                availableCultures = [];
                 var rm = new ResourceManager(typeof(UI));
                 var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
                 foreach (var culture in cultures) {
