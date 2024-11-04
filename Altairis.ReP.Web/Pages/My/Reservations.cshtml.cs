@@ -1,5 +1,4 @@
 using System.Globalization;
-
 using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
 using Microsoft.AspNetCore.Identity;
@@ -122,7 +121,7 @@ public class ReservationsModel(RepDbContext dc, TimeProvider timeProvider, UserM
 
         return this.RedirectToPage("Reservations", string.Empty, new { resourceId }, "created");
     }
-    
+
     // Helpers
 
     private async Task<bool> Init(int resourceId) {

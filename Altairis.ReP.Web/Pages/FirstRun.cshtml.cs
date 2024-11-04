@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.ReP.Web.Pages;
 
 public class FirstRunModel(UserManager<ApplicationUser> userManager) : PageModel {
-    
+
     // Input model
 
     [BindProperty]

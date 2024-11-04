@@ -1,5 +1,4 @@
 ﻿using FluentStorage.Blobs;
-
 namespace Altairis.ReP.Web.Services;
 
 public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, TimeProvider timeProvider, RepDbContext dc) where T : class, IAttachment, new() {

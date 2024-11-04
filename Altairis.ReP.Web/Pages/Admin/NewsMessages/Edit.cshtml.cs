@@ -1,7 +1,7 @@
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
 
 public class EditModel(RepDbContext dc) : PageModel {
-    
+
     // Input model
 
     [BindProperty]

@@ -1,4 +1,4 @@
-namespace Altairis.ReP.Web.Pages.Admin.Resources; 
+namespace Altairis.ReP.Web.Pages.Admin.Resources;
 
 public class AttachmentsModel(RepDbContext dc, ResourceAttachmentProcessor attachmentProcessor, IOptions<AppSettings> options) : PageModel {
 
@@ -18,7 +18,7 @@ public class AttachmentsModel(RepDbContext dc, ResourceAttachmentProcessor attac
     public string ResourceName { get; set; } = string.Empty;
 
     public IEnumerable<ResourceAttachment> Items { get; set; } = [];
-    
+
     public async Task<IActionResult> OnGetAsync(int resourceId) => await this.Init(resourceId) ? this.Page() : this.NotFound();
 
     // Handlers

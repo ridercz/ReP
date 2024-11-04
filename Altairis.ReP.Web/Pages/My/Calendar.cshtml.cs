@@ -1,9 +1,8 @@
 using Altairis.TagHelpers;
-
 namespace Altairis.ReP.Web.Pages.My;
 
 public class CalendarModel(RepDbContext dc, TimeProvider timeProvider, IOptions<AppSettings> options) : PageModel {
-    
+
     // Input model
 
     [BindProperty]
