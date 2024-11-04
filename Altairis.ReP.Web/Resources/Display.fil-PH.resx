@@ -243,4 +243,7 @@
   <data name="UserName" xml:space="preserve">
     <value>Gamit na panagalan</value>
   </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Mga kalakip</value>
+  </data>
 </root>

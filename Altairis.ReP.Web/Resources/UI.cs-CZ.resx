@@ -576,4 +576,16 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_Journal_Msg_Created" xml:space="preserve">
     <value>Nový záznam v deníku byl úspěšně vytvořen.</value>
   </data>
+  <data name="Admin_Resources_Index_Reservations" xml:space="preserve">
+    <value>Rezervace</value>
+  </data>
+  <data name="Admin_Resources_Tasks_Title" xml:space="preserve">
+    <value>Úkoly údržby pro {0}</value>
+  </data>
+  <data name="Admin_Resources_Index_MaintenanceTasks" xml:space="preserve">
+    <value>Úkoly údržby</value>
+  </data>
+  <data name="_Back" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
 </root>
