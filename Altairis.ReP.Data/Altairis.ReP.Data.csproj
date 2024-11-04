@@ -7,6 +7,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<AssemblyMetadata Include="BuildDate" Value="$([System.DateTime]::UtcNow.ToString('s'))" />
+		<AssemblyMetadata Include="BuildComputer" Value="$(ComputerName)" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Altairis.ValidationToolkit" Version="4.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="8.0.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
