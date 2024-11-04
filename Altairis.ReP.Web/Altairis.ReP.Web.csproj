@@ -98,8 +98,4 @@
 		</None>
 	</ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="wwwroot\Content\Scripts\" />
-	</ItemGroup>
-
 </Project>

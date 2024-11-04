@@ -3,4 +3,29 @@
 @{
     this.ViewBag.Title = string.Format(UI.Admin_Resources_Tasks_Title, this.Model.ResourceName);
 }
-
+<table class="grid">
+    <thead>
+        <tr>
+            <th>@Display.DisplayName</th>
+            <th>@Display.Interval</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="new">
+            <td colspan="2">
+                <i class="fa-solid fa-wrench"></i> <a asp-page="Create" asp-route-resourceId="@Model.ResourceId">@UI._Create</a>
+            </td>
+        </tr>
+        @foreach (var item in this.Model.Items) {
+            <tr>
+                <th>
+                    <i class="fa-solid fa-wrench"></i> <a asp-page="Edit" asp-route-resourceId="@Model.ResourceId" asp-route-taskId="@item.Id">@item.Name</a>
+                </th>
+                <td>@item.Interval</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-page="../Index" asp-route-resourceId="@Model.ResourceId" class="button">@UI._Back</a>
+</p>

@@ -412,6 +412,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this maintenance task and all its related data?.
+        /// </summary>
+        public static string Admin_Resouces_Task_Edit_DeleteConfirm {
+            get {
+                return ResourceManager.GetString("Admin_Resouces_Task_Edit_DeleteConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new attachment.
         /// </summary>
         public static string Admin_Resources_Attachments_AddAttachment {
@@ -525,6 +534,24 @@ namespace Altairis.ReP.Web.Resources {
         public static string Admin_Resources_Index_Title {
             get {
                 return ResourceManager.GetString("Admin_Resources_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create maintenance task for {0}.
+        /// </summary>
+        public static string Admin_Resources_Tasks_Create_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Tasks_Create_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit maintenance task for {0}.
+        /// </summary>
+        public static string Admin_Resources_Tasks_Edit_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Tasks_Edit_Title", resourceCulture);
             }
         }
         

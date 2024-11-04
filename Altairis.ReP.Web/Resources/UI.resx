@@ -589,4 +589,13 @@ Please follow the instructions in the message.</value>
   <data name="_Back" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="Admin_Resources_Tasks_Create_Title" xml:space="preserve">
+    <value>Create maintenance task for {0}</value>
+  </data>
+  <data name="Admin_Resources_Tasks_Edit_Title" xml:space="preserve">
+    <value>Edit maintenance task for {0}</value>
+  </data>
+  <data name="Admin_Resouces_Task_Edit_DeleteConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete this maintenance task and all its related data?</value>
+  </data>
 </root>
