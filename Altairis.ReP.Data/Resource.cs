@@ -26,8 +26,10 @@ public class Resource {
 
     // Navigation properties
 
-    public virtual IEnumerable<ResourceAttachment> Attachments { get; set; } = [];
+    public virtual ICollection<ResourceAttachment> Attachments { get; set; } = [];
 
-    public virtual IEnumerable<MaintenanceTask> MaintenanceTasks { get; set; } = [];
+    public virtual ICollection<MaintenanceTask> MaintenanceTasks { get; set; } = [];
+
+    public virtual ICollection<ResourceMaintenance> Maintenances { get; set; } = [];
 
 }
