@@ -1,4 +1,4 @@
-﻿@page "{resourceId:int:min(1)}"
+﻿@page "/Admin/Resources/{resourceId:int:min(1)}/Attachments"
 @model Altairis.ReP.Web.Pages.Admin.Resources.AttachmentsModel
 @{
     this.ViewBag.Title = string.Format(UI.Admin_Resources_Attachments_Title, this.Model.ResourceName);
@@ -36,5 +36,6 @@
     <footer>
         <div asp-validation-summary="All"></div>
         <input type="submit" value="@UI._Submit" />
+        <a asp-page="Index" class="button secondary">@UI._Cancel</a>
     </footer>
 </form>
