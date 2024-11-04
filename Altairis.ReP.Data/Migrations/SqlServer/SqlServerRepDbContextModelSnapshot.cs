@@ -17,7 +17,7 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -268,6 +268,37 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
                     b.ToTable("JournalEntryAttachments");
                 });
 
+            modelBuilder.Entity("Altairis.ReP.Data.MaintenanceTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Interval")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResourceId");
+
+                    b.ToTable("MaintenanceTasks");
+                });
+
             modelBuilder.Entity("Altairis.ReP.Data.NewsMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -429,6 +460,37 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
                     b.ToTable("ResourceAttachments");
                 });
 
+            modelBuilder.Entity("Altairis.ReP.Data.ResourceMaintenance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MaintenanceTaskId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaintenanceTaskId");
+
+                    b.HasIndex("ResourceId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ResourceMaintenances");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.DataProtectionKey", b =>
                 {
                     b.Property<int>("Id")
@@ -571,12 +633,23 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
             modelBuilder.Entity("Altairis.ReP.Data.JournalEntryAttachment", b =>
                 {
                     b.HasOne("Altairis.ReP.Data.JournalEntry", "JournalEntry")
-                        .WithMany()
+                        .WithMany("Attachments")
                         .HasForeignKey("JournalEntryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("JournalEntry");
+                });
+
+            modelBuilder.Entity("Altairis.ReP.Data.MaintenanceTask", b =>
+                {
+                    b.HasOne("Altairis.ReP.Data.Resource", "Resource")
+                        .WithMany("MaintenanceTasks")
+                        .HasForeignKey("ResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resource");
                 });
 
             modelBuilder.Entity("Altairis.ReP.Data.Reservation", b =>
@@ -607,6 +680,33 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
                         .IsRequired();
 
                     b.Navigation("Resource");
+                });
+
+            modelBuilder.Entity("Altairis.ReP.Data.ResourceMaintenance", b =>
+                {
+                    b.HasOne("Altairis.ReP.Data.MaintenanceTask", "MaintenanceTask")
+                        .WithMany()
+                        .HasForeignKey("MaintenanceTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Altairis.ReP.Data.Resource", "Resource")
+                        .WithMany()
+                        .HasForeignKey("ResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Altairis.ReP.Data.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MaintenanceTask");
+
+                    b.Navigation("Resource");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -665,9 +765,16 @@ namespace Altairis.ReP.Data.Migrations.SqlServer
                     b.Navigation("Reservations");
                 });
 
+            modelBuilder.Entity("Altairis.ReP.Data.JournalEntry", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
             modelBuilder.Entity("Altairis.ReP.Data.Resource", b =>
                 {
                     b.Navigation("Attachments");
+
+                    b.Navigation("MaintenanceTasks");
                 });
 #pragma warning restore 612, 618
         }

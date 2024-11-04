@@ -28,4 +28,6 @@ public class Resource {
 
     public virtual IEnumerable<ResourceAttachment> Attachments { get; set; } = [];
 
+    public virtual IEnumerable<MaintenanceTask> MaintenanceTasks { get; set; } = [];
+
 }

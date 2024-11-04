@@ -16,11 +16,13 @@ public abstract class RepDbContext(DbContextOptions options) : IdentityDbContext
     public DbSet<DirectoryEntry> DirectoryEntries => this.Set<DirectoryEntry>();
     public DbSet<JournalEntry> JournalEntries => this.Set<JournalEntry>();
     public DbSet<JournalEntryAttachment> JournalEntryAttachments => this.Set<JournalEntryAttachment>();
+    public DbSet<MaintenanceTask> MaintenanceTasks => this.Set<MaintenanceTask>();
     public DbSet<NewsMessage> NewsMessages => this.Set<NewsMessage>();
     public DbSet<OpeningHoursChange> OpeningHoursChanges => this.Set<OpeningHoursChange>();
     public DbSet<Reservation> Reservations => this.Set<Reservation>();
     public DbSet<Resource> Resources => this.Set<Resource>();
     public DbSet<ResourceAttachment> ResourceAttachments => this.Set<ResourceAttachment>();
+    public DbSet<ResourceMaintenance> ResourceMaintenances => this.Set<ResourceMaintenance>();
 
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);
