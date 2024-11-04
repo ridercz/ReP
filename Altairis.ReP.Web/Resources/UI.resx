@@ -577,4 +577,7 @@ Please follow the instructions in the message.</value>
   <data name="My_Journal_Msg_Created" xml:space="preserve">
     <value>New journal entry was created successfully.</value>
   </data>
+  <data name="Admin_Resources_Index_Reservations" xml:space="preserve">
+    <value>Reservations</value>
+  </data>
 </root>

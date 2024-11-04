@@ -493,6 +493,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reservations.
+        /// </summary>
+        public static string Admin_Resources_Index_Reservations {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_Reservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resources.
         /// </summary>
         public static string Admin_Resources_Index_Title {
