@@ -16,7 +16,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Altairis.ReP.Data\Altairis.ReP.Data.csproj" />
 		<PackageReference Include="Altairis.ConventionalMetadataProviders" Version="1.0.5" />
-		<PackageReference Include="Altairis.Services.DateProvider" Version="1.0.0" />
 		<PackageReference Include="Altairis.Services.Mailing.Core" Version="1.0.5" />
 		<PackageReference Include="Altairis.Services.Mailing.Rfc2822" Version="1.0.5" />
 		<PackageReference Include="Altairis.Services.Mailing.SendGrid" Version="1.0.5" />

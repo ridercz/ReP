@@ -9,7 +9,6 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 using Altairis.ConventionalMetadataProviders;
 using Altairis.ReP.Web.Components;
-using Altairis.Services.DateProvider;
 using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Rfc2822;
 using Altairis.Services.Mailing.SendGrid;
@@ -155,7 +154,7 @@ builder.Services.AddScoped<OpeningHoursProvider>();
 builder.Services.AddScoped<ResourceAttachmentProcessor>();
 builder.Services.AddScoped<JournalAttachmentProcessor>();
 builder.Services.AddScoped<CalendarGenerator>();
-builder.Services.AddSingleton<IDateProvider>(new TzConvertDateProvider("Central Europe Standard Time", DatePrecision.Minute));
+builder.Services.AddSingleton<TimeProvider>(RoundedTimeProvider.SecondPrecision("Europe/Prague"));
 builder.Services.Configure<TimeTagHelperOptions>(options => {
     options.YesterdayDateFormatter = dt => string.Format(UI.TimeTagHelper_Yesterday, dt);
     options.TodayDateFormatter = dt => string.Format(UI.TimeTagHelper_Today, dt);

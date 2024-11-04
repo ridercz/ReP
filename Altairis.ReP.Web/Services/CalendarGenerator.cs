@@ -1,14 +1,14 @@
-using Altairis.Services.DateProvider;
+
 using Ical.Net;
 using Ical.Net.DataTypes;
 using Ical.Net.Serialization;
 
 namespace Altairis.ReP.Web;
 
-public class CalendarGenerator(RepDbContext dc, IDateProvider dateProvider, LinkGenerator linkGenerator, IHttpContextAccessor contextAccessor, IOptions<AppSettings> options) {
+public class CalendarGenerator(RepDbContext dc, TimeProvider timeProvider, LinkGenerator linkGenerator, IHttpContextAccessor contextAccessor, IOptions<AppSettings> options) {
 
     public async Task<IResult> GeneratePersonalCalendar(string rak) {
-        var calendarStart = dateProvider.Today.Subtract(options.Value.IcsExport.BackDays);
+        var calendarStart = timeProvider.GetLocalNow().Date.Subtract(options.Value.IcsExport.BackDays);
 
         // Authenticate user
         var user = await dc.Users.FirstOrDefaultAsync(x => x.ResourceAuthorizationKey.Equals(rak));
@@ -75,7 +75,7 @@ public class CalendarGenerator(RepDbContext dc, IDateProvider dateProvider, Link
     }
 
     public async Task<IResult> GenerateFullCalendar(string rak) {
-        var calendarStart = dateProvider.Today.Subtract(options.Value.IcsExport.BackDays);
+        var calendarStart = timeProvider.GetLocalNow().Date.Subtract(options.Value.IcsExport.BackDays);
 
         // Authenticate user
         var user = await dc.Users.FirstOrDefaultAsync(x => x.ResourceAuthorizationKey.Equals(rak));
@@ -147,7 +147,7 @@ public class CalendarGenerator(RepDbContext dc, IDateProvider dateProvider, Link
     }
 
     public async Task<IResult> GenerateResourceCalendar(int resourceId, string rak) {
-        var calendarStart = dateProvider.Today.Subtract(options.Value.IcsExport.BackDays);
+        var calendarStart = timeProvider.GetLocalNow().Date.Subtract(options.Value.IcsExport.BackDays);
 
         // Authenticate user
         var user = await dc.Users.FirstOrDefaultAsync(x => x.ResourceAuthorizationKey.Equals(rak));

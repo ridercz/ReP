@@ -1,12 +1,12 @@
 using System.Globalization;
-using Altairis.Services.DateProvider;
+
 using Altairis.TagHelpers;
 using Altairis.ValidationToolkit;
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> options, ResourceAttachmentProcessor attachmentProcessor) : PageModel {
+public class ReservationsModel(RepDbContext dc, TimeProvider timeProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> options, ResourceAttachmentProcessor attachmentProcessor) : PageModel {
 
     // Input model
 
@@ -53,7 +53,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
     public async Task<IActionResult> OnGetAsync(int resourceId) {
         if (!await this.Init(resourceId)) return this.NotFound();
 
-        var dt = dateProvider.Now.AddDays(1);
+        var dt = timeProvider.GetLocalNow().Date.AddDays(1);
         this.Input.DateBegin = dt.AddMinutes(-dt.Minute);
         this.Input.DateEnd = this.Input.DateBegin.AddHours(1);
 
@@ -135,7 +135,7 @@ public class ReservationsModel(RepDbContext dc, IDateProvider dateProvider, User
         this.ResourceAuthorizationKey = (await dc.Users.SingleAsync(x => x.UserName!.Equals(this.User.Identity!.Name))).ResourceAuthorizationKey;
 
         // Get last Monday as the start date
-        this.CalendarDateBegin = dateProvider.Today;
+        this.CalendarDateBegin = timeProvider.GetLocalNow().Date;
         while (this.CalendarDateBegin.DayOfWeek != CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) this.CalendarDateBegin = this.CalendarDateBegin.AddDays(-1);
 
         // Get future reservations

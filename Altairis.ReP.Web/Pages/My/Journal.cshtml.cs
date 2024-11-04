@@ -1,11 +1,11 @@
-using Altairis.Services.DateProvider;
+
 using FluentStorage.Utils.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, JournalAttachmentProcessor attachmentProcessor) : PageModel {
+public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserManager<ApplicationUser> userManager, TimeProvider timeProvider, JournalAttachmentProcessor attachmentProcessor) : PageModel {
 
     public IEnumerable<JournalEntry> Items { get; set; } = [];
 
@@ -13,7 +13,7 @@ public class JournalModel(RepDbContext dc, IOptions<AppSettings> options, UserMa
 
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel {
-        Date = dateProvider.Now
+        Date = timeProvider.GetLocalNow().DateTime
     };
 
     public class InputModel {

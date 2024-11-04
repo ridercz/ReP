@@ -1,9 +1,8 @@
-﻿using Altairis.Services.DateProvider;
-using FluentStorage.Blobs;
+﻿using FluentStorage.Blobs;
 
 namespace Altairis.ReP.Web.Services;
 
-public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) where T : class, IAttachment, new() {
+public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, TimeProvider timeProvider, RepDbContext dc) where T : class, IAttachment, new() {
 
     // Abstract methods
 
@@ -16,7 +15,7 @@ public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, IDateProv
     public async Task<T> CreateAttachment(IFormFile formFile, int relatedEntryId) {
         // Create attachment
         var newAttachment = new T {
-            DateCreated = dateProvider.Now,
+            DateCreated = timeProvider.GetLocalNow().DateTime,
             FileName = Path.GetFileName(formFile.FileName),
             FileSize = formFile.Length,
             StoragePath = string.Empty,
@@ -66,7 +65,7 @@ public abstract class AttachmentProcessor<T>(IBlobStorage blobStorage, IDateProv
 
 }
 
-public class ResourceAttachmentProcessor(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) : AttachmentProcessor<ResourceAttachment>(blobStorage, dateProvider, dc) {
+public class ResourceAttachmentProcessor(IBlobStorage blobStorage, TimeProvider timeProvider, RepDbContext dc) : AttachmentProcessor<ResourceAttachment>(blobStorage, timeProvider, dc) {
     private const string AttachmentPath = "attachments/{0:0000}/{1:yyyyMMddHHmmss}-{2:n}{3}";
 
     protected override void SetRelatedEntryId(ResourceAttachment attachment, int relatedEntryId) => attachment.ResourceId = relatedEntryId;
@@ -78,7 +77,7 @@ public class ResourceAttachmentProcessor(IBlobStorage blobStorage, IDateProvider
             Path.GetExtension(attachment.FileName.ToLowerInvariant())); // 3
 }
 
-public class JournalAttachmentProcessor(IBlobStorage blobStorage, IDateProvider dateProvider, RepDbContext dc) : AttachmentProcessor<JournalEntryAttachment>(blobStorage, dateProvider, dc) {
+public class JournalAttachmentProcessor(IBlobStorage blobStorage, TimeProvider timeProvider, RepDbContext dc) : AttachmentProcessor<JournalEntryAttachment>(blobStorage, timeProvider, dc) {
     private const string AttachmentPath = "journals/{0:0000}/{1:yyyyMMddHHmmss}-{2:n}{3}";
 
     protected override void SetRelatedEntryId(JournalEntryAttachment attachment, int relatedEntryId) => attachment.JournalEntryId = relatedEntryId;

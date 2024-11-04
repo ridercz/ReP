@@ -1,4 +1,4 @@
-using Altairis.Services.DateProvider;
+
 using Ical.Net;
 using Ical.Net.DataTypes;
 using Ical.Net.Serialization;
@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManager, IDateProvider dateProvider, OpeningHoursProvider hoursProvider) : PageModel {
+public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManager, TimeProvider timeProvider, OpeningHoursProvider hoursProvider) : PageModel {
 
     // Output model
 
@@ -48,17 +48,17 @@ public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManage
 
         // Get reservations of this user
         var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
-        var now = dateProvider.Now;
+        var now = timeProvider.GetLocalNow();
         var reservationsQuery = from r in dc.Reservations
-                                where r.UserId == userId && r.DateEnd >= dateProvider.Today
+                                where r.UserId == userId && r.DateEnd >= timeProvider.GetLocalNow().Date
                                 orderby r.DateBegin
-                                select new ReservationInfo(r.Id, r.ResourceId, r.Resource!.Name, r.DateBegin, r.DateEnd, r.DateEnd > dateProvider.Now);
+                                select new ReservationInfo(r.Id, r.ResourceId, r.Resource!.Name, r.DateBegin, r.DateEnd, r.DateEnd > timeProvider.GetLocalNow());
         this.Reservations = await reservationsQuery.ToListAsync();
     }
 
     public async Task<IActionResult> OnGetDeleteAsync(int reservationId) {
         var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
-        var reservation = await dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > dateProvider.Now);
+        var reservation = await dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > timeProvider.GetLocalNow());
         if (reservation == null) return this.NotFound();
         dc.Reservations.Remove(reservation);
         await dc.SaveChangesAsync();

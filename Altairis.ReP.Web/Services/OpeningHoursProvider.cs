@@ -1,13 +1,13 @@
 ﻿using System.Globalization;
-using Altairis.Services.DateProvider;
+
 
 namespace Altairis.ReP.Web.Services;
 
-public class OpeningHoursProvider(IOptions<AppSettings> options, IDateProvider dateProvider, RepDbContext dc) {
+public class OpeningHoursProvider(IOptions<AppSettings> options, TimeProvider timeProvider, RepDbContext dc) {
 
-    public OpeningHoursInfo GetOpeningHours(int dayOffset) => this.GetOpeningHours(dateProvider.Today.AddDays(dayOffset));
+    public OpeningHoursInfo GetOpeningHours(int dayOffset) => this.GetOpeningHours(timeProvider.GetLocalNow().Date.AddDays(dayOffset));
 
-    public IEnumerable<OpeningHoursInfo> GetOpeningHours(int dayOffsetFrom, int dayOffsetTo) => this.GetOpeningHours(dateProvider.Today.AddDays(dayOffsetFrom), dateProvider.Today.AddDays(dayOffsetTo));
+    public IEnumerable<OpeningHoursInfo> GetOpeningHours(int dayOffsetFrom, int dayOffsetTo) => this.GetOpeningHours(timeProvider.GetLocalNow().Date.AddDays(dayOffsetFrom), timeProvider.GetLocalNow().Date.AddDays(dayOffsetTo));
 
     public OpeningHoursInfo GetOpeningHours(DateTime date) {
         date = date.Date;

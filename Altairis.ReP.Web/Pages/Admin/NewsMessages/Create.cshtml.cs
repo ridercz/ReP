@@ -1,10 +1,10 @@
 using System.Globalization;
-using Altairis.Services.DateProvider;
+
 using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Templating;
 
 namespace Altairis.ReP.Web.Pages.Admin.NewsMessages;
-public class CreateModel(RepDbContext dc, IDateProvider dateProvider, ITemplatedMailerService mailer) : PageModel {
+public class CreateModel(RepDbContext dc, TimeProvider timeProvider, ITemplatedMailerService mailer) : PageModel {
 
     // Input model
 
@@ -28,7 +28,7 @@ public class CreateModel(RepDbContext dc, IDateProvider dateProvider, ITemplated
 
         // Create news
         var newMessage = new NewsMessage {
-            Date = dateProvider.Now,
+            Date = timeProvider.GetLocalNow().DateTime,
             Text = this.Input.Text,
             Title = this.Input.Title
         };

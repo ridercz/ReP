@@ -1,9 +1,8 @@
-using Altairis.Services.DateProvider;
 using Altairis.TagHelpers;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions<AppSettings> options) : PageModel {
+public class CalendarModel(RepDbContext dc, TimeProvider timeProvider, IOptions<AppSettings> options) : PageModel {
     
     // Input model
 
@@ -53,7 +52,7 @@ public class CalendarModel(RepDbContext dc, IDateProvider dateProvider, IOptions
 
     public async Task<IActionResult> OnGetAsync(int? year, int? month) {
         // Redirect to current month
-        if (!year.HasValue || !month.HasValue) return this.RedirectToPage(new { dateProvider.Today.Year, dateProvider.Today.Month });
+        if (!year.HasValue || !month.HasValue) return this.RedirectToPage(new { timeProvider.GetLocalNow().Year, timeProvider.GetLocalNow().Month });
 
         // Initialize data
         await this.Init(year.Value, month.Value);
