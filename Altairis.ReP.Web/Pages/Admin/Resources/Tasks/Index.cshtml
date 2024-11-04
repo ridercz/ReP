@@ -1,0 +1,6 @@
+﻿@page "/Admin/Resources/{resourceId:int:min(1)}/Tasks"
+@model Altairis.ReP.Web.Pages.Admin.Resources.Tasks.IndexModel
+@{
+    this.ViewBag.Title = string.Format(UI.Admin_Resources_Tasks_Title, this.Model.ResourceName);
+}
+

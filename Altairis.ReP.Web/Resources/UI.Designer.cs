@@ -61,6 +61,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string _Back {
+            get {
+                return ResourceManager.GetString("_Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string _Cancel {
@@ -466,6 +475,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maintenance tasks.
+        /// </summary>
+        public static string Admin_Resources_Index_MaintenanceTasks {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_MaintenanceTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New resource was created successfully..
         /// </summary>
         public static string Admin_Resources_Index_Msg_Created {
@@ -507,6 +525,15 @@ namespace Altairis.ReP.Web.Resources {
         public static string Admin_Resources_Index_Title {
             get {
                 return ResourceManager.GetString("Admin_Resources_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maintenance tasks for {0}.
+        /// </summary>
+        public static string Admin_Resources_Tasks_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Tasks_Title", resourceCulture);
             }
         }
         

@@ -580,4 +580,13 @@ Please follow the instructions in the message.</value>
   <data name="Admin_Resources_Index_Reservations" xml:space="preserve">
     <value>Reservations</value>
   </data>
+  <data name="Admin_Resources_Tasks_Title" xml:space="preserve">
+    <value>Maintenance tasks for {0}</value>
+  </data>
+  <data name="Admin_Resources_Index_MaintenanceTasks" xml:space="preserve">
+    <value>Maintenance tasks</value>
+  </data>
+  <data name="_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
 </root>
