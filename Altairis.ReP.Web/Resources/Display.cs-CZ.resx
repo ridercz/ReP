@@ -246,4 +246,7 @@
   <data name="Attachments" xml:space="preserve">
     <value>Přílohy</value>
   </data>
+  <data name="Interval" xml:space="preserve">
+    <value>Interval</value>
+  </data>
 </root>

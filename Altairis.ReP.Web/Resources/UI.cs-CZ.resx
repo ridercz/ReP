@@ -588,4 +588,13 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="_Back" xml:space="preserve">
     <value>Zpět</value>
   </data>
+  <data name="Admin_Resources_Tasks_Create_Title" xml:space="preserve">
+    <value>Vytvoření úkolu údržby pro {0}</value>
+  </data>
+  <data name="Admin_Resources_Tasks_Edit_Title" xml:space="preserve">
+    <value>Úprava úkolu údržby pro {0}</value>
+  </data>
+  <data name="Admin_Resouces_Task_Edit_DeleteConfirm" xml:space="preserve">
+    <value>Jste si jisti, že chcete tento úkol údržby a všechna související data odstranit?</value>
+  </data>
 </root>

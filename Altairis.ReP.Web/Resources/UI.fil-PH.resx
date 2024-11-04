@@ -588,4 +588,13 @@ Magyaring sundin ang mga tagubilin sa mensahe.</value>
   <data name="_Back" xml:space="preserve">
     <value>Balik</value>
   </data>
+  <data name="Admin_Resources_Tasks_Create_Title" xml:space="preserve">
+    <value>Lumikha ng gawain sa pagpapanatili para sa {0}</value>
+  </data>
+  <data name="Admin_Resources_Tasks_Edit_Title" xml:space="preserve">
+    <value>I -edit ang gawain sa pagpapanatili para sa {0}</value>
+  </data>
+  <data name="Admin_Resouces_Task_Edit_DeleteConfirm" xml:space="preserve">
+    <value>Sigurado ka bang nais mong tanggalin ang gawaing ito ng pagpapanatili at lahat ng mga kaugnay na data nito?</value>
+  </data>
 </root>
