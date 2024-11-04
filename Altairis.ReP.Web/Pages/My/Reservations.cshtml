@@ -62,7 +62,7 @@
     <ul class="fa-ul">
         @foreach (var item in this.Model.Attachments) {
             <li>
-                <span class="fa-li"><i class="fas fa-paperclip"></i></span>
+                <span class="fa-li"><i class="fa-solid fa-paperclip"></i></span>
                 <a class="strong" asp-page-handler="download" asp-route-attachmentId="@item.Id">@item.FileName</a>
                 (<time value="@item.DateCreated"></time>; <file-size value="@item.FileSize"></file-size>)
             </li>

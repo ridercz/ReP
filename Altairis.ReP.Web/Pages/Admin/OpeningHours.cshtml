@@ -53,19 +53,19 @@
     <tbody>
         <tr class="new">
             <td colspan="3">
-                <i class="fas fa-clock"></i>
+                <i class="fa-solid fa-clock"></i>
                 <a href="#new">@UI._Create</a>
             </td>
         </tr>
         @foreach (var item in Model.OpeningHoursChanges) {
             <tr>
                 <th>
-                    <i class="fas fa-clock"></i>
+                    <i class="fa-solid fa-clock"></i>
                     @item.Date.ToShortDateString()
                 </th>
                 <td>@(item.ClosingTime.Subtract(item.OpeningTime) > TimeSpan.Zero ? item.OpeningTime.ToString("hh\\:mm") +" - "+ item.ClosingTime.ToString("hh\\:mm") :UI.My_OpeningHours_Closed)</td>
                 <td class="buttons">
-                    <a asp-page-handler="Delete" asp-route-ohchId="@item.Id" confirm-message="@UI.Admin_OpeningHours_DeleteConfirm"><i class="fas fa-trash-alt"></i></a>
+                    <a asp-page-handler="Delete" asp-route-ohchId="@item.Id" confirm-message="@UI.Admin_OpeningHours_DeleteConfirm"><i class="fa-solid fa-trash-alt"></i></a>
                 </td>
             </tr>
         }

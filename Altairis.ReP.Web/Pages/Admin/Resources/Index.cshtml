@@ -15,21 +15,21 @@
     <tbody>
         <tr class="new">
             <td colspan="4">
-                <i class="fas fa-cube"></i> <a asp-page="Create">@UI._Create</a>
+                <i class="fa-solid fa-cube"></i> <a asp-page="Create">@UI._Create</a>
             </td>
         </tr>
         @foreach (var item in this.Model.Resources) {
             <tr>
                 <th>
-                    <i class="fas fa-cube"></i> <a asp-page="Edit" asp-route-resourceId="@item.Id">@item.Name</a>
+                    <i class="fa-solid fa-cube"></i> <a asp-page="Edit" asp-route-resourceId="@item.Id">@item.Name</a>
                 </th>
                 <td>
                     <span class="tag" style="@item.GetStyle()">XXXXXX</span>
                 </td>
                 <td trim-length="50">@item.Description</td>
                 <td class="buttons">
-                    <a asp-page="/My/Reservations" asp-route-resourceId="@item.Id" title="@UI.Admin_Resources_Index_Reservations"><i class="fas fa-calendar-check"></i></a>
-                    <a asp-page="Attachments" asp-route-resourceId="@item.Id" visible="@this.OptionsAccessor.Value.Features.UseAttachments" title="@UI.My_Reservations_Attachments"><i class="fas fa-paperclip"></i></a>
+                    <a asp-page="/My/Reservations" asp-route-resourceId="@item.Id" title="@UI.Admin_Resources_Index_Reservations"><i class="fa-solid fa-calendar-check"></i></a>
+                    <a asp-page="Attachments" asp-route-resourceId="@item.Id" visible="@this.OptionsAccessor.Value.Features.UseAttachments" title="@UI.My_Reservations_Attachments"><i class="fa-solid fa-paperclip"></i></a>
                 </td>
             </tr>
         }

@@ -22,15 +22,15 @@
         <label for="mtoggler" class="open" hidden="hidden"><span>&#x2630;</span></label>
         <label for="mtoggler" class="close" hidden="hidden"><span>&#x1F5D9;</span></label>
         <ul>
-            <li include-roles="?"><a asp-page="/Login/Index"><i class="fas fa-fw fa-key"></i> @UI.Layout_Menu_Login</a></li>
-            <li include-roles="?"><a asp-page="/Login/ForgotPassword"><i class="fas fa-fw fa-redo"></i> @UI.Layout_Menu_ResetPassword</a></li>
-            <li include-roles="*"><a asp-page="/My/Index"><i class="fas fa-fw fa-home"></i> @UI.Layout_Menu_Home</a></li>
-            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseNews"><a asp-page="/My/News"><i class="fas fa-fw fa-newspaper"></i> @UI.Layout_Menu_News</a></li>
-            <li include-roles="*"><a asp-page="/My/Calendar" asp-route-year="" asp-route-month=""><i class="fas fa-fw fa-calendar"></i> @UI.Layout_Menu_Calendar</a></li>
-            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseMemberDirectory"><a asp-page="/My/Directory"><i class="fas fa-fw fa-address-card"></i> @UI.Layout_Menu_Directory</a></li>
-            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseJournal"><a asp-page="/My/Journal"><i class="fas fa-fw fa-book"></i> @UI.Layout_Menu_Journal</a></li>
-            <li include-roles="@ApplicationRole.Administrator"><a asp-page="/Admin/Index"><i class="fas fa-fw fa-cogs"></i> @UI.Layout_Menu_Administration</a></li>
-            <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fas fa-fw fa-user"></i> @this.User.Identity!.Name</a></li>
+            <li include-roles="?"><a asp-page="/Login/Index"><i class="fa-solid fa-fw fa-key"></i> @UI.Layout_Menu_Login</a></li>
+            <li include-roles="?"><a asp-page="/Login/ForgotPassword"><i class="fa-solid fa-fw fa-redo"></i> @UI.Layout_Menu_ResetPassword</a></li>
+            <li include-roles="*"><a asp-page="/My/Index"><i class="fa-solid fa-fw fa-home"></i> @UI.Layout_Menu_Home</a></li>
+            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseNews"><a asp-page="/My/News"><i class="fa-solid fa-fw fa-newspaper"></i> @UI.Layout_Menu_News</a></li>
+            <li include-roles="*"><a asp-page="/My/Calendar" asp-route-year="" asp-route-month=""><i class="fa-solid fa-fw fa-calendar"></i> @UI.Layout_Menu_Calendar</a></li>
+            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseMemberDirectory"><a asp-page="/My/Directory"><i class="fa-solid fa-fw fa-address-card"></i> @UI.Layout_Menu_Directory</a></li>
+            <li include-roles="*" visible="@this.OptionsAccessor.Value.Features.UseJournal"><a asp-page="/My/Journal"><i class="fa-solid fa-fw fa-book"></i> @UI.Layout_Menu_Journal</a></li>
+            <li include-roles="@ApplicationRole.Administrator"><a asp-page="/Admin/Index"><i class="fa-solid fa-fw fa-cogs"></i> @UI.Layout_Menu_Administration</a></li>
+            <li include-roles="*"><a asp-page="/My/Settings/Index"><i class="fa-solid fa-fw fa-user"></i> @this.User.Identity!.Name</a></li>
             <li include-roles="*" visible="!(this.ViewBag.HideLoginStatus ?? false)"><a asp-page="/Login/Logout"><i class="fa fa-fw fa-sign-out-alt"></i> @UI.Layout_LoginStatus_SignOut</a></li>
         </ul>
     </nav>

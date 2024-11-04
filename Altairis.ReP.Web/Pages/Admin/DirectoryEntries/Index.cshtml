@@ -15,14 +15,14 @@
     <tbody>
         <tr class="new">
             <td colspan="3">
-                <i class="fas fa-address-card"></i>
+                <i class="fa-solid fa-address-card"></i>
                 <a asp-page="Create">@UI._Create</a>
             </td>
         </tr>
         @foreach (var item in this.Model.DirectoryEntries) {
             <tr>
                 <th>
-                    <i class="fas fa-address-card"></i>
+                    <i class="fa-solid fa-address-card"></i>
                     <a asp-page="Edit" asp-route-directoryEntryId="@item.Id">@item.DisplayName</a>
                 </th>
                 <td><a href="mailto:@item.Email">@item.Email</a></td>

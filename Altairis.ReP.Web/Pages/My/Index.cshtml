@@ -5,7 +5,7 @@
 }
 
 <p class="infobox" visible="@this.OptionsAccessor.Value.Features.UseOpeningHours && this.Model.OpenToday != null && this.Model.OpenTomorrow != null">
-    <i class="fas fa-clock fa-2x fa-pull-left"></i>
+    <i class="fa-solid fa-clock fa-2x fa-pull-left"></i>
     @Html.Raw(this.Model.OpenToday!.IsOpen ? string.Format(UI.My_Index_TodayLab_Open, this.Model.OpenToday) : UI.My_Index_TodayLab_Closed)
     @Html.Raw(this.Model.OpenTomorrow!.IsOpen ? string.Format(UI.My_Index_TomorrowLab_Open, this.Model.OpenTomorrow) : UI.My_Index_TomorrowLab_Closed)<br />
     <a asp-page="OpeningHours">@UI.My_Index_OpeningHours</a>
@@ -20,7 +20,7 @@
 <h2 visible="this.Model.Resources.Any()">@UI.My_Index_Resources</h2>
 @foreach (var item in this.Model.Resources) {
     <p>
-        <i class="fas fa-cube fa-2x fa-pull-left"></i>
+        <i class="fa-solid fa-cube fa-2x fa-pull-left"></i>
         <a asp-page="Reservations" asp-route-resourceId="@item.Id" class="strong">@item.Name</a><br />
         @item.Description
     </p>
@@ -40,12 +40,12 @@
     <tbody>
         @foreach (var item in Model.Reservations) {
             <tr>
-                <th><i class="fas fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId" asp-fragment="reservation_@item.Id">@item.ResourceName</a></th>
+                <th><i class="fa-solid fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId" asp-fragment="reservation_@item.Id">@item.ResourceName</a></th>
                 <td><time value="item.DateBegin"></time></td>
                 <td><time value="item.DateEnd"></time></td>
                 <td class="buttons">
-                    <a visible="@item.CanBeDeleted" asp-page-handler="Delete" asp-route-reservationId="@item.Id" title="@UI._Delete" confirm-message="@UI.My_Reservations_DeleteConfirm"><i class="fas fa-trash-alt"></i></a>
-                    <a asp-page-handler="SaveIcs" asp-route-reservationId="@item.Id" title="@UI.My_Calendar_Ics"><i class="fas fa-calendar-plus"></i></a>
+                    <a visible="@item.CanBeDeleted" asp-page-handler="Delete" asp-route-reservationId="@item.Id" title="@UI._Delete" confirm-message="@UI.My_Reservations_DeleteConfirm"><i class="fa-solid fa-trash-alt"></i></a>
+                    <a asp-page-handler="SaveIcs" asp-route-reservationId="@item.Id" title="@UI.My_Calendar_Ics"><i class="fa-solid fa-calendar-plus"></i></a>
                 </td>
             </tr>
         }

@@ -17,12 +17,12 @@
     <tbody>
         @foreach (var item in Model.Reservations) {
             <tr>
-                <th><i class="fas fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@item.ReservationId">@item.UserDisplayName</a></th>
-                <th><i class="fas fa-cube"></i> @item.ResourceName</th>
+                <th><i class="fa-solid fa-user"></i> <a asp-page="Edit" asp-route-reservationId="@item.ReservationId">@item.UserDisplayName</a></th>
+                <th><i class="fa-solid fa-cube"></i> @item.ResourceName</th>
                 <td><time value="@item.DateBegin"></time></td>
                 <td><time value="@item.DateEnd"></time></td>
                 <td>
-                    <i class="fas fa-wrench" visible="@item.System" title="@Display.Comment"></i>
+                    <i class="fa-solid fa-wrench" visible="@item.System" title="@Display.Comment"></i>
                     @item.Comment
                 </td>
             </tr>

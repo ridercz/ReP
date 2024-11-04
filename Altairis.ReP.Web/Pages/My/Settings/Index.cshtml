@@ -9,14 +9,14 @@
             <tr>
                 <th>@Display.UserName</th>
                 <td>
-                    <a href="#changeusername"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                    <a href="#changeusername"><i class="fa-solid fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
                     @Model.Me!.UserName
                 </td>
             </tr>
             <tr>
                 <th>@Display.Password</th>
                 <td>
-                    <a asp-page="Password"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                    <a asp-page="Password"><i class="fa-solid fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
                     ********
                 </td>
             </tr>
@@ -24,7 +24,7 @@
                 <th>@Display.Email</th>
                 <td>
                     <div style="margin-bottom:1ex;">
-                        <a asp-page="Email"><i class="fas fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
+                        <a asp-page="Email"><i class="fa-solid fa-pencil-alt" title="@UI.My_Settings_Index_Change"></i></a>
                         @Model.Me.Email
                     </div>
                     <ul class="checkbox-list vertical">
@@ -67,9 +67,9 @@
             <tr>
                 <th>@UI.My_Calendar_Ics</th>
                 <td>
-                    <div><i class="fas fa-calendar-plus"></i> <a asp-route="FullIcs" asp-route-rak="@this.Model.Me.ResourceAuthorizationKey">@UI.My_Settings_Ics_Full</a></div>
-                    <div><i class="fas fa-calendar-plus"></i> <a asp-route="MyIcs" asp-route-rak="@this.Model.Me.ResourceAuthorizationKey">@UI.My_Settings_Ics_My</a></div>
-                    <div><i class="fas fa-calendar-xmark"></i> <a href="#resetrak">@UI.My_Settings_Ics_ResetRak</a></div>
+                    <div><i class="fa-solid fa-calendar-plus"></i> <a asp-route="FullIcs" asp-route-rak="@this.Model.Me.ResourceAuthorizationKey">@UI.My_Settings_Ics_Full</a></div>
+                    <div><i class="fa-solid fa-calendar-plus"></i> <a asp-route="MyIcs" asp-route-rak="@this.Model.Me.ResourceAuthorizationKey">@UI.My_Settings_Ics_My</a></div>
+                    <div><i class="fa-solid fa-calendar-xmark"></i> <a href="#resetrak">@UI.My_Settings_Ics_ResetRak</a></div>
                 </td>
             </tr>
         </tbody>
