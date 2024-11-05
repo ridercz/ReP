@@ -16,6 +16,11 @@
     min-width: 20ex;
     box-sizing: border-box;
 
+    @media(max-width: $StopMin) {
+        width: 100%;
+        margin-bottom: calc($Padding / 2);
+    }
+
     &:hover {
         color: $White !important;
         background-color: $Black !important;
@@ -149,8 +154,20 @@ ul.checkbox-list {
     }
 }
 
-
-
 .validation-summary-valid {
     display: none;
+}
+
+p.buttons {
+    @media(max-width: $StopMin) {
+        .button {
+            width: 100%;
+            display: block;
+            margin-bottom: calc($Padding / 2);
+        }
+
+        .fr {
+            float: none;
+        }
+    }
 }

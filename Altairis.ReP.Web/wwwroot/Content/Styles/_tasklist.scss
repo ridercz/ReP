@@ -14,6 +14,10 @@ ul.tasklist {
             text-align: left;
             padding: $Padding;
 
+            @media (max-width: $StopMin) {
+                width: 100%;
+            }
+
             i {
                 margin-right: calc($Padding / 2);
             }

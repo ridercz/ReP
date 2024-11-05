@@ -4,7 +4,7 @@
     this.ViewBag.Title = string.Format(UI.My_Calendar_Title, Model.DateBegin);
 }
 
-<p>
+<p class="buttons">
     <a asp-page="Index" asp-fragment="upcoming" class="button">@UI.My_Calendar_Manage</a>
     <a asp-fragment="addevent" class="button" visible="this.Model.CanManageEntries">@UI.My_Calendar_AddEntry</a>
     <a asp-route="FullIcs" asp-route-rak="@this.Model.ResourceAuthorizationKey" class="button">@UI.My_Calendar_Ics</a>

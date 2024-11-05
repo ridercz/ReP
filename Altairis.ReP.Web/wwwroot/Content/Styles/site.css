@@ -18,7 +18,7 @@ html body {
   margin: 20px auto;
   padding: 20px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   html body {
     margin: 0 auto;
   }
@@ -59,7 +59,7 @@ html body > nav ul a:active, html body > nav ul a:focus, html body > nav ul a:ho
   color: #fff;
   background: #ff6a00;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   html body > nav ul {
     display: none;
     overflow: hidden;
@@ -114,7 +114,7 @@ html body > footer {
 html body > footer img {
   margin-right: 20px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   html body > footer {
     text-align: center;
   }
@@ -267,6 +267,12 @@ form input[type=submit], form input[type=button] {
   min-width: 20ex;
   box-sizing: border-box;
 }
+@media (max-width: 900px) {
+  form input[type=submit], form input[type=button] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
 form input[type=submit]:hover, form input[type=button]:hover {
   color: #fff !important;
   background-color: #000 !important;
@@ -360,6 +366,12 @@ a.button {
   min-width: 20ex;
   box-sizing: border-box;
 }
+@media (max-width: 900px) {
+  a.button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
 a.button:hover {
   color: #fff !important;
   background-color: #000 !important;
@@ -394,6 +406,17 @@ ul.checkbox-list.vertical li {
   display: none;
 }
 
+@media (max-width: 900px) {
+  p.buttons .button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+  p.buttons .fr {
+    float: none;
+  }
+}
+
 .modal {
   visibility: hidden;
   opacity: 0;
@@ -418,6 +441,12 @@ ul.checkbox-list.vertical li {
   background-color: #fff;
   text-align: center;
 }
+@media (max-width: 900px) {
+  .modal article {
+    max-width: 95%;
+    width: 95%;
+  }
+}
 .modal article header {
   text-align: left;
   padding: 5px;
@@ -436,6 +465,12 @@ ul.checkbox-list.vertical li {
   min-width: 30%;
   max-width: 50%;
   background-color: #fff;
+}
+@media (max-width: 900px) {
+  .modal form {
+    max-width: 95%;
+    width: 95%;
+  }
 }
 .modal form header {
   padding: 5px 20px;
@@ -490,6 +525,11 @@ ul.tasklist li .button {
   min-width: 33%;
   text-align: left;
   padding: 20px;
+}
+@media (max-width: 900px) {
+  ul.tasklist li .button {
+    width: 100%;
+  }
 }
 ul.tasklist li .button i {
   margin-right: 10px;
