@@ -2,7 +2,7 @@
 
 namespace Altairis.ReP.Data;
 
-public class ResourceMaintenance {
+public class MaintenanceRecord {
 
     [Key]
     public int Id { get; set; }

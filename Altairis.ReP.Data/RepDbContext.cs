@@ -22,7 +22,7 @@ public abstract class RepDbContext(DbContextOptions options) : IdentityDbContext
     public DbSet<Reservation> Reservations => this.Set<Reservation>();
     public DbSet<Resource> Resources => this.Set<Resource>();
     public DbSet<ResourceAttachment> ResourceAttachments => this.Set<ResourceAttachment>();
-    public DbSet<ResourceMaintenance> ResourceMaintenances => this.Set<ResourceMaintenance>();
+    public DbSet<MaintenanceRecord> MaintenanceRecords => this.Set<MaintenanceRecord>();
 
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);

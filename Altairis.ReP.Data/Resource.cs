@@ -30,6 +30,6 @@ public class Resource {
 
     public virtual ICollection<MaintenanceTask> MaintenanceTasks { get; set; } = [];
 
-    public virtual ICollection<ResourceMaintenance> Maintenances { get; set; } = [];
+    public virtual ICollection<MaintenanceRecord> Maintenances { get; set; } = [];
 
 }

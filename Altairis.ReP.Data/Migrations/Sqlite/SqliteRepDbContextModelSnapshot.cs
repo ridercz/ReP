@@ -249,6 +249,35 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                     b.ToTable("JournalEntryAttachments");
                 });
 
+            modelBuilder.Entity("Altairis.ReP.Data.MaintenanceRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MaintenanceTaskId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ResourceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaintenanceTaskId");
+
+                    b.HasIndex("ResourceId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MaintenanceRecords");
+                });
+
             modelBuilder.Entity("Altairis.ReP.Data.MaintenanceTask", b =>
                 {
                     b.Property<int>("Id")
@@ -429,35 +458,6 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                     b.ToTable("ResourceAttachments");
                 });
 
-            modelBuilder.Entity("Altairis.ReP.Data.ResourceMaintenance", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("MaintenanceTaskId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ResourceId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaintenanceTaskId");
-
-                    b.HasIndex("ResourceId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ResourceMaintenances");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.DataProtectionKey", b =>
                 {
                     b.Property<int>("Id")
@@ -602,6 +602,33 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                     b.Navigation("JournalEntry");
                 });
 
+            modelBuilder.Entity("Altairis.ReP.Data.MaintenanceRecord", b =>
+                {
+                    b.HasOne("Altairis.ReP.Data.MaintenanceTask", "MaintenanceTask")
+                        .WithMany()
+                        .HasForeignKey("MaintenanceTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Altairis.ReP.Data.Resource", "Resource")
+                        .WithMany("Maintenances")
+                        .HasForeignKey("ResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Altairis.ReP.Data.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MaintenanceTask");
+
+                    b.Navigation("Resource");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Altairis.ReP.Data.MaintenanceTask", b =>
                 {
                     b.HasOne("Altairis.ReP.Data.Resource", "Resource")
@@ -641,33 +668,6 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                         .IsRequired();
 
                     b.Navigation("Resource");
-                });
-
-            modelBuilder.Entity("Altairis.ReP.Data.ResourceMaintenance", b =>
-                {
-                    b.HasOne("Altairis.ReP.Data.MaintenanceTask", "MaintenanceTask")
-                        .WithMany()
-                        .HasForeignKey("MaintenanceTaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Altairis.ReP.Data.Resource", "Resource")
-                        .WithMany()
-                        .HasForeignKey("ResourceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Altairis.ReP.Data.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MaintenanceTask");
-
-                    b.Navigation("Resource");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -736,6 +736,8 @@ namespace Altairis.ReP.Data.Migrations.Sqlite
                     b.Navigation("Attachments");
 
                     b.Navigation("MaintenanceTasks");
+
+                    b.Navigation("Maintenances");
                 });
 #pragma warning restore 612, 618
         }
