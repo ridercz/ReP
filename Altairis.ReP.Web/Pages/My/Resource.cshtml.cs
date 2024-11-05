@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.ReP.Web.Pages.My;
 
-public class ReservationsModel(RepDbContext dc, TimeProvider timeProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> options, ResourceAttachmentProcessor attachmentProcessor) : PageModel {
+public class ResourceModel(RepDbContext dc, TimeProvider timeProvider, UserManager<ApplicationUser> userManager, OpeningHoursProvider hoursProvider, IOptions<AppSettings> options, ResourceAttachmentProcessor attachmentProcessor) : PageModel {
 
     // Input model
 
@@ -46,6 +46,8 @@ public class ReservationsModel(RepDbContext dc, TimeProvider timeProvider, UserM
     public bool CanDoReservation { get; set; } = false;
 
     public string ResourceAuthorizationKey { get; set; } = string.Empty;
+
+    public bool MaintenanceTasksDefined { get; set; }
 
     // Handlers
 
@@ -126,7 +128,7 @@ public class ReservationsModel(RepDbContext dc, TimeProvider timeProvider, UserM
 
     private async Task<bool> Init(int resourceId) {
         // Get resource
-        this.Resource = await dc.Resources.SingleOrDefaultAsync(x => x.Id == resourceId) ?? throw new ImpossibleException();
+        this.Resource = await dc.Resources.Include(x => x.MaintenanceTasks).SingleOrDefaultAsync(x => x.Id == resourceId) ?? throw new ImpossibleException();
         if (this.Resource == null) return false;
         this.CanDoReservation = this.Resource.Enabled || this.User.IsPrivilegedUser();
 
@@ -184,6 +186,9 @@ public class ReservationsModel(RepDbContext dc, TimeProvider timeProvider, UserM
 
         // Get attachments
         if (options.Value.Features.UseAttachments) this.Attachments = await dc.ResourceAttachments.Where(x => x.ResourceId == resourceId).OrderByDescending(x => x.DateCreated).ToListAsync();
+
+        // Get maintenance tasks
+        this.MaintenanceTasksDefined = this.Resource.MaintenanceTasks.Any();
 
         return true;
     }

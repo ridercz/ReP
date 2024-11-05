@@ -1,11 +1,12 @@
 ﻿@page "{resourceId:int:min(1)}/{handler?}/{attachmentId:int:min(1)?}"
-@model Altairis.ReP.Web.Pages.My.ReservationsModel
+@model Altairis.ReP.Web.Pages.My.ResourceModel
 @{
     this.ViewBag.Title = Model.Resource!.Name;
 }
 <p>@Model.Resource.Description</p>
 
 <p class="buttons">
+    <a asp-page="ResourceMaintenance" asp-route-resourceId="@Model.Resource.Id" visible="Model.MaintenanceTasksDefined" class="button">@UI.Admin_Resources_Index_MaintenanceTasks</a>
     <a visible="Model.CanDoReservation" href="#new" class="button">@UI.My_Reservations_New</a>
     <a asp-route="ResourceIcs" asp-route-rak="@this.Model.ResourceAuthorizationKey" class="button">@UI.My_Calendar_Ics</a>
 </p>

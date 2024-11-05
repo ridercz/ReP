@@ -249,4 +249,10 @@
   <data name="Interval" xml:space="preserve">
     <value>Agwat</value>
   </data>
+  <data name="Time" xml:space="preserve">
+    <value>Oras</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Gawain</value>
+  </data>
 </root>

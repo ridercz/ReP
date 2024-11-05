@@ -1264,6 +1264,24 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latest tasks performed.
+        /// </summary>
+        public static string My_ResourceMaintenance_LatestTasks {
+            get {
+                return ResourceManager.GetString("My_ResourceMaintenance_LatestTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perform maintenance task on {0}.
+        /// </summary>
+        public static string My_ResourceMaintenanceDo_Title {
+            get {
+                return ResourceManager.GetString("My_ResourceMaintenanceDo_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you really want to reset the calendar access token? You would need to change the calendar address everywhere you are using it..
         /// </summary>
         public static string My_Setting_ResetRak_Confirm {

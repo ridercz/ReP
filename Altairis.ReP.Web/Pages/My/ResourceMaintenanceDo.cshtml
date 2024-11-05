@@ -1,0 +1,36 @@
+﻿@page "/My/Resource/{resourceId:int:min(1)}/Maintenance/{taskId:int:min(1)}"
+@model Altairis.ReP.Web.Pages.My.ResourceMaintenanceDoModel
+@{
+    this.ViewBag.Title = string.Format(UI.My_ResourceMaintenanceDo_Title, this.Model.ResourceName);
+}
+<form method="post">
+    <table class="details">
+        <tbody>
+            <tr>
+                <th><label asp-for="@Model.Name"></label></th>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <th><label asp-for="@Model.Interval"></label></th>
+                <td>@Model.Interval</td>
+            </tr>
+            <tr>
+                <th><label asp-for="@Model.Description"></label></th>
+                <td><markdown text="@Model.Description"></markdown></td>
+            </tr>
+            <tr>
+                <th><label asp-for="@Model.Input.Time"></label></th>
+                <td><input asp-for="@Model.Input.Time" /></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="@UI._Submit" />
+                    <a asp-page="ResourceMaintenance" asp-route-resourceId="@Model.ResourceId" class="button secondary">@UI._Cancel</a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>

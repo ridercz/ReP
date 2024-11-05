@@ -597,4 +597,10 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="Admin_Resouces_Task_Edit_DeleteConfirm" xml:space="preserve">
     <value>Jste si jisti, že chcete tento úkol údržby a všechna související data odstranit?</value>
   </data>
+  <data name="My_ResourceMaintenanceDo_Title" xml:space="preserve">
+    <value>Nová údržba {0}</value>
+  </data>
+  <data name="My_ResourceMaintenance_LatestTasks" xml:space="preserve">
+    <value>Poslední úkoly údržby</value>
+  </data>
 </root>

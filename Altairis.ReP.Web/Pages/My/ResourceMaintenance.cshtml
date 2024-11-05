@@ -1,0 +1,32 @@
+﻿@page "/My/Resource/{resourceId:int:min(1)}/Maintenance"
+@model Altairis.ReP.Web.Pages.My.ResourceMaintenanceModel
+@{
+    this.ViewBag.Title = string.Format(UI.Admin_Resources_Tasks_Title, this.Model.ResourceName);
+}
+<ul>
+    @foreach (var item in this.Model.MaintenanceTasks) {
+        <li>
+            <a asp-page="ResourceMaintenanceDo" asp-route-resourceId="@Model.ResourceId" asp-route-taskId="@item.Id" class="strong">@item.Name</a>
+            <div>@item.Interval</div>
+        </li>
+    }
+</ul>
+
+<h2>@UI.My_ResourceMaintenance_LatestTasks</h2>
+<table class="grid">
+    <thead>
+        <tr>
+            <th>@Display.Date</th>
+            <th>@Display.Task</th>
+            <th>@Display.User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in this.Model.MaintenanceRecords) {
+            <tr>
+                <td><time value="@item.Date"></time></td>
+                <td>@item.Name</td>
+                <td>@item.User</td>
+            </tr>
+        }
+</table>

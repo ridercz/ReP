@@ -21,7 +21,7 @@
 @foreach (var item in this.Model.Resources) {
     <p>
         <i class="fa-solid fa-cube fa-2x fa-pull-left"></i>
-        <a asp-page="Reservations" asp-route-resourceId="@item.Id" class="strong">@item.Name</a><br />
+        <a asp-page="Resource" asp-route-resourceId="@item.Id" class="strong">@item.Name</a><br />
         @item.Description
     </p>
 }
@@ -40,7 +40,7 @@
     <tbody>
         @foreach (var item in Model.Reservations) {
             <tr>
-                <th><i class="fa-solid fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId" asp-fragment="reservation_@item.Id">@item.ResourceName</a></th>
+                <th><i class="fa-solid fa-calendar-check"></i> <a asp-page="Resource" asp-route-resourceId="@item.ResourceId" asp-fragment="reservation_@item.Id">@item.ResourceName</a></th>
                 <td><time value="item.DateBegin"></time></td>
                 <td><time value="item.DateEnd"></time></td>
                 <td class="buttons">

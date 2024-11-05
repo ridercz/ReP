@@ -598,4 +598,10 @@ Please follow the instructions in the message.</value>
   <data name="Admin_Resouces_Task_Edit_DeleteConfirm" xml:space="preserve">
     <value>Are you sure you want to delete this maintenance task and all its related data?</value>
   </data>
+  <data name="My_ResourceMaintenanceDo_Title" xml:space="preserve">
+    <value>Perform maintenance task on {0}</value>
+  </data>
+  <data name="My_ResourceMaintenance_LatestTasks" xml:space="preserve">
+    <value>Latest tasks performed</value>
+  </data>
 </root>
