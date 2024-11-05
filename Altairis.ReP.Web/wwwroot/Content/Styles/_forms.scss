@@ -48,8 +48,8 @@
     box-sizing: border-box;
 
     &.input-validation-error {
-        background-color: lighten($Accent, 50);
-        border: 1px solid $Accent;
+        background-color: rgba($Accent, .05);
+        border: 2px solid $Accent;
     }
 
     &:focus {
@@ -156,6 +156,15 @@ ul.checkbox-list {
 
 .validation-summary-valid {
     display: none;
+}
+
+.validation-summary-errors {
+    background-color: rgba($Accent, .1);
+    border: 2px solid $Accent;
+    color: $Accent;
+    padding: calc($Padding / 4);
+    margin-bottom: $Padding;
+    font-weight: bold;
 }
 
 p.buttons {

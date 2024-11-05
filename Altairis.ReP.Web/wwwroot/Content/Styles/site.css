@@ -191,8 +191,8 @@ form input[type=text], form input[type=password], form input[type=email], form i
   box-sizing: border-box;
 }
 form input[type=text].input-validation-error, form input[type=password].input-validation-error, form input[type=email].input-validation-error, form input[type=url].input-validation-error, form input[type=file].input-validation-error, form input .textbox.input-validation-error {
-  background-color: white;
-  border: 1px solid #ff6a00;
+  background-color: rgba(255, 106, 0, 0.05);
+  border: 2px solid #ff6a00;
 }
 form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input[type=file]:focus, form input .textbox:focus {
   border: 1px solid #000;
@@ -208,8 +208,8 @@ form input[type=tel], form input[type=number], form input[type=date], form input
   max-width: 10em;
 }
 form input[type=tel].input-validation-error, form input[type=number].input-validation-error, form input[type=date].input-validation-error, form input[type=time].input-validation-error, form input.short.input-validation-error {
-  background-color: white;
-  border: 1px solid #ff6a00;
+  background-color: rgba(255, 106, 0, 0.05);
+  border: 2px solid #ff6a00;
 }
 form input[type=tel]:focus, form input[type=number]:focus, form input[type=date]:focus, form input[type=time]:focus, form input.short:focus {
   border: 1px solid #000;
@@ -228,8 +228,8 @@ form input[type=color] {
   border: none;
 }
 form input[type=color].input-validation-error {
-  background-color: white;
-  border: 1px solid #ff6a00;
+  background-color: rgba(255, 106, 0, 0.05);
+  border: 2px solid #ff6a00;
 }
 form input[type=color]:focus {
   border: 1px solid #000;
@@ -245,8 +245,8 @@ form input[type=datetime-local] {
   max-width: 15em;
 }
 form input[type=datetime-local].input-validation-error {
-  background-color: white;
-  border: 1px solid #ff6a00;
+  background-color: rgba(255, 106, 0, 0.05);
+  border: 2px solid #ff6a00;
 }
 form input[type=datetime-local]:focus {
   border: 1px solid #000;
@@ -301,8 +301,8 @@ form textarea {
   resize: vertical;
 }
 form textarea.input-validation-error {
-  background-color: white;
-  border: 1px solid #ff6a00;
+  background-color: rgba(255, 106, 0, 0.05);
+  border: 2px solid #ff6a00;
 }
 form textarea:focus {
   border: 1px solid #000;
@@ -320,8 +320,8 @@ form select {
   box-sizing: border-box;
 }
 form select.input-validation-error {
-  background-color: white;
-  border: 1px solid #ff6a00;
+  background-color: rgba(255, 106, 0, 0.05);
+  border: 2px solid #ff6a00;
 }
 form select:focus {
   border: 1px solid #000;
@@ -404,6 +404,15 @@ ul.checkbox-list.vertical li {
 
 .validation-summary-valid {
   display: none;
+}
+
+.validation-summary-errors {
+  background-color: rgba(255, 106, 0, 0.1);
+  border: 2px solid #ff6a00;
+  color: #ff6a00;
+  padding: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 @media (max-width: 900px) {
