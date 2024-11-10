@@ -44,12 +44,15 @@
                 <td><time value="item.DateBegin"></time></td>
                 <td><time value="item.DateEnd"></time></td>
                 <td class="buttons">
-                    <a visible="@item.CanBeDeleted" asp-page-handler="Delete" asp-route-reservationId="@item.Id" title="@UI._Delete" confirm-message="@UI.My_Reservations_DeleteConfirm"><i class="fa-solid fa-trash-alt"></i></a>
+                    <a visible="@item.CanBeDeleted" asp-page-handler="Delete" asp-route-reservationId="@item.Id" title="@UI._Delete" data-post-confirm="@UI.My_Reservations_DeleteConfirm" data-convert-to-post="true"><i class="fa-solid fa-trash-alt"></i></a>
                     <a asp-page-handler="SaveIcs" asp-route-reservationId="@item.Id" title="@UI.My_Calendar_Ics"><i class="fa-solid fa-calendar-plus"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<form method="post">
+    @* This form is here just because we need to get CSRF token from somewhere *@
+</form>
 <p><a asp-page="Archive" class="button">@UI.My_Index_Archive</a></p>
 <modal-box id="reservationdeleted" message="@UI.My_Index_Msg_ReservationDeleted" />

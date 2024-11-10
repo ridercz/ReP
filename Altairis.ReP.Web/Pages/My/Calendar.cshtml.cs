@@ -58,7 +58,7 @@ public class CalendarModel(RepDbContext dc, TimeProvider timeProvider, IOptions<
         return this.Page();
     }
 
-    public async Task<IActionResult> OnGetDeleteAsync(int year, int month, int entryId) {
+    public async Task<IActionResult> OnPostDeleteAsync(int year, int month, int entryId) {
         // Initialize data
         await this.Init(year, month);
 

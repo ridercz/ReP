@@ -56,7 +56,7 @@ public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManage
         this.Reservations = await reservationsQuery.ToListAsync();
     }
 
-    public async Task<IActionResult> OnGetDeleteAsync(int reservationId) {
+    public async Task<IActionResult> OnPostDeleteAsync(int reservationId) {
         var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
         var reservation = await dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > timeProvider.GetLocalNow());
         if (reservation == null) return this.NotFound();

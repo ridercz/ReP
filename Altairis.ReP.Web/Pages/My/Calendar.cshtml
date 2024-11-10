@@ -60,8 +60,11 @@
             <markdown text="@item.Comment"></markdown>
             <footer>
                 <a href="#" class="button">@UI._OK</a>
-                <a asp-page-handler="delete" asp-route-entryId="@item.Id" class="button tertiary" visible="this.Model.CanManageEntries">@UI._Delete</a>
+                <a data-convert-to-post="true" asp-page-handler="delete" asp-route-entryId="@item.Id" class="button tertiary" visible="this.Model.CanManageEntries">@UI._Delete</a>
             </footer>
         </article>
     </div>
 }
+<form method="post">
+    @* This form is here just because we need to get CSRF token from somewhere *@
+</form>
