@@ -604,4 +604,7 @@ Please follow the instructions in the message.</value>
   <data name="My_ResourceMaintenance_LatestTasks" xml:space="preserve">
     <value>Latest tasks performed</value>
   </data>
+  <data name="My_ResourceMaintenance_DeleteConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete this maintenance record?</value>
+  </data>
 </root>

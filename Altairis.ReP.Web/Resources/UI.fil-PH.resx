@@ -603,4 +603,7 @@ Magyaring sundin ang mga tagubilin sa mensahe.</value>
   <data name="My_ResourceMaintenance_LatestTasks" xml:space="preserve">
     <value>Pinakabagong mga gawain na ginanap</value>
   </data>
+  <data name="My_ResourceMaintenance_DeleteConfirm" xml:space="preserve">
+    <value>Sigurado ka bang nais mong tanggalin ang record ng pagpapanatili na ito?</value>
+  </data>
 </root>

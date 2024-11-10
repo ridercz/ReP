@@ -603,4 +603,7 @@ Postupujte podle pokynů ve zprávě.</value>
   <data name="My_ResourceMaintenance_LatestTasks" xml:space="preserve">
     <value>Poslední úkoly údržby</value>
   </data>
+  <data name="My_ResourceMaintenance_DeleteConfirm" xml:space="preserve">
+    <value>Opravdu chcete tento záznam o údržbě odstranit?</value>
+  </data>
 </root>

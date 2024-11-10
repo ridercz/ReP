@@ -12,13 +12,14 @@
     }
 </ul>
 
-<h2>@UI.My_ResourceMaintenance_LatestTasks</h2>
-<table class="grid">
+<h2 visible="this.Model.MaintenanceRecords.Any()">@UI.My_ResourceMaintenance_LatestTasks</h2>
+<table class="grid" visible="this.Model.MaintenanceRecords.Any()">
     <thead>
         <tr>
             <th>@Display.Date</th>
             <th>@Display.Task</th>
             <th>@Display.User</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,15 @@
                 <td><time value="@item.Date"></time></td>
                 <td>@item.Name</td>
                 <td>@item.User</td>
+                <td class="buttons">
+                    <a visible="item.CanBeDeleted"
+                       asp-page="ResourceMaintenance" asp-page-handler="Delete"
+                       asp-route-resourceId="@Model.ResourceId" asp-route-recordId="@item.Id"
+                       data-convert-to-post="true" data-post-confirm="@UI.My_ResourceMaintenance_DeleteConfirm"><i class="fa-solid fa-trash" title="@UI._Delete"></i></a>
+                </td>
             </tr>
         }
 </table>
+<form method="post">
+    @* This form is here just because we need to get CSRF token from somewhere *@
+</form>

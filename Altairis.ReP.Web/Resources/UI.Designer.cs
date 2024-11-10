@@ -1264,6 +1264,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this maintenance record?.
+        /// </summary>
+        public static string My_ResourceMaintenance_DeleteConfirm {
+            get {
+                return ResourceManager.GetString("My_ResourceMaintenance_DeleteConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Latest tasks performed.
         /// </summary>
         public static string My_ResourceMaintenance_LatestTasks {
