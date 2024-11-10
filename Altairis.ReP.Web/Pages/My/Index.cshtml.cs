@@ -58,7 +58,7 @@ public class IndexModel(RepDbContext dc, UserManager<ApplicationUser> userManage
 
     public async Task<IActionResult> OnPostDeleteAsync(int reservationId) {
         var userId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException());
-        var reservation = await dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > timeProvider.GetLocalNow());
+        var reservation = await dc.Reservations.SingleOrDefaultAsync(x => x.Id == reservationId && x.UserId == userId && x.DateEnd > timeProvider.GetLocalNow().DateTime);
         if (reservation == null) return this.NotFound();
         dc.Reservations.Remove(reservation);
         await dc.SaveChangesAsync();
