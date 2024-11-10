@@ -46,12 +46,8 @@
             <a href="https://github.com/ridercz/ReP/">ReP</a> build <assembly-build-time></assembly-build-time> | powered by <a href="https://dot.net/">.NET</a>
         </div>
     </footer>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.min.js" integrity="sha512-JMK7ImCd/9VxQM7FWvAT3njqo5iGKkWcOax6Bwzuq48xxFd7/jekKcgN+59ZRwBoEpZvv6Jkwh3fDGrBVWX5vA==" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="~/Content/Scripts/aspnet-validation.min.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        var v = new aspnetValidation.ValidationService();
-        v.bootstrap();
-    </script>
+    <script type="text/javascript" src="https://unpkg.com/aspnet-client-validation@0.11.0/dist/aspnet-validation.min.js" integrity="sha384-ok8WgguZSGdK1XjlAFP7l1vSDofCA55EM/cC86lrcPaJcnb9KYnaHwQyyLXvbudA" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Content/Scripts/site.js" asp-append-version="true"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
