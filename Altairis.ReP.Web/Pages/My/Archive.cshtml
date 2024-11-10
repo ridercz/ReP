@@ -16,7 +16,7 @@
     <tbody>
         @foreach (var item in Model.Reservations) {
             <tr>
-                <th><i class="fa-solid fa-calendar-check"></i> <a asp-page="Reservations" asp-route-resourceId="@item.ResourceId">@item.ResourceName</a></th>
+                <th><i class="fa-solid fa-calendar-check"></i> <a asp-page="Resource" asp-route-resourceId="@item.ResourceId">@item.ResourceName</a></th>
                 <td><time value="item.DateBegin"></time></td>
                 <td><time value="item.DateEnd"></time></td>
                 <td class="buttons">

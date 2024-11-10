@@ -121,7 +121,7 @@ public class ResourceModel(RepDbContext dc, TimeProvider timeProvider, UserManag
         dc.Reservations.Add(newReservation);
         await dc.SaveChangesAsync();
 
-        return this.RedirectToPage("Reservations", string.Empty, new { resourceId }, "created");
+        return this.RedirectToPage("Resource", string.Empty, new { resourceId }, "created");
     }
 
     // Helpers
