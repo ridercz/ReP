@@ -1,7 +1,6 @@
 namespace Altairis.ReP.Web.Pages.Admin.Resources.Tasks;
 
-public class IndexModel(RepDbContext dc) : PageModel
-{
+public class IndexModel(RepDbContext dc) : PageModel {
     // Output model
 
     public int ResourceId { get; set; }
