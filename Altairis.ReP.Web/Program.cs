@@ -206,16 +206,12 @@ app.MapGet("/api/set-language", LanguageSwitchViewComponent.SetCultureCookieHand
 
 // Configure middleware
 app.UseStatusCodePagesWithReExecute("/Errors/{0}");
-if (app.Environment.IsDevelopment()) {
-    app.UseStaticFiles();
-} else {
-    app.UseStaticFiles(new StaticFileOptions {
-        OnPrepareResponse = c => c.Context.Response.Headers.CacheControl = "public,max-age=31536000"
-    });
-}
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Map static assets
+app.MapStaticAssets();
 
 // Map calendar endpoints
 app.MapGet("/api/full.ics", (string rak, CalendarGenerator cg) => cg.GenerateFullCalendar(rak)).WithName("FullIcs");
