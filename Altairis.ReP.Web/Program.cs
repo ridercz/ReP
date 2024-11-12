@@ -219,7 +219,7 @@ app.MapGet("/api/my.ics", (string rak, CalendarGenerator cg) => cg.GeneratePerso
 app.MapGet("/api/{resourceId:int:min(1)}.ics", (int resourceId, string rak, CalendarGenerator cg) => cg.GenerateResourceCalendar(resourceId, rak)).WithName("ResourceIcs");
 
 // Map other endpoints
-app.MapRazorPages();
+app.MapRazorPages().WithStaticAssets();
 app.MapGet("/", () => Results.LocalRedirect("/My"));
 app.MapHealthChecks("/api/health.json", new() {
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
