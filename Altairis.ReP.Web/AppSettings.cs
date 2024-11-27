@@ -27,6 +27,7 @@ public class AppSettings {
         public string CalendarEntryFgColor { get; set; } = "#fff";
         public string HeaderImageUrl { get; set; } = "~/Content/Images/rep-logo.svg";
         public string StylesheetUrl { get; set; } = "~/Content/Styles/site.min.css";
+        public string? AdditionalStylesheetUrl { get; set; }
     }
 
     // Authentication and security configuration
