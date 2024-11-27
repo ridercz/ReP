@@ -17,9 +17,9 @@
 		<ProjectReference Include="..\Altairis.ReP.Data\Altairis.ReP.Data.csproj" />
 		<PackageReference Include="Altairis.ConventionalMetadataProviders" Version="1.0.5" />
 		<PackageReference Include="Altairis.Services.Mailing.Core" Version="1.0.5" />
-		<PackageReference Include="Altairis.Services.Mailing.Rfc2822" Version="1.0.5" />
-		<PackageReference Include="Altairis.Services.Mailing.SendGrid" Version="1.0.5" />
-		<PackageReference Include="Altairis.Services.Mailing.Templating" Version="1.0.1" />
+		<PackageReference Include="Altairis.Services.Mailing.Rfc2822" Version="1.0.6" />
+		<PackageReference Include="Altairis.Services.Mailing.SendGrid" Version="1.0.6" />
+		<PackageReference Include="Altairis.Services.Mailing.Templating" Version="1.0.2" />
 		<PackageReference Include="Altairis.Services.PwnedPasswordsValidator" Version="1.1.0" />
 		<PackageReference Include="Altairis.SqliteBackup" Version="1.2.3" />
 		<PackageReference Include="Altairis.SqliteBackup.AzureStorage" Version="1.1.0" />
