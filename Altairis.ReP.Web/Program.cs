@@ -193,6 +193,29 @@ async Task EnsureRoleCreated(string roleName) {
 await EnsureRoleCreated(ApplicationRole.Master);
 await EnsureRoleCreated(ApplicationRole.Administrator);
 
+// Configure proxy
+if (appSettings.Proxy.AllowLocal || appSettings.Proxy.AllowCloudlare || appSettings.Proxy.AdditionalAddresses.Any()) {
+    var fho = new ForwardedHeadersOptions();
+    
+    // Allow Cloudflare
+    if (appSettings.Proxy.AllowCloudlare) fho = await Altairis.Services.Cloudflare.CloudflareForwardedHeadersConfigurator.GetForwardedHeadersOptions();
+    
+    // Allow local proxy
+    if (appSettings.Proxy.AllowLocal) {
+        fho.AllowedHosts.Add("127.0.0.1");
+        fho.AllowedHosts.Add("::1");
+    }
+
+    // Allow additional addresses
+    foreach (var item in appSettings.Proxy.AdditionalAddresses) {
+        fho.AllowedHosts.Add(item);
+    }
+
+    // Apply settings
+    fho.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+    app.UseForwardedHeaders(fho);
+}
+
 // Configure localization
 var supportedCultures = LanguageSwitchViewComponent.AvailableCultures.Select(c => c.Name).ToArray();
 app.UseRequestLocalization(options => {

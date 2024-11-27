@@ -30,6 +30,21 @@ public class AppSettings {
         public string? AdditionalStylesheetUrl { get; set; }
     }
 
+    // Proxy configuration
+
+    public ProxyConfig Proxy { get; set; } = new();
+
+
+    public class ProxyConfig {
+
+        public bool AllowLocal { get; set; } = true;
+
+        public bool AllowCloudlare { get; set; } = false;
+
+        public string[] AdditionalAddresses { get; set; } = [];
+
+    }
+
     // Authentication and security configuration
 
     public SecurityConfig Security { get; set; } = new();
