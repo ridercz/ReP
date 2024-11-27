@@ -49,11 +49,11 @@ public class CreateModel(UserManager<ApplicationUser> userManager, ITemplatedMai
 
         // Create new user
         var newUser = new ApplicationUser {
-            UserName = this.Input.UserName,
-            Email = this.Input.Email,
-            PhoneNumber = this.Input.PhoneNumber,
+            UserName = this.Input.UserName.Trim(),
+            Email = this.Input.Email.Trim(),
+            PhoneNumber = this.Input.PhoneNumber?.Trim(),
             Language = this.Input.Language,
-            DisplayName = this.Input.DisplayName,
+            DisplayName = this.Input.DisplayName.Trim(),
             ShowInMemberDirectory = options.Value.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory,
             ResourceAuthorizationKey = ApplicationUser.CreateResourceAuthorizationKey()
         };

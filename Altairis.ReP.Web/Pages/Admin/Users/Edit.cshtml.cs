@@ -69,12 +69,12 @@ public class EditModel(UserManager<ApplicationUser> userManager, IOptions<AppSet
 
         if (!this.ModelState.IsValid) return this.Page();
 
-        user.Email = this.Input.Email;
+        user.Email = this.Input.Email.Trim();
         user.Enabled = this.Input.UserEnabled;
-        user.PhoneNumber = this.Input.PhoneNumber;
-        user.UserName = this.Input.UserName;
+        user.PhoneNumber = this.Input.PhoneNumber?.Trim();
+        user.UserName = this.Input.UserName.Trim();
         user.Language = this.Input.Language;
-        user.DisplayName = this.Input.DisplayName;
+        user.DisplayName = this.Input.DisplayName.Trim();
         user.ShowInMemberDirectory = options.Value.Features.UseMemberDirectory && this.Input.ShowInMemberDirectory;
 
         var result = await userManager.UpdateAsync(user);

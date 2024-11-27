@@ -28,8 +28,8 @@ public class IndexModel(SignInManager<ApplicationUser> signInManager, UserManage
     public async Task<IActionResult> OnPostAsync(string returnUrl = "/") {
         if (this.ModelState.IsValid) {
             var result = await signInManager.PasswordSignInAsync(
-                this.Input.UserName,
-                this.Input.Password,
+                this.Input.UserName.Trim(),
+                this.Input.Password.Trim(),
                 this.Input.RememberMe,
                 lockoutOnFailure: false);
 
