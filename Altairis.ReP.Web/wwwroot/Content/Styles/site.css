@@ -646,6 +646,13 @@ table.details tbody tr:hover {
 .calendar section.week > article ul li:target {
   font-weight: bold;
 }
+.calendar section.week > article ul li[title]::after {
+  content: attr(title);
+  display: block;
+  clear: both;
+  font-style: italic;
+  font-size: 90%;
+}
 .calendar section.week > article ul li time {
   font-size: 80%;
 }

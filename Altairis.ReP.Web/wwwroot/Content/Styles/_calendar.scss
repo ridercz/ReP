@@ -97,6 +97,14 @@ $ScreenStop: 1000px;
                         font-weight: bold;
                     }
 
+                    &[title]::after {
+                        content: attr(title);
+                        display: block;
+                        clear: both;
+                        font-style: italic;
+                        font-size: 90%;
+                    }
+
                     time {
                         font-size: 80%;
 

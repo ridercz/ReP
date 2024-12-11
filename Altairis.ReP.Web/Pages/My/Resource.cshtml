@@ -22,9 +22,13 @@
             <label asp-for="Input.DateEnd"></label><br />
             <input asp-for="Input.DateEnd" />
         </p>
-        <p visible="this.User.IsPrivilegedUser()">
-            <input asp-for="Input.System" /> <label asp-for="Input.System"></label><br />
+
+        <p>
+            <label asp-for="Input.Comment"></label><br />
             <input asp-for="Input.Comment" />
+        </p>
+        <p visible="this.User.IsPrivilegedUser()">
+            <input asp-for="Input.System" /> <label asp-for="Input.System"></label>
         </p>
         <div asp-validation-summary="All"></div>
         <footer>
@@ -42,7 +46,8 @@
           general-date-format="d."
           new-month-date-format="d. MMMM"></calendar>
 
-@foreach (var item in this.Model.CalendarEntries) {
+@foreach (var item in this.Model.CalendarEntries)
+{
     <div id="event_detail_@item.Id" class="modal">
         <article class="l">
             <header>@item.Date.ToLongDateString()</header>
@@ -58,10 +63,12 @@
 
 <markdown text="@Model.Resource.Instructions"></markdown>
 
-@if (this.Model.Attachments.Any()) {
+@if (this.Model.Attachments.Any())
+{
     <h2>@UI.My_Reservations_Attachments</h2>
     <ul class="fa-ul">
-        @foreach (var item in this.Model.Attachments) {
+        @foreach (var item in this.Model.Attachments)
+        {
             <li>
                 <span class="fa-li"><i class="fa-solid fa-paperclip"></i></span>
                 <a class="strong" asp-page-handler="download" asp-route-attachmentId="@item.Id">@item.FileName</a>

@@ -114,8 +114,8 @@ public class ResourceModel(RepDbContext dc, TimeProvider timeProvider, UserManag
             DateEnd = this.Input.DateEnd,
             UserId = int.Parse(userManager.GetUserId(this.User) ?? throw new ImpossibleException()),
             ResourceId = resourceId,
-            System = this.User.IsPrivilegedUser() && this.Input.System,
-            Comment = this.User.IsPrivilegedUser() ? this.Input.Comment : null
+            Comment = this.Input.Comment,
+            System = this.User.IsPrivilegedUser() && this.Input.System
 
         };
         dc.Reservations.Add(newReservation);
