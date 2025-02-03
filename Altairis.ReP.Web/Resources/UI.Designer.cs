@@ -484,6 +484,15 @@ namespace Altairis.ReP.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maintenance statistics.
+        /// </summary>
+        public static string Admin_Resources_Index_MaintenanceStatistics {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Index_MaintenanceStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maintenance tasks.
         /// </summary>
         public static string Admin_Resources_Index_MaintenanceTasks {
@@ -552,6 +561,15 @@ namespace Altairis.ReP.Web.Resources {
         public static string Admin_Resources_Tasks_Edit_Title {
             get {
                 return ResourceManager.GetString("Admin_Resources_Tasks_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maintenance statistics for {0}.
+        /// </summary>
+        public static string Admin_Resources_Tasks_Stats_Title {
+            get {
+                return ResourceManager.GetString("Admin_Resources_Tasks_Stats_Title", resourceCulture);
             }
         }
         

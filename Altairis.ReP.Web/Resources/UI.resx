@@ -607,4 +607,10 @@ Please follow the instructions in the message.</value>
   <data name="My_ResourceMaintenance_DeleteConfirm" xml:space="preserve">
     <value>Are you sure you want to delete this maintenance record?</value>
   </data>
+  <data name="Admin_Resources_Index_MaintenanceStatistics" xml:space="preserve">
+    <value>Maintenance statistics</value>
+  </data>
+  <data name="Admin_Resources_Tasks_Stats_Title" xml:space="preserve">
+    <value>Maintenance statistics for {0}</value>
+  </data>
 </root>

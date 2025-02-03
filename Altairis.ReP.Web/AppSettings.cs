@@ -96,4 +96,11 @@ public class AppSettings {
         public bool OnlyMastersCanWrite { get; set; } = false;
     }
 
+    // Maintenance configuration
+
+    public MaintenanceConfig Maintenance { get; set; } = new();
+
+    public class MaintenanceConfig {
+        public int ShowStatsForMonths { get; set; } = 3;
+    }
 }

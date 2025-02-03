@@ -520,6 +520,9 @@ table.grid tbody td.buttons {
   white-space: normal;
   text-align: right;
 }
+table.grid tfoot td, table.grid tfoot th {
+  border-top: double 3px rgba(255, 106, 0, 0.25);
+}
 
 ul.tasklist {
   list-style-type: none;

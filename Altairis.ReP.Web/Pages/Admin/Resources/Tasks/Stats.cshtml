@@ -1,0 +1,44 @@
+﻿@page "/Admin/Resources/{resourceId:int:min(1)}/Tasks/Stats"
+@model Altairis.ReP.Web.Pages.Admin.Resources.Tasks.StatsModel
+@{
+    this.ViewBag.Title = string.Format(@UI.Admin_Resources_Tasks_Stats_Title, this.Model.ResourceName);
+    var monthOffset = 0;
+    foreach (var item in this.Model.Records) {
+        var month = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(monthOffset);
+        var users = item.Select(x => x.UserDisplayName).Distinct().OrderBy(x => x).ToList();
+        <h2>@month.ToString("MMMM yyyy")</h2>
+        <table class="grid">
+            <thead>
+                <tr>
+                    <th>@Display.Task</th>
+                    @foreach (var taskName in Model.TaskNames) {
+                        <th class="r">@taskName</th>
+                    }
+                    <th class="r">&Sigma;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in users) {
+                    <tr>
+                        <th>@user</th>
+                        @foreach (var taskName in Model.TaskNames) {
+                            var value = item.SingleOrDefault(x => x.UserDisplayName == user && x.TaskName == taskName)?.Count ?? 0;
+                            <td class="r">@value</td>
+                        }
+                        <th class="r">@item.Where(x => x.UserDisplayName == user).Sum(x => x.Count)</th>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>&Sigma;</th>
+                    @foreach (var taskName in Model.TaskNames) {
+                        <th class="r">@item.Where(x => x.TaskName == taskName).Sum(x => x.Count)</th>
+                    }
+                    <th class="r">@item.Sum(x => x.Count)</th>
+                </tr>
+            </tfoot>
+        </table>
+        monthOffset--;
+    }
+}
