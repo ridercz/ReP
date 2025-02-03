@@ -503,7 +503,7 @@ table.grid td, table.grid th {
   text-align: left;
   border-bottom: solid 1px rgba(255, 106, 0, 0.25);
 }
-table.grid thead th {
+table.grid thead tr {
   border-bottom: double 3px #ff6a00;
 }
 table.grid tbody tr.new {
@@ -520,8 +520,11 @@ table.grid tbody td.buttons {
   white-space: normal;
   text-align: right;
 }
-table.grid tfoot td, table.grid tfoot th {
+table.grid tfoot tr {
   border-top: double 3px rgba(255, 106, 0, 0.25);
+}
+table.grid tfoot tr:hover {
+  background-color: rgba(255, 106, 0, 0.15) !important;
 }
 
 ul.tasklist {

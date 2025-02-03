@@ -11,7 +11,7 @@ table.grid {
     }
 
     thead {
-        th {
+        tr {
             border-bottom: double 3px $Accent;
         }
     }
@@ -39,8 +39,12 @@ table.grid {
     }
 
     tfoot {
-        td, th {
+        tr {
             border-top: double 3px rgba($Accent, .25);
+
+            &:hover {
+                background-color: rgba($Accent, .15) !important;
+            }
         }
     }
 }
