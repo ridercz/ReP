@@ -606,4 +606,10 @@ Magyaring sundin ang mga tagubilin sa mensahe.</value>
   <data name="My_ResourceMaintenance_DeleteConfirm" xml:space="preserve">
     <value>Sigurado ka bang nais mong tanggalin ang record ng pagpapanatili na ito?</value>
   </data>
+  <data name="Admin_Resources_Index_MaintenanceStatistics" xml:space="preserve">
+    <value>Mga istatistika ng pagpapanatili</value>
+  </data>
+  <data name="Admin_Resources_Tasks_Stats_Title" xml:space="preserve">
+    <value>Mga istatistika ng pagpapanatili para sa {0}</value>
+  </data>
 </root>
