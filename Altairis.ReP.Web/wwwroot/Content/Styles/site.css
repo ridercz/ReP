@@ -643,6 +643,10 @@ table.details tbody tr:hover {
 .calendar section.week > article ul li.system {
   border: 2px solid #000;
 }
+.calendar section.week > article ul li.maintenance {
+  font-size: 70%;
+  border: 1px dotted #000;
+}
 .calendar section.week > article ul li:target {
   font-weight: bold;
 }

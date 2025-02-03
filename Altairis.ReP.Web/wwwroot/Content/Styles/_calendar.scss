@@ -93,6 +93,11 @@ $ScreenStop: 1000px;
                         border: 2px solid $Black;
                     }
 
+                    &.maintenance {
+                        font-size: 70%;
+                        border: 1px dotted $Black;
+                    }
+
                     &:target {
                         font-weight: bold;
                     }

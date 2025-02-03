@@ -140,10 +140,30 @@ public class CalendarModel(RepDbContext dc, TimeProvider timeProvider, IOptions<
                  orderby e.Date
                  select new CalendarEntryInfo(e.Id, e.Date, e.Title, e.Comment);
 
+        // Get all maintenance records in this month
+        var qm = from m in dc.MaintenanceRecords
+                    .Include(x => x.MaintenanceTask)
+                    .Include(x => x.Resource)
+                    .Include(x => x.User)
+                 where m.Date >= this.DateBegin.AddDays(-6) && m.Date < this.DateEnd.AddDays(6)
+                 orderby m.Date
+                 select new CalendarEvent {
+                     Id = "maintenance_" + m.Id,
+                     BackgroundColor = m.Resource!.ForegroundColor,
+                     ForegroundColor = m.Resource!.BackgroundColor,
+                     DateBegin = m.Date,
+                     DateEnd = m.Date,
+                     Name = $"{m.Resource.Name}: {m.MaintenanceTask.Name}",
+                     Description = m.User.DisplayName,
+                     IsFullDay = true,
+                     CssClass = "maintenance"
+                 };
+
         // Materialize queries
         var qri = await qr.ToListAsync();
         var qei = await qe.ToListAsync();
-        this.Reservations = qei.Concat(qri);
+        var qmi = await qm.ToListAsync();
+        this.Reservations = qei.Concat(qri).Concat(qmi);
         this.CalendarEntries = await qd.ToListAsync();
     }
 
