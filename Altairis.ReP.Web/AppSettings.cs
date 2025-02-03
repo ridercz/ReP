@@ -34,15 +34,10 @@ public class AppSettings {
 
     public ProxyConfig Proxy { get; set; } = new();
 
-
     public class ProxyConfig {
-
         public bool AllowLocal { get; set; } = true;
-
         public bool AllowCloudlare { get; set; } = false;
-
         public string[] AdditionalAddresses { get; set; } = [];
-
     }
 
     // Authentication and security configuration
@@ -69,7 +64,6 @@ public class AppSettings {
         public bool SmtpUseTls { get; set; } = false;
         public string? SmtpUsername { get; set; }
         public string? SmtpPassword { get; set; }
-
     }
 
     // Openings hours configuration
