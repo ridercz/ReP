@@ -152,10 +152,8 @@ public class CalendarModel(RepDbContext dc, TimeProvider timeProvider, IOptions<
                      BackgroundColor = m.Resource!.ForegroundColor,
                      ForegroundColor = m.Resource!.BackgroundColor,
                      DateBegin = m.Date,
-                     DateEnd = m.Date,
                      Name = $"{m.Resource.Name}: {m.MaintenanceTask.Name}",
                      Description = m.User.DisplayName,
-                     IsFullDay = true,
                      CssClass = "maintenance"
                  };
 
