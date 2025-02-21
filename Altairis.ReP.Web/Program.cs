@@ -196,10 +196,10 @@ await EnsureRoleCreated(ApplicationRole.Administrator);
 // Configure proxy
 if (appSettings.Proxy.AllowLocal || appSettings.Proxy.AllowCloudlare || appSettings.Proxy.AdditionalAddresses.Any()) {
     var fho = new ForwardedHeadersOptions();
-    
+
     // Allow Cloudflare
     if (appSettings.Proxy.AllowCloudlare) fho = await Altairis.Services.Cloudflare.CloudflareForwardedHeadersConfigurator.GetForwardedHeadersOptions();
-    
+
     // Allow local proxy
     if (appSettings.Proxy.AllowLocal) {
         fho.AllowedHosts.Add("127.0.0.1");
@@ -233,8 +233,21 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+#if NET9_0_OR_GREATER
 // Map static assets
 app.MapStaticAssets();
+#else
+// Use static files
+if (app.Environment.IsDevelopment()) {
+    app.UseStaticFiles();
+} else {
+    app.UseStaticFiles(new StaticFileOptions {
+        OnPrepareResponse = ctx => {
+            ctx.Context.Response.Headers.CacheControl = "public,max-age=31536000";
+        }
+    });
+}
+#endif
 
 // Map calendar endpoints
 app.MapGet("/api/full.ics", (string rak, CalendarGenerator cg) => cg.GenerateFullCalendar(rak)).WithName("FullIcs");
@@ -242,7 +255,11 @@ app.MapGet("/api/my.ics", (string rak, CalendarGenerator cg) => cg.GeneratePerso
 app.MapGet("/api/{resourceId:int:min(1)}.ics", (int resourceId, string rak, CalendarGenerator cg) => cg.GenerateResourceCalendar(resourceId, rak)).WithName("ResourceIcs");
 
 // Map other endpoints
+#if NET9_0_OR_GREATER
 app.MapRazorPages().WithStaticAssets();
+#else
+app.MapRazorPages();
+#endif
 app.MapGet("/", () => Results.LocalRedirect("/My"));
 app.MapHealthChecks("/api/health.json", new() {
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
